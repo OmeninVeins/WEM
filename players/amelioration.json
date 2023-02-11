@@ -1,0 +1,1303 @@
+    {
+      "GUID": "ec1f6c",
+      "Name": "Custom_Model_Bag",
+      "Transform": {
+        "posX": 66.5,
+        "posY": 1.04966283,
+        "posZ": -6.5,
+        "rotX": -5.191706E-06,
+        "rotY": 179.981232,
+        "rotZ": 6.48403329E-07,
+        "scaleX": 0.700000465,
+        "scaleY": 0.700000465,
+        "scaleZ": 0.700000465
+      },
+      "Nickname": "Fiches d'amélioration",
+      "Description": "",
+      "GMNotes": "",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": false,
+      "MaterialIndex": -1,
+      "MeshIndex": -1,
+      "CustomMesh": {
+        "MeshURL": "https://pastebin.com/raw/ALrYhQGb",
+        "DiffuseURL": "http://cloud-3.steamusercontent.com/ugc/1932636167913087816/1B8C80F005FA45A7E298DB84443D1179CA357033/",
+        "NormalURL": "",
+        "ColliderURL": "",
+        "Convex": true,
+        "MaterialIndex": 3,
+        "TypeIndex": 6,
+        "CustomShader": {
+          "SpecularColor": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0
+          },
+          "SpecularIntensity": 0.0,
+          "SpecularSharpness": 2.0,
+          "FresnelStrength": 0.0
+        },
+        "CastShadows": true
+      },
+      "Bag": {
+        "Order": 0
+      },
+      "LuaScript": "packupZone = '4708b1' -- change this to the GUID of your own script packupZone\r\nGMNOTE = {'amelioration'} -- set the object you sant the script to be affected with, all other objects will be ignored\r\nadditive = true -- This will disable the save system, allowing you to setup a bag, and then next time you pack up it will only pick up what it already has saved before.\r\nUseBagNameAsButtonName = false\r\n\r\n--Runs whenever game is saved/autosaved\r\nfunction onSave()\r\n --Begin State Managment of Saving Object Data.\r\n --Create GUID list fomr Object List\r\n    if tableSize(memoryData) == 0 then saved_data = \"\" return saved_data\r\n    else\r\n        local data_to_save = { md=memoryData }\r\n        saved_data = JSON.encode(data_to_save)\r\n        --saved_data = \"\" --Remove -- at start + save to clear save data\r\n       return saved_data end\r\n\r\nend\r\n\r\nfunction onload(saved_data)\r\n    if saved_data ~= \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        --Set up information off of loaded_data\r\n        memoryData = loaded_data.md\r\n    else\r\n        --Set up information for if there is no saved saved data\r\n        memoryData = {}\r\n    end\r\n    SetButtonName()\r\nend\r\n\r\nfunction SetButtonName()\r\n    if UseBagNameAsButtonName then\r\n        PlaceText = self.getName()\r\n        PlaceWidth = string.len(PlaceText)*145\r\n        PlaceHeight = 450\r\n        Scale = {3.2,3.2,3.2}\r\n    else\r\n        PlaceText = 'Placer'\r\n        PlaceWidth = 900\r\n        PlaceHeight = 400\r\n        Scale = {0.9,0.9,0.9}\r\n    end\r\n    self.clearButtons()\r\n    makeButtons()\r\nend\r\n\r\nfunction createSaveData(obj)\r\n    local objData = {position = tableCullNumericIndexes(obj.getPosition()),\r\n                     rotation = tableCullNumericIndexes(obj.getRotation()),\r\n                     guid = obj.getGUID(),\r\n                     lock = obj.getLock(),\r\n                     interactable = tostring(obj.interactable),\r\n                     tooltip = tostring(obj.tooltip)}\r\n\r\n    memoryData[objData.guid] = objData\r\nend\r\n\r\nfunction placeStuff()\r\n    local prams = {}\r\n    for key, entry in pairs(memoryData) do\r\n        prams.guid = key\r\n        prams.position = {entry.position.x, entry.position.y, entry.position.z}\r\n        prams.rotation = {entry.rotation.x, entry.rotation.y, entry.rotation.z}\r\n        local item = self.takeObject(prams)\r\n\r\n        if entry.lock == true then\r\n        item.setPositionSmooth({entry.position.x, entry.position.y, entry.position.z}, false, true)\r\n        item.setRotationSmooth({entry.rotation.x, entry.rotation.y, entry.rotation.z}, false, true)\r\n        item.setLock(entry.lock) end\r\n\r\n        if entry.tooltip == 'false' then item.tooltip = false end\r\n        if entry.interactable == 'false' then item.interactable = false end\r\n\r\n    end\r\n    if additive == true then memoryData = {} end\r\n    SetButtonName()\r\nend\r\n\r\n\r\nfunction pickupStuff()\r\n\r\n    if additive == true then\r\n         -- Grab All Objects in Zone\r\n        for _, obj in ipairs(getObjectFromGUID(packupZone).getObjects()) do\r\n            local add = false\r\n            for _, list in ipairs(GMNOTE) do if obj.getGMNotes() == list then add = true end end\r\n            if add == true then\r\n                createSaveData(obj)\r\n                self.putObject(obj)\r\n            end\r\n            add = true\r\n        end\r\n    end\r\n\r\n    if additive == false then\r\n        for key, entry in pairs(memoryData) do\r\n            self.putObject(getObjectFromGUID(key))\r\n        end\r\n    end\r\n    SetButtonName()\r\nend\r\n\r\nfunction tableSize(t)\r\n    local count = 0\r\n    for key,value in pairs(t) do count = count + 1 end\r\n    return count\r\nend\r\n\r\nfunction tableCullNumericIndexes(t)\r\n    for i in pairs(t) do\r\n        if type(i) == \"number\" then\r\n            table.remove(t, i)\r\n            return tableCullNumericIndexes(t)\r\n        end\r\n    end\r\n    return t\r\nend\r\n\r\nfunction makeButtons(set)\r\n    local buttons = {}\r\n\r\n -- DEFAULT START BUTTONS\r\n    if set == nil then\r\n        button_Place = {\r\n                click_function = 'placeStuff',\r\n                function_owner = self,\r\n                label = PlaceText,\r\n                position = {0, 0.1, 1.8},\r\n                rotation = {0, 0, 0},\r\n                width = PlaceWidth,\r\n                height = PlaceHeight,\r\n                scale = Scale,\r\n                font_size = 250,\r\n                color={0,0,0},\r\n                font_color={1,1,1}}\r\n        table.insert(buttons, button_Place)\r\n\r\n        button_PickUp = {\r\n            click_function = 'pickupStuff',\r\n            function_owner = self,\r\n            label = 'Ranger',\r\n            position = {1.8, 0.1, 0},\r\n            rotation = {0, -90, 0},\r\n            width = 1000,\r\n            height = 400,\r\n            font_size = 250,\r\n            scale = {0.9,0.9,0.9},\r\n            color={0,0,0},\r\n            font_color={1,1,1}}\r\n        table.insert(buttons, button_PickUp) end\r\n -- Create Buttons\r\n    for _, button in ipairs(buttons) do\r\n        self.createButton(button)\r\n    end\r\nend\r\n",
+      "LuaScriptState": "{\"md\":{\"07c7ef\":{\"guid\":\"07c7ef\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":71.2771911621094,\"y\":1.00516557693481,\"z\":-13.0433712005615},\"rotation\":{\"x\":0.0275475457310677,\"y\":179.411209106445,\"z\":359.951721191406},\"tooltip\":\"false\"},\"1d62e3\":{\"guid\":\"1d62e3\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":86.5,\"y\":0.993267774581909,\"z\":-9.5},\"rotation\":{\"x\":-5.096709173813E-06,\"y\":180.019622802734,\"z\":5.12303984123719E-07},\"tooltip\":\"true\"},\"2c0f74\":{\"guid\":\"2c0f74\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":81.5,\"y\":0.993267834186554,\"z\":-9.5},\"rotation\":{\"x\":-5.06479591422249E-06,\"y\":180.011322021484,\"z\":5.10502161432669E-07},\"tooltip\":\"true\"},\"3380ee\":{\"guid\":\"3380ee\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":76.5,\"y\":0.993263602256775,\"z\":-13.0000019073486},\"rotation\":{\"x\":4.07777733926196E-05,\"y\":179.990859985352,\"z\":-0.00031756775570102},\"tooltip\":\"true\"},\"342160\":{\"guid\":\"342160\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":86.5,\"y\":0.993268132209778,\"z\":-13},\"rotation\":{\"x\":-5.0212474889122E-06,\"y\":179.991470336914,\"z\":4.87568684093276E-07},\"tooltip\":\"true\"},\"6f9693\":{\"guid\":\"6f9693\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":84,\"y\":0.993268132209778,\"z\":-13},\"rotation\":{\"x\":-4.99880843563005E-06,\"y\":179.986740112305,\"z\":4.98986878483265E-07},\"tooltip\":\"true\"},\"73baa7\":{\"guid\":\"73baa7\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":71.8742141723633,\"y\":1.00613403320313,\"z\":-12.9923238754272},\"rotation\":{\"x\":0.0125273987650871,\"y\":179.395050048828,\"z\":359.981262207031},\"tooltip\":\"false\"},\"7dba99\":{\"guid\":\"7dba99\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":79,\"y\":0.993268191814423,\"z\":-13.0000019073486},\"rotation\":{\"x\":-5.06559126733919E-06,\"y\":179.990692138672,\"z\":5.545934982365E-07},\"tooltip\":\"true\"},\"852346\":{\"guid\":\"852346\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":76.5,\"y\":0.993267893791199,\"z\":-9.5},\"rotation\":{\"x\":-5.06511969433632E-06,\"y\":179.988800048828,\"z\":4.97527082643501E-07},\"tooltip\":\"true\"},\"94df3d\":{\"guid\":\"94df3d\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":81.5,\"y\":0.993268191814423,\"z\":-13.0000028610229},\"rotation\":{\"x\":-4.85110058434657E-06,\"y\":179.988632202148,\"z\":5.60123794457468E-07},\"tooltip\":\"true\"},\"9db000\":{\"guid\":\"9db000\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":84,\"y\":0.993267834186554,\"z\":-9.50000095367432},\"rotation\":{\"x\":-5.02880720887333E-06,\"y\":179.988418579102,\"z\":4.96299435326364E-07},\"tooltip\":\"true\"},\"a20bba\":{\"guid\":\"a20bba\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":71.8824081420898,\"y\":1.00629222393036,\"z\":-13.5813360214233},\"rotation\":{\"x\":0.0101705780252814,\"y\":179.388458251953,\"z\":359.974060058594},\"tooltip\":\"false\"},\"b49ed3\":{\"guid\":\"b49ed3\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":74,\"y\":0.993268191814423,\"z\":-13.0000047683716},\"rotation\":{\"x\":-4.90882212034194E-06,\"y\":179.985717773438,\"z\":5.31899900124699E-07},\"tooltip\":\"true\"},\"b84fe1\":{\"guid\":\"b84fe1\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":71.3185195922852,\"y\":1.00540685653687,\"z\":-13.6086082458496},\"rotation\":{\"x\":-0.00517261167988181,\"y\":149.524887084961,\"z\":359.955596923828},\"tooltip\":\"false\"},\"c614a8\":{\"guid\":\"c614a8\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":74,\"y\":0.993267953395844,\"z\":-9.5},\"rotation\":{\"x\":-5.08925540998462E-06,\"y\":179.998260498047,\"z\":4.03538592763653E-07},\"tooltip\":\"true\"},\"cc5d2a\":{\"guid\":\"cc5d2a\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":69,\"y\":0.993268013000488,\"z\":-9.5},\"rotation\":{\"x\":-5.03770888826693E-06,\"y\":180.000579833984,\"z\":5.09016672367579E-07},\"tooltip\":\"true\"},\"d0dcb8\":{\"guid\":\"d0dcb8\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":71.5,\"y\":0.993267953395844,\"z\":-9.50000190734863},\"rotation\":{\"x\":-4.90386173623847E-06,\"y\":179.999069213867,\"z\":5.62278501092806E-07},\"tooltip\":\"true\"},\"d187dd\":{\"guid\":\"d187dd\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":76.5,\"y\":1.02045285701752,\"z\":-13.5000009536743},\"rotation\":{\"x\":0.000667642510961741,\"y\":179.992782592773,\"z\":-0.00107839610427618},\"tooltip\":\"true\"},\"da6c26\":{\"guid\":\"da6c26\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":71.4838790893555,\"y\":0.992827892303467,\"z\":-12.9882946014404},\"rotation\":{\"x\":0.00442369095981121,\"y\":179.408172607422,\"z\":359.969390869141},\"tooltip\":\"true\"},\"e9085d\":{\"guid\":\"e9085d\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":79,\"y\":0.993267893791199,\"z\":-9.5},\"rotation\":{\"x\":-4.97725568493479E-06,\"y\":180.021286010742,\"z\":3.61666479875566E-07},\"tooltip\":\"true\"},\"fd76f6\":{\"guid\":\"fd76f6\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":69,\"y\":0.993268251419067,\"z\":-13},\"rotation\":{\"x\":-4.93873358209385E-06,\"y\":179.992095947266,\"z\":4.26614406023873E-07},\"tooltip\":\"true\"}}}",
+      "XmlUI": "",
+      "ContainedObjects": [
+        {
+          "GUID": "da6c26",
+          "Name": "Card",
+          "Transform": {
+            "posX": 71.48388,
+            "posY": 0.9928279,
+            "posZ": -12.9882946,
+            "rotX": 0.004423691,
+            "rotY": 179.408173,
+            "rotZ": 359.9694,
+            "scaleX": 0.9970625,
+            "scaleY": 1.0,
+            "scaleZ": 0.9970625
+          },
+          "Nickname": "Encre Animée (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556009,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Encre\r\n-- by Chr1Z\r\n-- Traduction et adaptation par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 33\r\n\r\n-- static values\r\nx_1         = -0.9625\r\nx_offset    = 0.0665\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.72,\r\n    -0.41,\r\n    -0.115,\r\n    0.285,\r\n    0.495,\r\n    0.705,\r\n    1.1\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 2, 2, 3, 3, 3 }\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "e9085d",
+          "Name": "Card",
+          "Transform": {
+            "posX": 79.0,
+            "posY": 0.9932679,
+            "posZ": -9.5,
+            "rotX": -4.97725568E-06,
+            "rotY": 180.021286,
+            "rotZ": 3.6166648E-07,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Hypothèse Empirique (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556004,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Hypothèse empirique\r\n-- by Chr1Z\r\n-- Traduction par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 40\r\n\r\n-- static values\r\nx_1         = -0.99\r\nx_offset    = 0.075\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.91,\r\n    -0.705,\r\n    -0.51,\r\n    -0.31,\r\n    -0.03,\r\n    0.425,\r\n    0.715,\r\n    1.003\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 1, 1, 2, 2, 3, 4 }\r\n\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "1d62e3",
+          "Name": "Card",
+          "Transform": {
+            "posX": 86.5,
+            "posY": 0.9932678,
+            "posZ": -9.5,
+            "rotX": -5.096709E-06,
+            "rotY": 180.019623,
+            "rotZ": 5.12304E-07,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Amis des Bas-Fonds (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556007,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Friends in Low Places\r\n-- by Chr1Z\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons and input boxes\r\nboxSize       = 30\r\ninputFontsize = 32\n\r\n-- static values\r\nx_1         = -0.965\r\nx_offset    = 0.0685\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.73,\r\n    -0.415,\r\n    0.065,\r\n    0.366,\r\r\n    0.765,\r\n    0.97,\n    1.175\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 2, 2, 2, 2, 3, 3 }\r\n\r\ninputBoxes = { 1, 1 }\r\ninputWidth = { 640, 280 }\r\ninputPos   = { { 0.2, 0.25, -0.91 }, { -0.655, 0.25, -0.32 } }\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Cliquer et saisir\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 22,\r\n            font_size      = inputFontsize,\r\n            color          = {1,1,1,1},\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "6f9693",
+          "Name": "Card",
+          "Transform": {
+            "posX": 84.0,
+            "posY": 0.993268132,
+            "posZ": -13.0,
+            "rotX": -4.99880844E-06,
+            "rotY": 179.98674,
+            "rotZ": 4.989869E-07,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Railleries (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556014,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Railleries\r\n-- by Chr1Z\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons and input boxes\r\nboxSize       = 35\r\ninputFontsize = 32\r\n\r\n-- static values\r\nx_1         = -0.967\r\nx_offset    = 0.072\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.71,\r\n    -0.458,\r\n    -0.215,\r\n    0.33,\r\n    0.88\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 2, 3, 4, 5 }\r\n\r\ninputBoxes = { 1, 1, 1 }\r\ninputWidth = { 600, 875, 875 }\r\ninputPos   = { { 0.29, 0.25, -0.91 }, { 0.00, 0.25, -0.58 }, { 0.00, 0.25, -0.32 } }\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Cliquer et saisir\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 22,\r\n            font_size      = inputFontsize,\r\n            color          = {1,1,1,1},\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "9db000",
+          "Name": "Card",
+          "Transform": {
+            "posX": 84.0,
+            "posY": 0.993267834,
+            "posZ": -9.500001,
+            "rotX": -5.028807E-06,
+            "rotY": 179.988419,
+            "rotZ": 4.96299435E-07,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Témoignage accablant (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556006,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Témoignage accablant\r\n-- by Chr1Z\r\n-- Traduction et adaptation par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 40\r\n\r\n-- static values\r\nx_1         = -0.9775\r\nx_offset    = 0.075\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.935,\r\n    -0.525,\r\n    -0.205,\r\n    0.01,\r\n    0.428,\r\n    0.842\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 2, 2, 3, 3, 4 }\r\n\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "852346",
+          "Name": "Card",
+          "Transform": {
+            "posX": 76.5,
+            "posY": 0.9932679,
+            "posZ": -9.5,
+            "rotX": -5.06511969E-06,
+            "rotY": 179.9888,
+            "rotZ": 4.975271E-07,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Distillation Alchimique (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556003,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Armure du chasseur\r\n-- by Chr1Z\r\n-- Traduction par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 40\r\n\r\n-- static values\r\nx_1         = -0.985\r\nx_offset    = 0.075\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.9,\r\n    -0.565,\r\n    -0.330,\r\n    0.008,\r\n    0.232,\r\n    0.46,\r\n    0.90\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 1, 1, 2, 4, 5 }\r\n\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "2c0f74",
+          "Name": "Card",
+          "Transform": {
+            "posX": 81.5,
+            "posY": 0.993267834,
+            "posZ": -9.5,
+            "rotX": -5.064796E-06,
+            "rotY": 180.011322,
+            "rotZ": 5.10502161E-07,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "La Plume du Corbeau (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556005,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: The Raven Quill\r\n-- by Chr1Z\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons and input boxes\r\nboxSize       = 30\r\ninputFontsize = 32\r\n-- static values\r\nx_1         = -0.975\r\nx_offset    = 0.0705\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.725,\r\n    -0.5275,\r\n    -0.355,\r\n    -0.07,\r\n    0.2,\r\n    0.56,\r\n    0.925\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 2, 2, 2, 3, 4 }\r\n\r\ninputBoxes = { 1, 1, 1 }\r\ninputWidth = { 425, 440, 350 }\r\ninputPos   = { { 0.5, 0.25, -0.885 }, { 0.26, 0.25, 0.0085 }, { -0.575, 0.25, 0.0986 } }\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Cliquer et saisir\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "c614a8",
+          "Name": "Card",
+          "Transform": {
+            "posX": 74.0,
+            "posY": 0.993267953,
+            "posZ": -9.5,
+            "rotX": -5.08925541E-06,
+            "rotY": 179.99826,
+            "rotZ": 4.035386E-07,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Modfication sur mesures (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556002,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Modification sur mesure\r\n-- by Chr1Z\r\n-- Traduction par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 40\r\n\r\n-- static values\r\nx_1         = -0.965\r\nx_offset    = 0.075\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.892,\r\n    -0.450,\r\n    -0.220,\r\n    0.12,\r\n    0.55,\r\n    0.990\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 2, 2, 3, 3, 4 }\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,4,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "d0dcb8",
+          "Name": "Card",
+          "Transform": {
+            "posX": 71.5,
+            "posY": 0.993267953,
+            "posZ": -9.500002,
+            "rotX": -4.90386174E-06,
+            "rotY": 179.999069,
+            "rotZ": 5.622785E-07,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Hache Runique (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556001,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Armure du chasseur\r\n-- by Chr1Z\r\n-- Traduction par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 40\r\n\r\n-- static values\r\nx_1         = -0.975\r\nx_offset    = 0.075\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.92,\r\n    -0.715,\r\n    -0.345,\r\n    0.018,\r\n    0.315,\r\n    0.67,\r\n    0.87,\r\n    1.07\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 1, 1, 1, 3, 3, 4 }\r\n\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "cc5d2a",
+          "Name": "Card",
+          "Transform": {
+            "posX": 69.0,
+            "posY": 0.993268,
+            "posZ": -9.5,
+            "rotX": -5.037709E-06,
+            "rotY": 180.00058,
+            "rotZ": 5.090167E-07,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Armure du chasseur (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556000,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Encre\r\n-- by Chr1Z\r\n-- Traduction et adaptation par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 35\r\n\r\n-- static values\r\nx_1         = -0.9625\r\nx_offset    = 0.069\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.907,\r\n    -0.582,\r\n    -0.255,\r\n    -0.0359,\r\n    0.197,\r\n    0.520,\r\n    0.955\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 2, 2, 2, 2, 3, 3 }\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "b49ed3",
+          "Name": "Card",
+          "Transform": {
+            "posX": 74.0,
+            "posY": 0.9932682,
+            "posZ": -13.0000048,
+            "rotX": -4.908822E-06,
+            "rotY": 179.985718,
+            "rotZ": 5.318999E-07,
+            "scaleX": 0.9970625,
+            "scaleY": 1.0,
+            "scaleZ": 0.9970625
+          },
+          "Nickname": "Mot de Pouvoir (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556011,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Encre\r\n-- by Chr1Z\r\n-- Traduction et adaptation par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 27\r\n\r\n-- static values\r\nx_1         = -0.968\r\nx_offset    = 0.0585\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.895,\r\n    -0.6285,\r\n    -0.2975,\r\n    -0.031,\r\n    0.305,\r\n    0.485,\r\n    0.750,\r\n    0.925\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 1, 1, 2, 3, 3, 3 }\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "94df3d",
+          "Name": "Card",
+          "Transform": {
+            "posX": 81.5,
+            "posY": 0.9932682,
+            "posZ": -13.0000029,
+            "rotX": -4.85110058E-06,
+            "rotY": 179.988632,
+            "rotZ": 5.601238E-07,
+            "scaleX": 0.9970625,
+            "scaleY": 1.0,
+            "scaleZ": 0.9970625
+          },
+          "Nickname": "Piège Rudimentaire (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556013,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Outil\r\n-- Traduction et adaptation par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 35\r\n\r\n-- static values\r\nx_1         = -0.98\r\nx_offset    = 0.07\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.906,\r\n    -0.60,\r\n    -0.285,\r\n    0.02,\r\n    0.33,\r\n    0.64,\r\n    0.95\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 2, 2, 2, 3, 4 }\r\n\r\n\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "7dba99",
+          "Name": "Card",
+          "Transform": {
+            "posX": 79.0,
+            "posY": 0.9932682,
+            "posZ": -13.0000019,
+            "rotX": -5.06559127E-06,
+            "rotY": 179.990692,
+            "rotZ": 5.545935E-07,
+            "scaleX": 0.9970625,
+            "scaleY": 1.0,
+            "scaleZ": 0.9970625
+          },
+          "Nickname": "Outil Multifonctions (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556012,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Outil\r\n-- Traduction et adaptation par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 35\r\n\r\n-- static values\r\nx_1         = -0.95\r\nx_offset    = 0.067\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.915,\r\n    -0.60,\r\n    -0.30,\r\n    0.015,\r\n    0.322,\r\n    0.626,\r\n    0.850\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 2, 2, 2, 3, 4 }\r\n\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "3380ee",
+          "Name": "Card",
+          "Transform": {
+            "posX": 76.5,
+            "posY": 0.9932636,
+            "posZ": -13.0000019,
+            "rotX": 4.07777734E-05,
+            "rotY": 179.99086,
+            "rotZ": -0.000317567756,
+            "scaleX": 0.9970625,
+            "scaleY": 1.0,
+            "scaleZ": 0.9970625
+          },
+          "Nickname": "Serviteur Invoqué (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556010,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Serviteur\r\n-- by Chr1Z\r\n-- Traduction et adaptation par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 29\r\n\r\n-- static values\r\nx_1         = -0.96\r\nx_offset    = 0.061\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.895,\r\n    -0.625,\r\n    -0.282,\r\n    0.065,\r\n    0.335,\r\n    0.6,\r\n    0.785,\r\n    1.127\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 1, 1, 1, 2, 3, 5 }\r\n\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": "-- Customizable Cards: Serviteur\r\n-- by Chr1Z\r\n-- Traduction et adaptation par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 35\r\n\r\n-- static values\r\nx_1         = -0.9625\r\nx_offset    = 0.069\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.92,\r\n    -0.625,\r\n    -0.33,\r\n    0.055,\r\n    0.26,\r\n    0.56,\r\n    0.765,\r\n    1.06\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 1, 1, 1, 2, 3, 5 }\r\n\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend"
+        },
+        {
+          "GUID": "342160",
+          "Name": "Card",
+          "Transform": {
+            "posX": 86.5,
+            "posY": 0.993268132,
+            "posZ": -13.0,
+            "rotX": -5.02124749E-06,
+            "rotY": 179.99147,
+            "rotZ": 4.875687E-07,
+            "scaleX": 0.9970625,
+            "scaleY": 1.0,
+            "scaleZ": 0.9970625
+          },
+          "Nickname": "Flingue Hyperphysique (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556015,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Outil\r\n-- Traduction et adaptation par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 32\r\n\r\n-- static values\r\nx_1         = -0.9875\r\nx_offset    = 0.06\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.9,\r\n    -0.635,\r\n    -0.307,\r\n    0.117,\r\n    0.535,\r\n    0.963,\r\n    1.135\r\n}\r\n\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 2, 2, 2, 2, 2, 4, 4 }\r\n\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "fd76f6",
+          "Name": "Card",
+          "Transform": {
+            "posX": 69.0,
+            "posY": 0.993268251,
+            "posZ": -13.0,
+            "rotX": -4.93873358E-06,
+            "rotY": 179.9921,
+            "rotZ": 4.266144E-07,
+            "scaleX": 0.9970625,
+            "scaleY": 1.0,
+            "scaleZ": 0.9970625
+          },
+          "Nickname": "Instict Affûté (amélioration)",
+          "Description": "Fiche scriptée par Chr1Z -  Cliquez droit pour les options d'affichage",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": true,
+          "CardID": 556008,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5560": {
+              "FaceURL": "https://i.imgur.com/EnwxHBL.jpg",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1821167093099748718/F92B9C3E0F282CBECC5AE90DD19E246A21B83E31/",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "-- Customizable Cards: Instinct\r\n-- by Chr1Z\r\n-- Traduction et adaptation par Omen\r\ninformation = {\r\n    version = \"1.7\",\r\n    last_updated = \"12.10.2022\"\r\n}\r\n\r\n-- Color information for buttons\r\nboxSize = 35\r\n\r\n-- static values\r\nx_1         = -0.965\r\nx_offset    = 0.0685\r\ny_visible   = 0.25\r\ny_invisible = -0.5\r\n\r\n-- z-values (lines on the sheet)\r\nposZ = {\r\n    -0.91,\r\n    -0.705,\r\n    -0.495,\r\n    -0.28,\r\n    -0.07,\r\n    0.225,\r\n    0.53,\r\n    0.83\r\n}\r\n\r\n-- box setup (amount of boxes per line and amount of marked boxes in that line)\r\nexistingBoxes = { 1, 1, 1, 1, 1, 2, 3, 5 }\r\n\r\ninputBoxes = {}\r\n\r\n-- override 'marked boxes' for debugging ('all' or 'none')\r\nmarkDEBUG = \"\"\r\n\r\n-- save state when going into bags / decks\r\nfunction onDestroy() self.script_state = onSave() end\r\n\r\nfunction onSave() return JSON.encode({ markedBoxes, inputValues }) end\r\n\r\n-- Startup procedure\r\nfunction onLoad(saved_data)\r\n    if saved_data ~= \"\" and markDEBUG == \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        markedBoxes = loaded_data[1]\r\n        inputValues = loaded_data[2]\r\n    else\r\n        markedBoxes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }\r\n        inputValues = { \"\", \"\", \"\", \"\", \"\" }\r\n    end\r\n\r\n    makeData()\r\n    createButtonsAndBoxes()\r\n\r\n\r\n    self.addContextMenuItem(\"Échelle: normale\", function() self.setScale({ 1, 1, 1 }) end)\r\n    self.addContextMenuItem(\"Échelle: double\", function() self.setScale({ 2, 1, 2 }) end)\r\n    self.addContextMenuItem(\"Échelle: triple\", function() self.setScale({ 3, 1, 3 }) end)\r\nend\r\n\r\nfunction updateState(markedBoxesNew)\r\n    if markedBoxesNew then markedBoxes = markedBoxesNew end\r\n    makeData()\r\n    createButtonsAndBoxes()\r\nend\r\n\r\n-- create Data\r\nfunction makeData()\r\n    Data = {}\r\n    Data.checkbox = {}\r\n    Data.textbox = {}\r\n\r\n    -- repeat this for each entry (= line) in existingBoxes\r\n    local totalCount = 0\r\n    for i = 1, #existingBoxes do\r\n        -- repeat this for each checkbox per line\r\n        for j = 1, existingBoxes[i] do\r\n            totalCount                      = totalCount + 1\r\n            Data.checkbox[totalCount]       = {}\r\n            Data.checkbox[totalCount].pos   = {}\r\n            Data.checkbox[totalCount].pos.x = x_1 + j * x_offset\r\n            Data.checkbox[totalCount].pos.z = posZ[i]\r\n            Data.checkbox[totalCount].row   = i\r\n\r\n            if (markDEBUG == \"all\") or (markedBoxes[i] >= j and markDEBUG ~= \"none\") then\r\n                Data.checkbox[totalCount].pos.y = y_visible\r\n                Data.checkbox[totalCount].state = true\r\n            else\r\n                Data.checkbox[totalCount].pos.y = y_invisible\r\n                Data.checkbox[totalCount].state = false\r\n            end\r\n        end\r\n    end\r\n\r\n    -- repeat this for each entry (= line) in inputBoxes\r\n    local totalCount = 0\r\n    for i = 1, #inputBoxes do\r\n        -- repeat this for each textbox per line\r\n        for j = 1, inputBoxes[i] do\r\n            totalCount                     = totalCount + 1\r\n            Data.textbox[totalCount]       = {}\r\n            Data.textbox[totalCount].pos   = inputPos[totalCount]\r\n            Data.textbox[totalCount].width = inputWidth[totalCount]\r\n            Data.textbox[totalCount].value = inputValues[totalCount]\r\n        end\r\n    end\r\nend\r\n\r\n-- checks or unchecks the given box\r\nfunction click_checkbox(tableIndex)\r\n    local row = Data.checkbox[tableIndex].row\r\n\r\n    if Data.checkbox[tableIndex].state == true then\r\n        Data.checkbox[tableIndex].pos.y = y_invisible\r\n        Data.checkbox[tableIndex].state = false\r\n\r\n        markedBoxes[row] = markedBoxes[row] - 1\r\n    else\r\n        Data.checkbox[tableIndex].pos.y = y_visible\r\n        Data.checkbox[tableIndex].state = true\r\n\r\n        markedBoxes[row] = markedBoxes[row] + 1\r\n    end\r\n\r\n    self.editButton({\r\n        index = tableIndex - 1,\r\n        position = Data.checkbox[tableIndex].pos\r\n    })\r\nend\r\n\r\n-- updates saved value for given text box\r\nfunction click_textbox(i, value, selected)\r\n    if selected == false then\r\n        inputValues[i] = value\r\n    end\r\nend\r\n\r\nfunction createButtonsAndBoxes()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n\r\n    for i, box_data in ipairs(Data.checkbox) do\r\n        local funcName = \"checkbox\" .. i\r\n        local func = function() click_checkbox(i) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createButton({\r\n            click_function = funcName,\r\n            function_owner = self,\r\n            position       = box_data.pos,\r\n            height         = boxSize,\r\n            width          = boxSize,\r\n            font_size      = box_data.size,\r\n            scale          = { 1, 1, 1 },\r\n            color          = { 0, 0, 0 },\r\n            font_color     = { 0, 0, 0 }\r\n        })\r\n    end\r\n\r\n    for i, box_data in ipairs(Data.textbox) do\r\n        local funcName = \"textbox\" .. i\r\n        local func = function(_, _, val, sel) click_textbox(i, val, sel) end\r\n        self.setVar(funcName, func)\r\n\r\n        self.createInput({\r\n            input_function = funcName,\r\n            function_owner = self,\r\n            label          = \"Click to type\",\r\n            alignment      = 2,\r\n            position       = box_data.pos,\r\n            scale          = buttonScale,\r\n            width          = box_data.width,\r\n            height         = (inputFontsize * 1) + 24,\r\n            font_size      = inputFontsize,\r\n            color          = \"White\",\r\n            font_color     = buttonFontColor,\r\n            value          = box_data.value\r\n        })\r\n    end\r\nend",
+          "LuaScriptState": "[[0,0,0,0,0,0,0,0,0,0],[\"\",\"\",\"\",\"\",\"\"]]",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "d187dd",
+          "Name": "CardCustom",
+          "Transform": {
+            "posX": 76.5,
+            "posY": 1.02045286,
+            "posZ": -13.500001,
+            "rotX": 0.0006676425,
+            "rotY": 179.992783,
+            "rotZ": -0.0010783961,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Serviteur invoqué",
+          "Description": "",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "Tags": [
+            "player_card",
+            "PlayerCard",
+            "SC_memory_object"
+          ],
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": true,
+          "Hands": false,
+          "CardID": 803600,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "8036": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1933751217706145663/52AB04A39EC93A7F5EB6EB83F55071BFFCC85FAE/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1924744375825905078/AE93F97210BEF54AFA8F50166565A19225AF8ADB/",
+              "NumWidth": 1,
+              "NumHeight": 1,
+              "BackIsHidden": true,
+              "UniqueBack": false,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "b84fe1",
+          "Name": "Custom_Tile",
+          "Transform": {
+            "posX": 71.31852,
+            "posY": 1.00540686,
+            "posZ": -13.6086082,
+            "rotX": -0.00517261168,
+            "rotY": 149.524887,
+            "rotZ": 359.9556,
+            "scaleX": 0.2499814,
+            "scaleY": 1.0,
+            "scaleZ": 0.2499814
+          },
+          "Nickname": "Combat",
+          "Description": "",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0
+          },
+          "Tags": [
+            "SC_memory_object"
+          ],
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": false,
+          "Snap": false,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": false,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": false,
+          "CustomImage": {
+            "ImageURL": "http://cloud-3.steamusercontent.com/ugc/1841432290043056422/C83635F42DF142FF94EFD23DDFD27AA113DFF064/",
+            "ImageSecondaryURL": "",
+            "ImageScalar": 1.0,
+            "WidthScale": 0.0,
+            "CustomTile": {
+              "Type": 2,
+              "Thickness": 0.1,
+              "Stackable": false,
+              "Stretch": true
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "73baa7",
+          "Name": "Custom_Tile",
+          "Transform": {
+            "posX": 71.8742142,
+            "posY": 1.006134,
+            "posZ": -12.9923239,
+            "rotX": 0.0125273988,
+            "rotY": 179.39505,
+            "rotZ": 359.981262,
+            "scaleX": 0.2499814,
+            "scaleY": 1.0,
+            "scaleZ": 0.2499814
+          },
+          "Nickname": "Intellect",
+          "Description": "",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0
+          },
+          "Tags": [
+            "SC_memory_object"
+          ],
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": false,
+          "Snap": false,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": false,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": false,
+          "CustomImage": {
+            "ImageURL": "http://cloud-3.steamusercontent.com/ugc/1841432290043056980/B0E9F1EE0F734BFE533FF5B3D699990F146151F2/",
+            "ImageSecondaryURL": "",
+            "ImageScalar": 1.0,
+            "WidthScale": 0.0,
+            "CustomTile": {
+              "Type": 2,
+              "Thickness": 0.1,
+              "Stackable": false,
+              "Stretch": true
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "a20bba",
+          "Name": "Custom_Tile",
+          "Transform": {
+            "posX": 71.88241,
+            "posY": 1.00629222,
+            "posZ": -13.581336,
+            "rotX": 0.010170578,
+            "rotY": 179.388458,
+            "rotZ": 359.97406,
+            "scaleX": 0.2499814,
+            "scaleY": 1.0,
+            "scaleZ": 0.2499814
+          },
+          "Nickname": "Agility",
+          "Description": "",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0
+          },
+          "Tags": [
+            "SC_memory_object"
+          ],
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": false,
+          "Snap": false,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": false,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": false,
+          "CustomImage": {
+            "ImageURL": "http://cloud-3.steamusercontent.com/ugc/1841432290043055914/446EFDBCCAFA6DF8C12DFF9BEFE1CA8D4C9D6AA6/",
+            "ImageSecondaryURL": "",
+            "ImageScalar": 1.0,
+            "WidthScale": 0.0,
+            "CustomTile": {
+              "Type": 2,
+              "Thickness": 0.1,
+              "Stackable": false,
+              "Stretch": true
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "07c7ef",
+          "Name": "Custom_Tile",
+          "Transform": {
+            "posX": 71.27719,
+            "posY": 1.00516558,
+            "posZ": -13.0433712,
+            "rotX": 0.0275475457,
+            "rotY": 179.411209,
+            "rotZ": 359.951721,
+            "scaleX": 0.2499814,
+            "scaleY": 1.0,
+            "scaleZ": 0.2499814
+          },
+          "Nickname": "Willpower",
+          "Description": "",
+          "GMNotes": "amelioration",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0
+          },
+          "Tags": [
+            "SC_memory_object"
+          ],
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": false,
+          "Snap": false,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": false,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": false,
+          "CustomImage": {
+            "ImageURL": "http://cloud-3.steamusercontent.com/ugc/1841432290043057838/7F9186B5BC8BD68D4258B37EC2D1311891AA00EC/",
+            "ImageSecondaryURL": "",
+            "ImageScalar": 1.0,
+            "WidthScale": 0.0,
+            "CustomTile": {
+              "Type": 2,
+              "Thickness": 0.1,
+              "Stackable": false,
+              "Stretch": true
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        }
+      ]
+    }

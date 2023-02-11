@@ -1,0 +1,884 @@
+{
+  "GUID": "9bef86",
+  "Name": "Custom_Model_Bag",
+  "Transform": {
+    "posX": -59.0000343,
+    "posY": 1.048618,
+    "posZ": -19.5000362,
+    "rotX": 0.00480439654,
+    "rotY": 180.000259,
+    "rotZ": -0.00147468469,
+    "scaleX": 0.700000465,
+    "scaleY": 0.700000465,
+    "scaleZ": 0.700000465
+  },
+  "Nickname": "Investigateurs - Promos",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+  "ColorDiffuse": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": false,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "MaterialIndex": -1,
+  "MeshIndex": -1,
+  "CustomMesh": {
+    "MeshURL": "https://pastebin.com/raw/ALrYhQGb",
+    "DiffuseURL": "http://cloud-3.steamusercontent.com/ugc/5077277234347888570/D8E8B50176EAAD6CE5B72CF3BAC6BEFAC99D7E3D/",
+    "NormalURL": "",
+    "ColliderURL": "",
+    "Convex": true,
+    "MaterialIndex": 3,
+    "TypeIndex": 6,
+    "CustomShader": {
+      "SpecularColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0
+      },
+      "SpecularIntensity": 0.0,
+      "SpecularSharpness": 2.0,
+      "FresnelStrength": 0.0
+    },
+    "CastShadows": true
+  },
+  "Bag": {
+    "Order": 0
+  },
+  "LuaScript": "packupZone = '60699f' -- change this to the GUID of your own script packupZone\r\nGMNOTE = {'promo'} -- set the object you sant the script to be affected with, all other objects will be ignored\r\nadditive = true -- This will disable the save system, allowing you to setup a bag, and then next time you pack up it will only pick up what it already has saved before.\r\nUseBagNameAsButtonName = false\r\n\r\n--Runs whenever game is saved/autosaved\r\nfunction onSave()\r\n --Begin State Managment of Saving Object Data.\r\n --Create GUID list fomr Object List\r\n    if tableSize(memoryData) == 0 then saved_data = \"\" return saved_data\r\n    else\r\n        local data_to_save = { md=memoryData }\r\n        saved_data = JSON.encode(data_to_save)\r\n        --saved_data = \"\" --Remove -- at start + save to clear save data\r\n       return saved_data end\r\n\r\nend\r\n\r\nfunction onload(saved_data)\r\n    if saved_data ~= \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        --Set up information off of loaded_data\r\n        memoryData = loaded_data.md\r\n    else\r\n        --Set up information for if there is no saved saved data\r\n        memoryData = {}\r\n    end\r\n    SetButtonName()\r\nend\r\n\r\nfunction SetButtonName()\r\n    if UseBagNameAsButtonName then\r\n        PlaceText = self.getName()\r\n        PlaceWidth = string.len(PlaceText)*145\r\n        PlaceHeight = 450\r\n        Scale = {3.2,3.2,3.2}\r\n    else\r\n        PlaceText = 'Placer'\r\n        PlaceWidth = 900\r\n        PlaceHeight = 400\r\n        Scale = {0.9,0.9,0.9}\r\n    end\r\n    self.clearButtons()\r\n    makeButtons()\r\nend\r\n\r\nfunction createSaveData(obj)\r\n    local objData = {position = tableCullNumericIndexes(obj.getPosition()),\r\n                     rotation = tableCullNumericIndexes(obj.getRotation()),\r\n                     guid = obj.getGUID(),\r\n                     lock = obj.getLock(),\r\n                     interactable = tostring(obj.interactable),\r\n                     tooltip = tostring(obj.tooltip)}\r\n\r\n    memoryData[objData.guid] = objData\r\nend\r\n\r\nfunction placeStuff()\r\n    local prams = {}\r\n    for key, entry in pairs(memoryData) do\r\n        prams.guid = key\r\n        prams.position = {entry.position.x, entry.position.y, entry.position.z}\r\n        prams.rotation = {entry.rotation.x, entry.rotation.y, entry.rotation.z}\r\n        local item = self.takeObject(prams)\r\n\r\n        if entry.lock == true then\r\n        item.setPositionSmooth({entry.position.x, entry.position.y, entry.position.z}, false, true)\r\n        item.setRotationSmooth({entry.rotation.x, entry.rotation.y, entry.rotation.z}, false, true)\r\n        item.setLock(entry.lock) end\r\n\r\n        if entry.tooltip == 'false' then item.tooltip = false end\r\n        if entry.interactable == 'false' then item.interactable = false end\r\n\r\n    end\r\n    if additive == true then memoryData = {} end\r\n    SetButtonName()\r\nend\r\n\r\n\r\nfunction pickupStuff()\r\n\r\n    if additive == true then\r\n         -- Grab All Objects in Zone\r\n        for _, obj in ipairs(getObjectFromGUID(packupZone).getObjects()) do\r\n            local add = false\r\n            for _, list in ipairs(GMNOTE) do if obj.getGMNotes() == list then add = true end end\r\n            if add == true then\r\n                createSaveData(obj)\r\n                self.putObject(obj)\r\n            end\r\n            add = true\r\n        end\r\n    end\r\n\r\n    if additive == false then\r\n        for key, entry in pairs(memoryData) do\r\n            self.putObject(getObjectFromGUID(key))\r\n        end\r\n    end\r\n    SetButtonName()\r\nend\r\n\r\nfunction tableSize(t)\r\n    local count = 0\r\n    for key,value in pairs(t) do count = count + 1 end\r\n    return count\r\nend\r\n\r\nfunction tableCullNumericIndexes(t)\r\n    for i in pairs(t) do\r\n        if type(i) == \"number\" then\r\n            table.remove(t, i)\r\n            return tableCullNumericIndexes(t)\r\n        end\r\n    end\r\n    return t\r\nend\r\n\r\nfunction makeButtons(set)\r\n    local buttons = {}\r\n\r\n -- DEFAULT START BUTTONS\r\n    if set == nil then\r\n        button_Place = {\r\n                click_function = 'placeStuff',\r\n                function_owner = self,\r\n                label = PlaceText,\r\n                position = {0, 0.1, 1.8},\r\n                rotation = {0, 0, 0},\r\n                width = PlaceWidth,\r\n                height = PlaceHeight,\r\n                scale = Scale,\r\n                font_size = 250,\r\n                color={0,0,0},\r\n                font_color={1,1,1}}\r\n        table.insert(buttons, button_Place)\r\n\r\n        button_PickUp = {\r\n            click_function = 'pickupStuff',\r\n            function_owner = self,\r\n            label = 'Ranger',\r\n            position = {1.8, 0.1, 0},\r\n            rotation = {0, -90, 0},\r\n            width = 1000,\r\n            height = 400,\r\n            font_size = 250,\r\n            scale = {0.9,0.9,0.9},\r\n            color={0,0,0},\r\n            font_color={1,1,1}}\r\n        table.insert(buttons, button_PickUp) end\r\n -- Create Buttons\r\n    for _, button in ipairs(buttons) do\r\n        self.createButton(button)\r\n    end\r\nend\r\n",
+  "LuaScriptState": "{\"md\":{\"032f8c\":{\"guid\":\"032f8c\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-58.5,\"y\":0.991565048694611,\"z\":-27.4999980926514},\"rotation\":{\"x\":-0.0014724968932569,\"y\":90.0270614624023,\"z\":-0.00480342889204621},\"tooltip\":\"true\"},\"1b8e88\":{\"guid\":\"1b8e88\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-84.0000228881836,\"y\":0.990657389163971,\"z\":-30.500020980835},\"rotation\":{\"x\":0.00480216275900602,\"y\":179.994857788086,\"z\":-0.0014741359045729},\"tooltip\":\"true\"},\"21e894\":{\"guid\":\"21e894\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-90.5000076293945,\"y\":0.990741610527039,\"z\":-27.5000133514404},\"rotation\":{\"x\":-0.00147420016583055,\"y\":90.0036544799805,\"z\":-0.0048026074655354},\"tooltip\":\"true\"},\"39cd1a\":{\"guid\":\"39cd1a\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-71,\"y\":0.991243422031403,\"z\":-27.4999980926514},\"rotation\":{\"x\":-0.001472849980928,\"y\":90.0256576538086,\"z\":-0.0048022698611021},\"tooltip\":\"true\"},\"3f60eb\":{\"guid\":\"3f60eb\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-77.5000076293945,\"y\":0.990824639797211,\"z\":-30.5000133514404},\"rotation\":{\"x\":0.00480189546942711,\"y\":179.987457275391,\"z\":-0.00147403404116631},\"tooltip\":\"true\"},\"5bb53a\":{\"guid\":\"5bb53a\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-52,\"y\":0.991732358932495,\"z\":-27.4999847412109},\"rotation\":{\"x\":-0.00147268199361861,\"y\":90.0245895385742,\"z\":-0.00480309780687094},\"tooltip\":\"true\"},\"888fcc\":{\"guid\":\"888fcc\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-71.0000076293945,\"y\":0.990991950035095,\"z\":-30.5000095367432},\"rotation\":{\"x\":0.00480278441682458,\"y\":179.98974609375,\"z\":-0.00147517351433635},\"tooltip\":\"true\"},\"8d4d81\":{\"guid\":\"8d4d81\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-52.0000114440918,\"y\":0.991480886936188,\"z\":-30.4999980926514},\"rotation\":{\"x\":0.00480269314721227,\"y\":179.996215820313,\"z\":-0.00147471902891994},\"tooltip\":\"true\"},\"ab7fd5\":{\"guid\":\"ab7fd5\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-84,\"y\":0.990908861160278,\"z\":-27.5},\"rotation\":{\"x\":-0.00147236394695938,\"y\":90.0285949707031,\"z\":-0.00480357697233558},\"tooltip\":\"true\"},\"ac193a\":{\"guid\":\"ac193a\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-65,\"y\":0.991397798061371,\"z\":-27.5},\"rotation\":{\"x\":-0.00147373462095857,\"y\":90.0092239379883,\"z\":-0.00480307685211301},\"tooltip\":\"true\"},\"b57bab\":{\"guid\":\"b57bab\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-65.0000152587891,\"y\":0.991146326065063,\"z\":-30.5000095367432},\"rotation\":{\"x\":0.00480314809828997,\"y\":180.00846862793,\"z\":-0.00147385476157069},\"tooltip\":\"true\"},\"e4eb8c\":{\"guid\":\"e4eb8c\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-77.5000076293945,\"y\":0.991076111793518,\"z\":-27.4999980926514},\"rotation\":{\"x\":-0.0014723613858223,\"y\":90.0197601318359,\"z\":-0.00480403983965516},\"tooltip\":\"true\"},\"f4e909\":{\"guid\":\"f4e909\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-90.5000305175781,\"y\":0.990490138530731,\"z\":-30.500020980835},\"rotation\":{\"x\":0.00480217859148979,\"y\":179.986831665039,\"z\":-0.0014754842268303},\"tooltip\":\"true\"},\"fc63ca\":{\"guid\":\"fc63ca\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-58.5000076293945,\"y\":0.991313636302948,\"z\":-30.5000038146973},\"rotation\":{\"x\":0.00480245798826218,\"y\":179.99153137207,\"z\":-0.00147515698336065},\"tooltip\":\"true\"}}}",
+  "XmlUI": "",
+  "ContainedObjects": [
+    {
+      "GUID": "f4e909",
+      "Name": "Card",
+      "Transform": {
+        "posX": -90.50003,
+        "posY": 0.990490139,
+        "posZ": -30.500021,
+        "rotX": 0.00480217859,
+        "rotY": 179.986832,
+        "rotZ": -0.00147548423,
+        "scaleX": 0.6,
+        "scaleY": 1.0,
+        "scaleZ": 0.6
+      },
+      "Nickname": "Jenny Barnes",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": false,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 273410,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "2734": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/775107869050066760/0DE2BD4589CC8C2F3D26C2900A17ED7A6483062F/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1011562618093846975/4726098952C64103F2C211D202FFDD40D9D988BB/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "888fcc",
+      "Name": "Card",
+      "Transform": {
+        "posX": -71.00001,
+        "posY": 0.99099195,
+        "posZ": -30.50001,
+        "rotX": 0.00480278442,
+        "rotY": 179.989746,
+        "rotZ": -0.00147517351,
+        "scaleX": 0.6,
+        "scaleY": 1.0,
+        "scaleZ": 0.6
+      },
+      "Nickname": "Silas Marsh",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": false,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 272508,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "2725": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/775107869050066760/0DE2BD4589CC8C2F3D26C2900A17ED7A6483062F/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1011562618093846975/4726098952C64103F2C211D202FFDD40D9D988BB/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "1b8e88",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.00002,
+        "posY": 0.9906574,
+        "posZ": -30.500021,
+        "rotX": 0.00480216276,
+        "rotY": 179.994858,
+        "rotZ": -0.0014741359,
+        "scaleX": 0.6,
+        "scaleY": 1.0,
+        "scaleZ": 0.6
+      },
+      "Nickname": "Roland Banks",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": false,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 273209,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "2732": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/775107869050066760/0DE2BD4589CC8C2F3D26C2900A17ED7A6483062F/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1011562618093846975/4726098952C64103F2C211D202FFDD40D9D988BB/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "b57bab",
+      "Name": "Card",
+      "Transform": {
+        "posX": -65.0000153,
+        "posY": 0.9911463,
+        "posZ": -30.50001,
+        "rotX": 0.004803148,
+        "rotY": 180.008469,
+        "rotZ": -0.00147385476,
+        "scaleX": 0.6,
+        "scaleY": 1.0,
+        "scaleZ": 0.6
+      },
+      "Nickname": "Carolyn Fern",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": false,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 273306,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "2733": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/775107869050066760/0DE2BD4589CC8C2F3D26C2900A17ED7A6483062F/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1011562618093846975/4726098952C64103F2C211D202FFDD40D9D988BB/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "fc63ca",
+      "Name": "Card",
+      "Transform": {
+        "posX": -58.5000076,
+        "posY": 0.991313636,
+        "posZ": -30.5000038,
+        "rotX": 0.004802458,
+        "rotY": 179.991531,
+        "rotZ": -0.001475157,
+        "scaleX": 0.6,
+        "scaleY": 1.0,
+        "scaleZ": 0.6
+      },
+      "Nickname": "Dexter Drake",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": false,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 274300,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "2743": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1011562618093850037/05B303D11D87919B0388BF646EB2792033620EE0/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1011562618093849750/0A603123EE623768F23DC105F629D33E9CAF8333/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "8d4d81",
+      "Name": "CardCustom",
+      "Transform": {
+        "posX": -52.00001,
+        "posY": 0.9914809,
+        "posZ": -30.4999981,
+        "rotX": 0.004802693,
+        "rotY": 179.996216,
+        "rotZ": -0.001474719,
+        "scaleX": 0.6,
+        "scaleY": 1.0,
+        "scaleZ": 0.6
+      },
+      "Nickname": "Gloria Goldberg",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": false,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 1108700,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "11087": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1684870715280927433/BAC4CB96D8CB18760D53AF7B8096C09FACDADC97/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1684870715280927665/2B5BEB0B97C302165C773E291FE06863816EC59F/",
+          "NumWidth": 1,
+          "NumHeight": 1,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "3f60eb",
+      "Name": "Card",
+      "Transform": {
+        "posX": -77.50001,
+        "posY": 0.99082464,
+        "posZ": -30.5000134,
+        "rotX": 0.00480189547,
+        "rotY": 179.987457,
+        "rotZ": -0.001474034,
+        "scaleX": 0.6,
+        "scaleY": 1.0,
+        "scaleZ": 0.6
+      },
+      "Nickname": "Norman Withers",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": false,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 272607,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "2726": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/775107869050066760/0DE2BD4589CC8C2F3D26C2900A17ED7A6483062F/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1011562618093846975/4726098952C64103F2C211D202FFDD40D9D988BB/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "21e894",
+      "Name": "Card",
+      "Transform": {
+        "posX": -90.50001,
+        "posY": 0.9907416,
+        "posZ": -27.5000134,
+        "rotX": -0.00147420017,
+        "rotY": 90.0036545,
+        "rotZ": -0.00480260747,
+        "scaleX": 1.0,
+        "scaleY": 1.0,
+        "scaleZ": 1.0
+      },
+      "Nickname": "Jenny Barnes",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 1110307,
+      "SidewaysCard": true,
+      "CustomDeck": {
+        "11103": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016258/9D374768D5EF8D04BAD0EF692F14B90C8DCF8496/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016993/797BBE930C1CFDD93A1391A00F6A9AFD042A46A2/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "ab7fd5",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.0,
+        "posY": 0.990908861,
+        "posZ": -27.5,
+        "rotX": -0.001472364,
+        "rotY": 90.028595,
+        "rotZ": -0.004803577,
+        "scaleX": 1.0,
+        "scaleY": 1.0,
+        "scaleZ": 1.0
+      },
+      "Nickname": "Roland Banks",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 1110309,
+      "SidewaysCard": true,
+      "CustomDeck": {
+        "11103": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016258/9D374768D5EF8D04BAD0EF692F14B90C8DCF8496/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016993/797BBE930C1CFDD93A1391A00F6A9AFD042A46A2/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "e4eb8c",
+      "Name": "Card",
+      "Transform": {
+        "posX": -77.50001,
+        "posY": 0.9910761,
+        "posZ": -27.4999981,
+        "rotX": -0.00147236139,
+        "rotY": 90.01976,
+        "rotZ": -0.00480404,
+        "scaleX": 1.0,
+        "scaleY": 1.0,
+        "scaleZ": 1.0
+      },
+      "Nickname": "Norman Withers",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 1110308,
+      "SidewaysCard": true,
+      "CustomDeck": {
+        "11103": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016258/9D374768D5EF8D04BAD0EF692F14B90C8DCF8496/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016993/797BBE930C1CFDD93A1391A00F6A9AFD042A46A2/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "39cd1a",
+      "Name": "Card",
+      "Transform": {
+        "posX": -71.0,
+        "posY": 0.9912434,
+        "posZ": -27.4999981,
+        "rotX": -0.00147285,
+        "rotY": 90.02566,
+        "rotZ": -0.00480227,
+        "scaleX": 1.0,
+        "scaleY": 1.0,
+        "scaleZ": 1.0
+      },
+      "Nickname": "Silas Marsh",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 1110310,
+      "SidewaysCard": true,
+      "CustomDeck": {
+        "11103": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016258/9D374768D5EF8D04BAD0EF692F14B90C8DCF8496/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016993/797BBE930C1CFDD93A1391A00F6A9AFD042A46A2/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "ac193a",
+      "Name": "Card",
+      "Transform": {
+        "posX": -65.0,
+        "posY": 0.9913978,
+        "posZ": -27.5,
+        "rotX": -0.00147373462,
+        "rotY": 90.0092239,
+        "rotZ": -0.004803077,
+        "scaleX": 1.0,
+        "scaleY": 1.0,
+        "scaleZ": 1.0
+      },
+      "Nickname": "Carolyn Fern",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 1110304,
+      "SidewaysCard": true,
+      "CustomDeck": {
+        "11103": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016258/9D374768D5EF8D04BAD0EF692F14B90C8DCF8496/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016993/797BBE930C1CFDD93A1391A00F6A9AFD042A46A2/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "032f8c",
+      "Name": "Card",
+      "Transform": {
+        "posX": -58.5,
+        "posY": 0.991565049,
+        "posZ": -27.4999981,
+        "rotX": -0.00147249689,
+        "rotY": 90.02706,
+        "rotZ": -0.004803429,
+        "scaleX": 1.0,
+        "scaleY": 1.0,
+        "scaleZ": 1.0
+      },
+      "Nickname": "Dexter Drake",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 1110305,
+      "SidewaysCard": true,
+      "CustomDeck": {
+        "11103": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016258/9D374768D5EF8D04BAD0EF692F14B90C8DCF8496/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016993/797BBE930C1CFDD93A1391A00F6A9AFD042A46A2/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "5bb53a",
+      "Name": "Card",
+      "Transform": {
+        "posX": -52.0,
+        "posY": 0.991732359,
+        "posZ": -27.4999847,
+        "rotX": -0.001472682,
+        "rotY": 90.02459,
+        "rotZ": -0.004803098,
+        "scaleX": 1.0,
+        "scaleY": 1.0,
+        "scaleZ": 1.0
+      },
+      "Nickname": "Gloria Goldberg",
+      "Description": "Version Promo",
+      "GMNotes": "promo",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": true,
+      "CardID": 1110306,
+      "SidewaysCard": true,
+      "CustomDeck": {
+        "11103": {
+          "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016258/9D374768D5EF8D04BAD0EF692F14B90C8DCF8496/",
+          "BackURL": "http://cloud-3.steamusercontent.com/ugc/1984428656368016993/797BBE930C1CFDD93A1391A00F6A9AFD042A46A2/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": true,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    }
+  ]
+}

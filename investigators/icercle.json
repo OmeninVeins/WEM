@@ -1,0 +1,768 @@
+    {
+      "GUID": "eebe43",
+      "Name": "Custom_Model_Bag",
+      "Transform": {
+        "posX": -76.49999,
+        "posY": 1.04816759,
+        "posZ": -19.4999981,
+        "rotX": 0.004802862,
+        "rotY": 179.976959,
+        "rotZ": -0.00147615874,
+        "scaleX": 0.700000465,
+        "scaleY": 0.700000465,
+        "scaleZ": 0.700000465
+      },
+      "Nickname": "Investigateurs - Le Cercle Brisé",
+      "Description": "",
+      "GMNotes": "",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": false,
+      "MaterialIndex": -1,
+      "MeshIndex": -1,
+      "CustomMesh": {
+        "MeshURL": "https://pastebin.com/raw/ALrYhQGb",
+        "DiffuseURL": "http://cloud-3.steamusercontent.com/ugc/1877465994995460893/EB012ADD491A527C2B943E951EC818B09C514895/",
+        "NormalURL": "",
+        "ColliderURL": "",
+        "Convex": true,
+        "MaterialIndex": 3,
+        "TypeIndex": 6,
+        "CustomShader": {
+          "SpecularColor": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0
+          },
+          "SpecularIntensity": 0.0,
+          "SpecularSharpness": 2.0,
+          "FresnelStrength": 0.0
+        },
+        "CastShadows": true
+      },
+      "Bag": {
+        "Order": 0
+      },
+      "LuaScript": "packupZone = '60699f' -- change this to the GUID of your own script packupZone\r\nGMNOTE = {'cercle'} -- set the object you sant the script to be affected with, all other objects will be ignored\r\nadditive = true -- This will disable the save system, allowing you to setup a bag, and then next time you pack up it will only pick up what it already has saved before.\r\nUseBagNameAsButtonName = false\r\n\r\n--Runs whenever game is saved/autosaved\r\nfunction onSave()\r\n --Begin State Managment of Saving Object Data.\r\n --Create GUID list fomr Object List\r\n    if tableSize(memoryData) == 0 then saved_data = \"\" return saved_data\r\n    else\r\n        local data_to_save = { md=memoryData }\r\n        saved_data = JSON.encode(data_to_save)\r\n        --saved_data = \"\" --Remove -- at start + save to clear save data\r\n       return saved_data end\r\n\r\nend\r\n\r\nfunction onload(saved_data)\r\n    if saved_data ~= \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        --Set up information off of loaded_data\r\n        memoryData = loaded_data.md\r\n    else\r\n        --Set up information for if there is no saved saved data\r\n        memoryData = {}\r\n    end\r\n    SetButtonName()\r\nend\r\n\r\nfunction SetButtonName()\r\n    if UseBagNameAsButtonName then\r\n        PlaceText = self.getName()\r\n        PlaceWidth = string.len(PlaceText)*145\r\n        PlaceHeight = 450\r\n        Scale = {3.2,3.2,3.2}\r\n    else\r\n        PlaceText = 'Placer'\r\n        PlaceWidth = 900\r\n        PlaceHeight = 400\r\n        Scale = {0.9,0.9,0.9}\r\n    end\r\n    self.clearButtons()\r\n    makeButtons()\r\nend\r\n\r\nfunction createSaveData(obj)\r\n    local objData = {position = tableCullNumericIndexes(obj.getPosition()),\r\n                     rotation = tableCullNumericIndexes(obj.getRotation()),\r\n                     guid = obj.getGUID(),\r\n                     lock = obj.getLock(),\r\n                     interactable = tostring(obj.interactable),\r\n                     tooltip = tostring(obj.tooltip)}\r\n\r\n    memoryData[objData.guid] = objData\r\nend\r\n\r\nfunction placeStuff()\r\n    local prams = {}\r\n    for key, entry in pairs(memoryData) do\r\n        prams.guid = key\r\n        prams.position = {entry.position.x, entry.position.y, entry.position.z}\r\n        prams.rotation = {entry.rotation.x, entry.rotation.y, entry.rotation.z}\r\n        local item = self.takeObject(prams)\r\n\r\n        if entry.lock == true then\r\n        item.setPositionSmooth({entry.position.x, entry.position.y, entry.position.z}, false, true)\r\n        item.setRotationSmooth({entry.rotation.x, entry.rotation.y, entry.rotation.z}, false, true)\r\n        item.setLock(entry.lock) end\r\n\r\n        if entry.tooltip == 'false' then item.tooltip = false end\r\n        if entry.interactable == 'false' then item.interactable = false end\r\n\r\n    end\r\n    if additive == true then memoryData = {} end\r\n    SetButtonName()\r\nend\r\n\r\n\r\nfunction pickupStuff()\r\n\r\n    if additive == true then\r\n         -- Grab All Objects in Zone\r\n        for _, obj in ipairs(getObjectFromGUID(packupZone).getObjects()) do\r\n            local add = false\r\n            for _, list in ipairs(GMNOTE) do if obj.getGMNotes() == list then add = true end end\r\n            if add == true then\r\n                createSaveData(obj)\r\n                self.putObject(obj)\r\n            end\r\n            add = true\r\n        end\r\n    end\r\n\r\n    if additive == false then\r\n        for key, entry in pairs(memoryData) do\r\n            self.putObject(getObjectFromGUID(key))\r\n        end\r\n    end\r\n    SetButtonName()\r\nend\r\n\r\nfunction tableSize(t)\r\n    local count = 0\r\n    for key,value in pairs(t) do count = count + 1 end\r\n    return count\r\nend\r\n\r\nfunction tableCullNumericIndexes(t)\r\n    for i in pairs(t) do\r\n        if type(i) == \"number\" then\r\n            table.remove(t, i)\r\n            return tableCullNumericIndexes(t)\r\n        end\r\n    end\r\n    return t\r\nend\r\n\r\nfunction makeButtons(set)\r\n    local buttons = {}\r\n\r\n -- DEFAULT START BUTTONS\r\n    if set == nil then\r\n        button_Place = {\r\n                click_function = 'placeStuff',\r\n                function_owner = self,\r\n                label = PlaceText,\r\n                position = {0, 0.1, 1.8},\r\n                rotation = {0, 0, 0},\r\n                width = PlaceWidth,\r\n                height = PlaceHeight,\r\n                scale = Scale,\r\n                font_size = 250,\r\n                color={0,0,0},\r\n                font_color={1,1,1}}\r\n        table.insert(buttons, button_Place)\r\n\r\n        button_PickUp = {\r\n            click_function = 'pickupStuff',\r\n            function_owner = self,\r\n            label = 'Ranger',\r\n            position = {1.8, 0.1, 0},\r\n            rotation = {0, -90, 0},\r\n            width = 1000,\r\n            height = 400,\r\n            font_size = 250,\r\n            scale = {0.9,0.9,0.9},\r\n            color={0,0,0},\r\n            font_color={1,1,1}}\r\n        table.insert(buttons, button_PickUp) end\r\n -- Create Buttons\r\n    for _, button in ipairs(buttons) do\r\n        self.createButton(button)\r\n    end\r\nend\r\n",
+      "LuaScriptState": "{\"md\":{\"2bc5ca\":{\"guid\":\"2bc5ca\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-58.4999923706055,\"y\":0.991564989089966,\"z\":-27.5010757446289},\"rotation\":{\"x\":-0.00147456803824753,\"y\":89.9980850219727,\"z\":-0.00480267452076077},\"tooltip\":\"true\"},\"2c0d63\":{\"guid\":\"2c0d63\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-64.9999542236328,\"y\":0.991146326065063,\"z\":-30.5000057220459},\"rotation\":{\"x\":0.00480242352932692,\"y\":180.001037597656,\"z\":-0.00147354835644364},\"tooltip\":\"true\"},\"30614e\":{\"guid\":\"30614e\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-84,\"y\":0.990657389163971,\"z\":-30.5000019073486},\"rotation\":{\"x\":0.00480361096560955,\"y\":180.032653808594,\"z\":-0.00147145625669509},\"tooltip\":\"true\"},\"498c92\":{\"guid\":\"498c92\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-70.9999465942383,\"y\":0.990991950035095,\"z\":-30.5},\"rotation\":{\"x\":0.00480296975001693,\"y\":180.000839233398,\"z\":-0.00147445616312325},\"tooltip\":\"true\"},\"49d0b5\":{\"guid\":\"49d0b5\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-52.5,\"y\":0.991468012332916,\"z\":-30.5000133514404},\"rotation\":{\"x\":0.00480281235650182,\"y\":179.999725341797,\"z\":-0.00147434184327722},\"tooltip\":\"true\"},\"546051\":{\"guid\":\"546051\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-77.4999542236328,\"y\":0.990824639797211,\"z\":-30.5000114440918},\"rotation\":{\"x\":0.00480235368013382,\"y\":180.001724243164,\"z\":-0.00147350470069796},\"tooltip\":\"true\"},\"5ac26f\":{\"guid\":\"5ac26f\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-83.9999923706055,\"y\":0.990908741950989,\"z\":-27.501070022583},\"rotation\":{\"x\":-0.00147446850314736,\"y\":90.000846862793,\"z\":-0.00480225123465061},\"tooltip\":\"true\"},\"6b2de6\":{\"guid\":\"6b2de6\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-64.9999923706055,\"y\":0.991397738456726,\"z\":-27.501070022583},\"rotation\":{\"x\":-0.00147446664050221,\"y\":89.9992294311523,\"z\":-0.00480275461450219},\"tooltip\":\"true\"},\"6bb7ed\":{\"guid\":\"6bb7ed\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-77.5,\"y\":0.991076052188873,\"z\":-27.5010719299316},\"rotation\":{\"x\":-0.00147466035559773,\"y\":89.9998168945313,\"z\":-0.00480201607570052},\"tooltip\":\"true\"},\"99be77\":{\"guid\":\"99be77\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-52.5,\"y\":0.991719484329224,\"z\":-27.4999942779541},\"rotation\":{\"x\":-0.00147447548806667,\"y\":90.002197265625,\"z\":-0.00480273785069585},\"tooltip\":\"true\"},\"b4a195\":{\"guid\":\"b4a195\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-58.4999504089355,\"y\":0.991313636302948,\"z\":-30.4999980926514},\"rotation\":{\"x\":0.00480331387370825,\"y\":180.012939453125,\"z\":-0.0014731464907527},\"tooltip\":\"true\"},\"c997cc\":{\"guid\":\"c997cc\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-71,\"y\":0.991243302822113,\"z\":-27.5010719299316},\"rotation\":{\"x\":-0.00147459318395704,\"y\":89.9997482299805,\"z\":-0.00480273319408298},\"tooltip\":\"true\"}}}",
+      "XmlUI": "",
+      "ContainedObjects": [
+        {
+          "GUID": "5ac26f",
+          "Name": "Card",
+          "Transform": {
+            "posX": -83.99999,
+            "posY": 0.990908742,
+            "posZ": -27.50107,
+            "rotX": -0.0014744685,
+            "rotY": 90.00085,
+            "rotZ": -0.00480225123,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Carolyn Fern",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 123000,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "1230": {
+              "FaceURL": "https://i.imgur.com/KwFg9KM.jpg",
+              "BackURL": "https://i.imgur.com/Jfxt7uv.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "30614e",
+          "Name": "Card",
+          "Transform": {
+            "posX": -84.0,
+            "posY": 0.9906574,
+            "posZ": -30.5000019,
+            "rotX": 0.004803611,
+            "rotY": 180.032654,
+            "rotZ": -0.00147145626,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Carolyn Fern",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 266402,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "2664": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/947347993671684689/74242C98E01EC6A0E7DEE7B9D4E94FEF61114E8B/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/947347993671685142/5E4CFDD3A9FE7FCB17BD6A8456A810CA76DC7497/",
+              "NumWidth": 7,
+              "NumHeight": 3,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "6bb7ed",
+          "Name": "Card",
+          "Transform": {
+            "posX": -77.5,
+            "posY": 0.991076052,
+            "posZ": -27.5010719,
+            "rotX": -0.00147466036,
+            "rotY": 89.99982,
+            "rotZ": -0.004802016,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Joe Diamond",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 123001,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "1230": {
+              "FaceURL": "https://i.imgur.com/KwFg9KM.jpg",
+              "BackURL": "https://i.imgur.com/Jfxt7uv.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "546051",
+          "Name": "Card",
+          "Transform": {
+            "posX": -77.4999542,
+            "posY": 0.99082464,
+            "posZ": -30.5000114,
+            "rotX": 0.00480235368,
+            "rotY": 180.001724,
+            "rotZ": -0.0014735047,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Joe Diamond",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 266403,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "2664": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/947347993671684689/74242C98E01EC6A0E7DEE7B9D4E94FEF61114E8B/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/947347993671685142/5E4CFDD3A9FE7FCB17BD6A8456A810CA76DC7497/",
+              "NumWidth": 7,
+              "NumHeight": 3,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "c997cc",
+          "Name": "Card",
+          "Transform": {
+            "posX": -71.0,
+            "posY": 0.9912433,
+            "posZ": -27.5010719,
+            "rotX": -0.00147459318,
+            "rotY": 89.99975,
+            "rotZ": -0.004802733,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Preston Fairmont",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 123002,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "1230": {
+              "FaceURL": "https://i.imgur.com/KwFg9KM.jpg",
+              "BackURL": "https://i.imgur.com/Jfxt7uv.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "2bc5ca",
+          "Name": "Card",
+          "Transform": {
+            "posX": -58.4999924,
+            "posY": 0.991565,
+            "posZ": -27.5010757,
+            "rotX": -0.001474568,
+            "rotY": 89.998085,
+            "rotZ": -0.00480267452,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Marie Lambeau",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 123005,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "1230": {
+              "FaceURL": "https://i.imgur.com/KwFg9KM.jpg",
+              "BackURL": "https://i.imgur.com/Jfxt7uv.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "99be77",
+          "Name": "Card",
+          "Transform": {
+            "posX": -52.5,
+            "posY": 0.9917195,
+            "posZ": -27.4999943,
+            "rotX": -0.00147447549,
+            "rotY": 90.0022,
+            "rotZ": -0.004802738,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Rita Young",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 123004,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "1230": {
+              "FaceURL": "https://i.imgur.com/KwFg9KM.jpg",
+              "BackURL": "https://i.imgur.com/Jfxt7uv.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "2c0d63",
+          "Name": "Card",
+          "Transform": {
+            "posX": -64.9999542,
+            "posY": 0.9911463,
+            "posZ": -30.5000057,
+            "rotX": 0.00480242353,
+            "rotY": 180.001038,
+            "rotZ": -0.00147354836,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Diana Stanley",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 266401,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "2664": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/947347993671684689/74242C98E01EC6A0E7DEE7B9D4E94FEF61114E8B/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/947347993671685142/5E4CFDD3A9FE7FCB17BD6A8456A810CA76DC7497/",
+              "NumWidth": 7,
+              "NumHeight": 3,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "b4a195",
+          "Name": "Card",
+          "Transform": {
+            "posX": -58.49995,
+            "posY": 0.991313636,
+            "posZ": -30.4999981,
+            "rotX": 0.004803314,
+            "rotY": 180.012939,
+            "rotZ": -0.00147314649,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Marie Lambeau",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 266405,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "2664": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/947347993671684689/74242C98E01EC6A0E7DEE7B9D4E94FEF61114E8B/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/947347993671685142/5E4CFDD3A9FE7FCB17BD6A8456A810CA76DC7497/",
+              "NumWidth": 7,
+              "NumHeight": 3,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "49d0b5",
+          "Name": "Card",
+          "Transform": {
+            "posX": -52.5,
+            "posY": 0.991468,
+            "posZ": -30.5000134,
+            "rotX": 0.00480281236,
+            "rotY": 179.999725,
+            "rotZ": -0.00147434184,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Rita Young",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 266400,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "2664": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/947347993671684689/74242C98E01EC6A0E7DEE7B9D4E94FEF61114E8B/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/947347993671685142/5E4CFDD3A9FE7FCB17BD6A8456A810CA76DC7497/",
+              "NumWidth": 7,
+              "NumHeight": 3,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "498c92",
+          "Name": "Card",
+          "Transform": {
+            "posX": -70.99995,
+            "posY": 0.99099195,
+            "posZ": -30.5,
+            "rotX": 0.00480296975,
+            "rotY": 180.000839,
+            "rotZ": -0.00147445616,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Preston Fairmont",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 266404,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "2664": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/947347993671684689/74242C98E01EC6A0E7DEE7B9D4E94FEF61114E8B/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/947347993671685142/5E4CFDD3A9FE7FCB17BD6A8456A810CA76DC7497/",
+              "NumWidth": 7,
+              "NumHeight": 3,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "6b2de6",
+          "Name": "Card",
+          "Transform": {
+            "posX": -64.99999,
+            "posY": 0.991397738,
+            "posZ": -27.50107,
+            "rotX": -0.00147446664,
+            "rotY": 89.99923,
+            "rotZ": -0.00480275461,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Diana Stanley",
+          "Description": "",
+          "GMNotes": "cercle",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 123003,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "1230": {
+              "FaceURL": "https://i.imgur.com/KwFg9KM.jpg",
+              "BackURL": "https://i.imgur.com/Jfxt7uv.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        }
+      ]
+    }

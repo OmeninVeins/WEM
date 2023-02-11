@@ -1,0 +1,652 @@
+    {
+      "GUID": "d916b0",
+      "Name": "Custom_Model_Bag",
+      "Transform": {
+        "posX": -69.5,
+        "posY": 1.04834783,
+        "posZ": -19.5000076,
+        "rotX": 0.004802085,
+        "rotY": 179.977692,
+        "rotZ": -0.001476405,
+        "scaleX": 0.700000465,
+        "scaleY": 0.700000465,
+        "scaleZ": 0.700000465
+      },
+      "Nickname": "Investigateurs - La Conspiration d'Innsmouth",
+      "Description": "",
+      "GMNotes": "",
+      "AltLookAngle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ColorDiffuse": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": false,
+      "Hands": false,
+      "MaterialIndex": -1,
+      "MeshIndex": -1,
+      "CustomMesh": {
+        "MeshURL": "https://pastebin.com/raw/ALrYhQGb",
+        "DiffuseURL": "http://cloud-3.steamusercontent.com/ugc/1877465994995463304/228196B53BE8C9822006BDEFC680D10804891F19/",
+        "NormalURL": "",
+        "ColliderURL": "",
+        "Convex": true,
+        "MaterialIndex": 3,
+        "TypeIndex": 6,
+        "CustomShader": {
+          "SpecularColor": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0
+          },
+          "SpecularIntensity": 0.0,
+          "SpecularSharpness": 2.0,
+          "FresnelStrength": 0.0
+        },
+        "CastShadows": true
+      },
+      "Bag": {
+        "Order": 0
+      },
+      "LuaScript": "packupZone = '60699f' -- change this to the GUID of your own script packupZone\r\nGMNOTE = {'innsmouth'} -- set the object you sant the script to be affected with, all other objects will be ignored\r\nadditive = true -- This will disable the save system, allowing you to setup a bag, and then next time you pack up it will only pick up what it already has saved before.\r\nUseBagNameAsButtonName = false\r\n\r\n--Runs whenever game is saved/autosaved\r\nfunction onSave()\r\n --Begin State Managment of Saving Object Data.\r\n --Create GUID list fomr Object List\r\n    if tableSize(memoryData) == 0 then saved_data = \"\" return saved_data\r\n    else\r\n        local data_to_save = { md=memoryData }\r\n        saved_data = JSON.encode(data_to_save)\r\n        --saved_data = \"\" --Remove -- at start + save to clear save data\r\n       return saved_data end\r\n\r\nend\r\n\r\nfunction onload(saved_data)\r\n    if saved_data ~= \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        --Set up information off of loaded_data\r\n        memoryData = loaded_data.md\r\n    else\r\n        --Set up information for if there is no saved saved data\r\n        memoryData = {}\r\n    end\r\n    SetButtonName()\r\nend\r\n\r\nfunction SetButtonName()\r\n    if UseBagNameAsButtonName then\r\n        PlaceText = self.getName()\r\n        PlaceWidth = string.len(PlaceText)*145\r\n        PlaceHeight = 450\r\n        Scale = {3.2,3.2,3.2}\r\n    else\r\n        PlaceText = 'Placer'\r\n        PlaceWidth = 900\r\n        PlaceHeight = 400\r\n        Scale = {0.9,0.9,0.9}\r\n    end\r\n    self.clearButtons()\r\n    makeButtons()\r\nend\r\n\r\nfunction createSaveData(obj)\r\n    local objData = {position = tableCullNumericIndexes(obj.getPosition()),\r\n                     rotation = tableCullNumericIndexes(obj.getRotation()),\r\n                     guid = obj.getGUID(),\r\n                     lock = obj.getLock(),\r\n                     interactable = tostring(obj.interactable),\r\n                     tooltip = tostring(obj.tooltip)}\r\n\r\n    memoryData[objData.guid] = objData\r\nend\r\n\r\nfunction placeStuff()\r\n    local prams = {}\r\n    for key, entry in pairs(memoryData) do\r\n        prams.guid = key\r\n        prams.position = {entry.position.x, entry.position.y, entry.position.z}\r\n        prams.rotation = {entry.rotation.x, entry.rotation.y, entry.rotation.z}\r\n        local item = self.takeObject(prams)\r\n\r\n        if entry.lock == true then\r\n        item.setPositionSmooth({entry.position.x, entry.position.y, entry.position.z}, false, true)\r\n        item.setRotationSmooth({entry.rotation.x, entry.rotation.y, entry.rotation.z}, false, true)\r\n        item.setLock(entry.lock) end\r\n\r\n        if entry.tooltip == 'false' then item.tooltip = false end\r\n        if entry.interactable == 'false' then item.interactable = false end\r\n\r\n    end\r\n    if additive == true then memoryData = {} end\r\n    SetButtonName()\r\nend\r\n\r\n\r\nfunction pickupStuff()\r\n\r\n    if additive == true then\r\n         -- Grab All Objects in Zone\r\n        for _, obj in ipairs(getObjectFromGUID(packupZone).getObjects()) do\r\n            local add = false\r\n            for _, list in ipairs(GMNOTE) do if obj.getGMNotes() == list then add = true end end\r\n            if add == true then\r\n                createSaveData(obj)\r\n                self.putObject(obj)\r\n            end\r\n            add = true\r\n        end\r\n    end\r\n\r\n    if additive == false then\r\n        for key, entry in pairs(memoryData) do\r\n            self.putObject(getObjectFromGUID(key))\r\n        end\r\n    end\r\n    SetButtonName()\r\nend\r\n\r\nfunction tableSize(t)\r\n    local count = 0\r\n    for key,value in pairs(t) do count = count + 1 end\r\n    return count\r\nend\r\n\r\nfunction tableCullNumericIndexes(t)\r\n    for i in pairs(t) do\r\n        if type(i) == \"number\" then\r\n            table.remove(t, i)\r\n            return tableCullNumericIndexes(t)\r\n        end\r\n    end\r\n    return t\r\nend\r\n\r\nfunction makeButtons(set)\r\n    local buttons = {}\r\n\r\n -- DEFAULT START BUTTONS\r\n    if set == nil then\r\n        button_Place = {\r\n                click_function = 'placeStuff',\r\n                function_owner = self,\r\n                label = PlaceText,\r\n                position = {0, 0.1, 1.8},\r\n                rotation = {0, 0, 0},\r\n                width = PlaceWidth,\r\n                height = PlaceHeight,\r\n                scale = Scale,\r\n                font_size = 250,\r\n                color={0,0,0},\r\n                font_color={1,1,1}}\r\n        table.insert(buttons, button_Place)\r\n\r\n        button_PickUp = {\r\n            click_function = 'pickupStuff',\r\n            function_owner = self,\r\n            label = 'Ranger',\r\n            position = {1.8, 0.1, 0},\r\n            rotation = {0, -90, 0},\r\n            width = 1000,\r\n            height = 400,\r\n            font_size = 250,\r\n            scale = {0.9,0.9,0.9},\r\n            color={0,0,0},\r\n            font_color={1,1,1}}\r\n        table.insert(buttons, button_PickUp) end\r\n -- Create Buttons\r\n    for _, button in ipairs(buttons) do\r\n        self.createButton(button)\r\n    end\r\nend\r\n",
+      "LuaScriptState": "{\"md\":{\"02179e\":{\"guid\":\"02179e\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-77.4968872070313,\"y\":0.9910768866539,\"z\":-27.4920558929443},\"rotation\":{\"x\":-0.00147572066634893,\"y\":89.9854965209961,\"z\":-0.00480244122445583},\"tooltip\":\"true\"},\"4140f8\":{\"guid\":\"4140f8\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-83.9976425170898,\"y\":0.990658104419708,\"z\":-30.4917182922363},\"rotation\":{\"x\":0.00480219349265099,\"y\":179.998428344727,\"z\":-0.00147367210593075},\"tooltip\":\"true\"},\"574b59\":{\"guid\":\"574b59\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-58.5,\"y\":0.991313636302948,\"z\":-30.4999980926514},\"rotation\":{\"x\":0.00480263773351908,\"y\":179.999786376953,\"z\":-0.00147492554970086},\"tooltip\":\"true\"},\"57668a\":{\"guid\":\"57668a\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-65.0000076293945,\"y\":0.991146326065063,\"z\":-30.5},\"rotation\":{\"x\":0.00480215484276414,\"y\":180.000305175781,\"z\":-0.00147315347567201},\"tooltip\":\"true\"},\"7844cd\":{\"guid\":\"7844cd\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-70.9976501464844,\"y\":0.99124401807785,\"z\":-27.4932918548584},\"rotation\":{\"x\":-0.00147490692324936,\"y\":89.9960403442383,\"z\":-0.00480258790776134},\"tooltip\":\"true\"},\"7e9c5d\":{\"guid\":\"7e9c5d\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-58.4977149963379,\"y\":0.991565823554993,\"z\":-27.4917049407959},\"rotation\":{\"x\":-0.00147452985402197,\"y\":89.9994430541992,\"z\":-0.00480258790776134},\"tooltip\":\"true\"},\"974764\":{\"guid\":\"974764\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-83.9968719482422,\"y\":0.990909576416016,\"z\":-27.4920711517334},\"rotation\":{\"x\":-0.00147575291339308,\"y\":89.9868316650391,\"z\":-0.00480241701006889},\"tooltip\":\"true\"},\"a31459\":{\"guid\":\"a31459\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-70.9975967407227,\"y\":0.990992665290833,\"z\":-30.4917163848877},\"rotation\":{\"x\":0.00480288406834006,\"y\":180.002731323242,\"z\":-0.00147414463572204},\"tooltip\":\"true\"},\"b84c3b\":{\"guid\":\"b84c3b\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-64.9968795776367,\"y\":0.991398572921753,\"z\":-27.4920692443848},\"rotation\":{\"x\":-0.00147559819743037,\"y\":89.9868087768555,\"z\":-0.00480245659127831},\"tooltip\":\"true\"},\"bef686\":{\"guid\":\"bef686\",\"interactable\":\"true\",\"lock\":false,\"position\":{\"x\":-77.4976501464844,\"y\":0.990825414657593,\"z\":-30.4917163848877},\"rotation\":{\"x\":0.00480271223932505,\"y\":179.997299194336,\"z\":-0.00147447327617556},\"tooltip\":\"true\"}}}",
+      "XmlUI": "",
+      "ContainedObjects": [
+        {
+          "GUID": "974764",
+          "Name": "Card",
+          "Transform": {
+            "posX": -83.99687,
+            "posY": 0.9909096,
+            "posZ": -27.4920712,
+            "rotX": -0.00147575291,
+            "rotY": 89.98683,
+            "rotZ": -0.004802417,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Sœur Mary",
+          "Description": "",
+          "GMNotes": "innsmouth",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 303210,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "3032": {
+              "FaceURL": "https://i.imgur.com/aoPsg7w.jpg",
+              "BackURL": "https://i.imgur.com/lNpYgze.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "4140f8",
+          "Name": "Card",
+          "Transform": {
+            "posX": -83.99764,
+            "posY": 0.9906581,
+            "posZ": -30.4917183,
+            "rotX": 0.00480219349,
+            "rotY": 179.998428,
+            "rotZ": -0.00147367211,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Sœur Mary",
+          "Description": "",
+          "GMNotes": "innsmouth",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 553200,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5532": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1626320664132708743/A33DE2B12DE941B1CF2E4C8A458A18E48CB5CEEF/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1626320664132709196/85DFA06CD6EC0C36B07F86E5CDECCB6AFF531152/",
+              "NumWidth": 3,
+              "NumHeight": 2,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "02179e",
+          "Name": "Card",
+          "Transform": {
+            "posX": -77.49689,
+            "posY": 0.9910769,
+            "posZ": -27.4920559,
+            "rotX": -0.00147572067,
+            "rotY": 89.9855,
+            "rotZ": -0.004802441,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Amanda Sharpe",
+          "Description": "",
+          "GMNotes": "innsmouth",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 303011,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "3030": {
+              "FaceURL": "https://i.imgur.com/aoPsg7w.jpg",
+              "BackURL": "https://i.imgur.com/lNpYgze.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "bef686",
+          "Name": "Card",
+          "Transform": {
+            "posX": -77.49765,
+            "posY": 0.9908254,
+            "posZ": -30.4917164,
+            "rotX": 0.00480271224,
+            "rotY": 179.9973,
+            "rotZ": -0.00147447328,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Amanda Sharpe",
+          "Description": "",
+          "GMNotes": "innsmouth",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 553201,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5532": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1626320664132708743/A33DE2B12DE941B1CF2E4C8A458A18E48CB5CEEF/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1626320664132709196/85DFA06CD6EC0C36B07F86E5CDECCB6AFF531152/",
+              "NumWidth": 3,
+              "NumHeight": 2,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "7844cd",
+          "Name": "Card",
+          "Transform": {
+            "posX": -70.99765,
+            "posY": 0.991244,
+            "posZ": -27.4932919,
+            "rotX": -0.00147490692,
+            "rotY": 89.99604,
+            "rotZ": -0.004802588,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Trish Scarborough",
+          "Description": "",
+          "GMNotes": "innsmouth",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 302812,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "3028": {
+              "FaceURL": "https://i.imgur.com/aoPsg7w.jpg",
+              "BackURL": "https://i.imgur.com/lNpYgze.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "a31459",
+          "Name": "Card",
+          "Transform": {
+            "posX": -70.9976,
+            "posY": 0.990992665,
+            "posZ": -30.4917164,
+            "rotX": 0.004802884,
+            "rotY": 180.002731,
+            "rotZ": -0.00147414464,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Trish Scarborough",
+          "Description": "",
+          "GMNotes": "innsmouth",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 553202,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5532": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1626320664132708743/A33DE2B12DE941B1CF2E4C8A458A18E48CB5CEEF/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1626320664132709196/85DFA06CD6EC0C36B07F86E5CDECCB6AFF531152/",
+              "NumWidth": 3,
+              "NumHeight": 2,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "57668a",
+          "Name": "Card",
+          "Transform": {
+            "posX": -65.00001,
+            "posY": 0.9911463,
+            "posZ": -30.5,
+            "rotX": 0.004802155,
+            "rotY": 180.0003,
+            "rotZ": -0.00147315348,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Dexter Drake",
+          "Description": "",
+          "GMNotes": "innsmouth",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 553203,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5532": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1626320664132708743/A33DE2B12DE941B1CF2E4C8A458A18E48CB5CEEF/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1626320664132709196/85DFA06CD6EC0C36B07F86E5CDECCB6AFF531152/",
+              "NumWidth": 3,
+              "NumHeight": 2,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "b84c3b",
+          "Name": "Card",
+          "Transform": {
+            "posX": -64.99688,
+            "posY": 0.9913986,
+            "posZ": -27.49207,
+            "rotX": -0.0014755982,
+            "rotY": 89.98681,
+            "rotZ": -0.00480245659,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Dexter Drake",
+          "Description": "",
+          "GMNotes": "innsmouth",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 302613,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "3026": {
+              "FaceURL": "https://i.imgur.com/aoPsg7w.jpg",
+              "BackURL": "https://i.imgur.com/lNpYgze.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "574b59",
+          "Name": "Card",
+          "Transform": {
+            "posX": -58.5,
+            "posY": 0.991313636,
+            "posZ": -30.4999981,
+            "rotX": 0.00480263773,
+            "rotY": 179.999786,
+            "rotZ": -0.00147492555,
+            "scaleX": 0.6,
+            "scaleY": 1.0,
+            "scaleZ": 0.6
+          },
+          "Nickname": "Silas Marsh",
+          "Description": "",
+          "GMNotes": "innsmouth",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 553204,
+          "SidewaysCard": false,
+          "CustomDeck": {
+            "5532": {
+              "FaceURL": "http://cloud-3.steamusercontent.com/ugc/1626320664132708743/A33DE2B12DE941B1CF2E4C8A458A18E48CB5CEEF/",
+              "BackURL": "http://cloud-3.steamusercontent.com/ugc/1626320664132709196/85DFA06CD6EC0C36B07F86E5CDECCB6AFF531152/",
+              "NumWidth": 3,
+              "NumHeight": 2,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        },
+        {
+          "GUID": "7e9c5d",
+          "Name": "Card",
+          "Transform": {
+            "posX": -58.497715,
+            "posY": 0.9915658,
+            "posZ": -27.4917049,
+            "rotX": -0.00147452985,
+            "rotY": 89.99944,
+            "rotZ": -0.004802588,
+            "scaleX": 1.0,
+            "scaleY": 1.0,
+            "scaleZ": 1.0
+          },
+          "Nickname": "Silas Marsh",
+          "Description": "",
+          "GMNotes": "innsmouth",
+          "AltLookAngle": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "ColorDiffuse": {
+            "r": 0.713235259,
+            "g": 0.713235259,
+            "b": 0.713235259
+          },
+          "LayoutGroupSortIndex": 0,
+          "Value": 0,
+          "Locked": false,
+          "Grid": true,
+          "Snap": true,
+          "IgnoreFoW": false,
+          "MeasureMovement": false,
+          "DragSelectable": true,
+          "Autoraise": true,
+          "Sticky": true,
+          "Tooltip": true,
+          "GridProjection": false,
+          "HideWhenFaceDown": false,
+          "Hands": true,
+          "CardID": 302414,
+          "SidewaysCard": true,
+          "CustomDeck": {
+            "3024": {
+              "FaceURL": "https://i.imgur.com/aoPsg7w.jpg",
+              "BackURL": "https://i.imgur.com/lNpYgze.jpg",
+              "NumWidth": 10,
+              "NumHeight": 7,
+              "BackIsHidden": true,
+              "UniqueBack": true,
+              "Type": 0
+            }
+          },
+          "LuaScript": "",
+          "LuaScriptState": "",
+          "XmlUI": ""
+        }
+      ]
+    }
