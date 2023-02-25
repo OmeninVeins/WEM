@@ -64,6 +64,8 @@
   "extras" : [
     {"name":"Campagnes mises en place Coolnash", "url":"extras/ccoolnash.json", "replace":"f199f8"},
     {"name":"Gabarits soutiens", "url":"extras/gabaritscartes.json", "replace":"845644"},
-    {"name":"Les Outils de Maleson", "url":"extras/maleson.json", "replace":"7dd9c5"}
+    {"name":"Les Outils de Maleson", "url":"extras/maleson.json", "replace":"7dd9c5"},
+    {"name":"Métadonnées", "url":"extras/metado.json", "replace":"0c9aeb"}
+
   ]
 }
