@@ -23,9 +23,9 @@
         "posX": -69.00006,
         "posY": 1.19691908,
         "posZ": 12.9997911,
-        "rotX": -5.29555564E-06,
-        "rotY": 180.0179,
-        "rotZ": 4.24240227E-07,
+        "rotX": -4.98857025E-06,
+        "rotY": 180.017883,
+        "rotZ": 4.6146053E-07,
         "scaleX": 1.170821,
         "scaleY": 0.0619766228,
         "scaleZ": 0.9910606
@@ -93,9 +93,9 @@
             "posX": -27.0,
             "posY": 1.52004635,
             "posZ": -6.5,
-            "rotX": -7.66557946E-08,
+            "rotX": -6.099149E-08,
             "rotY": 180.016144,
-            "rotZ": -1.60339482E-07,
+            "rotZ": -1.2727503E-07,
             "scaleX": 1.0,
             "scaleY": 1.0,
             "scaleZ": 1.0
@@ -396,12 +396,12 @@
           "GUID": "0978e9",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 8.51791,
-            "posY": 0.979997456,
-            "posZ": 44.5009041,
-            "rotX": -5.0026697E-06,
+            "posX": 8.517909,
+            "posY": 0.979997635,
+            "posZ": 44.5009,
+            "rotX": -4.974592E-06,
             "rotY": 179.9782,
-            "rotZ": 3.98137985E-07,
+            "rotZ": 4.871031E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -9538,9 +9538,9 @@
             "posX": 32.5,
             "posY": 1.54995358,
             "posZ": 4.5,
-            "rotX": -0.0005911675,
+            "rotX": -0.000601097,
             "rotY": 179.966614,
-            "rotZ": 0.0010728417,
+            "rotZ": 0.00108153746,
             "scaleX": 0.306216359,
             "scaleY": 1.0,
             "scaleZ": 0.306216359
@@ -9555,7 +9555,7 @@
           },
           "ColorDiffuse": {
             "r": 0.746850431,
-            "g": 0.2374928,
+            "g": 0.23749277,
             "b": 0.474237561
           },
           "LayoutGroupSortIndex": 0,
@@ -9595,9 +9595,9 @@
             "posX": -18.5,
             "posY": 1.47986,
             "posZ": -4.5,
-            "rotX": 2.916458E-07,
+            "rotX": 6.516215E-08,
             "rotY": 180.001389,
-            "rotZ": -3.528874E-08,
+            "rotZ": -5.92635949E-08,
             "scaleX": 2.05722,
             "scaleY": 1.0,
             "scaleZ": 2.05722
@@ -9643,12 +9643,12 @@
           "GUID": "34efa5",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 13.016016,
-            "posY": 0.979997456,
+            "posX": 13.016017,
+            "posY": 0.9799973,
             "posZ": 44.50111,
-            "rotX": -5.03102456E-06,
-            "rotY": 179.974075,
-            "rotZ": 7.547904E-07,
+            "rotX": -4.98293548E-06,
+            "rotY": 179.97406,
+            "rotZ": 2.49949238E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -14539,12 +14539,12 @@
           "GUID": "47536f",
           "Name": "Custom_Tile",
           "Transform": {
-            "posX": 3.00000048,
+            "posX": 3.00000024,
             "posY": 1.50197494,
-            "posZ": -5.49997663,
-            "rotX": 0.0108905248,
-            "rotY": 180.012787,
-            "rotZ": 0.004950778,
+            "posZ": -5.49997568,
+            "rotX": 0.0108903907,
+            "rotY": 180.0128,
+            "rotZ": 0.00495090941,
             "scaleX": 1.6428808,
             "scaleY": 1.0,
             "scaleZ": 1.6428808
@@ -14599,9 +14599,9 @@
             "posX": -4.98329639,
             "posY": 0.9799976,
             "posZ": 44.49919,
-            "rotX": -4.746328E-06,
-            "rotY": 180.015961,
-            "rotZ": 1.19312642E-06,
+            "rotX": -5.107203E-06,
+            "rotY": 180.015945,
+            "rotZ": 6.24325651E-07,
             "scaleX": 1.20052147,
             "scaleY": 0.249882311,
             "scaleZ": 1.3145982
@@ -20016,12 +20016,12 @@
           "GUID": "4a0703",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 4.01840162,
-            "posY": 0.979997635,
+            "posX": 4.018401,
+            "posY": 0.9799975,
             "posZ": 44.5010033,
-            "rotX": -4.44719126E-06,
-            "rotY": 179.974762,
-            "rotZ": 1.03553077E-06,
+            "rotX": -4.62636172E-06,
+            "rotY": 179.974777,
+            "rotZ": 1.29611988E-06,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -20146,10 +20146,10 @@
               "Transform": {
                 "posX": 35.0001526,
                 "posY": 1.50095344,
-                "posZ": -5.82136579E-08,
-                "rotX": 0.000591133954,
-                "rotY": -0.00241520884,
-                "rotZ": -0.00107024785,
+                "posZ": -4.897914E-08,
+                "rotX": 0.0005910581,
+                "rotY": -0.00241557462,
+                "rotZ": -0.00107037765,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -20258,12 +20258,12 @@
               "GUID": "18f634",
               "Name": "Custom_Tile",
               "Transform": {
-                "posX": 2.99999213,
-                "posY": 1.601639,
-                "posZ": -6.50001764,
-                "rotX": 0.0168368332,
+                "posX": 2.99999118,
+                "posY": 1.60165012,
+                "posZ": -6.5000186,
+                "rotX": 0.0191740338,
                 "rotY": 179.983322,
-                "rotZ": 1.68287684E-07,
+                "rotZ": 0.0017990804,
                 "scaleX": 1.6428808,
                 "scaleY": 1.0,
                 "scaleZ": 1.6428808
@@ -20497,7 +20497,7 @@
                 "posX": 30.5,
                 "posY": 1.67986226,
                 "posZ": -3.00010419,
-                "rotX": -0.000591248041,
+                "rotX": -0.0005910236,
                 "rotY": 180.000259,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
@@ -22541,7 +22541,7 @@
                 "posX": 17.5009975,
                 "posY": 1.53118241,
                 "posZ": -6.01959324,
-                "rotX": 0.004948968,
+                "rotX": 0.00494891545,
                 "rotY": 90.0049744,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
@@ -22726,12 +22726,12 @@
               "GUID": "49324a",
               "Name": "Custom_Model_Bag",
               "Transform": {
-                "posX": -24.5000076,
+                "posX": -24.5000057,
                 "posY": 1.87000084,
                 "posZ": 6.499991,
-                "rotX": -4.900789E-06,
-                "rotY": 180.000473,
-                "rotZ": -9.803305E-08,
+                "rotX": -5.345482E-06,
+                "rotY": 180.000519,
+                "rotZ": 9.88920945E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -22793,238 +22793,6 @@
               "XmlUI": "",
               "ContainedObjects": [
                 {
-                  "GUID": "ab5d7a",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -27.0,
-                    "posY": 2.00219154,
-                    "posZ": 16.0,
-                    "rotX": 2.48030919E-05,
-                    "rotY": 180.000244,
-                    "rotZ": 179.999985,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Piste Détournée",
-                  "Description": "Jungle.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04073\",\n  \"locationFront\": {\n    \"connections\": \"Hourglass|Diamond|Crescent|Tee\",\n    \"icons\": \"Heart\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"traits\": \"Jungle.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 150505,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1505": {
-                      "FaceURL": "https://i.imgur.com/pUzyeWH.jpg",
-                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": false,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "1a4ab8",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -24.5,
-                    "posY": 2.00218964,
-                    "posZ": 13.5,
-                    "rotX": -0.000116286617,
-                    "rotY": 180.0046,
-                    "rotZ": 3.095486E-05,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04218\",\n  \"locationFront\": {\n    \"connections\": \"Triangle|Heart|SlantedEquals\",\n    \"icons\": \"Hourglass\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"traits\": \"Ancient. Ruins.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 1111109,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "11111": {
-                      "FaceURL": "https://i.imgur.com/qAONKji.jpg",
-                      "BackURL": "https://i.imgur.com/UqYQJPj.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "9e83ea",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -26.5,
-                    "posY": 2.00197983,
-                    "posZ": 16.0,
-                    "rotX": 359.9689,
-                    "rotY": 180.0,
-                    "rotZ": 179.977982,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Chute d'Eau",
-                  "Description": "Jungle.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"53068\",\n  \"locationFront\": {\n    \"connections\": \"Circle|Diamond|Heart|Tee\",\n    \"icons\": \"Crescent\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"traits\": \"Jungle.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 276746,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2767": {
-                      "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": false,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "e3e516",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -27.0,
-                    "posY": 2.002192,
-                    "posZ": 16.5,
-                    "rotX": -1.834722E-05,
-                    "rotY": 180.000916,
-                    "rotZ": 179.999878,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Temple des Berges",
-                  "Description": "Antique. Jungle.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"53067\",\n  \"locationFront\": {\n    \"connections\": \"Circle|Diamond|Triangle|Tilde\",\n    \"icons\": \"Square\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"traits\": \"Ancient. Jungle.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 276747,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2767": {
-                      "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": false,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
                   "GUID": "c16bbe",
                   "Name": "Card",
                   "Transform": {
@@ -23070,122 +22838,6 @@
                   "CustomDeck": {
                     "2767": {
                       "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": false,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "abb893",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -26.5,
-                    "posY": 2.00048542,
-                    "posZ": 9.0,
-                    "rotX": -4.98420377E-06,
-                    "rotY": 180.001022,
-                    "rotZ": 8.2149425E-09,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04075\",\n  \"locationFront\": {\n    \"connections\": \"Crescent|Heart|SlantedEquals\",\n    \"icons\": \"Tee\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 2\n  },\n  \"traits\": \"Ancient. Ruins.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 153907,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1539": {
-                      "FaceURL": "https://i.imgur.com/pUzyeWH.jpg",
-                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": false,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "0c582f",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -26.5,
-                    "posY": 2.00219584,
-                    "posZ": 16.5,
-                    "rotX": 9.567489E-05,
-                    "rotY": 179.999985,
-                    "rotZ": 180.0,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Repaire de Serpents",
-                  "Description": "Jungle.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04072\",\n  \"locationFront\": {\n    \"connections\": \"Tilde|Square|Diamond|Hourglass\",\n    \"icons\": \"Triangle\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"traits\": \"Jungle.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 150502,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1505": {
-                      "FaceURL": "https://i.imgur.com/pUzyeWH.jpg",
                       "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -23257,22 +22909,22 @@
                   "XmlUI": ""
                 },
                 {
-                  "GUID": "fef19a",
+                  "GUID": "0c582f",
                   "Name": "Card",
                   "Transform": {
                     "posX": -26.5,
-                    "posY": 2.0021894,
+                    "posY": 2.00219584,
                     "posZ": 16.5,
-                    "rotX": -0.000117949727,
-                    "rotY": 180.009109,
-                    "rotZ": 180.000031,
+                    "rotX": 9.567489E-05,
+                    "rotY": 179.999985,
+                    "rotZ": 180.0,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
-                  "Nickname": "Pont de Corde",
+                  "Nickname": "Repaire de Serpents",
                   "Description": "Jungle.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04071\",\n  \"locationFront\": {\n    \"connections\": \"Circle|Diamond|Heart|Tee\",\n    \"icons\": \"Crescent\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"traits\": \"Jungle.\",\n  \"type\": \"Location\"\n}",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04072\",\n  \"locationFront\": {\n    \"connections\": \"Tilde|Square|Diamond|Hourglass\",\n    \"icons\": \"Triangle\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"traits\": \"Jungle.\",\n  \"type\": \"Location\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -23297,7 +22949,7 @@
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
                   "Hands": true,
-                  "CardID": 150503,
+                  "CardID": 150502,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "1505": {
@@ -23417,6 +23069,354 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "1539": {
+                      "FaceURL": "https://i.imgur.com/pUzyeWH.jpg",
+                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": false,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "e3e516",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -27.0,
+                    "posY": 2.002192,
+                    "posZ": 16.5,
+                    "rotX": -1.834722E-05,
+                    "rotY": 180.000916,
+                    "rotZ": 179.999878,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Temple des Berges",
+                  "Description": "Antique. Jungle.",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"53067\",\n  \"locationFront\": {\n    \"connections\": \"Circle|Diamond|Triangle|Tilde\",\n    \"icons\": \"Square\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"traits\": \"Ancient. Jungle.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 276747,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2767": {
+                      "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": false,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "9e83ea",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -26.5,
+                    "posY": 2.00197983,
+                    "posZ": 16.0,
+                    "rotX": 359.9689,
+                    "rotY": 180.0,
+                    "rotZ": 179.977982,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Chute d'Eau",
+                  "Description": "Jungle.",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"53068\",\n  \"locationFront\": {\n    \"connections\": \"Circle|Diamond|Heart|Tee\",\n    \"icons\": \"Crescent\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"traits\": \"Jungle.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 276746,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2767": {
+                      "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": false,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "abb893",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -26.5,
+                    "posY": 2.00048542,
+                    "posZ": 9.0,
+                    "rotX": -4.98420377E-06,
+                    "rotY": 180.001022,
+                    "rotZ": 8.2149425E-09,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04075\",\n  \"locationFront\": {\n    \"connections\": \"Crescent|Heart|SlantedEquals\",\n    \"icons\": \"Tee\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 2\n  },\n  \"traits\": \"Ancient. Ruins.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 153907,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1539": {
+                      "FaceURL": "https://i.imgur.com/pUzyeWH.jpg",
+                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": false,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "ab5d7a",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -27.0,
+                    "posY": 2.00219154,
+                    "posZ": 16.0,
+                    "rotX": 2.48030919E-05,
+                    "rotY": 180.000244,
+                    "rotZ": 179.999985,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Piste Détournée",
+                  "Description": "Jungle.",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04073\",\n  \"locationFront\": {\n    \"connections\": \"Hourglass|Diamond|Crescent|Tee\",\n    \"icons\": \"Heart\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"traits\": \"Jungle.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 150505,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1505": {
+                      "FaceURL": "https://i.imgur.com/pUzyeWH.jpg",
+                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": false,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "1a4ab8",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -24.5,
+                    "posY": 2.00218964,
+                    "posZ": 13.5,
+                    "rotX": -0.000116286617,
+                    "rotY": 180.0046,
+                    "rotZ": 3.095486E-05,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04218\",\n  \"locationFront\": {\n    \"connections\": \"Triangle|Heart|SlantedEquals\",\n    \"icons\": \"Hourglass\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"traits\": \"Ancient. Ruins.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 1111109,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "11111": {
+                      "FaceURL": "https://i.imgur.com/qAONKji.jpg",
+                      "BackURL": "https://i.imgur.com/UqYQJPj.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "fef19a",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -26.5,
+                    "posY": 2.0021894,
+                    "posZ": 16.5,
+                    "rotX": -0.000117949727,
+                    "rotY": 180.009109,
+                    "rotZ": 180.000031,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Pont de Corde",
+                  "Description": "Jungle.",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04071\",\n  \"locationFront\": {\n    \"connections\": \"Circle|Diamond|Heart|Tee\",\n    \"icons\": \"Crescent\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"traits\": \"Jungle.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 150503,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1505": {
                       "FaceURL": "https://i.imgur.com/pUzyeWH.jpg",
                       "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
                       "NumWidth": 10,
@@ -23555,7 +23555,7 @@
                 "posX": 35.0,
                 "posY": 1.53048635,
                 "posZ": 2.49999976,
-                "rotX": -0.00059114414,
+                "rotX": -0.00059118896,
                 "rotY": 180.000015,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
@@ -23858,10 +23858,10 @@
               "Transform": {
                 "posX": 22.3274841,
                 "posY": 1.51391149,
-                "posZ": -5.494818,
-                "rotX": 0.0108916843,
-                "rotY": 179.996628,
-                "rotZ": 0.00494769029,
+                "posZ": -5.49481869,
+                "rotX": 0.0108917905,
+                "rotY": 179.996613,
+                "rotZ": 0.004947757,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -23917,7 +23917,7 @@
                 "posX": 24.9699421,
                 "posY": 1.51366246,
                 "posZ": -5.6043,
-                "rotX": 0.0108233476,
+                "rotX": 0.01082333,
                 "rotY": 180.777664,
                 "rotZ": 180.005081,
                 "scaleX": 1.0,
@@ -24227,11 +24227,11 @@
           "Name": "Custom_Model_Bag",
           "Transform": {
             "posX": 26.5175018,
-            "posY": 0.9799973,
+            "posY": 0.9799974,
             "posZ": 44.5005035,
-            "rotX": -5.18149864E-06,
-            "rotY": 179.999969,
-            "rotZ": 1.12422549E-06,
+            "rotX": -5.15927E-06,
+            "rotY": 180.0,
+            "rotZ": 1.00301611E-06,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -28485,12 +28485,12 @@
           "GUID": "5cd2f7",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 17.5172138,
-            "posY": 0.9799974,
+            "posX": 17.5172119,
+            "posY": 0.979997456,
             "posZ": 44.5013123,
-            "rotX": -5.43429269E-06,
-            "rotY": 179.971191,
-            "rotZ": 2.703791E-07,
+            "rotX": -5.244041E-06,
+            "rotY": 179.971176,
+            "rotZ": 1.106867E-06,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -33383,11 +33383,11 @@
           "GUID": "60156f",
           "Name": "3DText",
           "Transform": {
-            "posX": 30.5001049,
-            "posY": 1.59999621,
-            "posZ": 4.80001259,
+            "posX": 30.5001545,
+            "posY": 1.59999514,
+            "posZ": 4.800016,
             "rotX": 90.0,
-            "rotY": 0.879499733,
+            "rotY": 0.8794997,
             "rotZ": 0.0,
             "scaleX": 1.0,
             "scaleY": 1.0,
@@ -33438,11 +33438,11 @@
           "Name": "Custom_Model_Bag",
           "Transform": {
             "posX": 21.9995079,
-            "posY": 0.9799974,
-            "posZ": 44.5001945,
-            "rotX": -4.707387E-06,
-            "rotY": 179.999252,
-            "rotZ": 5.618441E-07,
+            "posY": 0.9799973,
+            "posZ": 44.50019,
+            "rotX": -4.78880838E-06,
+            "rotY": 179.999222,
+            "rotZ": 1.24167093E-06,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -39115,9 +39115,9 @@
             "posX": -26.9999981,
             "posY": 1.4548955,
             "posZ": -2.999163,
-            "rotX": -6.14015562E-07,
-            "rotY": 0.0029651802,
-            "rotZ": 2.57706546E-07,
+            "rotX": -1.06894333E-06,
+            "rotY": 0.00296528148,
+            "rotZ": 1.50515362E-07,
             "scaleX": 2.0,
             "scaleY": 2.0,
             "scaleZ": 2.0
@@ -40261,9 +40261,9 @@
             "posX": 33.3312,
             "posY": 1.47985983,
             "posZ": 12.0378,
-            "rotX": -2.22590977E-08,
+            "rotX": -2.02169073E-08,
             "rotY": 179.9917,
-            "rotZ": -1.2122273E-08,
+            "rotZ": 1.59441282E-09,
             "scaleX": 6.013666,
             "scaleY": 1.0,
             "scaleZ": 6.013666
@@ -40377,9 +40377,9 @@
             "posX": -35.0,
             "posY": 1.47986,
             "posZ": -4.5,
-            "rotX": 3.6830027E-08,
-            "rotY": 179.984512,
-            "rotZ": -1.09957443E-06,
+            "rotX": -5.98863048E-09,
+            "rotY": 179.9845,
+            "rotZ": -3.393589E-07,
             "scaleX": 2.11755562,
             "scaleY": 1.0,
             "scaleZ": 2.11755562
@@ -40425,12 +40425,12 @@
           "GUID": "b03b49",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -13.9819965,
-            "posY": 0.9799978,
-            "posZ": 44.50041,
-            "rotX": -4.96402436E-06,
-            "rotY": 180.010513,
-            "rotZ": 5.312965E-07,
+            "posX": -13.9819984,
+            "posY": 0.9799977,
+            "posZ": 44.5004044,
+            "rotX": -4.64644927E-06,
+            "rotY": 180.0105,
+            "rotZ": 1.41169539E-06,
             "scaleX": 1.20052147,
             "scaleY": 0.249882311,
             "scaleZ": 1.3145982
@@ -44738,12 +44738,12 @@
           "GUID": "d6f7fe",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -0.48329097,
-            "posY": 0.979997635,
+            "posX": -0.483289182,
+            "posY": 0.9799975,
             "posZ": 44.4997063,
-            "rotX": -4.95217637E-06,
-            "rotY": 179.975327,
-            "rotZ": 4.93016671E-07,
+            "rotX": -5.024602E-06,
+            "rotY": 179.975281,
+            "rotZ": 4.82770133E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -44811,7 +44811,7 @@
                 "posX": 34.9997,
                 "posY": 1.57862675,
                 "posZ": 2.49969983,
-                "rotX": -0.000591199147,
+                "rotX": -0.0005911638,
                 "rotY": 180.008865,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
@@ -45579,10 +45579,10 @@
               "Transform": {
                 "posX": -21.5002232,
                 "posY": 1.783606,
-                "posZ": 2.99976873,
-                "rotX": -4.919221E-06,
-                "rotY": 180.0032,
-                "rotZ": -4.44221619E-08,
+                "posZ": 2.99977,
+                "rotX": -4.870214E-06,
+                "rotY": 180.003159,
+                "rotZ": 8.58132E-09,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -45696,7 +45696,7 @@
                 "posX": 30.4999943,
                 "posY": 1.59320962,
                 "posZ": -2.99714136,
-                "rotX": -0.0005911441,
+                "rotX": -0.0005911591,
                 "rotY": 180.0,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
@@ -46657,12 +46657,12 @@
               "GUID": "5b119e",
               "Name": "Custom_Tile",
               "Transform": {
-                "posX": 2.9999876,
+                "posX": 2.999994,
                 "posY": 1.60163224,
-                "posZ": -6.500026,
-                "rotX": 0.0171779133,
+                "posZ": -6.500035,
+                "rotX": 0.0171773359,
                 "rotY": 180.015518,
-                "rotZ": 0.005656984,
+                "rotZ": 0.0056561986,
                 "scaleX": 1.6428808,
                 "scaleY": 1.0,
                 "scaleZ": 1.6428808
@@ -46716,10 +46716,10 @@
               "Transform": {
                 "posX": 22.3268642,
                 "posY": 1.5139116,
-                "posZ": -5.49486542,
-                "rotX": 0.0108912922,
-                "rotY": 180.001572,
-                "rotZ": 0.004948597,
+                "posZ": -5.494865,
+                "rotX": 0.0108913779,
+                "rotY": 180.0016,
+                "rotZ": 0.004948673,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -46775,9 +46775,9 @@
                 "posX": -19.5000038,
                 "posY": 1.78360569,
                 "posZ": 6.99999142,
-                "rotX": 5.26583825E-08,
+                "rotX": 7.580407E-10,
                 "rotY": 90.0,
-                "rotZ": 4.965975E-06,
+                "rotZ": 4.887653E-06,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -46833,9 +46833,9 @@
                 "posX": -24.0001183,
                 "posY": 1.783606,
                 "posZ": 2.99988031,
-                "rotX": -5.06236074E-06,
-                "rotY": 180.004608,
-                "rotZ": 3.32621539E-08,
+                "rotX": -4.99910129E-06,
+                "rotY": 180.004623,
+                "rotZ": 8.83891644E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -46891,7 +46891,7 @@
                 "posX": 17.5010662,
                 "posY": 1.53118241,
                 "posZ": -6.0196,
-                "rotX": 0.004948292,
+                "rotX": 0.00494825561,
                 "rotY": 90.0011749,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
@@ -47079,9 +47079,9 @@
                 "posX": -30.000061,
                 "posY": 1.870001,
                 "posZ": 4.999933,
-                "rotX": -5.167734E-06,
+                "rotX": -5.12938232E-06,
                 "rotY": 179.99765,
-                "rotZ": -1.68865213E-07,
+                "rotZ": 3.68784953E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -47449,22 +47449,22 @@
                   ]
                 },
                 {
-                  "GUID": "94a0b1",
-                  "Name": "Card",
+                  "GUID": "0f80c4",
+                  "Name": "Deck",
                   "Transform": {
-                    "posX": -31.4999828,
-                    "posY": 1.78611243,
-                    "posZ": 8.499981,
-                    "rotX": -0.00183808757,
-                    "rotY": 180.0017,
-                    "rotZ": 0.01758352,
+                    "posX": -30.0,
+                    "posY": 2.03358555,
+                    "posZ": 5.0,
+                    "rotX": 0.000199182745,
+                    "rotY": 180.000031,
+                    "rotZ": -0.000130878325,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
                   "Nickname": "",
                   "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"53041\",\n  \"locationBack\": {\n    \"connections\": \"Star\",\n    \"icons\": \"Triangle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Star\",\n    \"icons\": \"Triangle\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
+                  "GMNotes": "",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -47488,41 +47488,339 @@
                   "Tooltip": true,
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 1159107,
+                  "Hands": false,
                   "SidewaysCard": false,
+                  "DeckIDs": [
+                    276725,
+                    276724,
+                    276726,
+                    276727,
+                    276723
+                  ],
                   "CustomDeck": {
-                    "11591": {
-                      "FaceURL": "https://i.imgur.com/2Z0zFm4.jpg",
-                      "BackURL": "https://i.imgur.com/dqebp8j.jpg",
+                    "2767": {
+                      "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
                       "NumWidth": 10,
                       "NumHeight": 7,
                       "BackIsHidden": true,
-                      "UniqueBack": true,
+                      "UniqueBack": false,
                       "Type": 0
                     }
                   },
                   "LuaScript": "",
                   "LuaScriptState": "",
-                  "XmlUI": ""
+                  "XmlUI": "",
+                  "ContainedObjects": [
+                    {
+                      "GUID": "08a3f3",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -20.50006,
+                        "posY": 1.81206226,
+                        "posZ": 11.4999914,
+                        "rotX": 0.1562843,
+                        "rotY": 179.998428,
+                        "rotZ": 0.465953976,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "",
+                      "Description": "",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 2,\n  \"id\": \"53078\",\n  \"traits\": \"Humanoid. Monster. Serpent.\",\n  \"type\": \"Enemy\",\n  \"vengeance\": 0\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 276725,
+                      "SidewaysCard": false,
+                      "CustomDeck": {
+                        "2767": {
+                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": false,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    },
+                    {
+                      "GUID": "f55c9f",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -20.5000744,
+                        "posY": 1.78024757,
+                        "posZ": 12.0000153,
+                        "rotX": 0.0327863768,
+                        "rotY": 180.000992,
+                        "rotZ": 359.768616,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "",
+                      "Description": "",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 5,\n  \"id\": \"53079\",\n  \"traits\": \"Construct. Serpent.\",\n  \"type\": \"Enemy\"\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 276724,
+                      "SidewaysCard": false,
+                      "CustomDeck": {
+                        "2767": {
+                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": false,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    },
+                    {
+                      "GUID": "008492",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -20.0000782,
+                        "posY": 1.84702587,
+                        "posZ": 11.4999237,
+                        "rotX": 0.03523856,
+                        "rotY": 180.000046,
+                        "rotZ": 0.0285310037,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "",
+                      "Description": "",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 2,\n  \"id\": \"53078\",\n  \"traits\": \"Humanoid. Monster. Serpent.\",\n  \"type\": \"Enemy\",\n  \"vengeance\": 0\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 276726,
+                      "SidewaysCard": false,
+                      "CustomDeck": {
+                        "2767": {
+                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": false,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    },
+                    {
+                      "GUID": "573e64",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -20.4946575,
+                        "posY": 1.86634338,
+                        "posZ": 11.478857,
+                        "rotX": 0.129607916,
+                        "rotY": 180.00058,
+                        "rotZ": 359.572784,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "",
+                      "Description": "",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 2,\n  \"id\": \"53078\",\n  \"traits\": \"Humanoid. Monster. Serpent.\",\n  \"type\": \"Enemy\",\n  \"vengeance\": 0\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 276727,
+                      "SidewaysCard": false,
+                      "CustomDeck": {
+                        "2767": {
+                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": false,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    },
+                    {
+                      "GUID": "67be70",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -20.0,
+                        "posY": 1.8825599,
+                        "posZ": 11.0,
+                        "rotX": 0.0002876886,
+                        "rotY": 180.0,
+                        "rotZ": -2.57580177E-05,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "",
+                      "Description": "",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"53080\",\n  \"traits\": \"Power.\",\n  \"type\": \"Treachery\"\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 276723,
+                      "SidewaysCard": false,
+                      "CustomDeck": {
+                        "2767": {
+                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": false,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    }
+                  ]
                 },
                 {
-                  "GUID": "5f71b9",
+                  "GUID": "2812e8",
                   "Name": "Card",
                   "Transform": {
-                    "posX": -33.50003,
-                    "posY": 1.79319513,
-                    "posZ": 11.4999495,
-                    "rotX": 359.719269,
-                    "rotY": 180.004913,
-                    "rotZ": 359.992,
+                    "posX": -40.5,
+                    "posY": 1.68131125,
+                    "posZ": 5.0,
+                    "rotX": -4.57554741E-08,
+                    "rotY": 179.998566,
+                    "rotZ": -9.949259E-07,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
-                  "Nickname": "",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"53043\",\n  \"locationBack\": {\n    \"connections\": \"Diamond|Star\",\n    \"icons\": \"Heart\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Diamond|Star\",\n    \"icons\": \"Heart\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
+                  "Nickname": "Coyoacán",
+                  "Description": "Mexico. Contemporain.",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04173\",\n  \"locationBack\": {\n    \"connections\": \"Diamond|Triangle|Circle|Heart\",\n    \"icons\": \"Star\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Diamond|Triangle|Circle|Heart\",\n    \"icons\": \"Star\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -47547,12 +47845,12 @@
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
                   "Hands": true,
-                  "CardID": 1158909,
+                  "CardID": 115707,
                   "SidewaysCard": false,
                   "CustomDeck": {
-                    "11589": {
-                      "FaceURL": "https://i.imgur.com/2Z0zFm4.jpg",
-                      "BackURL": "https://i.imgur.com/dqebp8j.jpg",
+                    "1157": {
+                      "FaceURL": "https://i.imgur.com/140TZVj.jpg",
+                      "BackURL": "https://i.imgur.com/StzZYY1.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
                       "BackIsHidden": true,
@@ -47623,22 +47921,22 @@
                   "XmlUI": ""
                 },
                 {
-                  "GUID": "e912cc",
-                  "Name": "Deck",
+                  "GUID": "a2975f",
+                  "Name": "Card",
                   "Transform": {
-                    "posX": -30.0,
-                    "posY": 2.03839183,
-                    "posZ": 5.5,
-                    "rotX": -0.000201005241,
-                    "rotY": 180.0005,
-                    "rotZ": -0.000135767972,
+                    "posX": -30.5,
+                    "posY": 2.00218725,
+                    "posZ": 4.5,
+                    "rotX": 0.000288415875,
+                    "rotY": 179.998581,
+                    "rotZ": -0.000260568981,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
                   "Nickname": "",
                   "Description": "",
-                  "GMNotes": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"53042\",\n  \"locationBack\": {\n    \"connections\": \"Heart|Square|Star|Circle\",\n    \"icons\": \"Diamond\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Heart|Square|Star|Circle\",\n    \"icons\": \"Diamond\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -47662,380 +47960,23 @@
                   "Tooltip": true,
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
-                  "Hands": false,
+                  "Hands": true,
+                  "CardID": 1159108,
                   "SidewaysCard": false,
-                  "DeckIDs": [
-                    276738,
-                    276739,
-                    276740,
-                    276741,
-                    276742,
-                    276743
-                  ],
                   "CustomDeck": {
-                    "2767": {
-                      "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                    "11591": {
+                      "FaceURL": "https://i.imgur.com/2Z0zFm4.jpg",
+                      "BackURL": "https://i.imgur.com/dqebp8j.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
                       "BackIsHidden": true,
-                      "UniqueBack": false,
+                      "UniqueBack": true,
                       "Type": 0
                     }
                   },
                   "LuaScript": "",
                   "LuaScriptState": "",
-                  "XmlUI": "",
-                  "ContainedObjects": [
-                    {
-                      "GUID": "0137d0",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -31.5,
-                        "posY": 1.89018869,
-                        "posZ": 15.5,
-                        "rotX": -0.000308342045,
-                        "rotY": 180.000046,
-                        "rotZ": 180.000656,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "",
-                      "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"53073\",\n  \"traits\": \"Scheme.\",\n  \"type\": \"Treachery\"\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 276738,
-                      "SidewaysCard": false,
-                      "CustomDeck": {
-                        "2767": {
-                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": false,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    },
-                    {
-                      "GUID": "c70362",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -32.0,
-                        "posY": 1.88055515,
-                        "posZ": 16.0,
-                        "rotX": 0.000219654772,
-                        "rotY": 180.0,
-                        "rotZ": 180.000137,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "",
-                      "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"53073\",\n  \"traits\": \"Scheme.\",\n  \"type\": \"Treachery\"\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 276739,
-                      "SidewaysCard": false,
-                      "CustomDeck": {
-                        "2767": {
-                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": false,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    },
-                    {
-                      "GUID": "f33f8f",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -32.0,
-                        "posY": 1.87092674,
-                        "posZ": 16.0,
-                        "rotX": 0.000225633237,
-                        "rotY": 180.000015,
-                        "rotZ": 180.000153,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "",
-                      "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 4,\n  \"id\": \"53072\",\n  \"traits\": \"Humanoid. Cultist.\",\n  \"type\": \"Enemy\",\n  \"uses\": {\n    \"count\": 0,\n    \"token\": \"doom\",\n    \"type\": \"Doom\"\n  }\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 276740,
-                      "SidewaysCard": false,
-                      "CustomDeck": {
-                        "2767": {
-                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": false,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    },
-                    {
-                      "GUID": "9e02c9",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -32.5,
-                        "posY": 1.86129928,
-                        "posZ": 16.0,
-                        "rotX": 7.920363E-05,
-                        "rotY": 180.0,
-                        "rotZ": 180.000183,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "",
-                      "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 1,\n  \"id\": \"53071\",\n  \"traits\": \"Humanoid. Cultist.\",\n  \"type\": \"Enemy\"\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 276741,
-                      "SidewaysCard": false,
-                      "CustomDeck": {
-                        "2767": {
-                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": false,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    },
-                    {
-                      "GUID": "a8532e",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -32.0,
-                        "posY": 1.82734084,
-                        "posZ": 15.5,
-                        "rotX": 0.00214312552,
-                        "rotY": 180.000015,
-                        "rotZ": 180.001129,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "",
-                      "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 1,\n  \"id\": \"53071\",\n  \"traits\": \"Humanoid. Cultist.\",\n  \"type\": \"Enemy\"\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 276742,
-                      "SidewaysCard": false,
-                      "CustomDeck": {
-                        "2767": {
-                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": false,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    },
-                    {
-                      "GUID": "06d397",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -27.5,
-                        "posY": 1.89016426,
-                        "posZ": 13.5,
-                        "rotX": 0.00133632612,
-                        "rotY": 180.000381,
-                        "rotZ": 0.00207463559,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "",
-                      "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 1,\n  \"id\": \"53071\",\n  \"traits\": \"Humanoid. Cultist.\",\n  \"type\": \"Enemy\"\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 276743,
-                      "SidewaysCard": false,
-                      "CustomDeck": {
-                        "2767": {
-                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": false,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    }
-                  ]
+                  "XmlUI": ""
                 },
                 {
                   "GUID": "b1cd80",
@@ -48096,6 +48037,64 @@
                   "XmlUI": ""
                 },
                 {
+                  "GUID": "fb3366",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -49.5044022,
+                    "posY": 1.3202852,
+                    "posZ": 4.99996,
+                    "rotX": 0.002629614,
+                    "rotY": 180.006042,
+                    "rotZ": 10.7526827,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Parc de Chapultepec",
+                  "Description": "Mexico. Contemporain.",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04170\",\n  \"locationBack\": {\n    \"connections\": \"Star\",\n    \"icons\": \"Triangle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Star\",\n    \"icons\": \"Triangle\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 115703,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1157": {
+                      "FaceURL": "https://i.imgur.com/140TZVj.jpg",
+                      "BackURL": "https://i.imgur.com/StzZYY1.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
                   "GUID": "19c446",
                   "Name": "Card",
                   "Transform": {
@@ -48140,6 +48139,64 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "11587": {
+                      "FaceURL": "https://i.imgur.com/2Z0zFm4.jpg",
+                      "BackURL": "https://i.imgur.com/dqebp8j.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "94a0b1",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -31.4999828,
+                    "posY": 1.78611243,
+                    "posZ": 8.499981,
+                    "rotX": -0.00183808757,
+                    "rotY": 180.0017,
+                    "rotZ": 0.01758352,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"53041\",\n  \"locationBack\": {\n    \"connections\": \"Star\",\n    \"icons\": \"Triangle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Star\",\n    \"icons\": \"Triangle\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 1159107,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "11591": {
                       "FaceURL": "https://i.imgur.com/2Z0zFm4.jpg",
                       "BackURL": "https://i.imgur.com/dqebp8j.jpg",
                       "NumWidth": 10,
@@ -48569,6 +48626,122 @@
                   ]
                 },
                 {
+                  "GUID": "5f71b9",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -33.50003,
+                    "posY": 1.79319513,
+                    "posZ": 11.4999495,
+                    "rotX": 359.719269,
+                    "rotY": 180.004913,
+                    "rotZ": 359.992,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"53043\",\n  \"locationBack\": {\n    \"connections\": \"Diamond|Star\",\n    \"icons\": \"Heart\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Diamond|Star\",\n    \"icons\": \"Heart\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 1158909,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "11589": {
+                      "FaceURL": "https://i.imgur.com/2Z0zFm4.jpg",
+                      "BackURL": "https://i.imgur.com/dqebp8j.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "e60235",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -35.5,
+                    "posY": 1.97145224,
+                    "posZ": -4.0,
+                    "rotX": -5.329876E-06,
+                    "rotY": 180.002472,
+                    "rotZ": 8.236765E-07,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Xochimilco",
+                  "Description": "Mexico. Contemporain.",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04172\",\n  \"locationBack\": {\n    \"connections\": \"Diamond|Star\",\n    \"icons\": \"Heart\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Diamond|Star\",\n    \"icons\": \"Heart\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 115704,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1157": {
+                      "FaceURL": "https://i.imgur.com/140TZVj.jpg",
+                      "BackURL": "https://i.imgur.com/StzZYY1.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
                   "GUID": "284b3f",
                   "Name": "Card",
                   "Transform": {
@@ -48627,22 +48800,22 @@
                   "XmlUI": ""
                 },
                 {
-                  "GUID": "2812e8",
+                  "GUID": "b1b353",
                   "Name": "Card",
                   "Transform": {
-                    "posX": -40.5,
-                    "posY": 1.68131125,
+                    "posX": -30.5,
+                    "posY": 2.00175762,
                     "posZ": 5.0,
-                    "rotX": -4.57554741E-08,
-                    "rotY": 179.998566,
-                    "rotZ": -9.949259E-07,
+                    "rotX": -5.13986743E-05,
+                    "rotY": 179.998413,
+                    "rotZ": -0.000105451771,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
-                  "Nickname": "Coyoacán",
+                  "Nickname": "Zócalo",
                   "Description": "Mexico. Contemporain.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04173\",\n  \"locationBack\": {\n    \"connections\": \"Diamond|Triangle|Circle|Heart\",\n    \"icons\": \"Star\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Diamond|Triangle|Circle|Heart\",\n    \"icons\": \"Star\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04171\",\n  \"locationBack\": {\n    \"connections\": \"Heart|Square|Star|Circle\",\n    \"icons\": \"Diamond\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Heart|Square|Star|Circle\",\n    \"icons\": \"Diamond\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -48667,7 +48840,7 @@
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
                   "Hands": true,
-                  "CardID": 115707,
+                  "CardID": 115705,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "1157": {
@@ -48743,189 +48916,15 @@
                   "XmlUI": ""
                 },
                 {
-                  "GUID": "b1b353",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -30.5,
-                    "posY": 2.00175762,
-                    "posZ": 5.0,
-                    "rotX": -5.13986743E-05,
-                    "rotY": 179.998413,
-                    "rotZ": -0.000105451771,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Zócalo",
-                  "Description": "Mexico. Contemporain.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04171\",\n  \"locationBack\": {\n    \"connections\": \"Heart|Square|Star|Circle\",\n    \"icons\": \"Diamond\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Heart|Square|Star|Circle\",\n    \"icons\": \"Diamond\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 115705,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1157": {
-                      "FaceURL": "https://i.imgur.com/140TZVj.jpg",
-                      "BackURL": "https://i.imgur.com/StzZYY1.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "e60235",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -35.5,
-                    "posY": 1.97145224,
-                    "posZ": -4.0,
-                    "rotX": -5.329876E-06,
-                    "rotY": 180.002472,
-                    "rotZ": 8.236765E-07,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Xochimilco",
-                  "Description": "Mexico. Contemporain.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04172\",\n  \"locationBack\": {\n    \"connections\": \"Diamond|Star\",\n    \"icons\": \"Heart\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Diamond|Star\",\n    \"icons\": \"Heart\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 115704,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1157": {
-                      "FaceURL": "https://i.imgur.com/140TZVj.jpg",
-                      "BackURL": "https://i.imgur.com/StzZYY1.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "a2975f",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -30.5,
-                    "posY": 2.00218725,
-                    "posZ": 4.5,
-                    "rotX": 0.000288415875,
-                    "rotY": 179.998581,
-                    "rotZ": -0.000260568981,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"53042\",\n  \"locationBack\": {\n    \"connections\": \"Heart|Square|Star|Circle\",\n    \"icons\": \"Diamond\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Heart|Square|Star|Circle\",\n    \"icons\": \"Diamond\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 1159108,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "11591": {
-                      "FaceURL": "https://i.imgur.com/2Z0zFm4.jpg",
-                      "BackURL": "https://i.imgur.com/dqebp8j.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "0f80c4",
+                  "GUID": "e912cc",
                   "Name": "Deck",
                   "Transform": {
                     "posX": -30.0,
-                    "posY": 2.03358555,
-                    "posZ": 5.0,
-                    "rotX": 0.000199182745,
-                    "rotY": 180.000031,
-                    "rotZ": -0.000130878325,
+                    "posY": 2.03839183,
+                    "posZ": 5.5,
+                    "rotX": -0.000201005241,
+                    "rotY": 180.0005,
+                    "rotZ": -0.000135767972,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
@@ -48959,11 +48958,12 @@
                   "Hands": false,
                   "SidewaysCard": false,
                   "DeckIDs": [
-                    276725,
-                    276724,
-                    276726,
-                    276727,
-                    276723
+                    276738,
+                    276739,
+                    276740,
+                    276741,
+                    276742,
+                    276743
                   ],
                   "CustomDeck": {
                     "2767": {
@@ -48981,138 +48981,22 @@
                   "XmlUI": "",
                   "ContainedObjects": [
                     {
-                      "GUID": "08a3f3",
+                      "GUID": "0137d0",
                       "Name": "Card",
                       "Transform": {
-                        "posX": -20.50006,
-                        "posY": 1.81206226,
-                        "posZ": 11.4999914,
-                        "rotX": 0.1562843,
-                        "rotY": 179.998428,
-                        "rotZ": 0.465953976,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "",
-                      "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 2,\n  \"id\": \"53078\",\n  \"traits\": \"Humanoid. Monster. Serpent.\",\n  \"type\": \"Enemy\",\n  \"vengeance\": 0\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 276725,
-                      "SidewaysCard": false,
-                      "CustomDeck": {
-                        "2767": {
-                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": false,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    },
-                    {
-                      "GUID": "f55c9f",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -20.5000744,
-                        "posY": 1.78024757,
-                        "posZ": 12.0000153,
-                        "rotX": 0.0327863768,
-                        "rotY": 180.000992,
-                        "rotZ": 359.768616,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "",
-                      "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 5,\n  \"id\": \"53079\",\n  \"traits\": \"Construct. Serpent.\",\n  \"type\": \"Enemy\"\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 276724,
-                      "SidewaysCard": false,
-                      "CustomDeck": {
-                        "2767": {
-                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": false,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    },
-                    {
-                      "GUID": "008492",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -20.0000782,
-                        "posY": 1.84702587,
-                        "posZ": 11.4999237,
-                        "rotX": 0.03523856,
+                        "posX": -31.5,
+                        "posY": 1.89018869,
+                        "posZ": 15.5,
+                        "rotX": -0.000308342045,
                         "rotY": 180.000046,
-                        "rotZ": 0.0285310037,
+                        "rotZ": 180.000656,
                         "scaleX": 1.0,
                         "scaleY": 1.0,
                         "scaleZ": 1.0
                       },
                       "Nickname": "",
                       "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 2,\n  \"id\": \"53078\",\n  \"traits\": \"Humanoid. Monster. Serpent.\",\n  \"type\": \"Enemy\",\n  \"vengeance\": 0\n}",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"53073\",\n  \"traits\": \"Scheme.\",\n  \"type\": \"Treachery\"\n}",
                       "AltLookAngle": {
                         "x": 0.0,
                         "y": 0.0,
@@ -49137,7 +49021,7 @@
                       "GridProjection": false,
                       "HideWhenFaceDown": true,
                       "Hands": true,
-                      "CardID": 276726,
+                      "CardID": 276738,
                       "SidewaysCard": false,
                       "CustomDeck": {
                         "2767": {
@@ -49155,80 +49039,22 @@
                       "XmlUI": ""
                     },
                     {
-                      "GUID": "573e64",
+                      "GUID": "c70362",
                       "Name": "Card",
                       "Transform": {
-                        "posX": -20.4946575,
-                        "posY": 1.86634338,
-                        "posZ": 11.478857,
-                        "rotX": 0.129607916,
-                        "rotY": 180.00058,
-                        "rotZ": 359.572784,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "",
-                      "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 2,\n  \"id\": \"53078\",\n  \"traits\": \"Humanoid. Monster. Serpent.\",\n  \"type\": \"Enemy\",\n  \"vengeance\": 0\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 276727,
-                      "SidewaysCard": false,
-                      "CustomDeck": {
-                        "2767": {
-                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
-                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": false,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    },
-                    {
-                      "GUID": "67be70",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -20.0,
-                        "posY": 1.8825599,
-                        "posZ": 11.0,
-                        "rotX": 0.0002876886,
+                        "posX": -32.0,
+                        "posY": 1.88055515,
+                        "posZ": 16.0,
+                        "rotX": 0.000219654772,
                         "rotY": 180.0,
-                        "rotZ": -2.57580177E-05,
+                        "rotZ": 180.000137,
                         "scaleX": 1.0,
                         "scaleY": 1.0,
                         "scaleZ": 1.0
                       },
                       "Nickname": "",
                       "Description": "",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"53080\",\n  \"traits\": \"Power.\",\n  \"type\": \"Treachery\"\n}",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"53073\",\n  \"traits\": \"Scheme.\",\n  \"type\": \"Treachery\"\n}",
                       "AltLookAngle": {
                         "x": 0.0,
                         "y": 0.0,
@@ -49253,7 +49079,239 @@
                       "GridProjection": false,
                       "HideWhenFaceDown": true,
                       "Hands": true,
-                      "CardID": 276723,
+                      "CardID": 276739,
+                      "SidewaysCard": false,
+                      "CustomDeck": {
+                        "2767": {
+                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": false,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    },
+                    {
+                      "GUID": "f33f8f",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -32.0,
+                        "posY": 1.87092674,
+                        "posZ": 16.0,
+                        "rotX": 0.000225633237,
+                        "rotY": 180.000015,
+                        "rotZ": 180.000153,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "",
+                      "Description": "",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 4,\n  \"id\": \"53072\",\n  \"traits\": \"Humanoid. Cultist.\",\n  \"type\": \"Enemy\",\n  \"uses\": {\n    \"count\": 0,\n    \"token\": \"doom\",\n    \"type\": \"Doom\"\n  }\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 276740,
+                      "SidewaysCard": false,
+                      "CustomDeck": {
+                        "2767": {
+                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": false,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    },
+                    {
+                      "GUID": "9e02c9",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -32.5,
+                        "posY": 1.86129928,
+                        "posZ": 16.0,
+                        "rotX": 7.920363E-05,
+                        "rotY": 180.0,
+                        "rotZ": 180.000183,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "",
+                      "Description": "",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 1,\n  \"id\": \"53071\",\n  \"traits\": \"Humanoid. Cultist.\",\n  \"type\": \"Enemy\"\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 276741,
+                      "SidewaysCard": false,
+                      "CustomDeck": {
+                        "2767": {
+                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": false,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    },
+                    {
+                      "GUID": "a8532e",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -32.0,
+                        "posY": 1.82734084,
+                        "posZ": 15.5,
+                        "rotX": 0.00214312552,
+                        "rotY": 180.000015,
+                        "rotZ": 180.001129,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "",
+                      "Description": "",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 1,\n  \"id\": \"53071\",\n  \"traits\": \"Humanoid. Cultist.\",\n  \"type\": \"Enemy\"\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 276742,
+                      "SidewaysCard": false,
+                      "CustomDeck": {
+                        "2767": {
+                          "FaceURL": "https://i.imgur.com/MlePxib.jpg",
+                          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": false,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    },
+                    {
+                      "GUID": "06d397",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -27.5,
+                        "posY": 1.89016426,
+                        "posZ": 13.5,
+                        "rotX": 0.00133632612,
+                        "rotY": 180.000381,
+                        "rotZ": 0.00207463559,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "",
+                      "Description": "",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 1,\n  \"id\": \"53071\",\n  \"traits\": \"Humanoid. Cultist.\",\n  \"type\": \"Enemy\"\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 276743,
                       "SidewaysCard": false,
                       "CustomDeck": {
                         "2767": {
@@ -49271,64 +49329,6 @@
                       "XmlUI": ""
                     }
                   ]
-                },
-                {
-                  "GUID": "fb3366",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -49.5044022,
-                    "posY": 1.3202852,
-                    "posZ": 4.99996,
-                    "rotX": 0.002629614,
-                    "rotY": 180.006042,
-                    "rotZ": 10.7526827,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Parc de Chapultepec",
-                  "Description": "Mexico. Contemporain.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"04170\",\n  \"locationBack\": {\n    \"connections\": \"Star\",\n    \"icons\": \"Triangle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Star\",\n    \"icons\": \"Triangle\"\n  },\n  \"traits\": \"Mexico City. Present-Day.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 115703,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1157": {
-                      "FaceURL": "https://i.imgur.com/140TZVj.jpg",
-                      "BackURL": "https://i.imgur.com/StzZYY1.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
                 }
               ]
             },
@@ -49338,9 +49338,9 @@
               "Transform": {
                 "posX": 25.0000019,
                 "posY": 1.51367974,
-                "posZ": -5.500008,
-                "rotX": 0.0108915111,
-                "rotY": 179.999939,
+                "posZ": -5.500009,
+                "rotX": 0.010891567,
+                "rotY": 179.999954,
                 "rotZ": 180.004959,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -49397,9 +49397,9 @@
                 "posX": 35.0002747,
                 "posY": 1.50095332,
                 "posZ": 0.015900027,
-                "rotX": 0.00059094996,
+                "rotX": 0.0005909325,
                 "rotY": -0.00440049637,
-                "rotZ": -0.00107031176,
+                "rotZ": -0.001070257,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -49453,9 +49453,9 @@
                 "posX": -19.00001,
                 "posY": 1.84000123,
                 "posZ": 2.999986,
-                "rotX": -4.917574E-06,
+                "rotX": -4.8586503E-06,
                 "rotY": 179.984711,
-                "rotZ": 2.163567E-07,
+                "rotZ": -7.628134E-09,
                 "scaleX": 0.7,
                 "scaleY": 0.7,
                 "scaleZ": 0.7
@@ -49583,9 +49583,9 @@
                 "posX": 37.5002,
                 "posY": 1.47985983,
                 "posZ": -10.5,
-                "rotX": -5.47623369E-09,
+                "rotX": -1.93848E-08,
                 "rotY": 179.9977,
-                "rotZ": 1.24968285E-08,
+                "rotZ": -6.84610342E-08,
                 "scaleX": 2.73333335,
                 "scaleY": 1.0,
                 "scaleZ": 2.73333335
@@ -49629,7 +49629,7 @@
                   "Stretch": true
                 }
               },
-              "LuaScript": "local PLAYMAT_POSITION = { 5.79, 1.36, 11.68 }\r\nlocal PLAYMAT_SCALE = { 42, 2, 42 }\r\nDEBUG = false\r\n\r\nlocal locations = {\r\n    ['Diamond'] = { position = { 28.00, 1.49, -12.50 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Heart'] = { position = { 33.00, 1.49, -9.00 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Square'] = { position = { 33.00, 1.49, -12.50 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Triangle'] = { position = { 30.50, 1.49, -12.50 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Star'] = { position = { 30.50, 1.49, -9.00 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Circle'] = { position = { 28.00, 1.49, -9.00 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Exploration'] = { position = { 35.00, 2, 2.50 }, rotation = { 0.00, 180.00, 180.00 } },\r\n}\r\n\r\nlocal data = {\r\n    click_function = \"swapCard\",\r\n    function_owner = self,\r\n    label = \"Échanger\",\r\n    position = { 0, 0.1, 0.7 },\r\n    scale = { 0.2, 0.5, 0.2 },\r\n    width = 2000,\r\n    height = 450,\r\n    font_size = 300,\r\n    color = { 0.796, 0.74, 0.667, 1 },\r\n    tooltip = \"Échanger un lieu Antique contre un lieu Contemporain (ou vice-versa)\"\r\n}\r\nself.createButton(data)\r\n\r\n\r\nswapCard = function()\r\n    data = {}\r\n    data.position = self.getPosition()\r\n    data.scale = { 1, 1, 1 }\r\n    local objects = hitList(data)\r\n    local cardToSwap\r\n    local metadataToSwap\r\n    for _, obj in ipairs(objects) do\r\n        if obj.type == 'Card' then\r\n            local cardData = obj.getData()\r\n            local metadata = Global.call('getMetadata', cardData)\r\n            if metadata and metadata.locationFront ~= nil then\r\n                cardToSwap = obj\r\n                metadataToSwap = metadata\r\n            end\r\n        end\r\n    end\r\n\r\n    if metadataToSwap == nil then\r\n        broadcastToAll(\"Merci de mettre une carte éligible sur l'échangeur de lieux\", \"White\")\r\n        return\r\n    end\r\n    local cardSwaped\r\n    local metadataSwaped\r\n    data.position = PLAYMAT_POSITION\r\n    data.scale = PLAYMAT_SCALE\r\n    objects = hitList(data)\r\n    for _, obj in ipairs(objects) do\r\n        if obj.type == 'Card' then\r\n            local cardData = obj.getData()\r\n            local metadata = Global.call('getMetadata', cardData)\r\n            if metadata and metadata.locationFront ~= nil then\r\n                if metadata.locationFront.icons == metadataToSwap.locationFront.icons then\r\n                    cardSwaped = obj\r\n                    metadataSwaped = metadata\r\n                end\r\n            end\r\n        end\r\n    end\r\n\r\n    if metadataSwaped == nil then\r\n        broadcastToAll(\"Pas de carte correspondante en zone de jeu\", \"White\")\r\n        return\r\n    end\r\n\r\n\r\n    local key\r\n    if string.find(metadataSwaped.traits, 'Ancien') then\r\n        key = 'Exploration'\r\n    else\r\n        key = metadataSwaped.locationFront.icons\r\n    end\r\n\r\n    local destination = cardSwaped.getPosition()\r\n    local rotation = { 0, 180, 0 }\r\n    cardToSwap.setPositionSmooth(destination, false, false)\r\n    cardToSwap.setRotationSmooth(rotation, false, false)\r\n    destination = locations[key].position\r\n    rotation = locations[key].rotation\r\n    cardSwaped.setPositionSmooth(destination, false, false)\r\n    cardSwaped.setRotationSmooth(rotation, false, false)\r\n\r\n    Wait.time(function()\r\n        if key == 'Exploration' then\r\n            data.position = locations['Exploration'].position\r\n            data.scale = { 1, 3, 1 }\r\n            local obj = hitList(data)\r\n            for _, object in ipairs(obj) do\r\n                if object.type == \"Deck\" then\r\n                    object.shuffle()\r\n                end\r\n            end\r\n        end\r\n    end, 3)\r\nend\r\n\r\n\r\n\r\nfunction hitList(params)\r\n    local obj = {}\r\n    local hitList = Physics.cast({\r\n        origin       = params.position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = params.scale,\r\n        max_distance = 0,\r\n        debug        = DEBUG,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        table.insert(obj, object.hit_object)\r\n    end\r\n\r\n    return obj\r\nend\r\n\r\ngetLocationData = function(obj)\r\n    if obj.type == 'Card' then\r\n        local cardData = obj.getData()\r\n        Global.call('getMetadata', cardData)\r\n        if metadata and metadata.locationFront ~= nil then\r\n            local row = {\r\n                cardData = cardData,\r\n                metadata = metadata\r\n            }\r\n            return row\r\n        end\r\n    end\r\nend\r\n",
+              "LuaScript": "local PLAYMAT_POSITION = { 5.79, 1.36, 11.68 }\r\nlocal PLAYMAT_SCALE = { 42, 2, 42 }\r\nDEBUG = false\r\n\r\nlocal locations = {\r\n    ['Diamond'] = { position = { 28.00, 1.49, -12.50 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Heart'] = { position = { 33.00, 1.49, -9.00 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Square'] = { position = { 33.00, 1.49, -12.50 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Triangle'] = { position = { 30.50, 1.49, -12.50 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Star'] = { position = { 30.50, 1.49, -9.00 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Circle'] = { position = { 28.00, 1.49, -9.00 }, rotation = { 0.00, 180.00, 180.00 } },\r\n    ['Exploration'] = { position = { 35.00, 2, 2.50 }, rotation = { 0.00, 180.00, 180.00 } },\r\n}\r\n\r\nlocal data = {\r\n    click_function = \"swapCard\",\r\n    function_owner = self,\r\n    label = \"Échanger\",\r\n    position = { 0, 0.1, 0.7 },\r\n    scale = { 0.2, 0.5, 0.2 },\r\n    width = 2000,\r\n    height = 450,\r\n    font_size = 300,\r\n    color = { 0.796, 0.74, 0.667, 1 },\r\n    tooltip = \"Échanger un lieu Antique contre un lieu Contemporain (ou vice-versa)\"\r\n}\r\nself.createButton(data)\r\n\r\n\r\nswapCard = function()\r\n    data = {}\r\n    data.position = self.getPosition()\r\n    data.scale = { 1, 1, 1 }\r\n    local objects = hitList(data)\r\n    local cardToSwap\r\n    local metadataToSwap\r\n    for _, obj in ipairs(objects) do\r\n        if obj.type == 'Card' then\r\n            local cardData = obj.getData()\r\n            local metadata = Global.call('getMetadata', cardData)\r\n            if metadata and metadata.locationFront ~= nil then\r\n                cardToSwap = obj\r\n                metadataToSwap = metadata\r\n            end\r\n        end\r\n    end\r\n\r\n    if metadataToSwap == nil then\r\n        broadcastToAll(\"Merci de mettre une carte éligible sur l'échangeur de lieux\", \"White\")\r\n        return\r\n    end\r\n    local cardSwaped\r\n    local metadataSwaped\r\n    data.position = PLAYMAT_POSITION\r\n    data.scale = PLAYMAT_SCALE\r\n    objects = hitList(data)\r\n    for _, obj in ipairs(objects) do\r\n        if obj.type == 'Card' then\r\n            local cardData = obj.getData()\r\n            local metadata = Global.call('getMetadata', cardData)\r\n            if metadata and metadata.locationFront ~= nil then\r\n                if metadata.locationFront.icons == metadataToSwap.locationFront.icons then\r\n                    cardSwaped = obj\r\n                    metadataSwaped = metadata\r\n                end\r\n            end\r\n        end\r\n    end\r\n\r\n    if metadataSwaped == nil then\r\n        broadcastToAll(\"Pas de carte correspondante en zone de jeu\", \"White\")\r\n        return\r\n    end\r\n\r\n\r\n    local key\r\n    if string.find(metadataSwaped.traits, 'Ancien') then\r\n        key = 'Exploration'\r\n    else\r\n        key = metadataSwaped.locationFront.icons\r\n    end\r\n    local rotation = cardToSwap.getRotation()\r\n    local destination = cardSwaped.getPosition()\r\n    cardToSwap.setPositionSmooth(destination, false, false)\r\n    cardToSwap.setRotationSmooth(rotation, false, false)\r\n    destination = locations[key].position\r\n    rotation = locations[key].rotation\r\n    cardSwaped.setPositionSmooth(destination, false, false)\r\n    cardSwaped.setRotationSmooth(rotation, false, false)\r\n\r\n    Wait.time(function()\r\n        if key == 'Exploration' then\r\n            data.position = locations['Exploration'].position\r\n            data.scale = { 1, 3, 1 }\r\n            local obj = hitList(data)\r\n            for _, object in ipairs(obj) do\r\n                if object.type == \"Deck\" then\r\n                    object.shuffle()\r\n                end\r\n            end\r\n        end\r\n    end, 3)\r\nend\r\n\r\n\r\n\r\nfunction hitList(params)\r\n    local obj = {}\r\n    local hitList = Physics.cast({\r\n        origin       = params.position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = params.scale,\r\n        max_distance = 0,\r\n        debug        = DEBUG,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        table.insert(obj, object.hit_object)\r\n    end\r\n\r\n    return obj\r\nend\r\n\r\ngetLocationData = function(obj)\r\n    if obj.type == 'Card' then\r\n        local cardData = obj.getData()\r\n        Global.call('getMetadata', cardData)\r\n        if metadata and metadata.locationFront ~= nil then\r\n            local row = {\r\n                cardData = cardData,\r\n                metadata = metadata\r\n            }\r\n            return row\r\n        end\r\n    end\r\nend\r\n",
               "LuaScriptState": "",
               "XmlUI": "",
               "AttachedSnapPoints": [
@@ -49640,8 +49640,8 @@
                     "z": -0.000311226031
                   },
                   "Rotation": {
-                    "x": 2.91486071E-08,
-                    "y": 0.0295912251,
+                    "x": 2.91486142E-08,
+                    "y": 0.02959123,
                     "z": -1.01432129E-09
                   }
                 }
@@ -49651,11 +49651,11 @@
               "GUID": "f1e349",
               "Name": "Deck",
               "Transform": {
-                "posX": 12.5010271,
+                "posX": 12.5010281,
                 "posY": 1.53161466,
-                "posZ": -6.01680374,
-                "rotX": 0.004949087,
-                "rotY": 90.00525,
+                "posZ": -6.0168047,
+                "rotX": 0.00494896574,
+                "rotY": 90.0052261,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -49852,12 +49852,12 @@
           "GUID": "e4b5bc",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -9.484989,
-            "posY": 0.979997635,
-            "posZ": 44.50126,
-            "rotX": -4.81038342E-06,
-            "rotY": 180.0,
-            "rotZ": 1.121789E-06,
+            "posX": -9.484988,
+            "posY": 0.9799977,
+            "posZ": 44.5012627,
+            "rotX": -5.26068743E-06,
+            "rotY": 179.999969,
+            "rotZ": -5.57097849E-07,
             "scaleX": 1.20052147,
             "scaleY": 0.249882311,
             "scaleZ": 1.3145982
