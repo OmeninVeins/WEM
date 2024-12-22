@@ -4962,7 +4962,7 @@
           },
           "Nickname": "Joyau de Sarnath",
           "Description": "Fait des Rêves une Réalité",
-          "GMNotes": "{\n  \"additionnalUses\": {\n    \"count\": 0,\n    \"token\": \"doom\",\n    \"type\": \"Doom\"\n  },\n  \"class\": \"Neutral\",\n  \"id\": \"71052\",\n  \"type\": \"Asset\",\n  \"uses\": {\n    \"count\": 3,\n    \"token\": \"health\",\n    \"type\": \"health\"\n  }\n}",
+          "GMNotes": "{\n  \"additionnalUses\": {\n    \"count\": 1,\n    \"token\": \"doom\",\n    \"type\": \"Doom\"\n  },\n  \"class\": \"Neutral\",\n  \"id\": \"71052\",\n  \"type\": \"Asset\",\n  \"uses\": {\n    \"count\": 3,\n    \"token\": \"health\",\n    \"type\": \"health\"\n  }\n}",
           "AltLookAngle": {
             "x": 0.0,
             "y": 0.0,
