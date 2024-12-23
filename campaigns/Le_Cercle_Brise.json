@@ -20,12 +20,12 @@
       "GUID": "dc7cca",
       "Name": "Custom_Model_Bag",
       "Transform": {
-        "posX": -61.0003242,
-        "posY": 0.980014145,
+        "posX": -61.0002441,
+        "posY": 0.980000138,
         "posZ": 19.49972,
-        "rotX": -4.93401E-06,
-        "rotY": 180.000519,
-        "rotZ": 4.39612961E-07,
+        "rotX": -4.92772051E-06,
+        "rotY": 180.000549,
+        "rotZ": 5.715316E-07,
         "scaleX": 0.6144237,
         "scaleY": 0.08580595,
         "scaleZ": 0.6144237
@@ -90,12 +90,12 @@
           "GUID": "06deed",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 19.4999962,
-            "posY": 0.9799973,
-            "posZ": 47.4999924,
-            "rotX": -4.974918E-06,
-            "rotY": 179.994247,
-            "rotZ": 6.76446E-07,
+            "posX": 19.4996853,
+            "posY": 0.980087757,
+            "posZ": 47.4999,
+            "rotX": -4.42527926E-06,
+            "rotY": 179.9947,
+            "rotZ": 6.98084648E-07,
             "scaleX": 1.23308516,
             "scaleY": 0.256660283,
             "scaleZ": 1.35025632
@@ -153,19 +153,64 @@
             "Order": 0
           },
           "LuaScript": "-- Utility memory bag by Directsun\r\n-- Version 2.7.0\r\n-- Fork of Memory Bag 2.0 by MrStump\r\n--\r\n-- Want to contribute? Create an issue or fork the code on GitHub and submit a pull request:\r\n-- https://github.com/sunflowermans/TTS-UtilityMemoryBag\r\n\r\n\r\nfunction updateSave()\r\n    local data_to_save = {[\"ml\"]=memoryList}\r\n    saved_data = JSON.encode(data_to_save)\r\n    self.script_state = saved_data\r\nend\r\n\r\nfunction combineMemoryFromBagsWithin()\r\n    local bagObjList = self.getObjects()\r\n    for _, bagObj in ipairs(bagObjList) do\r\n        local data = bagObj.lua_script_state\r\n        if data ~= nil then\r\n            local j = JSON.decode(data)\r\n            if j ~= nil and j.ml ~= nil then\r\n                for guid, entry in pairs(j.ml) do\r\n                    memoryList[guid] = entry\r\n                end\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction updateMemoryWithMoves()\r\n    memoryList = memoryListBackup\r\n    --get the first transposed object's coordinates\r\n    local obj = getObjectFromGUID(moveGuid)\r\n\r\n    -- p1 is where needs to go, p2 is where it was\r\n    local refObjPos = memoryList[moveGuid].pos\r\n    local deltaPos = findOffsetDistance(obj.getPosition(), refObjPos, nil)\r\n    local movedRotation = obj.getRotation()\r\n    for guid, entry in pairs(memoryList) do\r\n        memoryList[guid].pos.x = entry.pos.x - deltaPos.x\r\n        memoryList[guid].pos.y = entry.pos.y - deltaPos.y\r\n        memoryList[guid].pos.z = entry.pos.z - deltaPos.z\r\n        -- memoryList[guid].rot.x = movedRotation.x\r\n        -- memoryList[guid].rot.y = movedRotation.y\r\n        -- memoryList[guid].rot.z = movedRotation.z\r\n    end\r\n\r\n    --theList[obj.getGUID()] = {\r\n    --    pos={x=round(pos.x,4), y=round(pos.y,4), z=round(pos.z,4)},\r\n    --    rot={x=round(rot.x,4), y=round(rot.y,4), z=round(rot.z,4)},\r\n    --    lock=obj.getLock()\r\n    --}\r\n    moveList = {}\r\nend\r\n\r\nfunction onload(saved_data)\r\n\r\n    fresh = true\r\n    if saved_data ~= \"\" then\r\n        local loaded_data = JSON.decode(saved_data)\r\n        --Set up information off of loaded_data\r\n        memoryList = loaded_data.ml\r\n    else\r\n        --Set up information for if there is no saved saved data\r\n        memoryList = {}\r\n\r\n    end\r\n\r\n    moveList = {}\r\n    moveGuid = nil\r\n\r\n    if next(memoryList) == nil then\r\n        createSetupButton()\r\n    else\r\n        fresh = false\r\n        createMemoryActionButtons()\r\n    end\r\nend\r\n\r\n\r\n--Beginning Setup\r\n\r\n\r\n--Make setup button\r\n function createSetupButton()\r\n    self.createButton({\r\n      label=\"Config\", click_function=\"buttonClick_setup\", function_owner=self,\r\n      position={0,0.1,-2.1}, rotation={0,0,0}, height=275, width=625,\r\n      font_size=150, color={0,0,0}, font_color={1,1,1}\r\n    })\r\n end\r\n\r\n--Triggered by Transpose button\r\nfunction buttonClick_transpose()\r\n    moveGuid = nil\r\n    broadcastToAll(\"Select one object and move it- all objects will move relative to the new location\", {0.75, 0.75, 1})\r\n    memoryListBackup = duplicateTable(memoryList)\r\n    memoryList = {}\r\n    moveList = {}\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n    createButtonsOnAllObjects(true)\r\n    createSetupActionButtons(true)\r\nend\r\n\r\n--Triggered by setup button,\r\nfunction buttonClick_setup()\r\n    memoryListBackup = duplicateTable(memoryList)\r\n    memoryList = {}\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n    createButtonsOnAllObjects(false)\r\n    createSetupActionButtons(false)\r\nend\r\n\r\nfunction getAllObjectsInMemory()\r\n    local objTable = {}\r\n    local curObj = {}\r\n\r\n    for guid in pairs(memoryListBackup) do\r\n        curObj = getObjectFromGUID(guid)\r\n        table.insert(objTable, curObj)\r\n    end\r\n\r\n    return objTable\r\n    -- return getAllObjects()\r\nend\r\n\r\n--Creates selection buttons on objects\r\nfunction createButtonsOnAllObjects(move)\r\n    buttonIndexMap = {}\r\n    local howManyButtons = 0\r\n\r\n    local objsToHaveButtons = {}\r\n    if move == true then\r\n        objsToHaveButtons = getAllObjectsInMemory()\r\n    else\r\n        objsToHaveButtons = getAllObjects()\r\n    end\r\n\r\n    for _, obj in ipairs(objsToHaveButtons) do\r\n        if obj ~= self then\r\n            --On a normal bag, the button positions aren't the same size as the bag.\r\n            globalScaleFactor = 1* 1/self.getScale().x\r\n            --Super sweet math to set button positions\r\n            local selfPos = self.getPosition()\r\n            local objPos = obj.getPosition()\r\n            local deltaPos = findOffsetDistance(selfPos, objPos, obj)\r\n            local objPos = rotateLocalCoordinates(deltaPos, self)\r\n            objPos.x = -objPos.x * globalScaleFactor\r\n            objPos.y = objPos.y * globalScaleFactor + 2\r\n            objPos.z = objPos.z * globalScaleFactor * 0.9\r\n            --Workaround for custom PDFs\r\n            if obj.Book then\r\n                objPos.y = objPos.y + 0.5\r\n            end\r\n            --Offset rotation of bag\r\n            local rot = self.getRotation()\r\n            rot.y = -rot.y + 180\r\n            --Create function\r\n            local funcName = \"selectButton_\" .. howManyButtons\r\n            local func = function() buttonClick_selection(obj, move) end\r\n            local color = {0.75,0.25,0.25,0.6}\r\n            local colorMove = {0,0,1,0.6}\r\n            if move == true then\r\n                color = colorMove\r\n            end\r\n            self.setVar(funcName, func)\r\n            self.createButton({\r\n                click_function=funcName, function_owner=self,\r\n                position=objPos, rotation=rot, height=500, width=500,\r\n                color=color,\r\n            })\r\n            buttonIndexMap[obj.getGUID()] = howManyButtons\r\n            howManyButtons = howManyButtons + 1\r\n        end\r\n    end\r\nend\r\n\r\n--Creates submit and cancel buttons\r\nfunction createSetupActionButtons(move)\r\n    self.createButton({\r\n        label=\"Annuler\", click_function=\"buttonClick_cancel\", function_owner=self,\r\n      position={-0.7,0.1,2.1}, rotation={0,0,0}, height=275, width=625,\r\n      font_size=145, color={0,0,0}, font_color={1,1,1}\r\n    })\r\n\r\n    self.createButton({\r\n        label=\"Valider\", click_function=\"buttonClick_submit\", function_owner=self,\r\n        position={-0.7,0.3,2.6}, rotation={0,0,0}, height=275, width=625,\r\n        font_size=140, color={0,0,0}, font_color={1,1,1}\r\n    })\r\n\r\n    if move == false then\r\n      self.createButton({\r\n          label=\"Ajouter\", click_function=\"buttonClick_add\", function_owner=self,\r\n          position={0.7,0.3,2.1}, rotation={0,0,0}, height=275, width=625,\r\n          font_size=140, color={0,0,0}, font_color={0.25,1,0.25}\r\n      })\r\n\r\n        self.createButton({\r\n            label=\"Sélection\", click_function=\"editDragSelection\", function_owner=self,\r\n            position={-0.7,0.3,3.1}, rotation={0,0,0}, height=275, width=625,\r\n            font_size=125, color={0,0,0}, font_color={1,1,1}\r\n        })\r\n\r\n        if fresh == false then\r\n                self.createButton({\r\n                    label=\"Mise à jour\", click_function=\"buttonClick_setNew\", function_owner=self,\r\n                    position={0.7,0.3,3.1}, rotation={0,0,0}, height=275, width=625,\r\n                    font_size=105, color={0,0,0}, font_color={0.75,0.75,1}\r\n                })\r\n                self.createButton({\r\n                    label=\"Retirer\", click_function=\"buttonClick_remove\", function_owner=self,\r\n                    position={0.7,0.3,2.6}, rotation={0,0,0}, height=275, width=625,\r\n                    font_size=140, color={0,0,0}, font_color={1,0.25,0.25}\r\n                })\r\n            end\r\n        end\r\n\r\n        self.createButton({\r\n            label=\"Reset\", click_function=\"buttonClick_reset\", function_owner=self,\r\n            position={0,0.3,-2.1}, rotation={0,0,0}, height=275, width=625,\r\n            font_size=165, color={0,0,0}, font_color={1,1,1}\r\n        })\r\n    end\r\n\r\n\r\n--During Setup\r\n\r\n\r\n--Checks or unchecks buttons\r\nfunction buttonClick_selection(obj, move)\r\n    local index = buttonIndexMap[obj.getGUID()]\r\n    local colorMove = {0,0,1,0.6}\r\n    local color = {0,1,0,0.6}\r\n\r\n    previousGuid = selectedGuid\r\n    selectedGuid = obj.getGUID()\r\n\r\n    theList = memoryList\r\n    if move == true then\r\n        theList = moveList\r\n        if previousGuid ~= nil and previousGuid ~= selectedGuid then\r\n            local prevObj = getObjectFromGUID(previousGuid)\r\n            prevObj.highlightOff()\r\n            self.editButton({index=previousIndex, color=colorMove})\r\n            theList[previousGuid] = nil\r\n        end\r\n        previousIndex = index\r\n    end\r\n\r\n    if theList[selectedGuid] == nil then\r\n        self.editButton({index=index, color=color})\r\n        --Adding pos/rot to memory table\r\n        local pos, rot = obj.getPosition(), obj.getRotation()\r\n        --I need to add it like this or it won't save due to indexing issue\r\n        theList[obj.getGUID()] = {\r\n            pos={x=round(pos.x,4), y=round(pos.y,4), z=round(pos.z,4)},\r\n            rot={x=round(rot.x,4), y=round(rot.y,4), z=round(rot.z,4)},\r\n            lock=obj.getLock(),\r\n            tint=obj.getColorTint()\r\n        }\r\n        obj.highlightOn({0,1,0})\r\n    else\r\n        color = {0.75,0.25,0.25,0.6}\r\n        if move == true then\r\n            color = colorMove\r\n        end\r\n        self.editButton({index=index, color=color})\r\n        theList[obj.getGUID()] = nil\r\n        obj.highlightOff()\r\n    end\r\nend\r\n\r\nfunction editDragSelection(bagObj, player, remove)\r\n    local selectedObjs = Player[player].getSelectedObjects()\r\n    if not remove then\r\n        for _, obj in ipairs(selectedObjs) do\r\n            local index = buttonIndexMap[obj.getGUID()]\r\n            --Ignore if already in the memory list, or does not have a button\r\n            if index and not memoryList[obj.getGUID()] then\r\n                self.editButton({index=index, color={0,1,0,0.6}})\r\n                --Adding pos/rot to memory table\r\n                local pos, rot = obj.getPosition(), obj.getRotation()\r\n                --I need to add it like this or it won't save due to indexing issue\r\n                memoryList[obj.getGUID()] = {\r\n                    pos={x=round(pos.x,4), y=round(pos.y,4), z=round(pos.z,4)},\r\n                    rot={x=round(rot.x,4), y=round(rot.y,4), z=round(rot.z,4)},\r\n                    lock=obj.getLock(),\r\n                    tint=obj.getColorTint()\r\n                }\r\n                obj.highlightOn({0,1,0})\r\n            end\r\n        end\r\n    else\r\n        for _, obj in ipairs(selectedObjs) do\r\n            local index = buttonIndexMap[obj.getGUID()]\r\n            if index and memoryList[obj.getGUID()] then\r\n                color = {0.75,0.25,0.25,0.6}\r\n                self.editButton({index=index, color=color})\r\n                memoryList[obj.getGUID()] = nil\r\n                obj.highlightOff()\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\n--Cancels selection process\r\nfunction buttonClick_cancel()\r\n    memoryList = memoryListBackup\r\n    moveList = {}\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n    if next(memoryList) == nil then\r\n        createSetupButton()\r\n    else\r\n        createMemoryActionButtons()\r\n    end\r\n    removeAllHighlights()\r\n    broadcastToAll(\"Sélection annulée\", {1,1,1})\r\n    moveGuid = nil\r\nend\r\n\r\n--Saves selections\r\nfunction buttonClick_submit()\r\n    fresh = false\r\n    if next(moveList) ~= nil then\r\n        for guid in pairs(moveList) do\r\n            moveGuid = guid\r\n        end\r\n        if memoryListBackup[moveGuid] == nil then\r\n            broadcastToAll(\"Item selected for moving is not already in memory\", {1, 0.25, 0.25})\r\n        else\r\n            broadcastToAll(\"Moving all items in memory relative to new objects position!\", {0.75, 0.75, 1})\r\n            self.clearButtons()\r\n            self.clearInputs()\r\n            createMemoryActionButtons()\r\n            local count = 0\r\n            for guid in pairs(moveList) do\r\n                moveGuid = guid\r\n                count = count + 1\r\n                local obj = getObjectFromGUID(guid)\r\n                if obj ~= nil then obj.highlightOff() end\r\n            end\r\n            updateMemoryWithMoves()\r\n            updateSave()\r\n            buttonClick_place()\r\n        end\r\n    elseif next(memoryList) == nil and moveGuid == nil then\r\n        memoryList = memoryListBackup\r\n        broadcastToAll(\"No selections made.\", {0.75, 0.25, 0.25})\r\n    end\r\n    combineMemoryFromBagsWithin()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n    createMemoryActionButtons()\r\n    local count = 0\r\n    for guid in pairs(memoryList) do\r\n        count = count + 1\r\n        local obj = getObjectFromGUID(guid)\r\n        if obj ~= nil then obj.highlightOff() end\r\n    end\r\n    broadcastToAll(count..\" Objects Saved\", {1,1,1})\r\n    updateSave()\r\n    moveGuid = nil\r\nend\r\n\r\nfunction combineTables(first_table, second_table)\r\n    for k,v in pairs(second_table) do first_table[k] = v end\r\nend\r\n\r\nfunction buttonClick_add()\r\n    fresh = false\r\n    combineTables(memoryList, memoryListBackup)\r\n    broadcastToAll(\"Adding internal bags and selections to existing memory\", {0.25, 0.75, 0.25})\r\n    combineMemoryFromBagsWithin()\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n    createMemoryActionButtons()\r\n    local count = 0\r\n    for guid in pairs(memoryList) do\r\n        count = count + 1\r\n        local obj = getObjectFromGUID(guid)\r\n        if obj ~= nil then obj.highlightOff() end\r\n    end\r\n    broadcastToAll(count..\" Objects Saved\", {1,1,1})\r\n    updateSave()\r\nend\r\n\r\nfunction buttonClick_remove()\r\n    broadcastToAll(\"Removing Selected Entries From Memory\", {1.0, 0.25, 0.25})\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n    createMemoryActionButtons()\r\n    local count = 0\r\n    for guid in pairs(memoryList) do\r\n        count = count + 1\r\n        memoryListBackup[guid] = nil\r\n        local obj = getObjectFromGUID(guid)\r\n        if obj ~= nil then obj.highlightOff() end\r\n    end\r\n    broadcastToAll(count..\" Objects Removed\", {1,1,1})\r\n    memoryList = memoryListBackup\r\n    updateSave()\r\nend\r\n\r\nfunction buttonClick_setNew()\r\n    broadcastToAll(\"Setting new position relative to items in memory\", {0.75, 0.75, 1})\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n    createMemoryActionButtons()\r\n    local count = 0\r\n    for _, obj in ipairs(getAllObjects()) do\r\n        guid = obj.guid\r\n        if memoryListBackup[guid] ~= nil then\r\n            count = count + 1\r\n            memoryListBackup[guid].pos = obj.getPosition()\r\n            memoryListBackup[guid].rot = obj.getRotation()\r\n            memoryListBackup[guid].lock = obj.getLock()\r\n            memoryListBackup[guid].tint = obj.getColorTint()\r\n        end\r\n    end\r\n    broadcastToAll(count..\" Objects Saved\", {1,1,1})\r\n    memoryList = memoryListBackup\r\n    updateSave()\r\nend\r\n\r\n--Resets bag to starting status\r\nfunction buttonClick_reset()\r\n    fresh = true\r\n    memoryList = {}\r\n    self.clearButtons()\r\n    self.clearInputs()\r\n    createSetupButton()\r\n    removeAllHighlights()\r\n    broadcastToAll(\"Tool Reset\", {1,1,1})\r\n    updateSave()\r\nend\r\n\r\n\r\n--After Setup\r\n\r\n\r\n--Creates recall and place buttons\r\nfunction createMemoryActionButtons()\r\n    self.createButton({\r\n        label=\"Placer\", click_function=\"buttonClick_place\", function_owner=self,\r\n        position={0.7,0.1,2.2}, rotation={0,0,0}, height=275, width=625,\r\n        font_size=150, color={0,0,0}, font_color={1,1,1}\r\n    })\r\n    self.createButton({\r\n        label=\"Ranger\", click_function=\"buttonClick_recall\", function_owner=self,\r\n        position={-0.7,0.1,2.2}, rotation={0,0,0}, height=275, width=625,\r\n        font_size=150, color={0,0,0}, font_color={1,1,1}\r\n    })\r\n    self.createButton({\r\n        label=\"Config\", click_function=\"buttonClick_setup\", function_owner=self,\r\n        position={0,0.1,-2.2}, rotation={0,0,0}, height=275, width=625,\r\n        font_size=150, color={0,0,0}, font_color={1,1,1}\r\n    })\r\n    ---    self.createButton({\r\n    ---      label=\"Bouger\", click_function=\"buttonClick_transpose\", function_owner=self,\r\n    ---      position={-2,0.3,0.8}, rotation={0,270,0}, height=350, width=800,\r\n    ---      font_size=250, color={0,0,0}, font_color={0.75,0.75,1}\r\n    ---\r\nend\r\n\r\n--Sends objects from bag/table to their saved position/rotation\r\nfunction buttonClick_place()\r\n    local bagObjList = self.getObjects()\r\n    for guid, entry in pairs(memoryList) do\r\n        local obj = getObjectFromGUID(guid)\r\n        --If obj is out on the table, move it to the saved pos/rot\r\n        if obj ~= nil then\r\n            obj.setPositionSmooth(entry.pos)\r\n            obj.setRotationSmooth(entry.rot)\r\n            obj.setLock(entry.lock)\r\n            obj.setColorTint(entry.tint)\r\n        else\r\n            --If obj is inside of the bag\r\n            for _, bagObj in ipairs(bagObjList) do\r\n                if bagObj.guid == guid then\r\n                    local item = self.takeObject({\r\n                        guid=guid, position=entry.pos, rotation=entry.rot, smooth=false\r\n                    })\r\n                    item.setLock(entry.lock)\r\n                    item.setColorTint(entry.tint)\r\n                    break\r\n                end\r\n            end\r\n        end\r\n    end\r\n    broadcastToAll(\"Objets placés\", {1,1,1})\r\nend\r\n\r\n--Recalls objects to bag from table\r\nfunction buttonClick_recall()\r\n    for guid, entry in pairs(memoryList) do\r\n        local obj = getObjectFromGUID(guid)\r\n        if obj ~= nil then self.putObject(obj) end\r\n    end\r\n    broadcastToAll(\"Objets rangés\", {1,1,1})\r\nend\r\n\r\n\r\n--Utility functions\r\n\r\n\r\n--Find delta (difference) between 2 x/y/z coordinates\r\nfunction findOffsetDistance(p1, p2, obj)\r\n    local yOffset = 0\r\n    if obj ~= nil then\r\n        local bounds = obj.getBounds()\r\n        yOffset = (bounds.size.y - bounds.offset.y)\r\n    end\r\n    local deltaPos = {}\r\n    deltaPos.x = (p2.x-p1.x)\r\n    deltaPos.y = (p2.y-p1.y) + yOffset\r\n    deltaPos.z = (p2.z-p1.z)\r\n    return deltaPos\r\nend\r\n\r\n--Used to rotate a set of coordinates by an angle\r\nfunction rotateLocalCoordinates(desiredPos, obj)\r\n    local objPos, objRot = obj.getPosition(), obj.getRotation()\r\n    local angle = math.rad(objRot.y)\r\n    local x = desiredPos.x * math.cos(angle) - desiredPos.z * math.sin(angle)\r\n    local z = desiredPos.x * math.sin(angle) + desiredPos.z * math.cos(angle)\r\n    --return {x=objPos.x+x, y=objPos.y+desiredPos.y, z=objPos.z+z}\r\n    return {x=x, y=desiredPos.y, z=z}\r\nend\r\n\r\nfunction rotateMyCoordinates(desiredPos, obj)\r\n    local angle = math.rad(obj.getRotation().y)\r\n    local x = desiredPos.x * math.sin(angle)\r\n    local z = desiredPos.z * math.cos(angle)\r\n    return {x=x, y=desiredPos.y, z=z}\r\nend\r\n\r\n--Coroutine delay, in seconds\r\nfunction wait(time)\r\n    local start = os.time()\r\n    repeat coroutine.yield(0) until os.time() > start + time\r\nend\r\n\r\n--Duplicates a table (needed to prevent it making reference to the same objects)\r\nfunction duplicateTable(oldTable)\r\n    local newTable = {}\r\n    for k, v in pairs(oldTable) do\r\n        newTable[k] = v\r\n    end\r\n    return newTable\r\nend\r\n\r\n--Moves scripted highlight from all objects\r\nfunction removeAllHighlights()\r\n    for _, obj in ipairs(getAllObjects()) do\r\n        obj.highlightOff()\r\n    end\r\nend\r\n\r\n--Round number (num) to the Nth decimal (dec)\r\nfunction round(num, dec)\r\n    local mult = 10^(dec or 0)\r\n    return math.floor(num * mult + 0.5) / mult\r\nend\r\n\r\n\r\n--[[\r\nThis object provides access to a variable stored on the \"Global script\".\r\nThe variable holds the GUIDs for every Utility Memory Bag in the scene.\r\nExample:\r\n{'805ebd', '35cc21', 'fc8886', 'f50264', '5f5f63'}\r\n--]]\r\nAllMemoryBagsInScene = {\r\n    NAME_OF_GLOBAL_VARIABLE = \"_UtilityMemoryBag_AllMemoryBagsInScene\"\r\n}\r\n\r\nfunction AllMemoryBagsInScene:add(guid)\r\n    local guids = Global.getTable(self.NAME_OF_GLOBAL_VARIABLE) or {}\r\n    table.insert(guids, guid)\r\n    Global.setTable(self.NAME_OF_GLOBAL_VARIABLE, guids)\r\nend\r\n\r\nfunction AllMemoryBagsInScene:getGuidList()\r\n    return Global.getTable(self.NAME_OF_GLOBAL_VARIABLE) or {}\r\nend",
-          "LuaScriptState": "{\"ml\":{\"020dda\":{\"lock\":true,\"pos\":{\"x\":-6,\"y\":1.76999998092651,\"z\":-2.5},\"rot\":{\"x\":0,\"y\":-0.000899999984540045,\"z\":0},\"tint\":{\"a\":0,\"b\":0,\"g\":0,\"r\":0}},\"03dbbf\":{\"lock\":false,\"pos\":{\"x\":-6.00000190734863,\"y\":1.55389261245728,\"z\":0.500001072883606},\"rot\":{\"x\":0.0108974138274789,\"y\":179.990463256836,\"z\":0.00494794407859445},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"05aa6f\":{\"lock\":false,\"pos\":{\"x\":0.664849460124969,\"y\":1.5699737071991,\"z\":18.5105323791504},\"rot\":{\"x\":0.058089092373848,\"y\":179.597198486328,\"z\":359.967498779297},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"05d8ce\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5186,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"1cb2ba\":{\"lock\":false,\"pos\":{\"x\":15.5,\"y\":1.5161,\"z\":3},\"rot\":{\"x\":0.0109,\"y\":180.0002,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"1f0b95\":{\"lock\":false,\"pos\":{\"x\":17.501,\"y\":1.5312,\"z\":-6.0196},\"rot\":{\"x\":0.0049,\"y\":89.9999,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2247c5\":{\"lock\":false,\"pos\":{\"x\":4.49038791656494,\"y\":1.5170795917511,\"z\":3.04005742073059},\"rot\":{\"x\":0.0126784723252058,\"y\":179.36833190918,\"z\":0.00251816166564822},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2571a9\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5203,\"z\":20.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"286138\":{\"lock\":false,\"pos\":{\"x\":5.07005500793457,\"y\":1.56825149059296,\"z\":11.5033493041992},\"rot\":{\"x\":0.0572419427335262,\"y\":180.06135559082,\"z\":359.975982666016},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2b3682\":{\"lock\":false,\"pos\":{\"x\":15.5932674407959,\"y\":1.51763784885406,\"z\":11.5180511474609},\"rot\":{\"x\":0.0119405249133706,\"y\":179.497924804688,\"z\":-0.00153296499047428},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2ea091\":{\"lock\":false,\"pos\":{\"x\":1.49999928474426,\"y\":1.50600147247314,\"z\":15},\"rot\":{\"x\":359.988800048828,\"y\":314.999908447266,\"z\":0.00420431653037667},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"2fc1b5\":{\"lock\":true,\"pos\":{\"x\":-22,\"y\":1.7700001001358,\"z\":11.9999952316284},\"rot\":{\"x\":90,\"y\":359.560302734375,\"z\":0},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"30faca\":{\"lock\":false,\"pos\":{\"x\":-6.00000238418579,\"y\":1.55579459667206,\"z\":10.5000028610229},\"rot\":{\"x\":0.0108933728188276,\"y\":179.992706298828,\"z\":0.00494328094646335},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"38e486\":{\"lock\":false,\"pos\":{\"x\":3.00000643730164,\"y\":1.60163950920105,\"z\":-6.50002336502075},\"rot\":{\"x\":0.0168202593922615,\"y\":179.98030090332,\"z\":9.28909867070615E-06},\"tint\":{\"a\":1,\"b\":0.701960802078247,\"g\":0.800000011920929,\"r\":0.874509811401367}},\"3c23ad\":{\"lock\":false,\"pos\":{\"x\":9.99999809265137,\"y\":1.55602765083313,\"z\":19.0000038146973},\"rot\":{\"x\":0.0109019782394171,\"y\":179.968734741211,\"z\":0.00494652846828103},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"415af7\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5168,\"z\":2.5},\"rot\":{\"x\":0.0109,\"y\":180.0008,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"460969\":{\"lock\":true,\"pos\":{\"x\":-22.4319000244141,\"y\":1.76629996299744,\"z\":5.4116997718811},\"rot\":{\"x\":0,\"y\":-0.000199999994947575,\"z\":0},\"tint\":{\"a\":0,\"b\":0,\"g\":0,\"r\":0}},\"498f15\":{\"lock\":false,\"pos\":{\"x\":23.501314163208,\"y\":1.51380479335785,\"z\":-5.52319669723511},\"rot\":{\"x\":0.0108919944614172,\"y\":179.99462890625,\"z\":0.00494724279269576},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"51d394\":{\"lock\":false,\"pos\":{\"x\":16.1650733947754,\"y\":1.56730794906616,\"z\":11.5247211456299},\"rot\":{\"x\":0.058559212833643,\"y\":179.5419921875,\"z\":359.967529296875},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"5559ff\":{\"lock\":false,\"pos\":{\"x\":15.5,\"y\":1.50336670875549,\"z\":7.5},\"rot\":{\"x\":0.0108908116817474,\"y\":180.009475708008,\"z\":0.0049542672932148},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"563a4d\":{\"lock\":false,\"pos\":{\"x\":17.501,\"y\":1.5312,\"z\":-6.0196},\"rot\":{\"x\":0.0049,\"y\":90.0001,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"606236\":{\"lock\":false,\"pos\":{\"x\":-22.48046875,\"y\":1.84000110626221,\"z\":3.50566482543945},\"rot\":{\"x\":-4.91498713017791E-06,\"y\":179.985580444336,\"z\":-8.81635884297793E-08},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"67cf95\":{\"lock\":false,\"pos\":{\"x\":-5.5,\"y\":1.5179,\"z\":3},\"rot\":{\"x\":0.0109,\"y\":179.9884,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"703954\":{\"lock\":false,\"pos\":{\"x\":-3,\"y\":1.50639009475708,\"z\":15},\"rot\":{\"x\":-0.00420297076925635,\"y\":44.9999008178711,\"z\":359.988800048828},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"7234af\":{\"lock\":false,\"pos\":{\"x\":10.5,\"y\":1.5046,\"z\":11.5},\"rot\":{\"x\":0.0049,\"y\":90.0109,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"72f050\":{\"lock\":false,\"pos\":{\"x\":4.49988794326782,\"y\":1.55298697948456,\"z\":0.501662075519562},\"rot\":{\"x\":0.0108905052766204,\"y\":179.965667724609,\"z\":0.004942093975842},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"781438\":{\"lock\":false,\"pos\":{\"x\":11.6285524368286,\"y\":1.56905889511108,\"z\":18.5398044586182},\"rot\":{\"x\":0.0485617034137249,\"y\":179.440170288086,\"z\":359.976409912109},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"7bb6c6\":{\"lock\":false,\"pos\":{\"x\":30.5,\"y\":1.7339,\"z\":-3.0001},\"rot\":{\"x\":-0.0006,\"y\":180,\"z\":180.0011},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"7fcbef\":{\"lock\":false,\"pos\":{\"x\":14.9999990463257,\"y\":1.55397999286652,\"z\":10.5000028610229},\"rot\":{\"x\":0.0108861355111003,\"y\":179.973785400391,\"z\":0.00493814283981919},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"8124c8\":{\"lock\":false,\"pos\":{\"x\":5.5,\"y\":1.50632131099701,\"z\":18.5},\"rot\":{\"x\":0.00494782207533717,\"y\":90.0002365112305,\"z\":359.989105224609},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"81a0d3\":{\"lock\":false,\"pos\":{\"x\":11.0565948486328,\"y\":1.51936674118042,\"z\":18.5306911468506},\"rot\":{\"x\":0.0113602988421917,\"y\":179.402099609375,\"z\":-0.000727539067156613},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"82a605\":{\"lock\":false,\"pos\":{\"x\":7.5,\"y\":1.50548326969147,\"z\":15},\"rot\":{\"x\":-0.00420306669548154,\"y\":45.0000038146973,\"z\":359.988800048828},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"84ecba\":{\"lock\":false,\"pos\":{\"x\":-6.00040245056152,\"y\":1.59302914142609,\"z\":-4.04230165481567},\"rot\":{\"x\":0.0108919069170952,\"y\":179.999008178711,\"z\":0.00494851870462298},\"tint\":{\"a\":1,\"b\":0,\"g\":0,\"r\":0.614982545375824}},\"8610dd\":{\"lock\":false,\"pos\":{\"x\":4.497878074646,\"y\":1.51866269111633,\"z\":11.502628326416},\"rot\":{\"x\":0.0126480618491769,\"y\":180.066543579102,\"z\":0.00141646491829306},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"862c01\":{\"lock\":false,\"pos\":{\"x\":-0.500000238418579,\"y\":1.55693447589874,\"z\":19.0000038146973},\"rot\":{\"x\":0.0108972126618028,\"y\":179.990615844727,\"z\":0.00494633289054036},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"8d0585\":{\"lock\":false,\"pos\":{\"x\":-32.0016174316406,\"y\":1.8400012254715,\"z\":3.50138020515442},\"rot\":{\"x\":-3.26697977470758E-06,\"y\":179.985656738281,\"z\":-7.43014652471174E-07},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"8d1418\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5058,\"z\":16},\"rot\":{\"x\":0.0109,\"y\":180.0171,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"97aa58\":{\"lock\":false,\"pos\":{\"x\":12.5010013580322,\"y\":1.5146609544754,\"z\":-6.01679992675781},\"rot\":{\"x\":0.0049481512978673,\"y\":90.000129699707,\"z\":359.989105224609},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"9c477b\":{\"lock\":false,\"pos\":{\"x\":17.501,\"y\":1.5312,\"z\":-6.0196},\"rot\":{\"x\":0.0049,\"y\":90,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"9dd34e\":{\"lock\":false,\"pos\":{\"x\":-21,\"y\":1.87,\"z\":4},\"rot\":{\"x\":0,\"y\":179.9969,\"z\":0},\"tint\":{\"a\":1,\"b\":0.358115524053574,\"g\":0.752613186836243,\"r\":0}},\"9f5f2b\":{\"lock\":false,\"pos\":{\"x\":30.5,\"y\":1.7436,\"z\":-3},\"rot\":{\"x\":-0.0006,\"y\":180.0001,\"z\":180.0011},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"ab38db\":{\"lock\":false,\"pos\":{\"x\":-31,\"y\":1.7789,\"z\":29.5},\"rot\":{\"x\":0,\"y\":180,\"z\":0},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b2f07e\":{\"lock\":true,\"pos\":{\"x\":-31.9659004211426,\"y\":1.76629996299744,\"z\":5.45539999008179},\"rot\":{\"x\":0,\"y\":359.968994140625,\"z\":0},\"tint\":{\"a\":0,\"b\":0,\"g\":0,\"r\":0}},\"b33a26\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5041,\"z\":7},\"rot\":{\"x\":0.0109,\"y\":179.9976,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"b3f16e\":{\"lock\":false,\"pos\":{\"x\":-25.0000019073486,\"y\":1.78360605239868,\"z\":3.49999785423279},\"rot\":{\"x\":-4.9838017730508E-06,\"y\":180.001953125,\"z\":2.94092046715377E-07},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b5bad5\":{\"lock\":false,\"pos\":{\"x\":-5.5,\"y\":1.5179,\"z\":3},\"rot\":{\"x\":0.0109,\"y\":179.978,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b6088e\":{\"lock\":false,\"pos\":{\"x\":-27.5026,\"y\":1.7643,\"z\":8.9999},\"rot\":{\"x\":0.0812,\"y\":180.079,\"z\":0.0718},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"b86460\":{\"lock\":false,\"pos\":{\"x\":-23.5000019073486,\"y\":1.78360557556152,\"z\":8.49999809265137},\"rot\":{\"x\":-5.09004848936456E-06,\"y\":179.999984741211,\"z\":-1.20292526162302E-07},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"bce4db\":{\"lock\":false,\"pos\":{\"x\":15,\"y\":1.5178,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":180.0003,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"bd6f43\":{\"lock\":false,\"pos\":{\"x\":-20.5,\"y\":1.78360557556152,\"z\":8.49999904632568},\"rot\":{\"x\":-4.88772411699756E-06,\"y\":180.00016784668,\"z\":1.74352891235685E-07},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"bfd0f7\":{\"lock\":false,\"pos\":{\"x\":9.99989986419678,\"y\":1.50460207462311,\"z\":11.4996995925903},\"rot\":{\"x\":0.00494920462369919,\"y\":90.0085983276367,\"z\":359.989105224609},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"c469a4\":{\"lock\":false,\"pos\":{\"x\":4.49999952316284,\"y\":1.55488693714142,\"z\":10.5000028610229},\"rot\":{\"x\":0.0108935385942459,\"y\":179.960754394531,\"z\":0.00494584674015641},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"c56db4\":{\"lock\":false,\"pos\":{\"x\":-1.00000107288361,\"y\":1.50555205345154,\"z\":11.5},\"rot\":{\"x\":0.00494772428646684,\"y\":90.0000991821289,\"z\":359.989105224609},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"d14c11\":{\"lock\":false,\"pos\":{\"x\":30.4999,\"y\":1.5884,\"z\":-2.9971},\"rot\":{\"x\":-0.0006,\"y\":180,\"z\":180.0011},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"d7b93e\":{\"lock\":false,\"pos\":{\"x\":-5.49951505661011,\"y\":1.51974928379059,\"z\":11.4998559951782},\"rot\":{\"x\":0.00831364374607801,\"y\":179.985961914063,\"z\":0.018550967797637},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"d8cc7d\":{\"lock\":false,\"pos\":{\"x\":-4.92825174331665,\"y\":1.57030761241913,\"z\":11.5030670166016},\"rot\":{\"x\":359.902984619141,\"y\":180.075942993164,\"z\":0.016353327780962},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"e3b55e\":{\"lock\":false,\"pos\":{\"x\":4.99874782562256,\"y\":1.56664550304413,\"z\":3.00509834289551},\"rot\":{\"x\":0.0585620626807213,\"y\":180.075897216797,\"z\":359.980041503906},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"eb8a02\":{\"lock\":false,\"pos\":{\"x\":-5.50000143051147,\"y\":1.50518023967743,\"z\":7.5},\"rot\":{\"x\":0.0108898803591728,\"y\":180.020156860352,\"z\":0.00495579140260816},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"f49672\":{\"lock\":false,\"pos\":{\"x\":15.5,\"y\":1.5161,\"z\":3},\"rot\":{\"x\":0.0109,\"y\":179.9886,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"f5cca2\":{\"lock\":false,\"pos\":{\"x\":0.0936113297939301,\"y\":1.52030432224274,\"z\":18.5031204223633},\"rot\":{\"x\":0.0119547285139561,\"y\":179.458343505859,\"z\":-0.00150340923573822},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"f5fd82\":{\"lock\":false,\"pos\":{\"x\":13,\"y\":1.50500822067261,\"z\":15},\"rot\":{\"x\":359.988800048828,\"y\":315,\"z\":0.00420403387397528},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"f8961e\":{\"lock\":false,\"pos\":{\"x\":15.0000009536743,\"y\":1.55208098888397,\"z\":0.500002980232239},\"rot\":{\"x\":0.0109201101586223,\"y\":179.988708496094,\"z\":0.00493392907083035},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"fe81d2\":{\"lock\":false,\"pos\":{\"x\":30.5,\"y\":1.5932,\"z\":-2.9971},\"rot\":{\"x\":-0.0006,\"y\":180,\"z\":180.0011},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}}}}",
+          "LuaScriptState": "{\"ml\":{\"020dda\":{\"lock\":true,\"pos\":{\"x\":-6,\"y\":1.76999998092651,\"z\":-2.5},\"rot\":{\"x\":0,\"y\":-0.000899999984540045,\"z\":0},\"tint\":{\"a\":0,\"b\":0,\"g\":0,\"r\":0}},\"03dbbf\":{\"lock\":false,\"pos\":{\"x\":-6.00000190734863,\"y\":1.55389261245728,\"z\":0.500001072883606},\"rot\":{\"x\":0.0108974138274789,\"y\":179.990463256836,\"z\":0.00494794407859445},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"05aa6f\":{\"lock\":false,\"pos\":{\"x\":0.664849460124969,\"y\":1.5699737071991,\"z\":18.5105323791504},\"rot\":{\"x\":0.058089092373848,\"y\":179.597198486328,\"z\":359.967498779297},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"05d8ce\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5186,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"1cb2ba\":{\"lock\":false,\"pos\":{\"x\":15.5,\"y\":1.5161,\"z\":3},\"rot\":{\"x\":0.0109,\"y\":180.0002,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"1f0b95\":{\"lock\":false,\"pos\":{\"x\":17.501,\"y\":1.5312,\"z\":-6.0196},\"rot\":{\"x\":0.0049,\"y\":89.9999,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2247c5\":{\"lock\":false,\"pos\":{\"x\":4.49038791656494,\"y\":1.5170795917511,\"z\":3.04005742073059},\"rot\":{\"x\":0.0126784723252058,\"y\":179.36833190918,\"z\":0.00251816166564822},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2571a9\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5203,\"z\":20.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"286138\":{\"lock\":false,\"pos\":{\"x\":5.07005500793457,\"y\":1.56825149059296,\"z\":11.5033493041992},\"rot\":{\"x\":0.0572419427335262,\"y\":180.06135559082,\"z\":359.975982666016},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2b3682\":{\"lock\":false,\"pos\":{\"x\":15.5932674407959,\"y\":1.51763784885406,\"z\":11.5180511474609},\"rot\":{\"x\":0.0119405249133706,\"y\":179.497924804688,\"z\":-0.00153296499047428},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2ea091\":{\"lock\":false,\"pos\":{\"x\":1.49999928474426,\"y\":1.50600147247314,\"z\":15},\"rot\":{\"x\":359.988800048828,\"y\":314.999908447266,\"z\":0.00420431653037667},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"2fc1b5\":{\"lock\":true,\"pos\":{\"x\":-22,\"y\":1.7700001001358,\"z\":11.9999952316284},\"rot\":{\"x\":90,\"y\":359.560302734375,\"z\":0},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"30faca\":{\"lock\":false,\"pos\":{\"x\":-6.00000238418579,\"y\":1.55579459667206,\"z\":10.5000028610229},\"rot\":{\"x\":0.0108933728188276,\"y\":179.992706298828,\"z\":0.00494328094646335},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"38e486\":{\"lock\":false,\"pos\":{\"x\":3.00000643730164,\"y\":1.60163950920105,\"z\":-6.50002336502075},\"rot\":{\"x\":0.0168202593922615,\"y\":179.98030090332,\"z\":9.28909867070615E-06},\"tint\":{\"a\":1,\"b\":0.701960802078247,\"g\":0.800000011920929,\"r\":0.874509811401367}},\"3c23ad\":{\"lock\":false,\"pos\":{\"x\":9.99999809265137,\"y\":1.55602765083313,\"z\":19.0000038146973},\"rot\":{\"x\":0.0109019782394171,\"y\":179.968734741211,\"z\":0.00494652846828103},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"415af7\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5168,\"z\":2.5},\"rot\":{\"x\":0.0109,\"y\":180.0008,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"460969\":{\"lock\":true,\"pos\":{\"x\":-22.4319000244141,\"y\":1.76629996299744,\"z\":5.4116997718811},\"rot\":{\"x\":0,\"y\":-0.000199999994947575,\"z\":0},\"tint\":{\"a\":0,\"b\":0,\"g\":0,\"r\":0}},\"498f15\":{\"lock\":false,\"pos\":{\"x\":23.501314163208,\"y\":1.51380479335785,\"z\":-5.52319669723511},\"rot\":{\"x\":0.0108919944614172,\"y\":179.99462890625,\"z\":0.00494724279269576},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"51d394\":{\"lock\":false,\"pos\":{\"x\":16.1650733947754,\"y\":1.56730794906616,\"z\":11.5247211456299},\"rot\":{\"x\":0.058559212833643,\"y\":179.5419921875,\"z\":359.967529296875},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"5559ff\":{\"lock\":false,\"pos\":{\"x\":15.5,\"y\":1.50336670875549,\"z\":7.5},\"rot\":{\"x\":0.0108908116817474,\"y\":180.009475708008,\"z\":0.0049542672932148},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"563a4d\":{\"lock\":false,\"pos\":{\"x\":17.501,\"y\":1.5312,\"z\":-6.0196},\"rot\":{\"x\":0.0049,\"y\":90.0001,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"606236\":{\"lock\":false,\"pos\":{\"x\":-22.48046875,\"y\":1.84000110626221,\"z\":3.50566482543945},\"rot\":{\"x\":-4.91498713017791E-06,\"y\":179.985580444336,\"z\":-8.81635884297793E-08},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"67cf95\":{\"lock\":false,\"pos\":{\"x\":-5.5,\"y\":1.5179,\"z\":3},\"rot\":{\"x\":0.0109,\"y\":179.9884,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"703954\":{\"lock\":false,\"pos\":{\"x\":-3,\"y\":1.50639009475708,\"z\":15},\"rot\":{\"x\":-0.00420297076925635,\"y\":44.9999008178711,\"z\":359.988800048828},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"7234af\":{\"lock\":false,\"pos\":{\"x\":10.5,\"y\":1.5046,\"z\":11.5},\"rot\":{\"x\":0.0049,\"y\":90.0109,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"72f050\":{\"lock\":false,\"pos\":{\"x\":4.49988794326782,\"y\":1.55298697948456,\"z\":0.501662075519562},\"rot\":{\"x\":0.0108905052766204,\"y\":179.965667724609,\"z\":0.004942093975842},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"781438\":{\"lock\":false,\"pos\":{\"x\":11.6285524368286,\"y\":1.56905889511108,\"z\":18.5398044586182},\"rot\":{\"x\":0.0485617034137249,\"y\":179.440170288086,\"z\":359.976409912109},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"7bb6c6\":{\"lock\":false,\"pos\":{\"x\":30.5,\"y\":1.7339,\"z\":-3.0001},\"rot\":{\"x\":-0.0006,\"y\":180,\"z\":180.0011},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"7fcbef\":{\"lock\":false,\"pos\":{\"x\":14.9999990463257,\"y\":1.55397999286652,\"z\":10.5000028610229},\"rot\":{\"x\":0.0108861355111003,\"y\":179.973785400391,\"z\":0.00493814283981919},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"8124c8\":{\"lock\":false,\"pos\":{\"x\":5.5,\"y\":1.50632131099701,\"z\":18.5},\"rot\":{\"x\":0.00494782207533717,\"y\":90.0002365112305,\"z\":359.989105224609},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"81a0d3\":{\"lock\":false,\"pos\":{\"x\":11.0565948486328,\"y\":1.51936674118042,\"z\":18.5306911468506},\"rot\":{\"x\":0.0113602988421917,\"y\":179.402099609375,\"z\":-0.000727539067156613},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"82a605\":{\"lock\":false,\"pos\":{\"x\":7.5,\"y\":1.50548326969147,\"z\":15},\"rot\":{\"x\":-0.00420306669548154,\"y\":45.0000038146973,\"z\":359.988800048828},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"84ecba\":{\"lock\":false,\"pos\":{\"x\":-6.00040245056152,\"y\":1.59302914142609,\"z\":-4.04230165481567},\"rot\":{\"x\":0.0108919069170952,\"y\":179.999008178711,\"z\":0.00494851870462298},\"tint\":{\"a\":1,\"b\":0,\"g\":0,\"r\":0.614982545375824}},\"8610dd\":{\"lock\":false,\"pos\":{\"x\":4.497878074646,\"y\":1.51866269111633,\"z\":11.502628326416},\"rot\":{\"x\":0.0126480618491769,\"y\":180.066543579102,\"z\":0.00141646491829306},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"862c01\":{\"lock\":false,\"pos\":{\"x\":-0.500000238418579,\"y\":1.55693447589874,\"z\":19.0000038146973},\"rot\":{\"x\":0.0108972126618028,\"y\":179.990615844727,\"z\":0.00494633289054036},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"8d0585\":{\"lock\":false,\"pos\":{\"x\":-32.0016174316406,\"y\":1.8400012254715,\"z\":3.50138020515442},\"rot\":{\"x\":-3.26697977470758E-06,\"y\":179.985656738281,\"z\":-7.43014652471174E-07},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"8d1418\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5058,\"z\":16},\"rot\":{\"x\":0.0109,\"y\":180.0171,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"97aa58\":{\"lock\":false,\"pos\":{\"x\":12.5010013580322,\"y\":1.5146609544754,\"z\":-6.01679992675781},\"rot\":{\"x\":0.0049481512978673,\"y\":90.000129699707,\"z\":359.989105224609},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"9c477b\":{\"lock\":false,\"pos\":{\"x\":17.501,\"y\":1.5312,\"z\":-6.0196},\"rot\":{\"x\":0.0049,\"y\":90,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"9dd34e\":{\"lock\":false,\"pos\":{\"x\":-21,\"y\":1.87,\"z\":4},\"rot\":{\"x\":0,\"y\":179.9969,\"z\":0},\"tint\":{\"a\":1,\"b\":0.358115524053574,\"g\":0.752613186836243,\"r\":0}},\"9f5f2b\":{\"lock\":false,\"pos\":{\"x\":30.5,\"y\":1.7436,\"z\":-3},\"rot\":{\"x\":-0.0006,\"y\":180.0001,\"z\":180.0011},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"ab38db\":{\"lock\":false,\"pos\":{\"x\":-31,\"y\":1.7789,\"z\":29.5},\"rot\":{\"x\":0,\"y\":180,\"z\":0},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b2f07e\":{\"lock\":true,\"pos\":{\"x\":-31.9659004211426,\"y\":1.76629996299744,\"z\":5.45539999008179},\"rot\":{\"x\":0,\"y\":359.968994140625,\"z\":0},\"tint\":{\"a\":0,\"b\":0,\"g\":0,\"r\":0}},\"b33a26\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5041,\"z\":7},\"rot\":{\"x\":0.0109,\"y\":179.9976,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"b3f16e\":{\"lock\":false,\"pos\":{\"x\":-25.0000019073486,\"y\":1.78360605239868,\"z\":3.49999785423279},\"rot\":{\"x\":-4.9838017730508E-06,\"y\":180.001953125,\"z\":2.94092046715377E-07},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b5bad5\":{\"lock\":false,\"pos\":{\"x\":-5.5,\"y\":1.5179,\"z\":3},\"rot\":{\"x\":0.0109,\"y\":179.978,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b6088e\":{\"lock\":false,\"pos\":{\"x\":-27.5026,\"y\":1.7643,\"z\":8.9999},\"rot\":{\"x\":0.0812,\"y\":180.079,\"z\":0.0718},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"b86460\":{\"lock\":false,\"pos\":{\"x\":-23.5000019073486,\"y\":1.78360557556152,\"z\":8.49999809265137},\"rot\":{\"x\":-5.09004848936456E-06,\"y\":179.999984741211,\"z\":-1.20292526162302E-07},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"bce4db\":{\"lock\":false,\"pos\":{\"x\":15,\"y\":1.5178,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":180.0003,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"bd6f43\":{\"lock\":false,\"pos\":{\"x\":-20.5,\"y\":1.78360557556152,\"z\":8.49999904632568},\"rot\":{\"x\":-4.88772411699756E-06,\"y\":180.00016784668,\"z\":1.74352891235685E-07},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"bfd0f7\":{\"lock\":false,\"pos\":{\"x\":9.99989986419678,\"y\":1.50460207462311,\"z\":11.4996995925903},\"rot\":{\"x\":0.00494920462369919,\"y\":90.0085983276367,\"z\":359.989105224609},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"c469a4\":{\"lock\":false,\"pos\":{\"x\":4.49999952316284,\"y\":1.55488693714142,\"z\":10.5000028610229},\"rot\":{\"x\":0.0108935385942459,\"y\":179.960754394531,\"z\":0.00494584674015641},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"c56db4\":{\"lock\":false,\"pos\":{\"x\":-1.00000107288361,\"y\":1.50555205345154,\"z\":11.5},\"rot\":{\"x\":0.00494772428646684,\"y\":90.0000991821289,\"z\":359.989105224609},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"cd3959\":{\"lock\":false,\"pos\":{\"x\":-30.5,\"y\":1.8295,\"z\":3.5},\"rot\":{\"x\":0,\"y\":0.0001,\"z\":0},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"d14c11\":{\"lock\":false,\"pos\":{\"x\":30.4999,\"y\":1.5884,\"z\":-2.9971},\"rot\":{\"x\":-0.0006,\"y\":180,\"z\":180.0011},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"d7b93e\":{\"lock\":false,\"pos\":{\"x\":-5.49951505661011,\"y\":1.51974928379059,\"z\":11.4998559951782},\"rot\":{\"x\":0.00831364374607801,\"y\":179.985961914063,\"z\":0.018550967797637},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"d8cc7d\":{\"lock\":false,\"pos\":{\"x\":-4.92825174331665,\"y\":1.57030761241913,\"z\":11.5030670166016},\"rot\":{\"x\":359.902984619141,\"y\":180.075942993164,\"z\":0.016353327780962},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"e3b55e\":{\"lock\":false,\"pos\":{\"x\":4.99874782562256,\"y\":1.56664550304413,\"z\":3.00509834289551},\"rot\":{\"x\":0.0585620626807213,\"y\":180.075897216797,\"z\":359.980041503906},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"eb8a02\":{\"lock\":false,\"pos\":{\"x\":-5.50000143051147,\"y\":1.50518023967743,\"z\":7.5},\"rot\":{\"x\":0.0108898803591728,\"y\":180.020156860352,\"z\":0.00495579140260816},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"f49672\":{\"lock\":false,\"pos\":{\"x\":15.5,\"y\":1.5161,\"z\":3},\"rot\":{\"x\":0.0109,\"y\":179.9886,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"f5cca2\":{\"lock\":false,\"pos\":{\"x\":0.0936113297939301,\"y\":1.52030432224274,\"z\":18.5031204223633},\"rot\":{\"x\":0.0119547285139561,\"y\":179.458343505859,\"z\":-0.00150340923573822},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"f5fd82\":{\"lock\":false,\"pos\":{\"x\":13,\"y\":1.50500822067261,\"z\":15},\"rot\":{\"x\":359.988800048828,\"y\":315,\"z\":0.00420403387397528},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"f8961e\":{\"lock\":false,\"pos\":{\"x\":15.0000009536743,\"y\":1.55208098888397,\"z\":0.500002980232239},\"rot\":{\"x\":0.0109201101586223,\"y\":179.988708496094,\"z\":0.00493392907083035},\"tint\":{\"a\":1,\"b\":1,\"g\":1,\"r\":1}},\"fe81d2\":{\"lock\":false,\"pos\":{\"x\":30.5,\"y\":1.5932,\"z\":-2.9971},\"rot\":{\"x\":-0.0006,\"y\":180,\"z\":180.0011},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}}}}",
           "XmlUI": "",
           "ContainedObjects": [
+            {
+              "GUID": "cd3959",
+              "Name": "Notecard",
+              "Transform": {
+                "posX": -30.5000038,
+                "posY": 1.82950115,
+                "posZ": 3.49999642,
+                "rotX": 5.32201329E-06,
+                "rotY": 6.874373E-05,
+                "rotZ": 1.88486862E-08,
+                "scaleX": 0.850000143,
+                "scaleY": 0.850000143,
+                "scaleZ": 0.850000143
+              },
+              "Nickname": "Informations sur la résolution des brèches",
+              "Description": "Les règles du scénario nécessitent un aléa sans remise: Si un lieu est choisi, il ne peut plus être choisi jusqu'à la réinitialisation de l'aléa. \n\nCette dernière intervient 10 seconde après le premier tirage de lieu.",
+              "GMNotes": "",
+              "AltLookAngle": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "ColorDiffuse": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0
+              },
+              "LayoutGroupSortIndex": 0,
+              "Value": 0,
+              "Locked": false,
+              "Grid": true,
+              "Snap": true,
+              "IgnoreFoW": false,
+              "MeasureMovement": false,
+              "DragSelectable": true,
+              "Autoraise": true,
+              "Sticky": true,
+              "Tooltip": true,
+              "GridProjection": false,
+              "HideWhenFaceDown": false,
+              "Hands": false,
+              "LuaScript": "",
+              "LuaScriptState": "",
+              "XmlUI": ""
+            },
             {
               "GUID": "03dbbf",
               "Name": "Custom_Token",
               "Transform": {
-                "posX": -6.00000429,
-                "posY": 1.55389249,
-                "posZ": 0.499997675,
-                "rotX": 0.0108891772,
-                "rotY": 179.990448,
-                "rotZ": 0.004954157,
+                "posX": -6.000002,
+                "posY": 1.55389273,
+                "posZ": 0.5000002,
+                "rotX": 0.01088913,
+                "rotY": 179.990479,
+                "rotZ": 0.004948155,
                 "scaleX": 0.3,
                 "scaleY": 1.0,
                 "scaleZ": 0.3
@@ -217,12 +262,12 @@
               "GUID": "30faca",
               "Name": "Custom_Token",
               "Transform": {
-                "posX": -6.000001,
+                "posX": -6.00000238,
                 "posY": 1.55579352,
                 "posZ": 10.5000029,
-                "rotX": 0.0108908815,
-                "rotY": 179.980682,
-                "rotZ": 0.0049551134,
+                "rotX": 0.0108784409,
+                "rotY": 179.992752,
+                "rotZ": 0.004936445,
                 "scaleX": 0.3,
                 "scaleY": 1.0,
                 "scaleZ": 0.3
@@ -274,12 +319,12 @@
               "GUID": "38e486",
               "Name": "Custom_Tile",
               "Transform": {
-                "posX": 3.00000858,
+                "posX": 3.00001049,
                 "posY": 1.60163951,
-                "posZ": -6.50003624,
-                "rotX": 0.0168211963,
-                "rotY": 179.980225,
-                "rotZ": 8.412947E-06,
+                "posZ": -6.500025,
+                "rotX": 0.0168209728,
+                "rotY": 179.980286,
+                "rotZ": 9.730411E-06,
                 "scaleX": 1.6428808,
                 "scaleY": 1.0,
                 "scaleZ": 1.6428808
@@ -331,12 +376,12 @@
               "GUID": "3c23ad",
               "Name": "Custom_Token",
               "Transform": {
-                "posX": 10.000001,
+                "posX": 9.999998,
                 "posY": 1.55602753,
                 "posZ": 19.0000038,
-                "rotX": 0.0108890282,
-                "rotY": 179.968613,
-                "rotZ": 0.0049298536,
+                "rotX": 0.0109018991,
+                "rotY": 179.9687,
+                "rotZ": 0.00494871428,
                 "scaleX": 0.3,
                 "scaleY": 1.0,
                 "scaleZ": 0.3
@@ -388,12 +433,12 @@
               "GUID": "498f15",
               "Name": "Card",
               "Transform": {
-                "posX": 23.5013161,
-                "posY": 1.51380467,
-                "posZ": -5.523228,
-                "rotX": 0.0108919395,
-                "rotY": 179.994308,
-                "rotZ": 0.0049473,
+                "posX": 23.5013142,
+                "posY": 1.51380479,
+                "posZ": -5.523199,
+                "rotX": 0.0108919963,
+                "rotY": 179.9946,
+                "rotZ": 0.004947307,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -448,10 +493,10 @@
               "Transform": {
                 "posX": 4.499888,
                 "posY": 1.55298615,
-                "posZ": 0.501661241,
-                "rotX": 0.010907121,
-                "rotY": 179.965622,
-                "rotZ": 0.00493794726,
+                "posZ": 0.5016612,
+                "rotX": 0.0108945658,
+                "rotY": 179.965683,
+                "rotZ": 0.00494381925,
                 "scaleX": 0.3,
                 "scaleY": 1.0,
                 "scaleZ": 0.3
@@ -503,12 +548,12 @@
               "GUID": "7fcbef",
               "Name": "Custom_Token",
               "Transform": {
-                "posX": 15.0000038,
-                "posY": 1.55398,
+                "posX": 15.000001,
+                "posY": 1.55397987,
                 "posZ": 10.5000029,
-                "rotX": 0.0108977184,
-                "rotY": 180.007568,
-                "rotZ": 0.00494953059,
+                "rotX": 0.0108930431,
+                "rotY": 179.973663,
+                "rotZ": 0.004947234,
                 "scaleX": 0.3,
                 "scaleY": 1.0,
                 "scaleZ": 0.3
@@ -560,12 +605,12 @@
               "GUID": "862c01",
               "Name": "Custom_Token",
               "Transform": {
-                "posX": -0.499912322,
+                "posX": -0.5000006,
                 "posY": 1.55693436,
-                "posZ": 19.000021,
-                "rotX": 0.0108883251,
-                "rotY": 179.995377,
-                "rotZ": 0.00494277058,
+                "posZ": 19.0000038,
+                "rotX": 0.0108850133,
+                "rotY": 179.990616,
+                "rotZ": 0.004950462,
                 "scaleX": 0.3,
                 "scaleY": 1.0,
                 "scaleZ": 0.3
@@ -620,8 +665,8 @@
                 "posX": 12.5010014,
                 "posY": 1.514661,
                 "posZ": -6.01679945,
-                "rotX": 0.004948178,
-                "rotY": 90.000145,
+                "rotX": 0.004948065,
+                "rotY": 90.00013,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -675,12 +720,12 @@
               "GUID": "9dd34e",
               "Name": "Custom_Model_Bag",
               "Transform": {
-                "posX": -21.0000229,
+                "posX": -21.0000038,
                 "posY": 1.87000108,
-                "posZ": 3.999974,
-                "rotX": -4.71640124E-06,
-                "rotY": 179.997269,
-                "rotZ": -4.43343822E-07,
+                "posZ": 3.99999547,
+                "rotX": -5.73366333E-06,
+                "rotY": 179.996933,
+                "rotZ": 6.11311862E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -696,7 +741,7 @@
               "ColorDiffuse": {
                 "r": 0.0,
                 "g": 0.7526132,
-                "b": 0.3581151
+                "b": 0.358114958
               },
               "LayoutGroupSortIndex": 0,
               "Value": 0,
@@ -737,10 +782,479 @@
               "Bag": {
                 "Order": 0
               },
-              "LuaScript": "local CARD_SPAWNER_GUID = '4412c0'\r\nlocal cardSpawner = getObjectFromGUID(CARD_SPAWNER_GUID)\r\nlocal ALL_CARDS_BAG_GUID = \"d3e77d\"\r\nlocal allCardsBag = getObjectFromGUID(ALL_CARDS_BAG_GUID)\r\nlocal CONFIG_PANEL_GUID = 'd35363'\r\nlocal configPanel = getObjectFromGUID(CONFIG_PANEL_GUID)\r\nlocal locations = {\r\n    ['Diamond'] = { position = { 4.5, 1.52, 3.0 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Triangle'] = { position = { -0.50, 1.52, 21.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Square'] = { position = { 4.50, 1.52, 13.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Plus'] = { position = { -6.00, 1.52, 13.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Circle'] = { position = { 10.00, 1.52, 21.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Tee'] = { position = { 15.00, 1.52, 13.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n\r\n}\r\n\r\nlocal outOfPlayPile = {\r\n    ['encounterDeck'] = {\r\n        position = { 30.50, 3.61, -3.00 } },\r\n    ['actDeck'] = {\r\n        position = { 17.50, 3.51, -6.02 },\r\n    },\r\n}\r\n\r\nlocal versions = {\r\n    loge = {\r\n        ['Crescent'] = { position = { -6.00, 1.52, 3.0 }, rotation = { 0.00, 180.00, 0.00 }, GUID = '67cf95' },\r\n        ['Star'] = { position = { 15.00, 1.52, 3.00 }, rotation = { 0.00, 180.00, 0.00 }, GUID = 'f49672' },\r\n        ['actDeck'] = { position = { 17.50, 3.51, -6.02 }, rotation = { 0.00, 90.00, 0.00 }, GUID = '9c477b' },\r\n        ['encounter'] = { position = { 30.50, 3.61, -3.00 }, rotation = { 0.00, 180.00, 180.00 }, GUID = '9f5f2b' }\r\n    },\r\n    sorcerer = {\r\n        ['Crescent'] = { position = { -6.00, 1.52, 3.0 }, rotation = { 0.00, 180.00, 0.00 }, GUID = 'b5bad5' },\r\n        ['Star'] = { position = { 15.00, 1.52, 3.00 }, rotation = { 0.00, 180.00, 0.00 }, GUID = '1cb2ba' },\r\n        ['actDeck'] = { position = { 17.50, 3.51, -6.02 }, rotation = { 0.00, 90.00, 0.00 }, GUID = '563a4d' },\r\n        ['encounter'] = { position = { 30.50, 3.61, -3.00 }, rotation = { 0.00, 180.00, 180.00 }, GUID = '7bb6c6' }\r\n    }\r\n}\r\n\r\nfunction onLoad()\r\n    math.randomseed(os.time())\r\n    self.shuffle()\r\n    self.randomize()\r\n    createButton()\r\nend\r\n\r\nfunction createButton()\r\n    self.createButton({\r\n        label = \"Mise en place\",\r\n        click_function = \"question1\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 350,\r\n        width = 1800,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Mise en place\"\r\n    })\r\nend\r\n\r\nfunction question1()\r\n    broadcastToAll(\"Qui a capté l'esprit de Keziah ?\", 'Yellow')\r\n\r\n    self.removeButton(0)\r\n    self.createButton({\r\n        label = \"Carl Samford\",\r\n        click_function = \"carl\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 400,\r\n        width = 1400,\r\n        font_size = 200,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Carl Sanford possède les secrets de l'univers\"\r\n    })\r\n    self.createButton({\r\n        label = \"Annette Mason\",\r\n        click_function = \"annette\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 2.7 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 400,\r\n        width = 1400,\r\n        font_size = 200,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Annette Mason est possédée par le Démon\"\r\n    })\r\nend\r\n\r\nfunction carl()\r\n    versions = versions.loge\r\n    setUp()\r\nend\r\n\r\nfunction annette()\r\n    versions = versions.sorcerer\r\n    setUp()\r\nend\r\n\r\nfunction setUp()\r\n    for icon, card in pairs(locations) do\r\n        chooseOneAmongst(icon)\r\n        placeObj(card)\r\n    end\r\n    for key, card in pairs(versions) do\r\n        placeObj(card)\r\n    end\r\n    locations['Crescent'] = versions['Crescent']\r\n    locations['Star'] = versions['Star']\r\n    Wait.time(function()\r\n        local encounterDeck = getOutOfPlayPile('encounterDeck')\r\n        encounterDeck.shuffle()\r\n        broadcastToAll('Mise en place terminée', { 0, 0.75, 0.75 })\r\n    end, 3)\r\n    self.clearButtons()\r\n    createRandomLocation()\r\nend\r\n\r\nfunction chooseOneAmongst(icon)\r\n    local containedObjects = self.getData().ContainedObjects\r\n    local tab = {}\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.locationFront ~= nil then\r\n                    if metadata.locationFront.icons == icon then\r\n                        table.insert(tab, obj.GUID)\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\n    local n = #tab\r\n    local i = math.random(1, n)\r\n    locations[icon].GUID = tab[i]\r\nend\r\n\r\nfunction chooseAmongstInAtable(tab, number)\r\n    local row = {}\r\n    for i = 1, number do\r\n        local j = math.random(1, #tab)\r\n        local k = math.random(1, #row + 1)\r\n        table.insert(row, k, tab[j])\r\n        table.remove(tab, j)\r\n    end\r\n    return row\r\nend\r\n\r\nfunction getOutOfPlayPile(pile)\r\n    local position = {\r\n        x = outOfPlayPile[pile].position[1],\r\n        y = outOfPlayPile[pile].position[2] - 2,\r\n        z = outOfPlayPile[pile].position[3]\r\n    }\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 3, 3, 3 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        local obj = object.hit_object\r\n        if obj.type == \"Deck\" then\r\n            return obj\r\n        end\r\n    end\r\nend\r\n\r\nfunction createRandomLocation()\r\n    self.createButton({\r\n        label = \"Résoudre\\nune Brèche\",\r\n        click_function = \"randomLocation\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 2.2 },\r\n        rotation = { 0, 0, 0 },\r\n        scale = { 1.2, 1.2, 1.2 },\r\n        height = 600,\r\n        width = 1400,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n    })\r\nend\r\n\r\nfunction randomLocation()\r\n    self.randomize()\r\n    self.shuffle()\r\n\r\n    local chosenIcon = chooseIcon()\r\n    local chosenLocation = getObjectFromGUID(locations[chosenIcon].GUID)\r\n    chosenLocation.highlightOn({ 1, 0, 0.25 }, 1)\r\n    broadcastToAll(\"Placez une brèche sur le lieu « \" .. chosenLocation.getName() .. \" ».\", { 1, 0, 0.25 })\r\nend\r\n\r\nfunction chooseIcon()\r\n    local containedObjects = self.getData().ContainedObjects\r\n    local tab = {}\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.locationFront ~= nil then\r\n                    return metadata.locationFront.icons\r\n                end\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction placeObj(obj)\r\n    local pickedUpCard = self.takeObject({\r\n        guid = obj.GUID,\r\n        rotation = obj.rotation\r\n    })\r\n    pickedUpCard.setPositionSmooth(obj.position, false, false)\r\n    return pickedUpCard\r\nend\r\n",
+              "LuaScript": "local CARD_SPAWNER_GUID = '4412c0'\r\nlocal cardSpawner = getObjectFromGUID(CARD_SPAWNER_GUID)\r\nlocal ALL_CARDS_BAG_GUID = \"d3e77d\"\r\nlocal allCardsBag = getObjectFromGUID(ALL_CARDS_BAG_GUID)\r\nlocal CONFIG_PANEL_GUID = 'd35363'\r\nlocal configPanel = getObjectFromGUID(CONFIG_PANEL_GUID)\r\nlocal COLLISION_OPERATOR_GUID = '637276'\r\nlocal collisionOperator = getObjectFromGUID(COLLISION_OPERATOR_GUID)\r\nlocal locations = {\r\n    ['Diamond'] = { position = { 4.5, 1.52, 3.0 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Triangle'] = { position = { -0.50, 1.52, 21.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Square'] = { position = { 4.50, 1.52, 13.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Plus'] = { position = { -6.00, 1.52, 13.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Circle'] = { position = { 10.00, 1.52, 21.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Tee'] = { position = { 15.00, 1.52, 13.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n\r\n}\r\nlocal randomTable = {}\r\nlocal locationsInPlay = {}\r\nlocal outOfPlayPile = {\r\n    ['encounterDeck'] = {\r\n        position = { 30.50, 3.61, -3.00 } },\r\n    ['actDeck'] = {\r\n        position = { 17.50, 3.51, -6.02 },\r\n    },\r\n}\r\n\r\nlocal versions = {\r\n    loge = {\r\n        ['Crescent'] = { position = { -6.00, 1.52, 3.0 }, rotation = { 0.00, 180.00, 0.00 }, GUID = '67cf95' },\r\n        ['Star'] = { position = { 15.00, 1.52, 3.00 }, rotation = { 0.00, 180.00, 0.00 }, GUID = 'f49672' },\r\n        ['actDeck'] = { position = { 17.50, 3.51, -6.02 }, rotation = { 0.00, 90.00, 0.00 }, GUID = '9c477b' },\r\n        ['encounter'] = { position = { 30.50, 3.61, -3.00 }, rotation = { 0.00, 180.00, 180.00 }, GUID = '9f5f2b' }\r\n    },\r\n    sorcerer = {\r\n        ['Crescent'] = { position = { -6.00, 1.52, 3.0 }, rotation = { 0.00, 180.00, 0.00 }, GUID = 'b5bad5' },\r\n        ['Star'] = { position = { 15.00, 1.52, 3.00 }, rotation = { 0.00, 180.00, 0.00 }, GUID = '1cb2ba' },\r\n        ['actDeck'] = { position = { 17.50, 3.51, -6.02 }, rotation = { 0.00, 90.00, 0.00 }, GUID = '563a4d' },\r\n        ['encounter'] = { position = { 30.50, 3.61, -3.00 }, rotation = { 0.00, 180.00, 180.00 }, GUID = '7bb6c6' }\r\n    }\r\n}\r\n\r\nfunction onLoad()\r\n    math.randomseed(os.time())\r\n    self.shuffle()\r\n    self.randomize()\r\n    createButton()\r\nend\r\n\r\nfunction createButton()\r\n    self.createButton({\r\n        label = \"Mise en place\",\r\n        click_function = \"question1\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 350,\r\n        width = 1800,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Mise en place\"\r\n    })\r\nend\r\n\r\nfunction question1()\r\n    broadcastToAll(\"Qui a capté l'esprit de Keziah ?\", 'Yellow')\r\n\r\n    self.removeButton(0)\r\n    self.createButton({\r\n        label = \"Carl Samford\",\r\n        click_function = \"carl\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 400,\r\n        width = 1400,\r\n        font_size = 200,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Carl Sanford possède les secrets de l'univers\"\r\n    })\r\n    self.createButton({\r\n        label = \"Annette Mason\",\r\n        click_function = \"annette\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 2.7 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 400,\r\n        width = 1400,\r\n        font_size = 200,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Annette Mason est possédée par le Démon\"\r\n    })\r\nend\r\n\r\nfunction carl()\r\n    versions = versions.loge\r\n    setUp()\r\nend\r\n\r\nfunction annette()\r\n    versions = versions.sorcerer\r\n    setUp()\r\nend\r\n\r\nfunction setUp()\r\n    for icon, card in pairs(locations) do\r\n        chooseOneAmongst(icon)\r\n        placeObj(card)\r\n        locationsInPlay[icon] = card.GUID\r\n    end\r\n    for key, card in pairs(versions) do\r\n        placeObj(card)\r\n    end\r\n    locationsInPlay['Crescent'] = versions['Crescent'].GUID\r\n    locationsInPlay['Star'] = versions['Star'].GUID\r\n    Wait.time(function()\r\n        local encounterDeck = getOutOfPlayPile('encounterDeck')\r\n        encounterDeck.shuffle()\r\n        broadcastToAll('Mise en place terminée', { 0, 0.75, 0.75 })\r\n    end, 3)\r\n    self.clearButtons()\r\n    createRandomLocation()\r\nend\r\n\r\nfunction chooseOneAmongst(icon)\r\n    local containedObjects = self.getData().ContainedObjects\r\n    local tab = {}\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.locationFront ~= nil then\r\n                    if metadata.locationFront.icons == icon then\r\n                        table.insert(tab, obj.GUID)\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\n    local n = #tab\r\n    local i = math.random(1, n)\r\n    locations[icon].GUID = tab[i]\r\nend\r\n\r\nfunction chooseAmongstInAtable(tab, number)\r\n    local row = {}\r\n    for i = 1, number do\r\n        local j = math.random(1, #tab)\r\n        local k = math.random(1, #row + 1)\r\n        table.insert(row, k, tab[j])\r\n        table.remove(tab, j)\r\n    end\r\n    return row\r\nend\r\n\r\nfunction getOutOfPlayPile(pile)\r\n    local position = {\r\n        x = outOfPlayPile[pile].position[1],\r\n        y = outOfPlayPile[pile].position[2] - 2,\r\n        z = outOfPlayPile[pile].position[3]\r\n    }\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 3, 3, 3 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        local obj = object.hit_object\r\n        if obj.type == \"Deck\" then\r\n            return obj\r\n        end\r\n    end\r\nend\r\n\r\nfunction createRandomLocation()\r\n    self.createButton({\r\n        label = \"Résoudre\\nune Brèche\",\r\n        click_function = \"randomLocation\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 2.2 },\r\n        rotation = { 0, 0, 0 },\r\n        scale = { 1.2, 1.2, 1.2 },\r\n        height = 600,\r\n        width = 1400,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n    })\r\nend\r\n\r\nfunction randomLocation()\r\n    if randomTable[1] == nil then\r\n        self.randomize()\r\n        self.shuffle()\r\n        buildRandomTable()\r\n    end\r\n    local chosenIcon = randomTable[1]\r\n    table.remove(randomTable, 1)\r\n    local chosenLocation = getObjectFromGUID(locationsInPlay[chosenIcon])\r\n    placeABreach(chosenLocation)\r\nend\r\n\r\nfunction buildRandomTable()\r\n    local containedObjects = self.getData().ContainedObjects\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' or obj.Name == 'CardCustom' then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.locationFront ~= nil then\r\n                    local icon = metadata.locationFront.icons\r\n                    if not hasValue(randomTable, icon) then table.insert(randomTable, icon) end\r\n                end\r\n            end\r\n        end\r\n    end\r\n    Wait.time(function()\r\n        broadcastToAll(\"Aléa sans remise réinitialisé\", { 0.75, 0.5, 0 })\r\n        randomTable = {}\r\n    end, 10)\r\nend\r\n\r\nfunction placeABreach(location)\r\n    local ressourceToken\r\n    local position = location.getPosition() + Vector(0, 0, -2.5)\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 1, 1, 1 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n    for _, object in ipairs(hitList) do\r\n        local obj = object.hit_object\r\n        if obj.getName() == \"Resources\" then\r\n            ressourceToken = obj\r\n        end\r\n    end\r\n\r\n    if ressourceToken == nil then\r\n        broadcastToAll(\"Pion ressource introuvable, Placez une brèche sur le lieu « \" .. location.getName() .. \" ».\",\r\n            { 1, 0, 0.25 })\r\n        location.highlightOn({ 1, 0, 0.25 }, 1)\r\n        return\r\n    end\r\n    local val = ressourceToken.getVar('val')\r\n    if val > 2 then\r\n        broadcastToAll(\"Incursion : placez des brèches sur les lieux connexes au lieu « \" .. location.getName() .. \" ».\",\r\n            { 0.75, 0, 0.1 })\r\n        location.highlightOn({ 1, 0, 0.25 }, 1)\r\n        local paramsCard = {}\r\n        paramsCard.cardData = location.getData()\r\n        paramsCard.card = location\r\n        paramsCard.value = { count = 1, token = \"doom\", type = \"Doom\" }\r\n        collisionOperator.call('spawnUsesCalled', paramsCard)\r\n        ressourceToken.script_state = JSON.encode({ true, 0 })\r\n        ressourceToken.reload()\r\n        return\r\n    end\r\n    val = val + 1\r\n    ressourceToken.script_state = JSON.encode({ true, val })\r\n    ressourceToken.reload()\r\n    location.highlightOn({ 1, 0, 0.25 }, 1)\r\n    broadcastToAll(\"Brèche placée sur le lieu « \" .. location.getName() .. \" ».\", { 1, 0, 0.25 })\r\nend\r\n\r\nfunction placeObj(obj)\r\n    local pickedUpCard = self.takeObject({\r\n        guid = obj.GUID,\r\n        rotation = obj.rotation\r\n    })\r\n    pickedUpCard.setPositionSmooth(obj.position, false, false)\r\n    return pickedUpCard\r\nend\r\n\r\nfunction hasValue(tab, val)\r\n    for i, v in ipairs(tab) do\r\n        if v == val then return i end\r\n    end\r\n    return false\r\nend\r\n",
               "LuaScriptState": "{\"ml\":{\"05d8ce\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5186,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2571a9\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5203,\"z\":20.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"415af7\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5168,\"z\":2.5},\"rot\":{\"x\":0.0109,\"y\":180.0008,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"7234af\":{\"lock\":false,\"pos\":{\"x\":10.5,\"y\":1.5046,\"z\":11.5},\"rot\":{\"x\":0.0049,\"y\":90.0109,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"8d1418\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5058,\"z\":16},\"rot\":{\"x\":0.0109,\"y\":180.0171,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"ab38db\":{\"lock\":false,\"pos\":{\"x\":-31,\"y\":1.7789,\"z\":29.5},\"rot\":{\"x\":0,\"y\":180,\"z\":0},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b33a26\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5041,\"z\":7},\"rot\":{\"x\":0.0109,\"y\":179.9976,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"bce4db\":{\"lock\":false,\"pos\":{\"x\":15,\"y\":1.5178,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":180.0003,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}}}}",
               "XmlUI": "",
               "ContainedObjects": [
+                {
+                  "GUID": "f49672",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -20.4999828,
+                    "posY": 1.98710787,
+                    "posZ": 3.49998856,
+                    "rotX": 0.004951342,
+                    "rotY": 179.9889,
+                    "rotZ": 0.00763357431,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Loge du Crépuscule d'Argent",
+                  "Description": "Là où Tout Finit",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05305\",\n  \"locationBack\": {\n    \"connections\": \"Tee\",\n    \"icons\": \"Star\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Tee\",\n    \"icons\": \"Star\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 269516,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2695": {
+                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
+                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "05aa6f",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -20.5042915,
+                    "posY": 2.0048337,
+                    "posZ": 4.000049,
+                    "rotX": 0.005635694,
+                    "rotY": 179.978531,
+                    "rotZ": 1.19343889,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Quartier Marchand",
+                  "Description": "Arkham.",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05301\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Square|Plus\",\n    \"icons\": \"Triangle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Square|Plus\",\n    \"icons\": \"Triangle\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 269512,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2695": {
+                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
+                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "f5cca2",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -27.5000153,
+                    "posY": 1.98693728,
+                    "posZ": 1.99999118,
+                    "rotX": 0.00711982371,
+                    "rotY": 179.999969,
+                    "rotZ": -0.00331142568,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Quartier Marchand",
+                  "Description": "Arkham.",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05300\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Square|Plus\",\n    \"icons\": \"Triangle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Square|Plus\",\n    \"icons\": \"Triangle\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 269511,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2695": {
+                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
+                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "51d394",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -25.9999981,
+                    "posY": 1.797484,
+                    "posZ": 20.00001,
+                    "rotX": 359.480682,
+                    "rotY": 180.003754,
+                    "rotZ": 9.840632E-06,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "French Hill",
+                  "Description": "Arkham.",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05290\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Square|Star\",\n    \"icons\": \"Tee\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Square|Star\",\n    \"icons\": \"Tee\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 269501,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2695": {
+                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
+                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "8610dd",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -32.5,
+                    "posY": 2.0012958,
+                    "posZ": -6.0,
+                    "rotX": 3.04742E-06,
+                    "rotY": 180.028976,
+                    "rotZ": 2.838352E-07,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Quartier Sud",
+                  "Description": "Arkham.",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05294\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Triangle|Plus|Tee|Diamond\",\n    \"icons\": \"Square\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Triangle|Plus|Tee|Diamond\",\n    \"icons\": \"Square\"\n  },\n  \"traits\": \"Arkham. Central.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 269505,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2695": {
+                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
+                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "563a4d",
+                  "Name": "Deck",
+                  "Transform": {
+                    "posX": -27.5,
+                    "posY": 2.01909,
+                    "posZ": 14.0,
+                    "rotX": -0.00311835669,
+                    "rotY": 90.0000153,
+                    "rotZ": 0.000403988932,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Deck Acte",
+                  "Description": "Dans les Griffes du Chaos",
+                  "GMNotes": "",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": false,
+                  "SidewaysCard": true,
+                  "DeckIDs": [
+                    269402,
+                    269401
+                  ],
+                  "CustomDeck": {
+                    "2694": {
+                      "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
+                      "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": "",
+                  "ContainedObjects": [
+                    {
+                      "GUID": "448ce6",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -30.5,
+                        "posY": 1.87043929,
+                        "posZ": 19.0,
+                        "rotX": 0.000235777246,
+                        "rotY": 90.00013,
+                        "rotZ": -0.000826574862,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "Par-Delà la Tombe",
+                      "Description": "Acte 2a",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05287\",\n  \"type\": \"Act\"\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 269402,
+                      "SidewaysCard": true,
+                      "CustomDeck": {
+                        "2694": {
+                          "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
+                          "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": true,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    },
+                    {
+                      "GUID": "bf9fda",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -30.5,
+                        "posY": 1.8687222,
+                        "posZ": 19.0,
+                        "rotX": 0.000670061854,
+                        "rotY": 90.00013,
+                        "rotZ": -0.00171120418,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "Sombre Connaissance (v. I)",
+                      "Description": "Acte 1a",
+                      "GMNotes": "{\n  \"backEnemy\": {\n    \"health\": 6,\n    \"healthPerInv\": \"true\",\n    \"traits\": \"Humanoid. Witch. Servitor. Elite.\",\n    \"victory\": 2\n  },\n  \"class\": \"Mythos\",\n  \"clueThresholdPerInvestigator\": 3,\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05286a\",\n  \"type\": \"Act\"\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 269401,
+                      "SidewaysCard": true,
+                      "CustomDeck": {
+                        "2694": {
+                          "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
+                          "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": true,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    }
+                  ]
+                },
                 {
                   "GUID": "286138",
                   "Name": "Card",
@@ -800,6 +1314,359 @@
                   "XmlUI": ""
                 },
                 {
+                  "GUID": "781438",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -21.4994717,
+                    "posY": 1.99811983,
+                    "posZ": 3.98762226,
+                    "rotX": -2.86144714E-05,
+                    "rotY": 179.995041,
+                    "rotZ": -9.142905E-05,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Quartier de la Rivière",
+                  "Description": "Arkham.",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05293\",\n  \"locationBack\": {\n    \"connections\": \"Square|Triangle|Tee\",\n    \"icons\": \"Circle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Square|Triangle|Tee\",\n    \"icons\": \"Circle\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 269504,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2695": {
+                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
+                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "1cb2ba",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -26.5,
+                    "posY": 2.000486,
+                    "posZ": 9.5,
+                    "rotX": -5.05583239E-06,
+                    "rotY": 180.004135,
+                    "rotZ": -5.78398236E-08,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Loge du Crépuscule d'Argent",
+                  "Description": "Enveloppée de Mystères",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05303\",\n  \"locationBack\": {\n    \"connections\": \"Tee\",\n    \"icons\": \"Star\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"locationFront\": {\n    \"connections\": \"Tee\",\n    \"icons\": \"Star\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 269515,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2695": {
+                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
+                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "2247c5",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -32.5,
+                    "posY": 2.00129676,
+                    "posZ": -16.0,
+                    "rotX": -1.44259252E-06,
+                    "rotY": 179.999344,
+                    "rotZ": -5.433945E-06,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Église Méridionale",
+                  "Description": "Arkham.",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05298\",\n  \"locationBack\": {\n    \"connections\": \"Square\",\n    \"icons\": \"Diamond\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Square\",\n    \"icons\": \"Diamond\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 269509,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2695": {
+                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
+                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "9c477b",
+                  "Name": "Deck",
+                  "Transform": {
+                    "posX": -21.5,
+                    "posY": 2.01825237,
+                    "posZ": 4.0,
+                    "rotX": 359.977783,
+                    "rotY": 90.00001,
+                    "rotZ": 0.0483470857,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Deck Acte (v. II)",
+                  "Description": "Dans les Griffes du Chaos",
+                  "GMNotes": "",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": false,
+                  "SidewaysCard": true,
+                  "DeckIDs": [
+                    269404,
+                    269403
+                  ],
+                  "CustomDeck": {
+                    "2694": {
+                      "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
+                      "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": "",
+                  "ContainedObjects": [
+                    {
+                      "GUID": "3e353c",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -27.0,
+                        "posY": 1.83734989,
+                        "posZ": 3.5,
+                        "rotX": 5.52284837E-06,
+                        "rotY": 90.00039,
+                        "rotZ": 179.292847,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "Nouvel Ordre Mondial",
+                      "Description": "Acte 2a",
+                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05289\",\n  \"type\": \"Act\"\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 269404,
+                      "SidewaysCard": true,
+                      "CustomDeck": {
+                        "2694": {
+                          "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
+                          "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": true,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    },
+                    {
+                      "GUID": "492474",
+                      "Name": "Card",
+                      "Transform": {
+                        "posX": -26.99999,
+                        "posY": 1.77890623,
+                        "posZ": 3.499882,
+                        "rotX": 3.24304636E-08,
+                        "rotY": 90.00106,
+                        "rotZ": 180.0,
+                        "scaleX": 1.0,
+                        "scaleY": 1.0,
+                        "scaleZ": 1.0
+                      },
+                      "Nickname": "Sombre Connaissance (v. II)",
+                      "Description": "Acte 1a",
+                      "GMNotes": "{\n  \"backEnemy\": {\n    \"health\": 6,\n    \"healthPerInv\": \"true\",\n    \"traits\": \"Humanoid. Silver Twilight. Elite.\",\n    \"victory\": 2\n  },\n  \"class\": \"Mythos\",\n  \"clueThresholdPerInvestigator\": 3,\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05288a\",\n  \"type\": \"Act\"\n}",
+                      "AltLookAngle": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "ColorDiffuse": {
+                        "r": 0.713235259,
+                        "g": 0.713235259,
+                        "b": 0.713235259
+                      },
+                      "LayoutGroupSortIndex": 0,
+                      "Value": 0,
+                      "Locked": false,
+                      "Grid": true,
+                      "Snap": true,
+                      "IgnoreFoW": false,
+                      "MeasureMovement": false,
+                      "DragSelectable": true,
+                      "Autoraise": true,
+                      "Sticky": true,
+                      "Tooltip": true,
+                      "GridProjection": false,
+                      "HideWhenFaceDown": true,
+                      "Hands": true,
+                      "CardID": 269403,
+                      "SidewaysCard": true,
+                      "CustomDeck": {
+                        "2694": {
+                          "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
+                          "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
+                          "NumWidth": 10,
+                          "NumHeight": 7,
+                          "BackIsHidden": true,
+                          "UniqueBack": true,
+                          "Type": 0
+                        }
+                      },
+                      "LuaScript": "",
+                      "LuaScriptState": "",
+                      "XmlUI": ""
+                    }
+                  ]
+                },
+                {
                   "GUID": "b5bad5",
                   "Name": "Card",
                   "Transform": {
@@ -841,6 +1708,122 @@
                   "HideWhenFaceDown": true,
                   "Hands": true,
                   "CardID": 269513,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2695": {
+                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
+                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "d7b93e",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -20.5,
+                    "posY": 2.0013,
+                    "posZ": 4.5,
+                    "rotX": 359.976624,
+                    "rotY": 179.99559,
+                    "rotZ": 359.95813,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Quartier Résidentiel",
+                  "Description": "Arkham.",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05296\",\n  \"locationBack\": {\n    \"connections\": \"Square|Triangle|Crescent\",\n    \"icons\": \"Plus\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Square|Triangle|Crescent\",\n    \"icons\": \"Plus\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 269507,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2695": {
+                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
+                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "2b3682",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -19.4988022,
+                    "posY": 1.97014022,
+                    "posZ": 3.99989939,
+                    "rotX": 0.00310621317,
+                    "rotY": 179.977951,
+                    "rotZ": 2.77798963,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "French Hill",
+                  "Description": "Arkham.",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05291\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Square|Star\",\n    \"icons\": \"Tee\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Square|Star\",\n    \"icons\": \"Tee\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 269502,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "2695": {
@@ -2271,612 +3254,22 @@
                   ]
                 },
                 {
-                  "GUID": "d7b93e",
+                  "GUID": "e3b55e",
                   "Name": "Card",
                   "Transform": {
-                    "posX": -20.5,
-                    "posY": 2.0013,
+                    "posX": -20.0,
+                    "posY": 2.00134754,
                     "posZ": 4.5,
-                    "rotX": 359.976624,
-                    "rotY": 179.99559,
-                    "rotZ": 359.95813,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Quartier Résidentiel",
-                  "Description": "Arkham.",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05296\",\n  \"locationBack\": {\n    \"connections\": \"Square|Triangle|Crescent\",\n    \"icons\": \"Plus\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Square|Triangle|Crescent\",\n    \"icons\": \"Plus\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 269507,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2695": {
-                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
-                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "563a4d",
-                  "Name": "Deck",
-                  "Transform": {
-                    "posX": -27.5,
-                    "posY": 2.01909,
-                    "posZ": 14.0,
-                    "rotX": -0.00311835669,
-                    "rotY": 90.0000153,
-                    "rotZ": 0.000403988932,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Deck Acte",
-                  "Description": "Dans les Griffes du Chaos",
-                  "GMNotes": "",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": false,
-                  "SidewaysCard": true,
-                  "DeckIDs": [
-                    269402,
-                    269401
-                  ],
-                  "CustomDeck": {
-                    "2694": {
-                      "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
-                      "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": "",
-                  "ContainedObjects": [
-                    {
-                      "GUID": "448ce6",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -30.5,
-                        "posY": 1.87043929,
-                        "posZ": 19.0,
-                        "rotX": 0.000235777246,
-                        "rotY": 90.00013,
-                        "rotZ": -0.000826574862,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "Par-Delà la Tombe",
-                      "Description": "Acte 2a",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05287\",\n  \"type\": \"Act\"\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 269402,
-                      "SidewaysCard": true,
-                      "CustomDeck": {
-                        "2694": {
-                          "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
-                          "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": true,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    },
-                    {
-                      "GUID": "bf9fda",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -30.5,
-                        "posY": 1.8687222,
-                        "posZ": 19.0,
-                        "rotX": 0.000670061854,
-                        "rotY": 90.00013,
-                        "rotZ": -0.00171120418,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "Sombre Connaissance (v. I)",
-                      "Description": "Acte 1a",
-                      "GMNotes": "{\n  \"backEnemy\": {\n    \"health\": 6,\n    \"healthPerInv\": \"true\",\n    \"traits\": \"Humanoid. Witch. Servitor. Elite.\",\n    \"victory\": 2\n  },\n  \"class\": \"Mythos\",\n  \"clueThresholdPerInvestigator\": 3,\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05286a\",\n  \"type\": \"Act\"\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 269401,
-                      "SidewaysCard": true,
-                      "CustomDeck": {
-                        "2694": {
-                          "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
-                          "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": true,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    }
-                  ]
-                },
-                {
-                  "GUID": "1cb2ba",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -26.5,
-                    "posY": 2.000486,
-                    "posZ": 9.5,
-                    "rotX": -5.05583239E-06,
-                    "rotY": 180.004135,
-                    "rotZ": -5.78398236E-08,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Loge du Crépuscule d'Argent",
-                  "Description": "Enveloppée de Mystères",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05303\",\n  \"locationBack\": {\n    \"connections\": \"Tee\",\n    \"icons\": \"Star\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"locationFront\": {\n    \"connections\": \"Tee\",\n    \"icons\": \"Star\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 269515,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2695": {
-                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
-                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "f5cca2",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -27.5000153,
-                    "posY": 1.98693728,
-                    "posZ": 1.99999118,
-                    "rotX": 0.00711982371,
-                    "rotY": 179.999969,
-                    "rotZ": -0.00331142568,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Quartier Marchand",
-                  "Description": "Arkham.",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05300\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Square|Plus\",\n    \"icons\": \"Triangle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Square|Plus\",\n    \"icons\": \"Triangle\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 269511,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2695": {
-                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
-                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "d8cc7d",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -29.4999981,
-                    "posY": 1.797486,
-                    "posZ": 24.0000038,
-                    "rotX": 359.48056,
-                    "rotY": 180.028992,
-                    "rotZ": -9.3223E-06,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Quartier Résidentiel",
-                  "Description": "Arkham.",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05297\",\n  \"locationBack\": {\n    \"connections\": \"Square|Triangle|Crescent\",\n    \"icons\": \"Plus\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Square|Triangle|Crescent\",\n    \"icons\": \"Plus\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 269508,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2695": {
-                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
-                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "9c477b",
-                  "Name": "Deck",
-                  "Transform": {
-                    "posX": -21.5,
-                    "posY": 2.01825237,
-                    "posZ": 4.0,
-                    "rotX": 359.977783,
-                    "rotY": 90.00001,
-                    "rotZ": 0.0483470857,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Deck Acte (v. II)",
-                  "Description": "Dans les Griffes du Chaos",
-                  "GMNotes": "",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": false,
-                  "SidewaysCard": true,
-                  "DeckIDs": [
-                    269404,
-                    269403
-                  ],
-                  "CustomDeck": {
-                    "2694": {
-                      "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
-                      "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": "",
-                  "ContainedObjects": [
-                    {
-                      "GUID": "3e353c",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -27.0,
-                        "posY": 1.83734989,
-                        "posZ": 3.5,
-                        "rotX": 5.52284837E-06,
-                        "rotY": 90.00039,
-                        "rotZ": 179.292847,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "Nouvel Ordre Mondial",
-                      "Description": "Acte 2a",
-                      "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05289\",\n  \"type\": \"Act\"\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 269404,
-                      "SidewaysCard": true,
-                      "CustomDeck": {
-                        "2694": {
-                          "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
-                          "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": true,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    },
-                    {
-                      "GUID": "492474",
-                      "Name": "Card",
-                      "Transform": {
-                        "posX": -26.99999,
-                        "posY": 1.77890623,
-                        "posZ": 3.499882,
-                        "rotX": 3.24304636E-08,
-                        "rotY": 90.00106,
-                        "rotZ": 180.0,
-                        "scaleX": 1.0,
-                        "scaleY": 1.0,
-                        "scaleZ": 1.0
-                      },
-                      "Nickname": "Sombre Connaissance (v. II)",
-                      "Description": "Acte 1a",
-                      "GMNotes": "{\n  \"backEnemy\": {\n    \"health\": 6,\n    \"healthPerInv\": \"true\",\n    \"traits\": \"Humanoid. Silver Twilight. Elite.\",\n    \"victory\": 2\n  },\n  \"class\": \"Mythos\",\n  \"clueThresholdPerInvestigator\": 3,\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05288a\",\n  \"type\": \"Act\"\n}",
-                      "AltLookAngle": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": 0.0
-                      },
-                      "ColorDiffuse": {
-                        "r": 0.713235259,
-                        "g": 0.713235259,
-                        "b": 0.713235259
-                      },
-                      "LayoutGroupSortIndex": 0,
-                      "Value": 0,
-                      "Locked": false,
-                      "Grid": true,
-                      "Snap": true,
-                      "IgnoreFoW": false,
-                      "MeasureMovement": false,
-                      "DragSelectable": true,
-                      "Autoraise": true,
-                      "Sticky": true,
-                      "Tooltip": true,
-                      "GridProjection": false,
-                      "HideWhenFaceDown": true,
-                      "Hands": true,
-                      "CardID": 269403,
-                      "SidewaysCard": true,
-                      "CustomDeck": {
-                        "2694": {
-                          "FaceURL": "https://i.imgur.com/pcwNdwo.jpg",
-                          "BackURL": "https://i.imgur.com/AgJyEyP.jpg",
-                          "NumWidth": 10,
-                          "NumHeight": 7,
-                          "BackIsHidden": true,
-                          "UniqueBack": true,
-                          "Type": 0
-                        }
-                      },
-                      "LuaScript": "",
-                      "LuaScriptState": "",
-                      "XmlUI": ""
-                    }
-                  ]
-                },
-                {
-                  "GUID": "2247c5",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -32.5,
-                    "posY": 2.00129676,
-                    "posZ": -16.0,
-                    "rotX": -1.44259252E-06,
-                    "rotY": 179.999344,
-                    "rotZ": -5.433945E-06,
+                    "rotX": 359.962463,
+                    "rotY": 180.015915,
+                    "rotZ": 359.992859,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
                   "Nickname": "Église Méridionale",
                   "Description": "Arkham.",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05298\",\n  \"locationBack\": {\n    \"connections\": \"Square\",\n    \"icons\": \"Diamond\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Square\",\n    \"icons\": \"Diamond\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05299\",\n  \"locationBack\": {\n    \"connections\": \"Square\",\n    \"icons\": \"Diamond\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Square\",\n    \"icons\": \"Diamond\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -2901,123 +3294,7 @@
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
                   "Hands": true,
-                  "CardID": 269509,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2695": {
-                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
-                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "f49672",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -20.4999828,
-                    "posY": 1.98710787,
-                    "posZ": 3.49998856,
-                    "rotX": 0.004951342,
-                    "rotY": 179.9889,
-                    "rotZ": 0.00763357431,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Loge du Crépuscule d'Argent",
-                  "Description": "Là où Tout Finit",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05305\",\n  \"locationBack\": {\n    \"connections\": \"Tee\",\n    \"icons\": \"Star\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Tee\",\n    \"icons\": \"Star\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 269516,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2695": {
-                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
-                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "8610dd",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -32.5,
-                    "posY": 2.0012958,
-                    "posZ": -6.0,
-                    "rotX": 3.04742E-06,
-                    "rotY": 180.028976,
-                    "rotZ": 2.838352E-07,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Quartier Sud",
-                  "Description": "Arkham.",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05294\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Triangle|Plus|Tee|Diamond\",\n    \"icons\": \"Square\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Triangle|Plus|Tee|Diamond\",\n    \"icons\": \"Square\"\n  },\n  \"traits\": \"Arkham. Central.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 269505,
+                  "CardID": 269510,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "2695": {
@@ -4362,22 +4639,22 @@
                   ]
                 },
                 {
-                  "GUID": "781438",
+                  "GUID": "67cf95",
                   "Name": "Card",
                   "Transform": {
-                    "posX": -21.4994717,
-                    "posY": 1.99811983,
-                    "posZ": 3.98762226,
-                    "rotX": -2.86144714E-05,
-                    "rotY": 179.995041,
-                    "rotZ": -9.142905E-05,
+                    "posX": -20.4999828,
+                    "posY": 1.987108,
+                    "posZ": 3.4999907,
+                    "rotX": 0.004960015,
+                    "rotY": 179.9885,
+                    "rotZ": 0.007627212,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
-                  "Nickname": "Quartier de la Rivière",
-                  "Description": "Arkham.",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05293\",\n  \"locationBack\": {\n    \"connections\": \"Square|Triangle|Tee\",\n    \"icons\": \"Circle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Square|Triangle|Tee\",\n    \"icons\": \"Circle\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "Nickname": "Colline du Pendu",
+                  "Description": "Enveloppée de Mystères",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05304\",\n  \"locationBack\": {\n    \"connections\": \"Plus\",\n    \"icons\": \"Crescent\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"locationFront\": {\n    \"connections\": \"Plus\",\n    \"icons\": \"Crescent\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -4402,7 +4679,7 @@
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
                   "Hands": true,
-                  "CardID": 269504,
+                  "CardID": 269514,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "2695": {
@@ -4420,22 +4697,22 @@
                   "XmlUI": ""
                 },
                 {
-                  "GUID": "2b3682",
+                  "GUID": "d8cc7d",
                   "Name": "Card",
                   "Transform": {
-                    "posX": -19.4988022,
-                    "posY": 1.97014022,
-                    "posZ": 3.99989939,
-                    "rotX": 0.00310621317,
-                    "rotY": 179.977951,
-                    "rotZ": 2.77798963,
+                    "posX": -29.4999981,
+                    "posY": 1.797486,
+                    "posZ": 24.0000038,
+                    "rotX": 359.48056,
+                    "rotY": 180.028992,
+                    "rotZ": -9.3223E-06,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
-                  "Nickname": "French Hill",
+                  "Nickname": "Quartier Résidentiel",
                   "Description": "Arkham.",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05291\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Square|Star\",\n    \"icons\": \"Tee\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Square|Star\",\n    \"icons\": \"Tee\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
+                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05297\",\n  \"locationBack\": {\n    \"connections\": \"Square|Triangle|Crescent\",\n    \"icons\": \"Plus\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Square|Triangle|Crescent\",\n    \"icons\": \"Plus\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -4460,7 +4737,7 @@
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
                   "Hands": true,
-                  "CardID": 269502,
+                  "CardID": 269508,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "2695": {
@@ -4534,238 +4811,6 @@
                   "LuaScript": "",
                   "LuaScriptState": "",
                   "XmlUI": ""
-                },
-                {
-                  "GUID": "67cf95",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -20.4999828,
-                    "posY": 1.987108,
-                    "posZ": 3.4999907,
-                    "rotX": 0.004960015,
-                    "rotY": 179.9885,
-                    "rotZ": 0.007627212,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Colline du Pendu",
-                  "Description": "Enveloppée de Mystères",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05304\",\n  \"locationBack\": {\n    \"connections\": \"Plus\",\n    \"icons\": \"Crescent\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"locationFront\": {\n    \"connections\": \"Plus\",\n    \"icons\": \"Crescent\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 269514,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2695": {
-                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
-                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "51d394",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -25.9999981,
-                    "posY": 1.797484,
-                    "posZ": 20.00001,
-                    "rotX": 359.480682,
-                    "rotY": 180.003754,
-                    "rotZ": 9.840632E-06,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "French Hill",
-                  "Description": "Arkham.",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05290\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Square|Star\",\n    \"icons\": \"Tee\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Square|Star\",\n    \"icons\": \"Tee\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 269501,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2695": {
-                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
-                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "05aa6f",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -20.5042915,
-                    "posY": 2.0048337,
-                    "posZ": 4.000049,
-                    "rotX": 0.005635694,
-                    "rotY": 179.978531,
-                    "rotZ": 1.19343889,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Quartier Marchand",
-                  "Description": "Arkham.",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05301\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Square|Plus\",\n    \"icons\": \"Triangle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Square|Plus\",\n    \"icons\": \"Triangle\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 269512,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2695": {
-                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
-                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "e3b55e",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -20.0,
-                    "posY": 2.00134754,
-                    "posZ": 4.5,
-                    "rotX": 359.962463,
-                    "rotY": 180.015915,
-                    "rotZ": 359.992859,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Église Méridionale",
-                  "Description": "Arkham.",
-                  "GMNotes": "{\n  \"cycle\": \"The Circle Undone\",\n  \"id\": \"05299\",\n  \"locationBack\": {\n    \"connections\": \"Square\",\n    \"icons\": \"Diamond\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Square\",\n    \"icons\": \"Diamond\"\n  },\n  \"traits\": \"Arkham.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 269510,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2695": {
-                      "FaceURL": "https://i.imgur.com/7Ohptqp.jpg",
-                      "BackURL": "https://i.imgur.com/w8l3ULR.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
                 }
               ]
             },
@@ -4773,12 +4818,12 @@
               "GUID": "b3f16e",
               "Name": "Card",
               "Transform": {
-                "posX": -25.0000744,
+                "posX": -25.0000057,
                 "posY": 1.783606,
-                "posZ": 3.499922,
-                "rotX": -5.1686734E-06,
-                "rotY": 180.00209,
-                "rotZ": -4.9199155E-08,
+                "posZ": 3.49999166,
+                "rotX": -5.1767E-06,
+                "rotY": 180.001953,
+                "rotZ": 1.153309E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -4831,12 +4876,12 @@
               "GUID": "c469a4",
               "Name": "Custom_Token",
               "Transform": {
-                "posX": 4.500024,
-                "posY": 1.55488682,
-                "posZ": 10.5000162,
-                "rotX": 0.01088402,
-                "rotY": 179.9622,
-                "rotZ": 0.00494923,
+                "posX": 4.49999952,
+                "posY": 1.5548867,
+                "posZ": 10.5000029,
+                "rotX": 0.010891241,
+                "rotY": 179.960754,
+                "rotZ": 0.004945076,
                 "scaleX": 0.3,
                 "scaleY": 1.0,
                 "scaleZ": 0.3
@@ -4888,12 +4933,12 @@
               "GUID": "f8961e",
               "Name": "Custom_Token",
               "Transform": {
-                "posX": 15.0000038,
+                "posX": 15.000001,
                 "posY": 1.55207908,
-                "posZ": 0.50000304,
-                "rotX": 0.0108809816,
-                "rotY": 179.988708,
-                "rotZ": 0.004950503,
+                "posZ": 0.5000026,
+                "rotX": 0.0108812265,
+                "rotY": 179.9886,
+                "rotZ": 0.00494958926,
                 "scaleX": 0.3,
                 "scaleY": 1.0,
                 "scaleZ": 0.3
@@ -4945,11 +4990,11 @@
               "GUID": "fe81d2",
               "Name": "Deck",
               "Transform": {
-                "posX": 30.4999943,
+                "posX": 30.5,
                 "posY": 1.59320962,
-                "posZ": -2.9971416,
-                "rotX": -0.0005911683,
-                "rotY": 180.000031,
+                "posZ": -2.9971,
+                "rotX": -0.000591060845,
+                "rotY": 180.0,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -5931,12 +5976,12 @@
           "GUID": "079895",
           "Name": "Custom_Tile",
           "Transform": {
-            "posX": 3.00044274,
-            "posY": 1.5019747,
-            "posZ": -5.50147533,
-            "rotX": 0.010892448,
-            "rotY": 179.989716,
-            "rotZ": 0.004946359,
+            "posX": 3.00041723,
+            "posY": 1.50197458,
+            "posZ": -5.501492,
+            "rotX": 0.0108924443,
+            "rotY": 179.989822,
+            "rotZ": 0.00494641159,
             "scaleX": 1.6428808,
             "scaleY": 1.0,
             "scaleZ": 1.6428808
@@ -5988,12 +6033,12 @@
           "GUID": "17b4f1",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 15.0000029,
-            "posY": 0.9799973,
+            "posX": 15.0000057,
+            "posY": 0.979997337,
             "posZ": 47.5,
-            "rotX": -5.1521265E-06,
-            "rotY": 180.000031,
-            "rotZ": -2.6036696E-07,
+            "rotX": -4.789117E-06,
+            "rotY": 179.999969,
+            "rotZ": 1.29373007E-06,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -11208,12 +11253,12 @@
           "GUID": "25fdac",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 10.5000057,
-            "posY": 0.9799974,
-            "posZ": 47.50001,
-            "rotX": -5.32555941E-06,
-            "rotY": 179.970581,
-            "rotZ": -2.91226826E-07,
+            "posX": 10.5000105,
+            "posY": 0.9799973,
+            "posZ": 47.5000153,
+            "rotX": -5.11082226E-06,
+            "rotY": 179.970627,
+            "rotZ": 3.21955184E-07,
             "scaleX": 1.265649,
             "scaleY": 0.263438284,
             "scaleZ": 1.38591444
@@ -15679,12 +15724,12 @@
           "GUID": "388b8a",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 24.0000057,
-            "posY": 0.979997039,
-            "posZ": 47.4993057,
-            "rotX": -5.18752131E-06,
-            "rotY": 180.009,
-            "rotZ": 1.4580138E-07,
+            "posX": 24.0,
+            "posY": 0.979997158,
+            "posZ": 47.4993,
+            "rotX": -4.75447769E-06,
+            "rotY": 180.009048,
+            "rotZ": 2.13653516E-06,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -19594,12 +19639,12 @@
           "GUID": "4c2363",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -7.499999,
-            "posY": 0.979997337,
+            "posX": -7.49999857,
+            "posY": 0.9799973,
             "posZ": 47.4999962,
-            "rotX": -4.982047E-06,
+            "rotX": -4.98050849E-06,
             "rotY": 180.003067,
-            "rotZ": 4.11877E-07,
+            "rotZ": 5.997979E-07,
             "scaleX": 1.13539374,
             "scaleY": 0.2363263,
             "scaleZ": 1.243282
@@ -23505,11 +23550,11 @@
           "Name": "Custom_Model_Bag",
           "Transform": {
             "posX": -12.0,
-            "posY": 0.979997456,
+            "posY": 0.9799975,
             "posZ": 47.5,
-            "rotX": -5.04136869E-06,
+            "rotX": -5.080264E-06,
             "rotY": 180.000183,
-            "rotZ": 5.092642E-07,
+            "rotZ": 1.01649607E-06,
             "scaleX": 1.13539374,
             "scaleY": 0.2363263,
             "scaleZ": 1.243282
@@ -28910,12 +28955,12 @@
           "GUID": "680fe7",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 6.00000334,
-            "posY": 0.9799973,
+            "posX": 6.000003,
+            "posY": 0.979997158,
             "posZ": 47.5000038,
-            "rotX": -4.988385E-06,
+            "rotX": -5.17560466E-06,
             "rotY": 179.9999,
-            "rotZ": 4.11466573E-07,
+            "rotZ": 3.63919071E-07,
             "scaleX": 1.23308516,
             "scaleY": 0.256660283,
             "scaleZ": 1.35025632
@@ -33920,9 +33965,9 @@
             "posX": -20.0,
             "posY": 1.47986,
             "posZ": -5.0,
-            "rotX": 2.924455E-07,
+            "rotX": 2.97507171E-07,
             "rotY": 180.0057,
-            "rotZ": -8.061679E-08,
+            "rotZ": -6.20658938E-08,
             "scaleX": 2.05722,
             "scaleY": 1.0,
             "scaleZ": 2.05722
@@ -33971,9 +34016,9 @@
             "posX": -3.00000143,
             "posY": 0.9799973,
             "posZ": 47.4999962,
-            "rotX": -4.96862549E-06,
+            "rotX": -4.99989937E-06,
             "rotY": 179.997269,
-            "rotZ": 4.127614E-07,
+            "rotZ": 4.39189279E-07,
             "scaleX": 1.13539386,
             "scaleY": 0.236326337,
             "scaleZ": 1.243282
@@ -37661,9 +37706,9 @@
             "posX": 32.9999962,
             "posY": 1.49215233,
             "posZ": 11.9997978,
-            "rotX": 0.0109092165,
-            "rotY": 179.9711,
-            "rotZ": 0.10229373,
+            "rotX": 0.0109092109,
+            "rotY": 179.971085,
+            "rotZ": 0.102293678,
             "scaleX": 6.221754,
             "scaleY": 1.0,
             "scaleZ": 6.221754
@@ -37774,12 +37819,12 @@
           "GUID": "c56bf6",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 1.50000167,
-            "posY": 0.9799974,
-            "posZ": 47.5000076,
-            "rotX": -4.993115E-06,
+            "posX": 1.5000056,
+            "posY": 0.979997337,
+            "posZ": 47.50001,
+            "rotX": -5.055778E-06,
             "rotY": 179.978745,
-            "rotZ": 6.0417716E-07,
+            "rotZ": 5.921235E-07,
             "scaleX": 1.16795754,
             "scaleY": 0.2431043,
             "scaleZ": 1.27894008
