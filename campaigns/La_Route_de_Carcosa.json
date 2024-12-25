@@ -20,12 +20,12 @@
       "GUID": "4f52cd",
       "Name": "Custom_Model_Bag",
       "Transform": {
-        "posX": -77.00015,
-        "posY": 0.9800002,
-        "posZ": 19.4995956,
-        "rotX": -5.145462E-06,
-        "rotY": 180.000854,
-        "rotZ": 5.39396467E-07,
+        "posX": -77.0001144,
+        "posY": 0.9800004,
+        "posZ": 19.4996185,
+        "rotX": -6.092623E-06,
+        "rotY": 180.001266,
+        "rotZ": 6.550487E-07,
         "scaleX": 0.6144237,
         "scaleY": 0.08580595,
         "scaleZ": 0.6144237
@@ -90,12 +90,12 @@
           "GUID": "0793cf",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 21.5000248,
-            "posY": 0.9799974,
-            "posZ": 45.0000267,
-            "rotX": -4.932176E-06,
-            "rotY": 180.000244,
-            "rotZ": 4.607374E-07,
+            "posX": 21.50002,
+            "posY": 0.979997337,
+            "posZ": 45.0000229,
+            "rotX": -5.011142E-06,
+            "rotY": 180.000259,
+            "rotZ": 4.26267178E-07,
             "scaleX": 1.265649,
             "scaleY": 0.263438284,
             "scaleZ": 1.38591433
@@ -4130,12 +4130,12 @@
           "GUID": "207ea2",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 12.5000057,
+            "posX": 12.5000038,
             "posY": 0.9799976,
             "posZ": 45.0000038,
-            "rotX": -5.041779E-06,
-            "rotY": 179.999863,
-            "rotZ": 6.45409443E-07,
+            "rotX": -5.17914441E-06,
+            "rotY": 179.9999,
+            "rotZ": -2.732455E-07,
             "scaleX": 1.265649,
             "scaleY": 0.263438284,
             "scaleZ": 1.38591433
@@ -4202,10 +4202,10 @@
               "Transform": {
                 "posX": 23.5001011,
                 "posY": 1.5138092,
-                "posZ": -5.5000453,
-                "rotX": 0.0108914534,
-                "rotY": 179.9999,
-                "rotZ": 0.00494826864,
+                "posZ": -5.500046,
+                "rotX": 0.0108915092,
+                "rotY": 179.999863,
+                "rotZ": 0.0049480875,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -4258,11 +4258,11 @@
               "GUID": "71fa8e",
               "Name": "Deck",
               "Transform": {
-                "posX": 12.5000219,
+                "posX": 12.5000229,
                 "posY": 1.531618,
-                "posZ": -6.00013733,
-                "rotX": 0.004948104,
-                "rotY": 90.0001755,
+                "posZ": -6.000138,
+                "rotX": 0.004948085,
+                "rotY": 90.00014,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -4437,12 +4437,12 @@
               "GUID": "a599d9",
               "Name": "Card",
               "Transform": {
-                "posX": -25.5001545,
+                "posX": -25.5001564,
                 "posY": 1.783606,
-                "posZ": 3.99984765,
-                "rotX": -5.14661269E-06,
-                "rotY": 180.001785,
-                "rotZ": 2.40041658E-07,
+                "posZ": 3.99984479,
+                "rotX": -5.01332443E-06,
+                "rotY": 180.0018,
+                "rotZ": -5.99558758E-09,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -4495,11 +4495,11 @@
               "GUID": "a684a8",
               "Name": "Deck",
               "Transform": {
-                "posX": 17.501297,
+                "posX": 17.5012989,
                 "posY": 1.53118157,
                 "posZ": -6.02384472,
-                "rotX": 0.00494562229,
-                "rotY": 89.9866257,
+                "rotX": 0.00494551426,
+                "rotY": 89.9866,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -4678,8 +4678,8 @@
                 "posY": 1.50674856,
                 "posZ": 15.9073,
                 "rotX": 359.9891,
-                "rotY": 0.009809491,
-                "rotZ": -0.00495003955,
+                "rotY": 0.009818078,
+                "rotZ": -0.004950127,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -4733,7 +4733,7 @@
                 "posX": 30.5,
                 "posY": 1.66542017,
                 "posZ": -3.00000048,
-                "rotX": -0.000591199961,
+                "rotX": -0.0005911128,
                 "rotY": 180.000259,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
@@ -6624,12 +6624,12 @@
               "GUID": "e9cbe0",
               "Name": "Custom_Model_Bag",
               "Transform": {
-                "posX": -29.50001,
+                "posX": -29.5000114,
                 "posY": 1.87000108,
-                "posZ": 4.49999046,
-                "rotX": -4.9643445E-06,
-                "rotY": 180.000275,
-                "rotZ": 8.959553E-08,
+                "posZ": 4.49998665,
+                "rotX": -4.48623223E-06,
+                "rotY": 180.000381,
+                "rotZ": -2.10041293E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -6686,68 +6686,10 @@
               "Bag": {
                 "Order": 0
               },
-              "LuaScript": "local POSITION_HANDLER_GUID = 'ef3980'\r\nlocal positionHandler = getObjectFromGUID(POSITION_HANDLER_GUID)\r\nlocal hellGate = 'e214e7'\r\nlocal shadowTomb = 'd1a4d9'\r\nlocal sealdPassage = '5ae46d'\r\nlocal forbiddenGUID = { hellGate, shadowTomb, sealdPassage }\r\nlocal startLocation = { position = { 6.50, 1.52, 14.00 }, rotation = { 0.05, 180.00, 0.00 } }\r\nlocal catacombsTable = {}\r\nlocal outOfPlayPile = {\r\n    ['encounterDeck'] = {\r\n        position = { 30.50, 3.61, -3.00 } },\r\n    ['catacombsDeck'] = {\r\n        position = { 35.00, 2.5, 2.50 } },\r\n}\r\nlocal act3Table = { ['Step'] = 'b159bb', ['Exit'] = '082cc5' }\r\nfunction onLoad()\r\n    createButton()\r\n    math.randomseed(os.time())\r\n    self.shuffle()\r\n    self.randomize()\r\n    buildCatacombsTable()\r\nend\r\n\r\nfunction createButton()\r\n    self.createButton({\r\n        label = \"Mise en place\",\r\n        click_function = \"question1\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 350,\r\n        width = 1800,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Mise en place\"\r\n    })\r\nend\r\n\r\nfunction question1()\r\n    broadcastToAll(\"Haruko a-t-elle été interrogée ?\", 'Yellow')\r\n    self.removeButton(0)\r\n    self.createButton({\r\n        label = \"Oui\",\r\n        click_function = \"yes1\",\r\n        function_owner = self,\r\n        position = { -1, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 400,\r\n        width = 800,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Oui\"\r\n    })\r\n    self.createButton({\r\n        label = \"Non\",\r\n        click_function = \"question2\",\r\n        function_owner = self,\r\n        position = { 1, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 400,\r\n        width = 800,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Non\"\r\n    })\r\nend\r\n\r\nfunction yes1()\r\n    broadcastToAll('Lisez \"Les Informations de Haruko\"', { 0, 0.75, 0.75 })\r\n    question2()\r\nend\r\n\r\nfunction question2()\r\n    broadcastToAll(\"Vous êtes-vous réveillé dans les catacombe ou y avez vous pénétré de votre plein gré\", 'Yellow')\r\n    self.editButton({\r\n        index = 0,\r\n        label = \"Réveillé\",\r\n        click_function = \"wake\",\r\n        position = { -1.3, 0.3, 1.8 },\r\n        height = 400,\r\n        width = 1200,\r\n        font_size = 250,\r\n        tooltip = \"Ça a dû être une sacré soirée !\"\r\n    })\r\n    self.editButton({\r\n        index = 1,\r\n        label = \"Plein gré\",\r\n        click_function = \"enter\",\r\n        position = { 1.3, 0.3, 1.8 },\r\n        height = 400,\r\n        width = 1200,\r\n        font_size = 250,\r\n        tooltip = \"Sans oui, c'est interdit\"\r\n    })\r\nend\r\n\r\nfunction wake()\r\n    startLocation.GUID = catacombsTable[1]\r\n    table.remove(catacombsTable, 1)\r\n    local i = math.random(#catacombsTable + 1)\r\n    table.insert(catacombsTable, i, hellGate)\r\n    catacombsTable = chooseAmongstInAtable(catacombsTable, #catacombsTable)\r\n    setUp()\r\nend\r\n\r\nfunction enter()\r\n    startLocation.GUID = hellGate\r\n    catacombsTable = chooseAmongstInAtable(catacombsTable, #catacombsTable)\r\n    setUp()\r\nend\r\n\r\nfunction setUp()\r\n    completeCatacombsTable()\r\n    local card = self.takeObject({\r\n        guid = startLocation.GUID,\r\n        rotation = startLocation.rotation\r\n    })\r\n    card.setPositionSmooth(startLocation.position, false, false)\r\n    for i, GUID in ipairs(catacombsTable) do\r\n        Wait.frames(function()\r\n            local place = self.takeObject({\r\n                guid = GUID,\r\n                rotation = { 0.00, 180.00, 0 }\r\n            })\r\n            local position = { outOfPlayPile['catacombsDeck'].position[1], outOfPlayPile['catacombsDeck'].position[2],\r\n                outOfPlayPile['catacombsDeck'].position[3] }\r\n            position[2] = position[2] + i / 10\r\n            place.setPositionSmooth(position, false, false)\r\n        end, i)\r\n    end\r\n\r\n    Wait.time(function()\r\n        local encounterDeck = getOutOfPlayPile('encounterDeck')\r\n        encounterDeck.shuffle()\r\n        local expositionDeckbuilt = getOutOfPlayPile('catacombsDeck')\r\n        expositionDeckbuilt.setName('Deck Catacombes')\r\n\r\n        broadcastToAll('Mise en place terminée', { 0, 0.75, 0.75 })\r\n    end, 3)\r\n    serachPallid()\r\n    self.setName(\"Choix de l'Acte 3\")\r\n    self.clearButtons()\r\n    act3()\r\nend\r\n\r\nfunction serachPallid()\r\n    local colorsInGame = positionHandler.call('getColorsInGame')\r\n    local params = {}\r\n    params.zone = 'Deck'\r\n    for i, color in ipairs(colorsInGame) do\r\n        params.playerColor = color\r\n        local objects = positionHandler.call('getObjectsInPlayerZone', params)\r\n        for _, obj in ipairs(objects) do\r\n            if obj.type == \"Deck\" then\r\n                local deck = obj\r\n                local containedObjects = deck.getData().ContainedObjects\r\n                for _, card in ipairs(containedObjects) do\r\n                    local metadata = Global.call('getMetadata', card)\r\n                    if metadata then\r\n                        if metadata.id ~= nil and metadata.id == '03059' then\r\n                            local pickedUpcard = deck.takeObject({\r\n                                guid = card.GUID,\r\n                                rotation = { 0.00, 180.00, 0 }\r\n                            })\r\n                            local position = { -22.50, 3.78, 4.00 }\r\n                            pickedUpcard.setPositionSmooth(position, false, false)\r\n                            broadcastToAll(\"L'Homme au Masque Blême a été mis de côté\", { 0, 0.75, 0.75 })\r\n                            return\r\n                        end\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\n\r\n    broadcastToAll(\"L'Homme au Masque Blême est introuvable dans les Decks en jeu\", { 1, 0, 0.25 })\r\nend\r\n\r\nfunction act3()\r\n    self.createButton({\r\n        label = \"La Marche\",\r\n        click_function = \"step\",\r\n        function_owner = self,\r\n        position = { -1.3, 0.3, 1.8 },\r\n        height = 400,\r\n        width = 1300,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Placer l'acte 3 « Ouvrir la marche »\"\r\n    })\r\n    self.createButton({\r\n        label = \"La sortie\",\r\n        click_function = \"exit\",\r\n        function_owner = self,\r\n        position = { 1.3, 0.3, 1.8 },\r\n        height = 400,\r\n        width = 1300,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Placer l'acte 3 « La Sortie »\"\r\n    })\r\nend\r\n\r\nfunction step()\r\n    placeAct3(act3Table['Step'])\r\nend\r\n\r\nfunction exit()\r\n    placeAct3(act3Table['Exit'])\r\nend\r\n\r\nfunction placeAct3(GUID)\r\n    local card = self.takeObject({\r\n        guid = GUID,\r\n        rotation = { 0.00, 90, 0 }\r\n    })\r\n    local position = { 17.50, 3.58, -6.02 }\r\n    card.setPositionSmooth(position, false, false)\r\n    self.clearButtons()\r\nend\r\n\r\nfunction getOutOfPlayPile(pile)\r\n    local position = {\r\n        x = outOfPlayPile[pile].position[1],\r\n        y = outOfPlayPile[pile].position[2] - 2,\r\n        z = outOfPlayPile[pile].position[3]\r\n    }\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 3, 3, 3 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        local obj = object.hit_object\r\n        if obj.type == \"Deck\" then\r\n            return obj\r\n        end\r\n    end\r\nend\r\n\r\nfunction buildCatacombsTable()\r\n    local containedObjects = self.getData().ContainedObjects\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' and not hasValue(forbiddenGUID, obj.GUID) then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.type == 'Location' then\r\n                    table.insert(catacombsTable, obj.GUID)\r\n                end\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\n---comment\r\n---@param icon any string matching with an icon name\r\n---@param number any number of card that must be chosen\r\nfunction chooseAmongstInAtable(tab, number)\r\n    local row = {}\r\n    for i = 1, number do\r\n        local j = math.random(1, #tab)\r\n        table.insert(row, tab[j])\r\n        table.remove(tab, j)\r\n    end\r\n    return row\r\nend\r\n\r\nfunction completeCatacombsTable()\r\n    local footTable = chooseAmongstInAtable(catacombsTable, 3)\r\n    table.insert(footTable, shadowTomb)\r\n    table.insert(footTable, sealdPassage)\r\n    footTable = chooseAmongstInAtable(footTable, #footTable)\r\n    for i, v in ipairs(footTable) do\r\n        table.insert(catacombsTable, i, v)\r\n    end\r\nend\r\n\r\nfunction hasValue(tab, string)\r\n    for i, v in ipairs(tab) do\r\n        if v == string then\r\n            return i\r\n        end\r\n    end\r\n    return false\r\nend\r\n",
-              "LuaScriptState": "{\"ml\":{\"05d8ce\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5186,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2571a9\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5203,\"z\":20.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"415af7\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5168,\"z\":2.5},\"rot\":{\"x\":0.0109,\"y\":180.0008,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"7234af\":{\"lock\":false,\"pos\":{\"x\":10.5,\"y\":1.5046,\"z\":11.5},\"rot\":{\"x\":0.0049,\"y\":90.0109,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"8d1418\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5058,\"z\":16},\"rot\":{\"x\":0.0109,\"y\":180.0171,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"ab38db\":{\"lock\":false,\"pos\":{\"x\":-31,\"y\":1.7789,\"z\":29.5},\"rot\":{\"x\":0,\"y\":180,\"z\":0},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b33a26\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5041,\"z\":7},\"rot\":{\"x\":0.0109,\"y\":179.9976,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"bce4db\":{\"lock\":false,\"pos\":{\"x\":15,\"y\":1.5178,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":180.0003,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}}}}",
+              "LuaScript": "local POSITION_HANDLER_GUID = 'ef3980'\r\nlocal positionHandler       = getObjectFromGUID(POSITION_HANDLER_GUID)\r\nlocal hellGate              = 'e214e7'\r\nlocal shadowTomb            = 'd1a4d9'\r\nlocal sealdPassage          = '5ae46d'\r\nlocal forbiddenGUID         = { hellGate, shadowTomb, sealdPassage }\r\nlocal startLocation         = { position = { 6.50, 1.52, 14.00 }, rotation = { 0.05, 180.00, 0.00 } }\r\nlocal catacombsTable        = {}\r\nlocal save                  = true\r\nlocal outOfPlayPile         = {\r\n    ['encounterDeck'] = {\r\n        position = { 30.50, 3.61, -3.00 } },\r\n    ['catacombsDeck'] = {\r\n        position = { 35.00, 2.5, 2.50 } },\r\n}\r\nlocal act3Table             = { ['Step'] = 'b159bb', ['Exit'] = '082cc5' }\r\n\r\nlocal buttonTable           = {\r\n    {\r\n        { label = \"Mise en place\", click_function = \"question1\", function_owner = self, position = { 0, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 350, width = 1800, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Mise en place\" }\r\n    },\r\n    {\r\n        { label = \"Oui\", click_function = \"yes1\",      function_owner = self, position = { -1, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 400, width = 800, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Oui\" },\r\n        { label = \"Non\", click_function = \"question2\", function_owner = self, position = { 1, 0.3, 1.8 },  rotation = { 0, 0, 0 }, height = 400, width = 800, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Non\" }\r\n    },\r\n    {\r\n        { label = \"Réveillé\",  click_function = \"wake\",  function_owner = self, position = { -1.3, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 400, width = 1200, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Ça a dû être une sacré soirée !\" },\r\n        { label = \"Plein gré\", click_function = \"enter\", function_owner = self, position = { 1.3, 0.3, 1.8 },  rotation = { 0, 0, 0 }, height = 400, width = 1200, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Sans oui, c'est interdit\" }\r\n    },\r\n    {\r\n        { label = \"Acte 2b\", click_function = \"act2b\", function_owner = self, position = { 0, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 350, width = 1200, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, }\r\n    },\r\n    {\r\n        { label = \"La Marche\", click_function = \"step\", function_owner = self, position = { -1.4, 0.3, 1.8 }, height = 400, width = 1300, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Placer l'acte 3 « Ouvrir la marche »\" },\r\n        { label = \"La sortie\", click_function = \"exit\", function_owner = self, position = { 1.4, 0.3, 1.8 },  height = 400, width = 1300, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Placer l'acte 3 « La Sortie »\" }\r\n    },\r\n}\r\nlocal buttonIndex           = 0\r\n\r\n\r\n\r\n\r\nfunction onLoad(saved_data)\r\n    if save then\r\n        if saved_data ~= \"\" then\r\n            local loaded_data = JSON.decode(saved_data)\r\n            buttonIndex = loaded_data[1] - 1\r\n        end\r\n    else\r\n        buttonIndex = 0\r\n    end\r\n    updateButtons()\r\n    math.randomseed(os.time())\r\n    self.shuffle()\r\n    self.randomize()\r\n    buildCatacombsTable()\r\nend\r\n\r\nfunction onSave()\r\n    if save then\r\n        self.script_state = JSON.encode({ buttonIndex })\r\n    else\r\n        self.script_state = JSON.encode({ 1 })\r\n    end\r\nend\r\n\r\nfunction updateButtons()\r\n    buttonIndex = buttonIndex + 1\r\n    self.clearButtons()\r\n    for i, tab in ipairs(buttonTable[buttonIndex]) do\r\n        self.createButton(tab)\r\n    end\r\nend\r\n\r\nfunction question1()\r\n    broadcastToAll(\"Haruko a-t-elle été interrogée ?\", 'Yellow')\r\n    updateButtons()\r\nend\r\n\r\nfunction yes1()\r\n    broadcastToAll('Lisez \"Les Informations de Haruko\"', { 0, 0.75, 0.75 })\r\n    question2()\r\nend\r\n\r\nfunction question2()\r\n    broadcastToAll(\"Vous êtes-vous réveillé dans les catacombe ou y avez vous pénétré de votre plein gré ?\", 'Yellow')\r\n    updateButtons()\r\nend\r\n\r\nfunction wake()\r\n    startLocation.GUID = catacombsTable[1]\r\n    table.remove(catacombsTable, 1)\r\n    local i = math.random(#catacombsTable + 1)\r\n    table.insert(catacombsTable, i, hellGate)\r\n    catacombsTable = chooseAmongstInAtable(catacombsTable, #catacombsTable)\r\n    setUp()\r\nend\r\n\r\nfunction enter()\r\n    startLocation.GUID = hellGate\r\n    catacombsTable = chooseAmongstInAtable(catacombsTable, #catacombsTable)\r\n    setUp()\r\nend\r\n\r\nfunction setUp()\r\n    completeCatacombsTable()\r\n    local card = self.takeObject({\r\n        guid = startLocation.GUID,\r\n        rotation = startLocation.rotation\r\n    })\r\n    card.setPositionSmooth(startLocation.position, false, false)\r\n    for i, GUID in ipairs(catacombsTable) do\r\n        Wait.frames(function()\r\n            local place = self.takeObject({\r\n                guid = GUID,\r\n                rotation = { 0.00, 180.00, 0 }\r\n            })\r\n            local position = { outOfPlayPile['catacombsDeck'].position[1], outOfPlayPile['catacombsDeck'].position[2],\r\n                outOfPlayPile['catacombsDeck'].position[3] }\r\n            position[2] = position[2] + i / 10\r\n            place.setPositionSmooth(position, false, false)\r\n        end, i)\r\n    end\r\n\r\n    Wait.time(function()\r\n        local encounterDeck = getOutOfPlayPile('encounterDeck')\r\n        encounterDeck.shuffle()\r\n        local expositionDeckbuilt = getOutOfPlayPile('catacombsDeck')\r\n        expositionDeckbuilt.setName('Deck Catacombes')\r\n\r\n        broadcastToAll('Mise en place terminée', { 0, 0.75, 0.75 })\r\n    end, 3)\r\n    serachPallid()\r\n    self.setName(\"Choix de l'Acte 3\")\r\n    updateButtons()\r\nend\r\n\r\nfunction serachPallid()\r\n    local colorsInGame = positionHandler.call('getColorsInGame')\r\n    local params = {}\r\n    params.zone = 'Deck'\r\n    for i, color in ipairs(colorsInGame) do\r\n        params.playerColor = color\r\n        local objects = positionHandler.call('getObjectsInPlayerZone', params)\r\n        for _, obj in ipairs(objects) do\r\n            if obj.type == \"Deck\" then\r\n                local deck = obj\r\n                local containedObjects = deck.getData().ContainedObjects\r\n                for _, card in ipairs(containedObjects) do\r\n                    local metadata = Global.call('getMetadata', card)\r\n                    if metadata then\r\n                        if metadata.id ~= nil and metadata.id == '03059' then\r\n                            local pickedUpcard = deck.takeObject({\r\n                                guid = card.GUID,\r\n                                rotation = { 0.00, 180.00, 0 }\r\n                            })\r\n                            local position = { -22.50, 3.78, 4.00 }\r\n                            pickedUpcard.setPositionSmooth(position, false, false)\r\n                            broadcastToAll(\"L'Homme au Masque Blême a été mis de côté\", { 0, 0.75, 0.75 })\r\n                            return\r\n                        end\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\n\r\n    broadcastToAll(\"L'Homme au Masque Blême est introuvable dans les Decks en jeu\", { 1, 0, 0.25 })\r\nend\r\n\r\nfunction act2b()\r\n    broadcastToAll(\"Choisissez l'acte 3\", 'Yellow')\r\n    updateButtons()\r\nend\r\n\r\nfunction step()\r\n    placeAct3(act3Table['Step'])\r\nend\r\n\r\nfunction exit()\r\n    placeAct3(act3Table['Exit'])\r\nend\r\n\r\nfunction placeAct3(GUID)\r\n    local card = self.takeObject({\r\n        guid = GUID,\r\n        rotation = { 0.00, 90, 0 }\r\n    })\r\n    local position = { 17.50, 3.58, -6.02 }\r\n    card.setPositionSmooth(position, false, false)\r\n    self.clearButtons()\r\nend\r\n\r\nfunction getOutOfPlayPile(pile)\r\n    local position = {\r\n        x = outOfPlayPile[pile].position[1],\r\n        y = outOfPlayPile[pile].position[2] - 2,\r\n        z = outOfPlayPile[pile].position[3]\r\n    }\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 3, 3, 3 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        local obj = object.hit_object\r\n        if obj.type == \"Deck\" then\r\n            return obj\r\n        end\r\n    end\r\nend\r\n\r\nfunction buildCatacombsTable()\r\n    local containedObjects = self.getData().ContainedObjects\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' and not hasValue(forbiddenGUID, obj.GUID) then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.type == 'Location' then\r\n                    table.insert(catacombsTable, obj.GUID)\r\n                end\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\n---comment\r\n---@param icon any string matching with an icon name\r\n---@param number any number of card that must be chosen\r\nfunction chooseAmongstInAtable(tab, number)\r\n    local row = {}\r\n    for i = 1, number do\r\n        local j = math.random(1, #tab)\r\n        table.insert(row, tab[j])\r\n        table.remove(tab, j)\r\n    end\r\n    return row\r\nend\r\n\r\nfunction completeCatacombsTable()\r\n    local footTable = chooseAmongstInAtable(catacombsTable, 3)\r\n    table.insert(footTable, shadowTomb)\r\n    table.insert(footTable, sealdPassage)\r\n    footTable = chooseAmongstInAtable(footTable, #footTable)\r\n    for i, v in ipairs(footTable) do\r\n        table.insert(catacombsTable, i, v)\r\n    end\r\nend\r\n\r\nfunction hasValue(tab, string)\r\n    for i, v in ipairs(tab) do\r\n        if v == string then\r\n            return i\r\n        end\r\n    end\r\n    return false\r\nend\r\n",
+              "LuaScriptState": "[1]",
               "XmlUI": "",
               "ContainedObjects": [
-                {
-                  "GUID": "2db2c8",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -30.499279,
-                    "posY": 2.061036,
-                    "posZ": 16.0036125,
-                    "rotX": 0.006966163,
-                    "rotY": 179.8649,
-                    "rotZ": 2.84551382,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Les Catacombes",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03251\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 1142400,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "11424": {
-                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/1770458304233538298/F50178DF9312EEE234DC45984AC024684FAF8F98/",
-                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/1770458304233535537/31EF0E12F53ABACA5A9D0EFF93C40E4DD4D264AA/",
-                      "NumWidth": 1,
-                      "NumHeight": 1,
-                      "BackIsHidden": true,
-                      "UniqueBack": false,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
                 {
                   "GUID": "d1a4d9",
                   "Name": "Card",
@@ -6790,470 +6732,6 @@
                   "HideWhenFaceDown": true,
                   "Hands": true,
                   "CardID": 134614,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1346": {
-                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
-                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "cbe675",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -23.5255623,
-                    "posY": 2.07257032,
-                    "posZ": 15.9234095,
-                    "rotX": 0.0363943353,
-                    "rotY": 178.746231,
-                    "rotZ": 2.038983,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Les Catacombes",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03250\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 134604,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1346": {
-                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
-                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "082cc5",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -28.0,
-                    "posY": 2.00219154,
-                    "posZ": 16.0,
-                    "rotX": 1.1433297E-05,
-                    "rotY": 359.9876,
-                    "rotZ": 2.58835371E-05,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "La Sortie",
-                  "Description": "Acte 3a",
-                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"03245\",\n  \"type\": \"Act\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 134705,
-                  "SidewaysCard": true,
-                  "CustomDeck": {
-                    "1347": {
-                      "FaceURL": "https://i.imgur.com/ITr0FLk.jpg",
-                      "BackURL": "https://i.imgur.com/AZ1nirO.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "783482",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -29.5113983,
-                    "posY": 2.07598257,
-                    "posZ": 15.9441061,
-                    "rotX": 0.0382782035,
-                    "rotY": 178.858154,
-                    "rotZ": 1.49520838,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Les Catacombes",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03249\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 134605,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1346": {
-                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
-                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "79f1d2",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -27.49988,
-                    "posY": 2.06359029,
-                    "posZ": 16.00367,
-                    "rotX": 0.0106832786,
-                    "rotY": 180.050262,
-                    "rotZ": 0.9605207,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Les Catacombes",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03248\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 134602,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1346": {
-                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
-                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "69c4cd",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": 0.7511603,
-                    "posY": 2.52948618,
-                    "posZ": 14.8138933,
-                    "rotX": -5.07868435E-06,
-                    "rotY": 179.990417,
-                    "rotZ": -5.19961176E-08,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Les Catacombes",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03255\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 275600,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2756": {
-                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/1770458304233538298/F50178DF9312EEE234DC45984AC024684FAF8F98/",
-                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/1770458304233539711/AAF4CD51019AA73DBC697929C8C80F3FAA7D092A/",
-                      "NumWidth": 1,
-                      "NumHeight": 1,
-                      "BackIsHidden": true,
-                      "UniqueBack": false,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "5ae46d",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -26.9999981,
-                    "posY": 2.00221562,
-                    "posZ": 16.0,
-                    "rotX": 0.0007108414,
-                    "rotY": 180.0,
-                    "rotZ": 0.001559521,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Les Catacombes",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03256\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 134612,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1346": {
-                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
-                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "b159bb",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -26.5,
-                    "posY": 2.00218034,
-                    "posZ": 15.5,
-                    "rotX": -0.0003554579,
-                    "rotY": 0.00137791771,
-                    "rotZ": -0.000260152126,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Ouvrir la Marche",
-                  "Description": "Acte 3a",
-                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"03246\",\n  \"type\": \"Act\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 134704,
-                  "SidewaysCard": true,
-                  "CustomDeck": {
-                    "1347": {
-                      "FaceURL": "https://i.imgur.com/ITr0FLk.jpg",
-                      "BackURL": "https://i.imgur.com/AZ1nirO.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "3b0a7e",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -0.704519868,
-                    "posY": 2.52975869,
-                    "posZ": 14.8019972,
-                    "rotX": -2.302788E-07,
-                    "rotY": 179.990829,
-                    "rotZ": -9.219976E-09,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Les Catacombes",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03254\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 134610,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "1346": {
@@ -7329,22 +6807,22 @@
                   "XmlUI": ""
                 },
                 {
-                  "GUID": "0d67e1",
+                  "GUID": "cbe675",
                   "Name": "Card",
                   "Transform": {
-                    "posX": -25.5445824,
-                    "posY": 2.07532239,
-                    "posZ": 15.8817739,
-                    "rotX": 0.0211126991,
-                    "rotY": 179.56987,
-                    "rotZ": 0.360961348,
+                    "posX": -23.5255623,
+                    "posY": 2.07257032,
+                    "posZ": 15.9234095,
+                    "rotX": 0.0363943353,
+                    "rotY": 178.746231,
+                    "rotZ": 2.038983,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
                   "Nickname": "Les Catacombes",
                   "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03253\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"type\": \"Location\"\n}",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03250\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"type\": \"Location\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -7369,65 +6847,7 @@
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
                   "Hands": true,
-                  "CardID": 134611,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1346": {
-                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
-                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "06e37a",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -24.5406227,
-                    "posY": 2.13693166,
-                    "posZ": 15.8956814,
-                    "rotX": 0.03319461,
-                    "rotY": 179.713715,
-                    "rotZ": 0.331997156,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Les Catacombes",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03253\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 134608,
+                  "CardID": 134604,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "1346": {
@@ -7503,22 +6923,22 @@
                   "XmlUI": ""
                 },
                 {
-                  "GUID": "edc9f1",
+                  "GUID": "06e37a",
                   "Name": "Card",
                   "Transform": {
-                    "posX": -22.526125,
-                    "posY": 1.98601758,
-                    "posZ": 15.945344,
-                    "rotX": 0.0381444544,
-                    "rotY": 178.763336,
-                    "rotZ": 2.048365,
+                    "posX": -24.5406227,
+                    "posY": 2.13693166,
+                    "posZ": 15.8956814,
+                    "rotX": 0.03319461,
+                    "rotY": 179.713715,
+                    "rotZ": 0.331997156,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
                   "Nickname": "Les Catacombes",
                   "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03252\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"type\": \"Location\"\n}",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03253\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"type\": \"Location\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -7543,7 +6963,7 @@
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
                   "Hands": true,
-                  "CardID": 134609,
+                  "CardID": 134608,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "1346": {
@@ -7617,6 +7037,586 @@
                   "LuaScript": "",
                   "LuaScriptState": "",
                   "XmlUI": ""
+                },
+                {
+                  "GUID": "3b0a7e",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -0.704519868,
+                    "posY": 2.52975869,
+                    "posZ": 14.8019972,
+                    "rotX": -2.302788E-07,
+                    "rotY": 179.990829,
+                    "rotZ": -9.219976E-09,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Les Catacombes",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03254\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 134610,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1346": {
+                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
+                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "edc9f1",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -22.526125,
+                    "posY": 1.98601758,
+                    "posZ": 15.945344,
+                    "rotX": 0.0381444544,
+                    "rotY": 178.763336,
+                    "rotZ": 2.048365,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Les Catacombes",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03252\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 134609,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1346": {
+                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
+                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "5ae46d",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -26.9999981,
+                    "posY": 2.00221562,
+                    "posZ": 16.0,
+                    "rotX": 0.0007108414,
+                    "rotY": 180.0,
+                    "rotZ": 0.001559521,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Les Catacombes",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03256\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 134612,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1346": {
+                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
+                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "2db2c8",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -30.499279,
+                    "posY": 2.061036,
+                    "posZ": 16.0036125,
+                    "rotX": 0.006966163,
+                    "rotY": 179.8649,
+                    "rotZ": 2.84551382,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Les Catacombes",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03251\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 1142400,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "11424": {
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/1770458304233538298/F50178DF9312EEE234DC45984AC024684FAF8F98/",
+                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/1770458304233535537/31EF0E12F53ABACA5A9D0EFF93C40E4DD4D264AA/",
+                      "NumWidth": 1,
+                      "NumHeight": 1,
+                      "BackIsHidden": true,
+                      "UniqueBack": false,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "082cc5",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -28.0,
+                    "posY": 2.00219154,
+                    "posZ": 16.0,
+                    "rotX": 1.1433297E-05,
+                    "rotY": 359.9876,
+                    "rotZ": 2.58835371E-05,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "La Sortie",
+                  "Description": "Acte 3a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"03245\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 134705,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "1347": {
+                      "FaceURL": "https://i.imgur.com/ITr0FLk.jpg",
+                      "BackURL": "https://i.imgur.com/AZ1nirO.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "b159bb",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -26.5,
+                    "posY": 2.00218034,
+                    "posZ": 15.5,
+                    "rotX": -0.0003554579,
+                    "rotY": 0.00137791771,
+                    "rotZ": -0.000260152126,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Ouvrir la Marche",
+                  "Description": "Acte 3a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"03246\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 134704,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "1347": {
+                      "FaceURL": "https://i.imgur.com/ITr0FLk.jpg",
+                      "BackURL": "https://i.imgur.com/AZ1nirO.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "69c4cd",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 0.7511603,
+                    "posY": 2.52948618,
+                    "posZ": 14.8138933,
+                    "rotX": -5.07868435E-06,
+                    "rotY": 179.990417,
+                    "rotZ": -5.19961176E-08,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Les Catacombes",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03255\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 275600,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2756": {
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/1770458304233538298/F50178DF9312EEE234DC45984AC024684FAF8F98/",
+                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/1770458304233539711/AAF4CD51019AA73DBC697929C8C80F3FAA7D092A/",
+                      "NumWidth": 1,
+                      "NumHeight": 1,
+                      "BackIsHidden": true,
+                      "UniqueBack": false,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "0d67e1",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -25.5445824,
+                    "posY": 2.07532239,
+                    "posZ": 15.8817739,
+                    "rotX": 0.0211126991,
+                    "rotY": 179.56987,
+                    "rotZ": 0.360961348,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Les Catacombes",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03253\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 134611,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1346": {
+                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
+                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "79f1d2",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -27.49988,
+                    "posY": 2.06359029,
+                    "posZ": 16.00367,
+                    "rotX": 0.0106832786,
+                    "rotY": 180.050262,
+                    "rotZ": 0.9605207,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Les Catacombes",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03248\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 134602,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1346": {
+                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
+                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "783482",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -29.5113983,
+                    "posY": 2.07598257,
+                    "posZ": 15.9441061,
+                    "rotX": 0.0382782035,
+                    "rotY": 178.858154,
+                    "rotZ": 1.49520838,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Les Catacombes",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"03249\",\n  \"locationBack\": {\n    \"connections\": \"\",\n    \"icons\": \"\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    }\n  },\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 134605,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1346": {
+                      "FaceURL": "https://i.imgur.com/VruMZiV.jpg",
+                      "BackURL": "https://i.imgur.com/XFvUFzH.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
                 }
               ]
             },
@@ -7624,12 +7624,12 @@
               "GUID": "f47099",
               "Name": "Custom_Tile",
               "Transform": {
-                "posX": 2.99999714,
-                "posY": 1.60165,
-                "posZ": -6.50002241,
-                "rotX": 0.0191745944,
-                "rotY": 179.9909,
-                "rotZ": 0.00180016784,
+                "posX": 2.999997,
+                "posY": 1.60162854,
+                "posZ": -6.500028,
+                "rotX": 0.0204517543,
+                "rotY": 179.990921,
+                "rotZ": 0.00285857916,
                 "scaleX": 1.6428808,
                 "scaleY": 1.0,
                 "scaleZ": 1.6428808
@@ -7684,9 +7684,9 @@
                 "posX": 35.0729065,
                 "posY": 1.50094962,
                 "posZ": 0.244715288,
-                "rotX": 0.000591037329,
-                "rotY": 0.000291898585,
-                "rotZ": -0.00107025821,
+                "rotX": 0.0005911444,
+                "rotY": 0.0002865587,
+                "rotZ": -0.001070255,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -7761,10 +7761,10 @@
           "Transform": {
             "posX": -20.5000038,
             "posY": 1.47986,
-            "posZ": -4.99783659,
-            "rotX": 1.24767482E-07,
+            "posZ": -4.997837,
+            "rotX": -9.45545E-08,
             "rotY": 180.009308,
-            "rotZ": 7.5157925E-07,
+            "rotZ": 3.304663E-07,
             "scaleX": 2.29821467,
             "scaleY": 1.0,
             "scaleZ": 2.29821467
@@ -7810,12 +7810,12 @@
           "GUID": "46a4c9",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -9.999986,
-            "posY": 0.979997635,
-            "posZ": 45.0000038,
-            "rotX": -4.756344E-06,
-            "rotY": 180.007919,
-            "rotZ": 1.38105077E-06,
+            "posX": -9.999994,
+            "posY": 0.9799977,
+            "posZ": 45.0000076,
+            "rotX": -5.001076E-06,
+            "rotY": 180.007874,
+            "rotZ": 3.67884525E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.31459808
@@ -11299,12 +11299,12 @@
           "GUID": "572d4d",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 16.9996967,
-            "posY": 0.9799973,
-            "posZ": 44.9992447,
-            "rotX": -4.944791E-06,
-            "rotY": 180.001266,
-            "rotZ": 1.34856475E-06,
+            "posX": 17.0000057,
+            "posY": 0.979997337,
+            "posZ": 45.0,
+            "rotX": -5.29896124E-06,
+            "rotY": 180.000946,
+            "rotZ": 4.98380643E-07,
             "scaleX": 1.265649,
             "scaleY": 0.263438284,
             "scaleZ": 1.38591433
@@ -16057,12 +16057,12 @@
           "GUID": "612ec2",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -5.49999666,
-            "posY": 0.9799975,
-            "posZ": 45.00001,
-            "rotX": -4.984021E-06,
-            "rotY": 180.012421,
-            "rotZ": 3.82333468E-07,
+            "posX": -5.499999,
+            "posY": 0.9799976,
+            "posZ": 45.0000038,
+            "rotX": -5.36555262E-06,
+            "rotY": 180.0124,
+            "rotZ": -1.34835972E-07,
             "scaleX": 1.233085,
             "scaleY": 0.256660253,
             "scaleZ": 1.3502562
@@ -16130,9 +16130,9 @@
                 "posX": 6.500003,
                 "posY": 1.51708329,
                 "posZ": 3.999999,
-                "rotX": 0.01089283,
+                "rotX": 0.0108927907,
                 "rotY": 179.985321,
-                "rotZ": 0.004945413,
+                "rotZ": 0.004945394,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -16187,9 +16187,9 @@
               "Transform": {
                 "posX": 12.5000038,
                 "posY": 1.531618,
-                "posZ": -5.999943,
-                "rotX": 0.00494860532,
-                "rotY": 90.00279,
+                "posZ": -5.99994373,
+                "rotX": 0.00494860066,
+                "rotY": 90.00283,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -16367,9 +16367,9 @@
                 "posX": 23.5001068,
                 "posY": 1.5138092,
                 "posZ": -5.500028,
-                "rotX": 0.0108916415,
-                "rotY": 179.999039,
-                "rotZ": 0.00494801765,
+                "rotX": 0.0108916014,
+                "rotY": 179.999054,
+                "rotZ": 0.0049481364,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -16422,12 +16422,12 @@
               "GUID": "4191ce",
               "Name": "Card",
               "Transform": {
-                "posX": 5.191205E-05,
+                "posX": 5.199735E-05,
                 "posY": 1.52135134,
                 "posZ": 23.4996,
-                "rotX": 0.0108927814,
+                "rotX": 0.0108927032,
                 "rotY": 179.986023,
-                "rotZ": 0.0049456805,
+                "rotZ": 0.00494566932,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -16480,12 +16480,12 @@
               "GUID": "551372",
               "Name": "Card",
               "Transform": {
-                "posX": -27.5001411,
+                "posX": -27.500145,
                 "posY": 1.783606,
-                "posZ": 3.99985385,
-                "rotX": -5.11065127E-06,
-                "rotY": 180.009186,
-                "rotZ": 1.87206481E-08,
+                "posZ": 3.9998486,
+                "rotX": -4.94018968E-06,
+                "rotY": 180.009155,
+                "rotZ": 7.26998053E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -16541,9 +16541,9 @@
                 "posX": 6.49999857,
                 "posY": 1.5189842,
                 "posZ": 14.0000038,
-                "rotX": 0.0108915167,
-                "rotY": 180.000076,
-                "rotZ": 0.004948282,
+                "rotX": 0.010891526,
+                "rotY": 180.000061,
+                "rotZ": 0.004948304,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -16599,8 +16599,8 @@
                 "posX": 17.5000019,
                 "posY": 1.5142324,
                 "posZ": -5.99990129,
-                "rotX": 0.00494844234,
-                "rotY": 90.00178,
+                "rotX": 0.004948517,
+                "rotY": 90.0018158,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -16654,12 +16654,12 @@
               "GUID": "922d03",
               "Name": "Custom_Tile",
               "Transform": {
-                "posX": 2.99998856,
+                "posX": 2.99998736,
                 "posY": 1.60163224,
-                "posZ": -6.500011,
-                "rotX": 0.01717761,
-                "rotY": 180.009125,
-                "rotZ": 0.005655185,
+                "posZ": -6.500015,
+                "rotX": 0.0171774533,
+                "rotY": 180.00914,
+                "rotZ": 0.00565423444,
                 "scaleX": 1.6428808,
                 "scaleY": 1.0,
                 "scaleZ": 1.6428808
@@ -16714,9 +16714,9 @@
                 "posX": -6.500002,
                 "posY": 1.52010691,
                 "posZ": 14.0000038,
-                "rotX": 0.0108928569,
+                "rotX": 0.01089291,
                 "rotY": 179.985,
-                "rotZ": 0.004945452,
+                "rotZ": 0.00494547933,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -16769,12 +16769,12 @@
               "GUID": "9dd34e",
               "Name": "Custom_Model_Bag",
               "Transform": {
-                "posX": -21.5000019,
+                "posX": -21.5000057,
                 "posY": 1.87000108,
-                "posZ": 4.499997,
-                "rotX": -4.61994159E-06,
-                "rotY": 179.9972,
-                "rotZ": -1.07919016E-08,
+                "posZ": 4.49999332,
+                "rotX": -5.01450768E-06,
+                "rotY": 179.997131,
+                "rotZ": 2.22378588E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -16790,7 +16790,7 @@
               "ColorDiffuse": {
                 "r": 0.0,
                 "g": 0.7526132,
-                "b": 0.358115345
+                "b": 0.358115166
               },
               "LayoutGroupSortIndex": 0,
               "Value": 0,
@@ -16831,184 +16831,10 @@
               "Bag": {
                 "Order": 0
               },
-              "LuaScript": "local locations = {\r\n    { position = { -4.00, 1.52, 14.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 2.50, 1.52, 23.50 },  rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 9.00, 1.52, 14.00 },  rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 15.50, 1.52, 23.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 22.00, 1.52, 14.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n}\r\n\r\n\r\nlocal guestTable = {}\r\nlocal storyTable = {}\r\nlocal outOfPlayPile = {\r\n    ['encounterDeck'] = {\r\n        position = { 30.50, 3.61, -3.00 } },\r\n    ['storyCard'] = {\r\n        position = { 23.50, 1.51, -2.00 },\r\n        rotation = { 0, 180, 180 }\r\n    }\r\n}\r\n\r\nfunction onLoad()\r\n    self.shuffle()\r\n    math.randomseed(os.time())\r\n    createButton()\r\n    buildGuestTable()\r\n    buildStoryCardTable()\r\nend\r\n\r\nfunction createButton()\r\n    self.createButton({\r\n        label = \"Mise en place\",\r\n        click_function = \"setUp\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 350,\r\n        width = 1800,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Mise en place\"\r\n    })\r\nend\r\n\r\nfunction setUp()\r\n    for i, GUID in pairs(guestTable) do\r\n        local pickedUpCard = self.takeObject({\r\n            guid = GUID,\r\n            rotation = locations[i].rotation\r\n        })\r\n\r\n        pickedUpCard.setPositionSmooth(locations[i].position, false, false)\r\n    end\r\n    self.clearButtons()\r\n    createRandomStoryCard()\r\n    Wait.time(function()\r\n        local encounterDeck = getOutOfPlayPile('encounterDeck')\r\n        encounterDeck.shuffle()\r\n        broadcastToAll('Mise en place terminée', { 0, 0.75, 0.75 })\r\n    end, 3)\r\nend\r\n\r\nfunction getOutOfPlayPile(pile)\r\n    local position = {\r\n        x = outOfPlayPile[pile].position[1],\r\n        y = outOfPlayPile[pile].position[2] - 2,\r\n        z = outOfPlayPile[pile].position[3]\r\n    }\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 3, 3, 3 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        local obj = object.hit_object\r\n        if obj.type == \"Deck\" then\r\n            return obj\r\n        end\r\n    end\r\nend\r\n\r\nfunction createRandomStoryCard()\r\n    self.createButton({\r\n        label = 'Carte \"Effroyable Vérité',\r\n        click_function = \"randomStory\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        scale = { 1.2, 1.2, 1.2 },\r\n        height = 350,\r\n        width = 2300,\r\n        font_size = 200,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = 'Cliquez pour générer une carte \"Effroyable Vérité'\r\n    })\r\nend\r\n\r\nfunction randomStory()\r\n    if storyTable[1] == nil then\r\n        broadcastToAll(\"Plus de carte histoire, avancez l'intrigue\", { r = 1, g = 0, b = 0.25 })\r\n        self.clearButtons()\r\n        return\r\n    end\r\n    local destination = outOfPlayPile['storyCard']\r\n    local pickedUpCard = self.takeObject({\r\n        guid = storyTable[1],\r\n        rotation = destination.rotation\r\n    })\r\n\r\n    pickedUpCard.setPositionSmooth(destination.position, false, false)\r\n    storyTable = {}\r\n    self.randomize()\r\n    self.shuffle()\r\n    buildStoryCardTable()\r\n    local remainingCards = #storyTable\r\n    broadcastToAll('Il reste ' .. remainingCards .. ' cartes \"Effroyable Vérité\"', 'Yellow')\r\nend\r\n\r\nfunction buildGuestTable()\r\n    local containedObjects = self.getData().ContainedObjects\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.traits ~= nil then\r\n                    if metadata.traits == \"Bystander.\" then\r\n                        table.insert(guestTable, obj.GUID)\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction buildStoryCardTable()\r\n    local containedObjects = self.getData().ContainedObjects\r\n    if containedObjects ~= nil then\r\n        for k, obj in pairs(containedObjects) do\r\n            if obj.Name == 'Card' then\r\n                local metadata = Global.call('getMetadata', obj)\r\n                if metadata then\r\n                    if\r\n                        metadata.traits ~= nil then\r\n                        for w in string.gmatch(metadata.traits, \"%a+\") do\r\n                            if w == \"Monster\" then\r\n                                table.insert(storyTable, obj.GUID)\r\n                            end\r\n                        end\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\nend\r\n",
-              "LuaScriptState": "{\"ml\":{\"05d8ce\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5186,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2571a9\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5203,\"z\":20.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"415af7\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5168,\"z\":2.5},\"rot\":{\"x\":0.0109,\"y\":180.0008,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"7234af\":{\"lock\":false,\"pos\":{\"x\":10.5,\"y\":1.5046,\"z\":11.5},\"rot\":{\"x\":0.0049,\"y\":90.0109,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"8d1418\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5058,\"z\":16},\"rot\":{\"x\":0.0109,\"y\":180.0171,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"ab38db\":{\"lock\":false,\"pos\":{\"x\":-31,\"y\":1.7789,\"z\":29.5},\"rot\":{\"x\":0,\"y\":180,\"z\":0},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b33a26\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5041,\"z\":7},\"rot\":{\"x\":0.0109,\"y\":179.9976,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"bce4db\":{\"lock\":false,\"pos\":{\"x\":15,\"y\":1.5178,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":180.0003,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}}}}",
+              "LuaScript": "local locations     = {\r\n    { position = { -4.00, 1.52, 14.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 2.50, 1.52, 23.50 },  rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 9.00, 1.52, 14.00 },  rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 15.50, 1.52, 23.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 22.00, 1.52, 14.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n}\r\n\r\nlocal save          = true\r\nlocal guestTable    = {}\r\nlocal storyTable    = {}\r\nlocal outOfPlayPile = {\r\n    ['encounterDeck'] = {\r\n        position = { 30.50, 3.61, -3.00 } },\r\n    ['storyCard'] = {\r\n        position = { 23.50, 1.51, -2.00 },\r\n        rotation = { 0, 180, 180 }\r\n    }\r\n}\r\nlocal buttonTable   = {\r\n    {\r\n        { label = \"Mise en place\", click_function = \"setUp\", function_owner = self, position = { 0, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 350, width = 1800, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Mise en place\" }\r\n    },\r\n    {\r\n        { label = 'Carte Histoire\\n\"Effroyable Vérité\"', click_function = \"randomStory\", function_owner = self, position = { 0, 0.3, 2.2 }, rotation = { 0, 0, 0 }, scale = { 1.2, 1.2, 1.2 }, height = 550, width = 1800, font_size = 200, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = 'Cliquez pour générer une carte \"Effroyable Vérité' }\r\n    }\r\n}\r\nlocal buttonIndex   = 0\r\n\r\n\r\nfunction onLoad(saved_data)\r\n    if save then\r\n        if saved_data ~= \"\" then\r\n            local loaded_data = JSON.decode(saved_data)\r\n            buttonIndex = loaded_data[1] - 1\r\n        end\r\n    else\r\n        buttonIndex = 0\r\n    end\r\n    updateButtons()\r\n    self.shuffle()\r\n    math.randomseed(os.time())\r\n    buildGuestTable()\r\nend\r\n\r\nfunction onSave()\r\n    if save then\r\n        self.script_state = JSON.encode({ buttonIndex })\r\n    else\r\n        self.script_state = JSON.encode({ 1 })\r\n    end\r\nend\r\n\r\nfunction updateButtons()\r\n    buttonIndex = buttonIndex + 1\r\n    self.clearButtons()\r\n    for i, tab in ipairs(buttonTable[buttonIndex]) do\r\n        self.createButton(tab)\r\n    end\r\nend\r\n\r\nfunction setUp()\r\n    for i, GUID in pairs(guestTable) do\r\n        local pickedUpCard = self.takeObject({\r\n            guid = GUID,\r\n            rotation = locations[i].rotation\r\n        })\r\n\r\n        pickedUpCard.setPositionSmooth(locations[i].position, false, false)\r\n    end\r\n    self.clearButtons()\r\n    updateButtons()\r\n    Wait.time(function()\r\n        local encounterDeck = getOutOfPlayPile('encounterDeck')\r\n        encounterDeck.shuffle()\r\n        broadcastToAll('Mise en place terminée', { 0, 0.75, 0.75 })\r\n    end, 3)\r\nend\r\n\r\nfunction getOutOfPlayPile(pile)\r\n    local position = {\r\n        x = outOfPlayPile[pile].position[1],\r\n        y = outOfPlayPile[pile].position[2] - 2,\r\n        z = outOfPlayPile[pile].position[3]\r\n    }\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 3, 3, 3 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        local obj = object.hit_object\r\n        if obj.type == \"Deck\" then\r\n            return obj\r\n        end\r\n    end\r\nend\r\n\r\nfunction randomStory()\r\n    storyTable = {}\r\n    self.randomize()\r\n    self.shuffle()\r\n    buildStoryCardTable()\r\n    if storyTable[1] == nil then\r\n        broadcastToAll(\"Plus de carte histoire, avancez l'intrigue\", { r = 1, g = 0, b = 0.25 })\r\n        self.clearButtons()\r\n        return\r\n    end\r\n    local destination = outOfPlayPile['storyCard']\r\n    local pickedUpCard = self.takeObject({\r\n        guid = storyTable[1],\r\n        rotation = destination.rotation\r\n    })\r\n\r\n    pickedUpCard.setPositionSmooth(destination.position, false, false)\r\n    local remainingCards = #storyTable - 1\r\n    broadcastToAll('Il reste ' .. remainingCards .. ' cartes \"Effroyable Vérité\"', 'Yellow')\r\nend\r\n\r\nfunction buildGuestTable()\r\n    local containedObjects = self.getData().ContainedObjects\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.traits ~= nil then\r\n                    if metadata.traits == \"Bystander.\" then\r\n                        table.insert(guestTable, obj.GUID)\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction buildStoryCardTable()\r\n    local containedObjects = self.getData().ContainedObjects\r\n    if containedObjects ~= nil then\r\n        for k, obj in pairs(containedObjects) do\r\n            if obj.Name == 'Card' then\r\n                local metadata = Global.call('getMetadata', obj)\r\n                if metadata then\r\n                    if\r\n                        metadata.traits ~= nil then\r\n                        for w in string.gmatch(metadata.traits, \"%a+\") do\r\n                            if w == \"Monster\" then\r\n                                table.insert(storyTable, obj.GUID)\r\n                            end\r\n                        end\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\nend\r\n",
+              "LuaScriptState": "[1]",
               "XmlUI": "",
               "ContainedObjects": [
-                {
-                  "GUID": "21730d",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -21.0,
-                    "posY": 2.00130939,
-                    "posZ": 10.0,
-                    "rotX": 359.9752,
-                    "rotY": 180.016418,
-                    "rotZ": 359.962341,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Ashleigh Clarke",
-                  "Description": "Artiste Talentueuse",
-                  "GMNotes": "{\n  \"class\": \"Neutral\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"03080\",\n  \"traits\": \"Bystander.\",\n  \"type\": \"Asset\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 116105,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1161": {
-                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
-                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "72b7d8",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -21.0,
-                    "posY": 2.00155544,
-                    "posZ": 9.5,
-                    "rotX": 0.000195619577,
-                    "rotY": 180.000061,
-                    "rotZ": 179.938141,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Ashleigh Clarke",
-                  "Description": "Les Chansons Meurent sans Bruit",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"health\": 5,\n  \"id\": \"03069b\",\n  \"traits\": \"Monster. Possessed. Elite.\",\n  \"type\": \"Enemy\",\n  \"victory\": 0\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 116106,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1161": {
-                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
-                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "487f96",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -22.0,
-                    "posY": 2.00219941,
-                    "posZ": 9.5,
-                    "rotX": -0.000115367387,
-                    "rotY": 179.997787,
-                    "rotZ": 180.000183,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Sebastien Moreau",
-                  "Description": "Hystérie Sauvage",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"health\": 5,\n  \"id\": \"03068b\",\n  \"traits\": \"Monster. Possessed. Elite.\",\n  \"type\": \"Enemy\",\n  \"victory\": 0\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 116107,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1161": {
-                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
-                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
                 {
                   "GUID": "5eb6d8",
                   "Name": "Card",
@@ -17051,122 +16877,6 @@
                   "HideWhenFaceDown": true,
                   "Hands": true,
                   "CardID": 116104,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1161": {
-                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
-                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "f73c2f",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -21.5,
-                    "posY": 2.002157,
-                    "posZ": 8.5,
-                    "rotX": 0.001884346,
-                    "rotY": 180.001831,
-                    "rotZ": 180.000229,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Contance Dumaine",
-                  "Description": "Un Peu Trop Sociable",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"health\": 6,\n  \"id\": \"03065b\",\n  \"traits\": \"Monster. Possessed. Elite.\",\n  \"type\": \"Enemy\",\n  \"victory\": 0\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 116109,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1161": {
-                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
-                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "c3e4dd",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -21.5,
-                    "posY": 2.01616669,
-                    "posZ": 10.0,
-                    "rotX": 0.000114296745,
-                    "rotY": 180.016769,
-                    "rotZ": 359.255585,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Jordan Perry",
-                  "Description": "Financier Respectable",
-                  "GMNotes": "{\n  \"class\": \"Neutral\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"03077\",\n  \"traits\": \"Bystander.\",\n  \"type\": \"Asset\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 116103,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "1161": {
@@ -17242,64 +16952,6 @@
                   "XmlUI": ""
                 },
                 {
-                  "GUID": "e845ae",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -21.5,
-                    "posY": 2.00219321,
-                    "posZ": 10.0,
-                    "rotX": -4.1655323E-05,
-                    "rotY": 180.0,
-                    "rotZ": 180.000122,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Jordan Perry",
-                  "Description": "Une Présence Imposante",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"health\": 8,\n  \"id\": \"03066b\",\n  \"traits\": \"Monster. Possessed. Elite.\",\n  \"type\": \"Enemy\",\n  \"victory\": 0\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 116111,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1161": {
-                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
-                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
                   "GUID": "f75d1d",
                   "Name": "Card",
                   "Transform": {
@@ -17341,6 +16993,64 @@
                   "HideWhenFaceDown": true,
                   "Hands": true,
                   "CardID": 116101,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1161": {
+                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
+                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "72b7d8",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -21.0,
+                    "posY": 2.00155544,
+                    "posZ": 9.5,
+                    "rotX": 0.000195619577,
+                    "rotY": 180.000061,
+                    "rotZ": 179.938141,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Ashleigh Clarke",
+                  "Description": "Les Chansons Meurent sans Bruit",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"health\": 5,\n  \"id\": \"03069b\",\n  \"traits\": \"Monster. Possessed. Elite.\",\n  \"type\": \"Enemy\",\n  \"victory\": 0\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 116106,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "1161": {
@@ -17414,6 +17124,296 @@
                   "LuaScript": "",
                   "LuaScriptState": "",
                   "XmlUI": ""
+                },
+                {
+                  "GUID": "e845ae",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -21.5,
+                    "posY": 2.00219321,
+                    "posZ": 10.0,
+                    "rotX": -4.1655323E-05,
+                    "rotY": 180.0,
+                    "rotZ": 180.000122,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Jordan Perry",
+                  "Description": "Une Présence Imposante",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"health\": 8,\n  \"id\": \"03066b\",\n  \"traits\": \"Monster. Possessed. Elite.\",\n  \"type\": \"Enemy\",\n  \"victory\": 0\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 116111,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1161": {
+                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
+                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "21730d",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -21.0,
+                    "posY": 2.00130939,
+                    "posZ": 10.0,
+                    "rotX": 359.9752,
+                    "rotY": 180.016418,
+                    "rotZ": 359.962341,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Ashleigh Clarke",
+                  "Description": "Artiste Talentueuse",
+                  "GMNotes": "{\n  \"class\": \"Neutral\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"03080\",\n  \"traits\": \"Bystander.\",\n  \"type\": \"Asset\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 116105,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1161": {
+                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
+                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "487f96",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -22.0,
+                    "posY": 2.00219941,
+                    "posZ": 9.5,
+                    "rotX": -0.000115367387,
+                    "rotY": 179.997787,
+                    "rotZ": 180.000183,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Sebastien Moreau",
+                  "Description": "Hystérie Sauvage",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"health\": 5,\n  \"id\": \"03068b\",\n  \"traits\": \"Monster. Possessed. Elite.\",\n  \"type\": \"Enemy\",\n  \"victory\": 0\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 116107,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1161": {
+                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
+                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "c3e4dd",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -21.5,
+                    "posY": 2.01616669,
+                    "posZ": 10.0,
+                    "rotX": 0.000114296745,
+                    "rotY": 180.016769,
+                    "rotZ": 359.255585,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Jordan Perry",
+                  "Description": "Financier Respectable",
+                  "GMNotes": "{\n  \"class\": \"Neutral\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"03077\",\n  \"traits\": \"Bystander.\",\n  \"type\": \"Asset\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 116103,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1161": {
+                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
+                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "f73c2f",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -21.5,
+                    "posY": 2.002157,
+                    "posZ": 8.5,
+                    "rotX": 0.001884346,
+                    "rotY": 180.001831,
+                    "rotZ": 180.000229,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Contance Dumaine",
+                  "Description": "Un Peu Trop Sociable",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"health\": 6,\n  \"id\": \"03065b\",\n  \"traits\": \"Monster. Possessed. Elite.\",\n  \"type\": \"Enemy\",\n  \"victory\": 0\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 116109,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1161": {
+                      "FaceURL": "https://i.imgur.com/wQ0hl0z.jpg",
+                      "BackURL": "https://i.imgur.com/84Zdovn.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
                 }
               ]
             },
@@ -17424,9 +17424,9 @@
                 "posX": 13.0000172,
                 "posY": 1.52022874,
                 "posZ": 23.5000286,
-                "rotX": 0.0108931856,
+                "rotX": 0.0108932136,
                 "rotY": 179.980835,
-                "rotZ": 0.004944625,
+                "rotZ": 0.00494452938,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -17479,12 +17479,12 @@
               "GUID": "b45498",
               "Name": "Card",
               "Transform": {
-                "posX": 19.5000172,
+                "posX": 19.50002,
                 "posY": 1.51786149,
                 "posZ": 14.0000057,
-                "rotX": 0.0108927889,
-                "rotY": 179.984482,
-                "rotZ": 0.004945326,
+                "rotX": 0.0108928187,
+                "rotY": 179.984512,
+                "rotZ": 0.00494537037,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -17537,11 +17537,11 @@
               "GUID": "e3022f",
               "Name": "Deck",
               "Transform": {
-                "posX": 30.4999962,
+                "posX": 30.4999943,
                 "posY": 1.62690783,
-                "posZ": -3.0,
-                "rotX": -0.000591283664,
-                "rotY": 180.000824,
+                "posZ": -2.99999976,
+                "rotX": -0.0005912849,
+                "rotY": 180.000778,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -18957,9 +18957,9 @@
             "posX": 33.5000229,
             "posY": 1.47985983,
             "posZ": 11.9999971,
-            "rotX": -2.05941664E-09,
+            "rotX": 4.64962078E-08,
             "rotY": 180.002457,
-            "rotZ": -4.38190675E-08,
+            "rotZ": -3.601771E-08,
             "scaleX": 6.1,
             "scaleY": 1.0,
             "scaleZ": 6.1
@@ -19070,12 +19070,12 @@
           "GUID": "9bf7ca",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 8.000005,
-            "posY": 0.979997456,
-            "posZ": 45.0000038,
-            "rotX": -4.99647331E-06,
-            "rotY": 180.0,
-            "rotZ": 6.665392E-07,
+            "posX": 8.000001,
+            "posY": 0.9799975,
+            "posZ": 45.0,
+            "rotX": -4.9524665E-06,
+            "rotY": 180.000168,
+            "rotZ": 6.189893E-07,
             "scaleX": 1.265649,
             "scaleY": 0.263438284,
             "scaleZ": 1.38591433
@@ -23272,12 +23272,12 @@
           "GUID": "a77dc8",
           "Name": "Custom_Tile",
           "Transform": {
-            "posX": 3.00000739,
+            "posX": 3.000002,
             "posY": 1.50197494,
-            "posZ": -5.49996042,
-            "rotX": 0.0108904308,
-            "rotY": 180.012833,
-            "rotZ": 0.004950933,
+            "posZ": -5.49998331,
+            "rotX": 0.0108904177,
+            "rotY": 180.0128,
+            "rotZ": 0.00495085772,
             "scaleX": 1.6428808,
             "scaleY": 1.0,
             "scaleZ": 1.6428808
@@ -23329,12 +23329,12 @@
           "GUID": "df18a3",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -0.9999925,
-            "posY": 0.979997754,
-            "posZ": 45.0000038,
-            "rotX": -5.31791147E-06,
-            "rotY": 180.011185,
-            "rotZ": -1.787214E-07,
+            "posX": -0.999992669,
+            "posY": 0.979997635,
+            "posZ": 45.0000076,
+            "rotX": -5.30889065E-06,
+            "rotY": 180.011337,
+            "rotZ": 1.84128112E-07,
             "scaleX": 1.265649,
             "scaleY": 0.263438284,
             "scaleZ": 1.38591433
@@ -27277,12 +27277,12 @@
           "GUID": "fe2fdc",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 3.50001,
+            "posX": 3.50000858,
             "posY": 0.9799975,
-            "posZ": 45.00001,
-            "rotX": -4.813287E-06,
-            "rotY": 180.000412,
-            "rotZ": 1.2163614E-06,
+            "posZ": 45.0000076,
+            "rotX": -4.69361657E-06,
+            "rotY": 180.000473,
+            "rotZ": 9.31305E-07,
             "scaleX": 1.265649,
             "scaleY": 0.263438284,
             "scaleZ": 1.38591433
