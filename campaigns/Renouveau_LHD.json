@@ -20,12 +20,12 @@
       "GUID": "8a1951",
       "Name": "Custom_Model_Bag",
       "Transform": {
-        "posX": -85.0,
+        "posX": -85.00019,
         "posY": 1.1969192,
-        "posZ": 12.9999981,
-        "rotX": -5.031045E-06,
-        "rotY": 180.018982,
-        "rotZ": 5.685209E-07,
+        "posZ": 12.9998293,
+        "rotX": -4.930427E-06,
+        "rotY": 180.018387,
+        "rotZ": 5.240914E-07,
         "scaleX": 1.170821,
         "scaleY": 0.0619766228,
         "scaleZ": 0.9910606
@@ -90,12 +90,12 @@
           "GUID": "2efd37",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -5.49999952,
-            "posY": 0.979997754,
-            "posZ": 45.0000038,
-            "rotX": -5.18555544E-06,
-            "rotY": 180.000076,
-            "rotZ": 2.7335167E-08,
+            "posX": -5.499997,
+            "posY": 0.9799976,
+            "posZ": 45.0000076,
+            "rotX": -5.001686E-06,
+            "rotY": 180.000046,
+            "rotZ": 6.50251138E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -162,9 +162,9 @@
               "Transform": {
                 "posX": 17.5,
                 "posY": 1.54081428,
-                "posZ": -5.9999,
-                "rotX": 0.00494782254,
-                "rotY": 89.9983749,
+                "posZ": -5.99989939,
+                "rotX": 0.004947682,
+                "rotY": 89.99838,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -457,12 +457,12 @@
               "GUID": "219139",
               "Name": "Card",
               "Transform": {
-                "posX": -32.5000458,
+                "posX": -32.50002,
                 "posY": 1.783606,
-                "posZ": 3.99996018,
-                "rotX": -4.826111E-06,
-                "rotY": 179.987518,
-                "rotZ": -7.774619E-08,
+                "posZ": 3.9999826,
+                "rotX": -4.987222E-06,
+                "rotY": 179.987564,
+                "rotZ": -6.25474872E-09,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -515,12 +515,12 @@
               "GUID": "259f05",
               "Name": "Card",
               "Transform": {
-                "posX": 22.3267822,
+                "posX": 22.3267746,
                 "posY": 1.5139116,
-                "posZ": -5.494835,
-                "rotX": 0.01089144,
-                "rotY": 180.0002,
-                "rotZ": 0.00494847354,
+                "posZ": -5.494834,
+                "rotX": 0.0108914468,
+                "rotY": 180.000168,
+                "rotZ": 0.00494837,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -573,12 +573,12 @@
               "GUID": "2c8685",
               "Name": "Card",
               "Transform": {
-                "posX": -7.499998,
-                "posY": 1.51969278,
-                "posZ": 11.5000048,
-                "rotX": 0.0111718178,
-                "rotY": 179.997681,
-                "rotZ": 0.00320857367,
+                "posX": -7.5,
+                "posY": 1.51969314,
+                "posZ": 11.499999,
+                "rotX": 0.0111701163,
+                "rotY": 179.9977,
+                "rotZ": 0.00322822225,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -634,7 +634,7 @@
                 "posX": 30.5,
                 "posY": 1.63172185,
                 "posZ": -3.0001,
-                "rotX": -0.0005910725,
+                "rotX": -0.000591069343,
                 "rotY": 180.001236,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
@@ -2133,9 +2133,9 @@
                 "posX": -5.0,
                 "posY": 1.52083278,
                 "posZ": 18.5,
-                "rotX": 0.0108914049,
+                "rotX": 0.0108914133,
                 "rotY": 180.001236,
-                "rotZ": 0.004948547,
+                "rotZ": 0.00494845072,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -2188,12 +2188,12 @@
               "GUID": "4e8700",
               "Name": "Custom_Model_Bag",
               "Transform": {
-                "posX": -26.5000114,
+                "posX": -26.5000038,
                 "posY": 1.87000072,
-                "posZ": 8.99998951,
-                "rotX": -5.389899E-06,
-                "rotY": 179.986664,
-                "rotZ": 3.079264E-07,
+                "posZ": 8.999995,
+                "rotX": -4.175946E-06,
+                "rotY": 179.98671,
+                "rotZ": 2.519739E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -2250,126 +2250,10 @@
               "Bag": {
                 "Order": 0
               },
-              "LuaScript": "local PLAYMAT_GUID      = '2b5a73'\r\nlocal playmat           = getObjectFromGUID(PLAYMAT_GUID)\r\nlocal save              = true\r\nlocal act_2             = {\r\n    ['Diamond'] = { GUID = 'cbab46', position = { 12.00, 1.52, 18.50 }, rotation = { 0.00, 180.00, 0.00 } }\r\n}\r\nlocal ipairsLocations   = {\r\n    { position = { 22.50, 1.52, 27.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 22.50, 1.52, 18.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 22.50, 1.52, 10.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n}\r\nlocal encounter_pile    = {\r\n    position = { 30.50, 3.61, -3.00 }\r\n}\r\n\r\nlocal encounter_discard = { position = { 34.99, 1.51, -2.99 } }\r\nlocal locations         = {\r\n    ['Circle'] = { position = { -5.00, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Heart'] = { position = { -12.50, 1.53, 18.50 }, rotation = { 0.00, 180.00, 0.00 }, GUID = 'c37eef' }\r\n}\r\nlocal agenda1           = false\r\n\r\nlocal buttonTable       = { {\r\n    { label = \"Mise en place\", click_function = \"setUp\", function_owner = self, position = { 0, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 350, width = 1800, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Mise en place\" }\r\n},\r\n    {\r\n        { label = \"Acte 1b\", click_function = \"question1\", function_owner = self, position = { 0, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 350, width = 1200, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Mise en place Acte 2\" }\r\n    },\r\n    {\r\n        { label = \"Oui\", click_function = \"yes\", function_owner = self, position = { -1, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 400, width = 800, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"\" },\r\n        { label = \"Non\", click_function = \"no\",  function_owner = self, position = { 1, 0.3, 1.8 },  rotation = { 0, 0, 0 }, height = 400, width = 800, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"\" }\r\n    }, }\r\nlocal buttonIndex\r\n\r\n\r\n\r\nfunction onLoad(saved_data)\r\n    if save then\r\n        if saved_data ~= \"\" then\r\n            local loaded_data = JSON.decode(saved_data)\r\n            buttonIndex = loaded_data[1] - 1\r\n        end\r\n    else\r\n        buttonIndex = 0\r\n    end\r\n    updateButtons()\r\n    math.randomseed(os.time())\r\n    self.shuffle()\r\n    self.randomize()\r\n    buildAllLocationTable()\r\nend\r\n\r\nfunction onSave()\r\n    if save then\r\n        self.script_state = JSON.encode({ buttonIndex })\r\n    else\r\n        self.script_state = JSON.encode({ 1 })\r\n    end\r\nend\r\n\r\nfunction updateButtons()\r\n    buttonIndex = buttonIndex + 1\r\n    self.clearButtons()\r\n    for i, tab in ipairs(buttonTable[buttonIndex]) do\r\n        self.createButton(tab)\r\n    end\r\nend\r\n\r\nfunction setUp()\r\n    placeObj(locations['Circle'])\r\n    Wait.time(function()\r\n        local encounterDeck = getEncounterDeck()\r\n        encounterDeck.shuffle()\r\n        broadcastToAll('Mise en place terminée', { 0, 0.75, 0.75 })\r\n    end, 3)\r\n    updateButtons()\r\nend\r\n\r\nfunction question1()\r\n    broadcastToAll(\"Êtes-vous à l'Intrigue 1 ? \", 'Yellow')\r\n    updateButtons()\r\nend\r\n\r\nfunction yes()\r\n    agenda1 = true\r\n    placeAct2()\r\nend\r\n\r\nfunction no()\r\n    placeAct2()\r\nend\r\n\r\nfunction placeAct2()\r\n    self.clearButtons()\r\n    local card = act_2['Diamond']\r\n    placeObj(card)\r\n    if agenda1 then\r\n        local encounterDeck = getEncounterDeck()\r\n        local index = findCriminalIndex(encounterDeck)\r\n        local position = Vector(encounter_discard.position) + Vector(0, 2, 0)\r\n        local rotation = { 0, 180, 0 }\r\n        if index then\r\n            for i = 1, index do\r\n                Wait.frames(function()\r\n                    if i == index then position = Vector(act_2['Diamond'].position) + Vector(0, 2, 3.5) end\r\n                    takeFromDeck(encounterDeck, encounterDeck.getPosition(), position, rotation)\r\n                end, 10 * i)\r\n            end\r\n        else\r\n            for i = 1, #encounterDeck do\r\n                Wait.frames(function()\r\n                    takeFromDeck(encounterDeck, encounterDeck.getPosition(), position, rotation)\r\n                end, 10 * i)\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction getEncounterDeck()\r\n    local position = {\r\n        x = encounter_pile.position[1],\r\n        y = encounter_pile.position[2] - 2,\r\n        z = encounter_pile.position[3]\r\n    }\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 3, 10, 3 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        local obj = object.hit_object\r\n        if obj.type == \"Deck\" then\r\n            return obj\r\n        end\r\n    end\r\nend\r\n\r\nfunction findCriminalIndex(deck)\r\n    for i, cards in ipairs(deck.getObjects()) do\r\n        local metadata = Global.call('getMetadata', cards)\r\n        if metadata then\r\n            if metadata.traits ~= nil then\r\n                if string.find(metadata.traits, 'Criminal') then\r\n                    return i\r\n                end\r\n            end\r\n        end\r\n    end\r\n    return false\r\nend\r\n\r\nfunction takeFromDeck(deck, deckPosition, position, rotation)\r\n    local pickUp\r\n    if deck ~= nil then\r\n        pickUp = deck.takeObject(\r\n            {\r\n                rotation = rotation,\r\n                position = position,\r\n                smooth = true\r\n            }\r\n        )\r\n    else\r\n        local hitList = Physics.cast({\r\n            origin       = deckPosition,\r\n            direction    = { 0, 1, 0 },\r\n            type         = 3,\r\n            size         = { 1, 10, 1 },\r\n            max_distance = 0,\r\n            debug        = false,\r\n        })\r\n\r\n        for _, hit in ipairs(hitList) do\r\n            local obj = hit.hit_object\r\n            if obj.type == \"Card\" then\r\n                pickUp = obj\r\n                pickUp.setPositionSmooth(position, false, false)\r\n                pickUp.setRotationSmooth(rotation, false, false)\r\n            end\r\n        end\r\n    end\r\n\r\n    return pickUp\r\nend\r\n\r\nfunction buildAllLocationTable()\r\n    local containedObjects = self.getData().ContainedObjects\r\n    local tab = {}\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.locationFront ~= nil then\r\n                    for iconName in string.gmatch(metadata.locationFront.icons, \"%a+\") do\r\n                        if iconName == 'Circle' then\r\n                            locations['Circle'].GUID = obj.GUID\r\n                            break\r\n                        end\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.locationFront ~= nil then\r\n                    for iconName in string.gmatch(metadata.locationFront.icons, \"%a+\") do\r\n                        if iconName == 'Tee' then\r\n                            table.insert(tab, obj.GUID)\r\n                        end\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\n    for i, GUID in ipairs(tab) do\r\n        ipairsLocations[i].GUID = GUID\r\n    end\r\nend\r\n\r\nfunction placeObj(obj)\r\n    if isItContained(obj.GUID) then\r\n        local pickedUpCard = self.takeObject({\r\n            guid = obj.GUID,\r\n            rotation = obj.rotation\r\n        })\r\n        pickedUpCard.setPositionSmooth(obj.position, false, false)\r\n        return pickedUpCard\r\n    else\r\n        print(\"Carte absente du conteneur de mise en place\")\r\n    end\r\nend\r\n\r\nfunction onObjectRotate(object)\r\n    if isInPlayArea(object) then\r\n        local metadata = Global.call('getMetadata', object.getData())\r\n        if metadata then\r\n            if metadata.id ~= nil then\r\n                if metadata.id == '51016' then\r\n                    placeObj(locations['Heart'])\r\n                elseif metadata.id == '02074' then\r\n                    for i, card in ipairs(ipairsLocations) do\r\n                        placeObj(card)\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction isItContained(GUID)\r\n    local containedObjects = self.getData().ContainedObjects\r\n    if containedObjects ~= nil then\r\n        for k, obj in pairs(containedObjects) do\r\n            if obj.GUID == GUID then\r\n                return true\r\n            end\r\n        end\r\n    end\r\n    return false\r\nend\r\n\r\nfunction isInPlayArea(object)\r\n    local bounds = playmat.getBounds()\r\n    local position = object.getPosition()\r\n    -- Corners are arbitrary since it's all global - c1 goes down both axes, c2 goes up\r\n    local c1 = { x = bounds.center.x - bounds.size.x / 2, z = bounds.center.z - bounds.size.z / 2 }\r\n    local c2 = { x = bounds.center.x + bounds.size.x / 2, z = bounds.center.z + bounds.size.z / 2 }\r\n\r\n    return position.x > c1.x and position.x < c2.x and position.z > c1.z and position.z < c2.z\r\nend\r\n",
+              "LuaScript": "local PLAYMAT_GUID      = '2b5a73'\r\nlocal playmat           = getObjectFromGUID(PLAYMAT_GUID)\r\nlocal save              = true\r\nlocal act_2             = {\r\n    ['Diamond'] = { GUID = 'cbab46', position = { 12.00, 1.52, 18.50 }, rotation = { 0.00, 180.00, 0.00 } }\r\n}\r\nlocal ipairsLocations   = {\r\n    { position = { 22.50, 1.52, 27.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 22.50, 1.52, 18.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    { position = { 22.50, 1.52, 10.00 }, rotation = { 0.00, 180.00, 0.00 } },\r\n}\r\nlocal encounter_pile    = {\r\n    position = { 30.50, 3.61, -3.00 }\r\n}\r\n\r\nlocal encounter_discard = { position = { 34.99, 1.51, -2.99 } }\r\nlocal locations         = {\r\n    ['Circle'] = { position = { -5.00, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Heart'] = { position = { -12.50, 1.53, 18.50 }, rotation = { 0.00, 180.00, 0.00 }, GUID = 'c37eef' }\r\n}\r\nlocal agenda1           = false\r\n\r\nlocal buttonTable       = { {\r\n    { label = \"Mise en place\", click_function = \"setUp\", function_owner = self, position = { 0, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 350, width = 1800, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Mise en place\" }\r\n},\r\n    {\r\n        { label = \"Acte 1b\", click_function = \"question1\", function_owner = self, position = { 0, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 350, width = 1200, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"Mise en place Acte 2\" }\r\n    },\r\n    {\r\n        { label = \"Oui\", click_function = \"yes\", function_owner = self, position = { -1, 0.3, 1.8 }, rotation = { 0, 0, 0 }, height = 400, width = 800, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"\" },\r\n        { label = \"Non\", click_function = \"no\",  function_owner = self, position = { 1, 0.3, 1.8 },  rotation = { 0, 0, 0 }, height = 400, width = 800, font_size = 250, color = { 0, 0, 0 }, font_color = { 1, 1, 1 }, tooltip = \"\" }\r\n    }, }\r\nlocal buttonIndex\r\n\r\n\r\n\r\nfunction onLoad(saved_data)\r\n    if save then\r\n        if saved_data ~= \"\" then\r\n            local loaded_data = JSON.decode(saved_data)\r\n            buttonIndex = loaded_data[1] - 1\r\n        end\r\n    else\r\n        buttonIndex = 0\r\n    end\r\n    updateButtons()\r\n    math.randomseed(os.time())\r\n    self.shuffle()\r\n    self.randomize()\r\n    buildAllLocationTable()\r\nend\r\n\r\nfunction onSave()\r\n    if save then\r\n        self.script_state = JSON.encode({ buttonIndex })\r\n    else\r\n        self.script_state = JSON.encode({ 1 })\r\n    end\r\nend\r\n\r\nfunction updateButtons()\r\n    buttonIndex = buttonIndex + 1\r\n    self.clearButtons()\r\n    for i, tab in ipairs(buttonTable[buttonIndex]) do\r\n        self.createButton(tab)\r\n    end\r\nend\r\n\r\nfunction setUp()\r\n    placeObj(locations['Circle'])\r\n    Wait.time(function()\r\n        local encounterDeck = getEncounterDeck()\r\n        encounterDeck.shuffle()\r\n        broadcastToAll('Mise en place terminée', { 0, 0.75, 0.75 })\r\n    end, 3)\r\n    self.clearButtons()\r\nend\r\n\r\nfunction question1()\r\n    broadcastToAll(\"Êtes-vous à l'Intrigue 1 ? \", 'Yellow')\r\n    updateButtons()\r\nend\r\n\r\nfunction yes()\r\n    agenda1 = true\r\n    placeAct2()\r\nend\r\n\r\nfunction no()\r\n    placeAct2()\r\nend\r\n\r\nfunction placeAct2()\r\n    self.clearButtons()\r\n    local card = act_2['Diamond']\r\n    placeObj(card)\r\n    if agenda1 then\r\n        local encounterDeck = getEncounterDeck()\r\n        local index = findCriminalIndex(encounterDeck)\r\n        local position = Vector(encounter_discard.position) + Vector(0, 2, 0)\r\n        local rotation = { 0, 180, 0 }\r\n        if index then\r\n            for i = 1, index do\r\n                Wait.frames(function()\r\n                    if i == index then position = Vector(act_2['Diamond'].position) + Vector(0, 2, 3.5) end\r\n                    takeFromDeck(encounterDeck, encounterDeck.getPosition(), position, rotation)\r\n                end, 10 * i)\r\n            end\r\n        else\r\n            for i = 1, #encounterDeck do\r\n                Wait.frames(function()\r\n                    takeFromDeck(encounterDeck, encounterDeck.getPosition(), position, rotation)\r\n                end, 10 * i)\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction getEncounterDeck()\r\n    local position = {\r\n        x = encounter_pile.position[1],\r\n        y = encounter_pile.position[2] - 2,\r\n        z = encounter_pile.position[3]\r\n    }\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 3, 10, 3 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        local obj = object.hit_object\r\n        if obj.type == \"Deck\" then\r\n            return obj\r\n        end\r\n    end\r\nend\r\n\r\nfunction findCriminalIndex(deck)\r\n    for i, cards in ipairs(deck.getObjects()) do\r\n        local metadata = Global.call('getMetadata', cards)\r\n        if metadata then\r\n            if metadata.traits ~= nil then\r\n                if string.find(metadata.traits, 'Criminal') then\r\n                    return i\r\n                end\r\n            end\r\n        end\r\n    end\r\n    return false\r\nend\r\n\r\nfunction takeFromDeck(deck, deckPosition, position, rotation)\r\n    local pickUp\r\n    if deck ~= nil then\r\n        pickUp = deck.takeObject(\r\n            {\r\n                rotation = rotation,\r\n                position = position,\r\n                smooth = true\r\n            }\r\n        )\r\n    else\r\n        local hitList = Physics.cast({\r\n            origin       = deckPosition,\r\n            direction    = { 0, 1, 0 },\r\n            type         = 3,\r\n            size         = { 1, 10, 1 },\r\n            max_distance = 0,\r\n            debug        = false,\r\n        })\r\n\r\n        for _, hit in ipairs(hitList) do\r\n            local obj = hit.hit_object\r\n            if obj.type == \"Card\" then\r\n                pickUp = obj\r\n                pickUp.setPositionSmooth(position, false, false)\r\n                pickUp.setRotationSmooth(rotation, false, false)\r\n            end\r\n        end\r\n    end\r\n\r\n    return pickUp\r\nend\r\n\r\nfunction buildAllLocationTable()\r\n    local containedObjects = self.getData().ContainedObjects\r\n    local tab = {}\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.locationFront ~= nil then\r\n                    for iconName in string.gmatch(metadata.locationFront.icons, \"%a+\") do\r\n                        if iconName == 'Circle' then\r\n                            locations['Circle'].GUID = obj.GUID\r\n                            break\r\n                        end\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\n    for k, obj in pairs(containedObjects) do\r\n        if obj.Name == 'Card' then\r\n            local metadata = Global.call('getMetadata', obj)\r\n            if metadata then\r\n                if\r\n                    metadata.locationFront ~= nil then\r\n                    for iconName in string.gmatch(metadata.locationFront.icons, \"%a+\") do\r\n                        if iconName == 'Tee' then\r\n                            table.insert(tab, obj.GUID)\r\n                        end\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\n    for i, GUID in ipairs(tab) do\r\n        ipairsLocations[i].GUID = GUID\r\n    end\r\nend\r\n\r\nfunction placeObj(obj)\r\n    if isItContained(obj.GUID) then\r\n        local pickedUpCard = self.takeObject({\r\n            guid = obj.GUID,\r\n            rotation = obj.rotation\r\n        })\r\n        pickedUpCard.setPositionSmooth(obj.position, false, false)\r\n        return pickedUpCard\r\n    else\r\n        print(\"Carte absente du conteneur de mise en place\")\r\n    end\r\nend\r\n\r\nfunction onObjectRotate(object)\r\n    if isInPlayArea(object) then\r\n        local metadata = Global.call('getMetadata', object.getData())\r\n        if metadata then\r\n            if metadata.id ~= nil then\r\n                if metadata.id == '51016' then\r\n                    placeObj(locations['Heart'])\r\n                elseif metadata.id == '02074' then\r\n                    for i, card in ipairs(ipairsLocations) do\r\n                        placeObj(card)\r\n                    end\r\n                end\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction onObjectLeaveContainer(container, object)\r\n    local metadata = Global.call('getMetadata', object.getData())\r\n    if metadata then\r\n        if metadata.id ~= nil then\r\n            if metadata.id == '02066' then\r\n                broadcastToAll(\"Bouton de mise en place de l'acte 1b disponible sur le conteneur\", { 0, 1, 0.75 })\r\n                buttonIndex = 1\r\n                updateButtons()\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction isItContained(GUID)\r\n    local containedObjects = self.getData().ContainedObjects\r\n    if containedObjects ~= nil then\r\n        for k, obj in pairs(containedObjects) do\r\n            if obj.GUID == GUID then\r\n                return true\r\n            end\r\n        end\r\n    end\r\n    return false\r\nend\r\n\r\nfunction isInPlayArea(object)\r\n    local bounds = playmat.getBounds()\r\n    local position = object.getPosition()\r\n    -- Corners are arbitrary since it's all global - c1 goes down both axes, c2 goes up\r\n    local c1 = { x = bounds.center.x - bounds.size.x / 2, z = bounds.center.z - bounds.size.z / 2 }\r\n    local c2 = { x = bounds.center.x + bounds.size.x / 2, z = bounds.center.z + bounds.size.z / 2 }\r\n\r\n    return position.x > c1.x and position.x < c2.x and position.z > c1.z and position.z < c2.z\r\nend\r\n",
               "LuaScriptState": "[1]",
               "XmlUI": "",
               "ContainedObjects": [
-                {
-                  "GUID": "3ab510",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -26.0,
-                    "posY": 2.002188,
-                    "posZ": 8.5,
-                    "rotX": 0.000219661015,
-                    "rotY": 180.000046,
-                    "rotZ": 180.000015,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Lounge du Club du Trèfle",
-                  "Description": "Club du Trèfle.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"02071\",\n  \"locationBack\": {\n    \"connections\": \"Crescent|Square|Triangle\",\n    \"icons\": \"Circle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Crescent|Square|Triangle\",\n    \"icons\": \"Circle\"\n  },\n  \"traits\": \"Clover Club.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 116901,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1169": {
-                      "FaceURL": "https://i.imgur.com/iZag7R1.jpg",
-                      "BackURL": "https://i.imgur.com/ArR45VU.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "3e7375",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -23.9999962,
-                    "posY": 1.86999989,
-                    "posZ": 18.0000038,
-                    "rotX": 0.010891201,
-                    "rotY": 180.003845,
-                    "rotZ": 0.004949098,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "Porte de Derrière",
-                  "Description": "Club du Trèfle.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"02076\",\n  \"locationBack\": {\n    \"connections\": \"Diamond\",\n    \"icons\": \"Plus\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"locationFront\": {\n    \"connections\": \"Diamond\",\n    \"icons\": \"Tee\"\n  },\n  \"traits\": \"Clover Club.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 116909,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "1169": {
-                      "FaceURL": "https://i.imgur.com/iZag7R1.jpg",
-                      "BackURL": "https://i.imgur.com/ArR45VU.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
                 {
                   "GUID": "5ae073",
                   "Name": "Card",
@@ -2412,64 +2296,6 @@
                   "HideWhenFaceDown": true,
                   "Hands": true,
                   "CardID": 276104,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2761": {
-                      "FaceURL": "https://i.imgur.com/FVWxpyu.jpg",
-                      "BackURL": "https://i.imgur.com/EmJxccn.jpg",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": true,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
-                },
-                {
-                  "GUID": "c37eef",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -26.5,
-                    "posY": 2.00154543,
-                    "posZ": 9.0,
-                    "rotX": -4.894154E-06,
-                    "rotY": 180.0,
-                    "rotZ": 359.965118,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "",
-                  "Description": "",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"51017\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Square\",\n    \"icons\": \"Heart\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Square\",\n    \"icons\": \"Heart\"\n  },\n  \"traits\": \"Clover Club.\",\n  \"type\": \"Location\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 276103,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "2761": {
@@ -2545,22 +2371,22 @@
                   "XmlUI": ""
                 },
                 {
-                  "GUID": "cbab46",
+                  "GUID": "3e7375",
                   "Name": "Card",
                   "Transform": {
-                    "posX": -23.9999981,
+                    "posX": -23.9999962,
                     "posY": 1.86999989,
-                    "posZ": 18.0000019,
-                    "rotX": 0.00162188977,
-                    "rotY": 179.999985,
-                    "rotZ": 4.89458034E-05,
+                    "posZ": 18.0000038,
+                    "rotX": 0.010891201,
+                    "rotY": 180.003845,
+                    "rotZ": 0.004949098,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
-                  "Nickname": "Couloir Obscur",
+                  "Nickname": "Porte de Derrière",
                   "Description": "Club du Trèfle.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"02074\",\n  \"locationBack\": {\n    \"connections\": \"Triangle|Tee|Hourglass|Plus|Tilde\",\n    \"icons\": \"Diamond\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Triangle\",\n    \"icons\": \"Diamond\"\n  },\n  \"traits\": \"Clover Club.\",\n  \"type\": \"Location\"\n}",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"02076\",\n  \"locationBack\": {\n    \"connections\": \"Diamond\",\n    \"icons\": \"Plus\",\n    \"uses\": {\n      \"countPerInvestigator\": 1,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"locationFront\": {\n    \"connections\": \"Diamond\",\n    \"icons\": \"Tee\"\n  },\n  \"traits\": \"Clover Club.\",\n  \"type\": \"Location\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -2585,7 +2411,7 @@
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
                   "Hands": true,
-                  "CardID": 116905,
+                  "CardID": 116909,
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "1169": {
@@ -2659,6 +2485,180 @@
                   "LuaScript": "",
                   "LuaScriptState": "",
                   "XmlUI": ""
+                },
+                {
+                  "GUID": "c37eef",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -26.5,
+                    "posY": 2.00154543,
+                    "posZ": 9.0,
+                    "rotX": -4.894154E-06,
+                    "rotY": 180.0,
+                    "rotZ": 359.965118,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "",
+                  "Description": "",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"51017\",\n  \"locationBack\": {\n    \"connections\": \"Circle|Square\",\n    \"icons\": \"Heart\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle|Square\",\n    \"icons\": \"Heart\"\n  },\n  \"traits\": \"Clover Club.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 276103,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "2761": {
+                      "FaceURL": "https://i.imgur.com/FVWxpyu.jpg",
+                      "BackURL": "https://i.imgur.com/EmJxccn.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "cbab46",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -23.9999981,
+                    "posY": 1.86999989,
+                    "posZ": 18.0000019,
+                    "rotX": 0.00162188977,
+                    "rotY": 179.999985,
+                    "rotZ": 4.89458034E-05,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Couloir Obscur",
+                  "Description": "Club du Trèfle.",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"02074\",\n  \"locationBack\": {\n    \"connections\": \"Triangle|Tee|Hourglass|Plus|Tilde\",\n    \"icons\": \"Diamond\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Triangle\",\n    \"icons\": \"Diamond\"\n  },\n  \"traits\": \"Clover Club.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 116905,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1169": {
+                      "FaceURL": "https://i.imgur.com/iZag7R1.jpg",
+                      "BackURL": "https://i.imgur.com/ArR45VU.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "3ab510",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -26.0,
+                    "posY": 2.002188,
+                    "posZ": 8.5,
+                    "rotX": 0.000219661015,
+                    "rotY": 180.000046,
+                    "rotZ": 180.000015,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Lounge du Club du Trèfle",
+                  "Description": "Club du Trèfle.",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"02071\",\n  \"locationBack\": {\n    \"connections\": \"Crescent|Square|Triangle\",\n    \"icons\": \"Circle\"\n  },\n  \"locationFront\": {\n    \"connections\": \"Crescent|Square|Triangle\",\n    \"icons\": \"Circle\"\n  },\n  \"traits\": \"Clover Club.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 116901,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1169": {
+                      "FaceURL": "https://i.imgur.com/iZag7R1.jpg",
+                      "BackURL": "https://i.imgur.com/ArR45VU.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
                 }
               ]
             },
@@ -2666,12 +2666,12 @@
               "GUID": "5c303b",
               "Name": "Card",
               "Transform": {
-                "posX": 4.00000143,
+                "posX": 3.99999976,
                 "posY": 1.52005553,
-                "posZ": 18.50001,
-                "rotX": 0.0108912988,
-                "rotY": 180.001373,
-                "rotZ": 0.004948401,
+                "posZ": 18.5000019,
+                "rotX": 0.01089136,
+                "rotY": 180.001434,
+                "rotZ": 0.004948582,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -2724,12 +2724,12 @@
               "GUID": "81059f",
               "Name": "Custom_Model_Bag",
               "Transform": {
-                "posX": -29.0000324,
+                "posX": -29.0000153,
                 "posY": 1.84000111,
-                "posZ": 3.999967,
-                "rotX": -6.33638547E-06,
-                "rotY": 179.985367,
-                "rotZ": -2.378713E-08,
+                "posZ": 3.99998426,
+                "rotX": -4.97016936E-06,
+                "rotY": 179.985184,
+                "rotZ": 1.55087051E-07,
                 "scaleX": 0.7,
                 "scaleY": 0.7,
                 "scaleZ": 0.7
@@ -2912,12 +2912,12 @@
               "GUID": "9c60ac",
               "Name": "Deck",
               "Transform": {
-                "posX": -26.0000229,
+                "posX": -26.0000114,
                 "posY": 1.80537391,
-                "posZ": 3.99997544,
-                "rotX": -5.065487E-06,
+                "posZ": 3.9999876,
+                "rotX": -5.028741E-06,
                 "rotY": 179.986008,
-                "rotZ": 2.94330817E-07,
+                "rotZ": 1.21495759E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -3152,9 +3152,9 @@
               "Transform": {
                 "posX": 12.500001,
                 "posY": 1.536432,
-                "posZ": -6.00002766,
-                "rotX": 0.00494872,
-                "rotY": 90.0042343,
+                "posZ": -6.00002337,
+                "rotX": 0.004949003,
+                "rotY": 90.00413,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -3391,9 +3391,9 @@
                 "posX": -5.0,
                 "posY": 1.51817155,
                 "posZ": 4.5,
-                "rotX": 0.01089126,
+                "rotX": 0.0108913016,
                 "rotY": 180.002869,
-                "rotZ": 0.0049487045,
+                "rotZ": 0.00494872173,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -3446,12 +3446,12 @@
               "GUID": "c79201",
               "Name": "Custom_Model",
               "Transform": {
-                "posX": -26.7258911,
+                "posX": -26.7258835,
                 "posY": 1.7710005,
-                "posZ": 11.3839893,
-                "rotX": 4.55200234E-06,
-                "rotY": -0.000191969,
-                "rotZ": -8.589767E-08,
+                "posZ": 11.383997,
+                "rotX": 5.40000246E-06,
+                "rotY": -0.000203393793,
+                "rotZ": -1.12345525E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -3504,8 +3504,8 @@
               "Transform": {
                 "posX": 24.99971,
                 "posY": 1.51367974,
-                "posZ": -5.50001049,
-                "rotX": 0.010891485,
+                "posZ": -5.50000668,
+                "rotX": 0.0108915549,
                 "rotY": 180.000122,
                 "rotZ": 180.004959,
                 "scaleX": 1.0,
@@ -3560,12 +3560,12 @@
               "GUID": "fad42f",
               "Name": "Deck",
               "Transform": {
-                "posX": -23.5000172,
+                "posX": -23.50001,
                 "posY": 1.82463,
-                "posZ": 3.99997878,
-                "rotX": -5.08813946E-06,
-                "rotY": 179.9961,
-                "rotZ": 2.137239E-07,
+                "posZ": 3.999988,
+                "rotX": -5.16025239E-06,
+                "rotY": 179.996017,
+                "rotZ": 3.92587481E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -4059,9 +4059,9 @@
             "posX": 3.500002,
             "posY": 0.9799974,
             "posZ": 45.0,
-            "rotX": -4.94423739E-06,
+            "rotX": -5.00483657E-06,
             "rotY": 180.02269,
-            "rotZ": 4.53795224E-07,
+            "rotZ": 4.28691237E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -8500,12 +8500,12 @@
           "GUID": "4e84af",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -9.999995,
-            "posY": 0.9799975,
-            "posZ": 45.0000038,
-            "rotX": -4.977169E-06,
-            "rotY": 180.026321,
-            "rotZ": 4.74598465E-07,
+            "posX": -9.999997,
+            "posY": 0.9799976,
+            "posZ": 45.0,
+            "rotX": -4.98001828E-06,
+            "rotY": 180.0263,
+            "rotZ": 5.1650386E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -8570,12 +8570,12 @@
               "GUID": "12c68a",
               "Name": "Custom_Model_Bag",
               "Transform": {
-                "posX": -21.5000019,
+                "posX": -21.5000038,
                 "posY": 1.87000108,
-                "posZ": 4.99999762,
-                "rotX": -5.563288E-06,
-                "rotY": 179.981491,
-                "rotZ": 7.310777E-07,
+                "posZ": 4.99999571,
+                "rotX": -4.01285934E-06,
+                "rotY": 179.981461,
+                "rotZ": 4.935759E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -8591,7 +8591,7 @@
               "ColorDiffuse": {
                 "r": 0.0,
                 "g": 0.7526132,
-                "b": 0.358115673
+                "b": 0.3581156
               },
               "LayoutGroupSortIndex": 0,
               "Value": 0,
@@ -8636,6 +8636,64 @@
               "LuaScriptState": "{\"ml\":{\"05d8ce\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5186,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2571a9\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5203,\"z\":20.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"415af7\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5168,\"z\":2.5},\"rot\":{\"x\":0.0109,\"y\":180.0008,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"7234af\":{\"lock\":false,\"pos\":{\"x\":10.5,\"y\":1.5046,\"z\":11.5},\"rot\":{\"x\":0.0049,\"y\":90.0109,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"8d1418\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5058,\"z\":16},\"rot\":{\"x\":0.0109,\"y\":180.0171,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"ab38db\":{\"lock\":false,\"pos\":{\"x\":-31,\"y\":1.7789,\"z\":29.5},\"rot\":{\"x\":0,\"y\":180,\"z\":0},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b33a26\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5041,\"z\":7},\"rot\":{\"x\":0.0109,\"y\":179.9976,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"bce4db\":{\"lock\":false,\"pos\":{\"x\":15,\"y\":1.5178,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":180.0003,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}}}}",
               "XmlUI": "",
               "ContainedObjects": [
+                {
+                  "GUID": "444795",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": -26.5,
+                    "posY": 2.002187,
+                    "posZ": 13.0,
+                    "rotX": 0.000105296625,
+                    "rotY": 179.983185,
+                    "rotZ": -0.00012411538,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Bureaux des Enseignants",
+                  "Description": "[La Nuit Vient de Tomber]\nMiskatonic.",
+                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"02054\",\n  \"locationBack\": {\n    \"connections\": \"Circle\",\n    \"icons\": \"Tee\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle\",\n    \"icons\": \"Tee\"\n  },\n  \"traits\": \"Miskatonic.\",\n  \"type\": \"Location\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 114603,
+                  "SidewaysCard": false,
+                  "CustomDeck": {
+                    "1146": {
+                      "FaceURL": "https://i.imgur.com/YYrN92e.jpg",
+                      "BackURL": "https://i.imgur.com/QGyVZgX.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
                 {
                   "GUID": "118416",
                   "Name": "Card",
@@ -8695,22 +8753,22 @@
                   "XmlUI": ""
                 },
                 {
-                  "GUID": "444795",
+                  "GUID": "e2882d",
                   "Name": "Card",
                   "Transform": {
                     "posX": -26.5,
-                    "posY": 2.002187,
-                    "posZ": 13.0,
-                    "rotX": 0.000105296625,
-                    "rotY": 179.983185,
-                    "rotZ": -0.00012411538,
+                    "posY": 2.00219154,
+                    "posZ": 13.5,
+                    "rotX": 2.12264185E-05,
+                    "rotY": 180.010986,
+                    "rotZ": -1.994477E-05,
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "scaleZ": 1.0
                   },
-                  "Nickname": "Bureaux des Enseignants",
-                  "Description": "[La Nuit Vient de Tomber]\nMiskatonic.",
-                  "GMNotes": "{\n  \"cycle\": \"Standalone\",\n  \"id\": \"02054\",\n  \"locationBack\": {\n    \"connections\": \"Circle\",\n    \"icons\": \"Tee\",\n    \"uses\": {\n      \"countPerInvestigator\": 2,\n      \"token\": \"clue\",\n      \"type\": \"Clue\"\n    },\n    \"victory\": 1\n  },\n  \"locationFront\": {\n    \"connections\": \"Circle\",\n    \"icons\": \"Tee\"\n  },\n  \"traits\": \"Miskatonic.\",\n  \"type\": \"Location\"\n}",
+                  "Nickname": "",
+                  "Description": "",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 3,\n  \"id\": \"51014\",\n  \"traits\": \"Humanoid. Abomination.\",\n  \"type\": \"Enemy\"\n}",
                   "AltLookAngle": {
                     "x": 0.0,
                     "y": 0.0,
@@ -8735,16 +8793,16 @@
                   "GridProjection": false,
                   "HideWhenFaceDown": true,
                   "Hands": true,
-                  "CardID": 114603,
+                  "CardID": 276049,
                   "SidewaysCard": false,
                   "CustomDeck": {
-                    "1146": {
-                      "FaceURL": "https://i.imgur.com/YYrN92e.jpg",
-                      "BackURL": "https://i.imgur.com/QGyVZgX.jpg",
+                    "2760": {
+                      "FaceURL": "https://i.imgur.com/9W3Xkh8.jpg",
+                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
                       "NumWidth": 10,
                       "NumHeight": 7,
                       "BackIsHidden": true,
-                      "UniqueBack": true,
+                      "UniqueBack": false,
                       "Type": 0
                     }
                   },
@@ -8925,64 +8983,6 @@
                   "LuaScript": "",
                   "LuaScriptState": "",
                   "XmlUI": ""
-                },
-                {
-                  "GUID": "e2882d",
-                  "Name": "Card",
-                  "Transform": {
-                    "posX": -26.5,
-                    "posY": 2.00219154,
-                    "posZ": 13.5,
-                    "rotX": 2.12264185E-05,
-                    "rotY": 180.010986,
-                    "rotZ": -1.994477E-05,
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "scaleZ": 1.0
-                  },
-                  "Nickname": "",
-                  "Description": "",
-                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"health\": 3,\n  \"id\": \"51014\",\n  \"traits\": \"Humanoid. Abomination.\",\n  \"type\": \"Enemy\"\n}",
-                  "AltLookAngle": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0
-                  },
-                  "ColorDiffuse": {
-                    "r": 0.713235259,
-                    "g": 0.713235259,
-                    "b": 0.713235259
-                  },
-                  "LayoutGroupSortIndex": 0,
-                  "Value": 0,
-                  "Locked": false,
-                  "Grid": true,
-                  "Snap": true,
-                  "IgnoreFoW": false,
-                  "MeasureMovement": false,
-                  "DragSelectable": true,
-                  "Autoraise": true,
-                  "Sticky": true,
-                  "Tooltip": true,
-                  "GridProjection": false,
-                  "HideWhenFaceDown": true,
-                  "Hands": true,
-                  "CardID": 276049,
-                  "SidewaysCard": false,
-                  "CustomDeck": {
-                    "2760": {
-                      "FaceURL": "https://i.imgur.com/9W3Xkh8.jpg",
-                      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/931553051989537266/4F8EF28EECA8E2376771AD6B18CA93622216C17A/",
-                      "NumWidth": 10,
-                      "NumHeight": 7,
-                      "BackIsHidden": true,
-                      "UniqueBack": false,
-                      "Type": 0
-                    }
-                  },
-                  "LuaScript": "",
-                  "LuaScriptState": "",
-                  "XmlUI": ""
                 }
               ]
             },
@@ -8990,12 +8990,12 @@
               "GUID": "26b179",
               "Name": "Card",
               "Transform": {
-                "posX": -29.0000076,
+                "posX": -29.0000114,
                 "posY": 1.783606,
-                "posZ": 2.999992,
-                "rotX": -5.01517752E-06,
-                "rotY": 180.00087,
-                "rotZ": 1.31375074E-07,
+                "posZ": 2.99998856,
+                "rotX": -5.05021944E-06,
+                "rotY": 180.000839,
+                "rotZ": -6.770277E-09,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -9051,9 +9051,9 @@
                 "posX": 2.49999976,
                 "posY": 1.51970983,
                 "posZ": 16.0,
-                "rotX": 0.0108915083,
+                "rotX": 0.010891567,
                 "rotY": 180.0,
-                "rotZ": 0.00494824955,
+                "rotZ": 0.00494827749,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -9106,12 +9106,12 @@
               "GUID": "5b52fc",
               "Name": "Card",
               "Transform": {
-                "posX": -26.0000076,
+                "posX": -26.0000114,
                 "posY": 1.783606,
-                "posZ": 2.99999046,
-                "rotX": -5.04038871E-06,
-                "rotY": 180.001862,
-                "rotZ": 1.442698E-07,
+                "posZ": 2.99998713,
+                "rotX": -5.099492E-06,
+                "rotY": 180.001831,
+                "rotZ": 2.42933975E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -9164,12 +9164,12 @@
               "GUID": "6b2b52",
               "Name": "Card",
               "Transform": {
-                "posX": 22.3268185,
+                "posX": 22.32682,
                 "posY": 1.5139116,
-                "posZ": -5.49486732,
-                "rotX": 0.0108914506,
-                "rotY": 180.000931,
-                "rotZ": 0.00494833943,
+                "posZ": -5.49486828,
+                "rotX": 0.0108913165,
+                "rotY": 180.000946,
+                "rotZ": 0.00494853454,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -9222,12 +9222,12 @@
               "GUID": "7c1c7f",
               "Name": "Custom_Model_Bag",
               "Transform": {
-                "posX": -32.5000038,
+                "posX": -32.5000076,
                 "posY": 1.840001,
-                "posZ": 4.999995,
-                "rotX": -5.49702054E-06,
-                "rotY": 179.984909,
-                "rotZ": -8.80438762E-08,
+                "posZ": 4.99999046,
+                "rotX": -4.865813E-06,
+                "rotY": 179.984863,
+                "rotZ": -1.59310375E-07,
                 "scaleX": 0.7,
                 "scaleY": 0.7,
                 "scaleZ": 0.7
@@ -9410,12 +9410,12 @@
               "GUID": "7d1653",
               "Name": "Card",
               "Transform": {
-                "posX": -29.0000019,
+                "posX": -29.0000038,
                 "posY": 1.78360569,
-                "posZ": 6.99999666,
-                "rotX": -5.050285E-06,
-                "rotY": 179.991653,
-                "rotZ": 1.66374164E-07,
+                "posZ": 6.999994,
+                "rotX": -4.83668737E-06,
+                "rotY": 179.991669,
+                "rotZ": 6.726146E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -9468,11 +9468,11 @@
               "GUID": "98e04b",
               "Name": "Deck",
               "Transform": {
-                "posX": 17.5000114,
-                "posY": 1.53600025,
-                "posZ": -5.9999,
-                "rotX": 0.004948967,
-                "rotY": 90.0049744,
+                "posX": 17.5000153,
+                "posY": 1.56969845,
+                "posZ": -5.99990654,
+                "rotX": 0.00494935736,
+                "rotY": 90.00503,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -9509,12 +9509,28 @@
               "DeckIDs": [
                 114505,
                 114504,
-                114503
+                114503,
+                114505,
+                114504,
+                114503,
+                14502,
+                14503,
+                14501,
+                14500
               ],
               "CustomDeck": {
                 "1145": {
                   "FaceURL": "https://i.imgur.com/gPqLiw9.jpg",
                   "BackURL": "https://i.imgur.com/6gw6nAo.jpg",
+                  "NumWidth": 10,
+                  "NumHeight": 7,
+                  "BackIsHidden": true,
+                  "UniqueBack": true,
+                  "Type": 0
+                },
+                "145": {
+                  "FaceURL": "https://i.imgur.com/KaarVN0.jpg",
+                  "BackURL": "https://i.imgur.com/KH4fqod.jpg",
                   "NumWidth": 10,
                   "NumHeight": 7,
                   "BackIsHidden": true,
@@ -9699,6 +9715,412 @@
                   "LuaScript": "",
                   "LuaScriptState": "",
                   "XmlUI": ""
+                },
+                {
+                  "GUID": "59bc56",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 17.5000114,
+                    "posY": 1.64569831,
+                    "posZ": -5.99990273,
+                    "rotX": 0.00497501,
+                    "rotY": 90.00489,
+                    "rotZ": 359.988953,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "La Sécurité du Campus",
+                  "Description": "Acte 3a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"02047\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 114505,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "1145": {
+                      "FaceURL": "https://i.imgur.com/gPqLiw9.jpg",
+                      "BackURL": "https://i.imgur.com/6gw6nAo.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "a9e994",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 17.5000114,
+                    "posY": 1.60670853,
+                    "posZ": -5.99990273,
+                    "rotX": 0.005852443,
+                    "rotY": 90.00489,
+                    "rotZ": 359.988373,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Localiser Rice",
+                  "Description": "Acte 2a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"02046\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 114504,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "1145": {
+                      "FaceURL": "https://i.imgur.com/gPqLiw9.jpg",
+                      "BackURL": "https://i.imgur.com/6gw6nAo.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "75b7c8",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 17.5000172,
+                    "posY": 1.61256731,
+                    "posZ": -5.99991226,
+                    "rotX": 0.006968325,
+                    "rotY": 90.00489,
+                    "rotZ": 359.991272,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Après des Heures",
+                  "Description": "Acte 1a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"clueThresholdPerInvestigator\": 3,\n  \"cycle\": \"Standalone\",\n  \"id\": \"02045\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 114503,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "1145": {
+                      "FaceURL": "https://i.imgur.com/gPqLiw9.jpg",
+                      "BackURL": "https://i.imgur.com/6gw6nAo.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "0cf38e",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 17.5,
+                    "posY": 4.996218,
+                    "posZ": -5.99989748,
+                    "rotX": 0.00494765257,
+                    "rotY": 89.99839,
+                    "rotZ": 359.9891,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Repli",
+                  "Description": "Acte 3a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"02069\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 14502,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "145": {
+                      "FaceURL": "https://i.imgur.com/KaarVN0.jpg",
+                      "BackURL": "https://i.imgur.com/KH4fqod.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "3d7816",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 17.5,
+                    "posY": 4.796218,
+                    "posZ": -5.99989748,
+                    "rotX": 0.00494765257,
+                    "rotY": 89.99839,
+                    "rotZ": 359.9891,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Tout Compris",
+                  "Description": "Acte 3a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"02068\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 14503,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "145": {
+                      "FaceURL": "https://i.imgur.com/KaarVN0.jpg",
+                      "BackURL": "https://i.imgur.com/KH4fqod.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "48223c",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 17.5000019,
+                    "posY": 1.607676,
+                    "posZ": -5.99990273,
+                    "rotX": 0.004412398,
+                    "rotY": 89.99839,
+                    "rotZ": 359.9886,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Jeu de Dupes",
+                  "Description": "Acte 2a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"clueThresholdPerInvestigator\": 2,\n  \"cycle\": \"Standalone\",\n  \"id\": \"02067\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 14501,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "145": {
+                      "FaceURL": "https://i.imgur.com/KaarVN0.jpg",
+                      "BackURL": "https://i.imgur.com/KH4fqod.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "1e8ed7",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 17.5009918,
+                    "posY": 1.60308921,
+                    "posZ": -6.019597,
+                    "rotX": 0.0192093458,
+                    "rotY": 89.99999,
+                    "rotZ": 359.9743,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "La Chance du Débutant",
+                  "Description": "Acte 1a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"clueThresholdPerInvestigator\": 4,\n  \"cycle\": \"Standalone\",\n  \"id\": \"02066\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 14500,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "145": {
+                      "FaceURL": "https://i.imgur.com/KaarVN0.jpg",
+                      "BackURL": "https://i.imgur.com/KH4fqod.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
                 }
               ]
             },
@@ -9708,9 +10130,9 @@
               "Transform": {
                 "posX": 12.5000114,
                 "posY": 1.536432,
-                "posZ": -5.999944,
-                "rotX": 0.004948187,
-                "rotY": 90.00075,
+                "posZ": -5.999945,
+                "rotX": 0.00494815363,
+                "rotY": 90.00077,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -9947,9 +10369,9 @@
                 "posX": 2.50000334,
                 "posY": 1.51837921,
                 "posZ": 9.0,
-                "rotX": 0.010891417,
-                "rotY": 180.000015,
-                "rotZ": 0.004948244,
+                "rotX": 0.0108915009,
+                "rotY": 180.0,
+                "rotZ": 0.004948342,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -10002,10 +10424,10 @@
               "GUID": "bc5d18",
               "Name": "Card",
               "Transform": {
-                "posX": 24.9999981,
+                "posX": 24.9999962,
                 "posY": 1.51367974,
-                "posZ": -5.500056,
-                "rotX": 0.0108915428,
+                "posZ": -5.5000577,
+                "rotX": 0.0108915884,
                 "rotY": 180.0003,
                 "rotZ": 180.004959,
                 "scaleX": 1.0,
@@ -10060,12 +10482,12 @@
               "GUID": "c37089",
               "Name": "Card",
               "Transform": {
-                "posX": -26.0000019,
+                "posX": -26.0000038,
                 "posY": 1.78360569,
-                "posZ": 6.999998,
-                "rotX": -5.13046E-06,
-                "rotY": 180.017349,
-                "rotZ": -3.08558477E-08,
+                "posZ": 6.99999571,
+                "rotX": -4.989204E-06,
+                "rotY": 180.017334,
+                "rotZ": -9.810547E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -10121,9 +10543,9 @@
                 "posX": 13.5,
                 "posY": 1.51875985,
                 "posZ": 16.0,
-                "rotX": 0.010891526,
+                "rotX": 0.010891418,
                 "rotY": 180.000259,
-                "rotZ": 0.004948233,
+                "rotZ": 0.0049482747,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -10179,9 +10601,9 @@
                 "posX": -8.5,
                 "posY": 1.51932919,
                 "posZ": 9.0,
-                "rotX": 0.0108915186,
-                "rotY": 179.999924,
-                "rotZ": 0.00494825048,
+                "rotX": 0.0108914841,
+                "rotY": 179.999939,
+                "rotZ": 0.004948214,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -10237,7 +10659,7 @@
                 "posX": 30.4999943,
                 "posY": 1.67986226,
                 "posZ": -3.00000072,
-                "rotX": -0.0005910132,
+                "rotX": -0.0005911388,
                 "rotY": 180.0,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
@@ -12272,9 +12694,9 @@
                 "posX": 13.4999647,
                 "posY": 1.51742923,
                 "posZ": 8.99998,
-                "rotX": 0.0108914878,
-                "rotY": 180.000183,
-                "rotZ": 0.004948303,
+                "rotX": 0.0108914757,
+                "rotY": 180.000168,
+                "rotZ": 0.004948223,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -12350,11 +12772,11 @@
           "Name": "Custom_Model_Bag",
           "Transform": {
             "posX": 7.999999,
-            "posY": 0.979997337,
+            "posY": 0.9799974,
             "posZ": 45.0,
-            "rotX": -4.9848054E-06,
-            "rotY": 180.0237,
-            "rotZ": 4.58266129E-07,
+            "rotX": -5.02334E-06,
+            "rotY": 180.023682,
+            "rotZ": 4.52907273E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -17406,12 +17828,12 @@
           "GUID": "70e81a",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 16.9999981,
+            "posX": 17.0000038,
             "posY": 0.9799974,
-            "posZ": 45.0,
-            "rotX": -4.589285E-06,
-            "rotY": 180.023163,
-            "rotZ": 9.237662E-07,
+            "posZ": 45.0000038,
+            "rotX": -4.86980343E-06,
+            "rotY": 180.023178,
+            "rotZ": 1.19316633E-06,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -22084,12 +22506,12 @@
           "GUID": "7594f1",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 12.5000076,
+            "posX": 12.5000105,
             "posY": 0.9799974,
-            "posZ": 45.0000076,
-            "rotX": -5.27398333E-06,
-            "rotY": 179.999863,
-            "rotZ": -3.54205923E-07,
+            "posZ": 45.00001,
+            "rotX": -5.36552352E-06,
+            "rotY": 179.999939,
+            "rotZ": -5.39186658E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -26421,12 +26843,12 @@
           "GUID": "781bc3",
           "Name": "Custom_Tile",
           "Transform": {
-            "posX": 2.99999976,
-            "posY": 1.501975,
-            "posZ": -5.4999,
-            "rotX": 0.0108904094,
-            "rotY": 180.012985,
-            "rotZ": 0.00495085027,
+            "posX": 2.994315,
+            "posY": 1.6018914,
+            "posZ": -5.49936867,
+            "rotX": 0.00435137143,
+            "rotY": 180.0225,
+            "rotZ": 0.00349852233,
             "scaleX": 1.6428808,
             "scaleY": 1.0,
             "scaleZ": 1.6428808
@@ -26481,9 +26903,9 @@
             "posX": -18.5,
             "posY": 1.47986,
             "posZ": -4.9973,
-            "rotX": -1.0294923E-07,
+            "rotX": 7.740015E-08,
             "rotY": 180.0081,
-            "rotZ": 6.996026E-07,
+            "rotZ": 2.32381243E-08,
             "scaleX": 2.05722,
             "scaleY": 1.0,
             "scaleZ": 2.05722
@@ -26529,12 +26951,12 @@
           "GUID": "8e5d21",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -1.000202,
+            "posX": -1.0002023,
             "posY": 0.9799975,
             "posZ": 45.0000954,
-            "rotX": -4.628331E-06,
-            "rotY": 180.024933,
-            "rotZ": 1.32892251E-06,
+            "rotX": -4.73115324E-06,
+            "rotY": 180.024841,
+            "rotZ": 1.398161E-06,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -30913,11 +31335,11 @@
           "Name": "Custom_Model_Bag",
           "Transform": {
             "posX": 21.50001,
-            "posY": 0.9799974,
+            "posY": 0.9799972,
             "posZ": 45.0000038,
-            "rotX": -5.419489E-06,
-            "rotY": 180.02359,
-            "rotZ": -8.254112E-08,
+            "rotX": -5.31058276E-06,
+            "rotY": 180.0236,
+            "rotZ": 1.09607276E-06,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
