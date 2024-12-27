@@ -20,12 +20,12 @@
       "GUID": "e073d5",
       "Name": "Custom_Model_Bag",
       "Transform": {
-        "posX": -85.00029,
-        "posY": 0.980000436,
-        "posZ": 19.4997158,
-        "rotX": -4.2241154E-06,
-        "rotY": 179.999741,
-        "rotZ": 3.7577945E-07,
+        "posX": -85.00027,
+        "posY": 0.9800006,
+        "posZ": 19.4997311,
+        "rotX": -6.1711753E-06,
+        "rotY": 179.999832,
+        "rotZ": 5.93044433E-07,
         "scaleX": 0.6144237,
         "scaleY": 0.08580595,
         "scaleZ": 0.6144237
@@ -90,12 +90,12 @@
           "GUID": "2efd37",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -5.499998,
-            "posY": 0.9799974,
-            "posZ": 45.0,
-            "rotX": -5.3718E-06,
-            "rotY": 180.026276,
-            "rotZ": -1.93463279E-07,
+            "posX": -5.500003,
+            "posY": 0.979997635,
+            "posZ": 44.9999962,
+            "rotX": -5.02268631E-06,
+            "rotY": 180.02623,
+            "rotZ": 6.282788E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -3347,12 +3347,12 @@
           "GUID": "3ebbf6",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 3.50000763,
-            "posY": 0.9799974,
-            "posZ": 45.0000038,
-            "rotX": -5.07773666E-06,
-            "rotY": 180.0235,
-            "rotZ": 3.74088046E-07,
+            "posX": 3.500002,
+            "posY": 0.9799975,
+            "posZ": 45.0,
+            "rotX": -5.00866872E-06,
+            "rotY": 180.023544,
+            "rotZ": 5.083588E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -7216,12 +7216,12 @@
           "GUID": "4e84af",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -9.999999,
-            "posY": 0.9799976,
-            "posZ": 45.0000038,
-            "rotX": -4.99268072E-06,
-            "rotY": 180.025574,
-            "rotZ": 6.14982469E-07,
+            "posX": -9.999998,
+            "posY": 0.9799977,
+            "posZ": 45.0000076,
+            "rotX": -5.29714953E-06,
+            "rotY": 180.025635,
+            "rotZ": -4.55441551E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -7286,12 +7286,12 @@
               "GUID": "104a9a",
               "Name": "Card",
               "Transform": {
-                "posX": -8.500008,
+                "posX": -8.500004,
                 "posY": 1.5206598,
                 "posZ": 16.0000038,
-                "rotX": 0.0108914832,
-                "rotY": 179.999634,
-                "rotZ": 0.00494814,
+                "rotX": 0.0108915893,
+                "rotY": 179.999924,
+                "rotZ": 0.00494824257,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -7346,10 +7346,10 @@
               "Transform": {
                 "posX": -21.5,
                 "posY": 1.87000084,
-                "posZ": 6.99999666,
-                "rotX": -6.164006E-06,
+                "posZ": 6.999998,
+                "rotX": -5.49334072E-06,
                 "rotY": 179.98175,
-                "rotZ": 2.85127584E-07,
+                "rotZ": 2.90774977E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -7365,7 +7365,7 @@
               "ColorDiffuse": {
                 "r": 0.0,
                 "g": 0.7526132,
-                "b": 0.358115166
+                "b": 0.358115047
               },
               "LayoutGroupSortIndex": 0,
               "Value": 0,
@@ -7590,12 +7590,12 @@
               "GUID": "26b179",
               "Name": "Card",
               "Transform": {
-                "posX": -29.0000668,
+                "posX": -29.00001,
                 "posY": 1.78360593,
-                "posZ": 4.49992943,
-                "rotX": -4.978544E-06,
-                "rotY": 180.000977,
-                "rotZ": -7.91910253E-08,
+                "posZ": 4.49998856,
+                "rotX": -4.931689E-06,
+                "rotY": 180.000565,
+                "rotZ": 1.51716222E-07,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -7651,9 +7651,9 @@
                 "posX": 2.49999833,
                 "posY": 1.51970983,
                 "posZ": 16.0000038,
-                "rotX": 0.01089151,
+                "rotX": 0.0108914673,
                 "rotY": 180.0,
-                "rotZ": 0.004948237,
+                "rotZ": 0.00494818157,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -7706,12 +7706,12 @@
               "GUID": "5b52fc",
               "Name": "Card",
               "Transform": {
-                "posX": -26.0000076,
+                "posX": -26.0000057,
                 "posY": 1.78360558,
-                "posZ": 8.499993,
-                "rotX": -4.884474E-06,
-                "rotY": 180.001282,
-                "rotZ": 9.227098E-08,
+                "posZ": 8.499994,
+                "rotX": -5.01241357E-06,
+                "rotY": 180.001434,
+                "rotZ": 7.603608E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -7766,10 +7766,10 @@
               "Transform": {
                 "posX": 23.5001,
                 "posY": 1.5138092,
-                "posZ": -5.500016,
-                "rotX": 0.0108910352,
-                "rotY": 180.0052,
-                "rotZ": 0.00494917063,
+                "posZ": -5.500002,
+                "rotX": 0.0108910808,
+                "rotY": 180.0056,
+                "rotZ": 0.004949209,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -7822,12 +7822,12 @@
               "GUID": "7d1653",
               "Name": "Card",
               "Transform": {
-                "posX": -29.0000477,
+                "posX": -29.0000057,
                 "posY": 1.78360558,
-                "posZ": 8.499945,
-                "rotX": -4.881105E-06,
-                "rotY": 179.99118,
-                "rotZ": 1.09220643E-07,
+                "posZ": 8.499991,
+                "rotX": -4.95606E-06,
+                "rotY": 179.990967,
+                "rotZ": -5.70279042E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -7877,15 +7877,253 @@
               "XmlUI": ""
             },
             {
+              "GUID": "98e04b",
+              "Name": "Deck",
+              "Transform": {
+                "posX": 17.5000019,
+                "posY": 1.53600025,
+                "posZ": -5.99989939,
+                "rotX": 0.00494893,
+                "rotY": 90.00502,
+                "rotZ": 359.9891,
+                "scaleX": 1.0,
+                "scaleY": 1.0,
+                "scaleZ": 1.0
+              },
+              "Nickname": "Deck Acte",
+              "Description": "Activité Extrascolaire",
+              "GMNotes": "",
+              "AltLookAngle": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "ColorDiffuse": {
+                "r": 0.713235259,
+                "g": 0.713235259,
+                "b": 0.713235259
+              },
+              "LayoutGroupSortIndex": 0,
+              "Value": 0,
+              "Locked": false,
+              "Grid": true,
+              "Snap": true,
+              "IgnoreFoW": false,
+              "MeasureMovement": false,
+              "DragSelectable": true,
+              "Autoraise": true,
+              "Sticky": true,
+              "Tooltip": true,
+              "GridProjection": false,
+              "HideWhenFaceDown": true,
+              "Hands": false,
+              "SidewaysCard": true,
+              "DeckIDs": [
+                114505,
+                114504,
+                114503
+              ],
+              "CustomDeck": {
+                "1145": {
+                  "FaceURL": "https://i.imgur.com/gPqLiw9.jpg",
+                  "BackURL": "https://i.imgur.com/6gw6nAo.jpg",
+                  "NumWidth": 10,
+                  "NumHeight": 7,
+                  "BackIsHidden": true,
+                  "UniqueBack": true,
+                  "Type": 0
+                }
+              },
+              "LuaScript": "",
+              "LuaScriptState": "",
+              "XmlUI": "",
+              "ContainedObjects": [
+                {
+                  "GUID": "59bc56",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 17.5000114,
+                    "posY": 1.64569831,
+                    "posZ": -5.99990273,
+                    "rotX": 0.00497501,
+                    "rotY": 90.00489,
+                    "rotZ": 359.988953,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "La Sécurité du Campus",
+                  "Description": "Acte 3a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"02047\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 114505,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "1145": {
+                      "FaceURL": "https://i.imgur.com/gPqLiw9.jpg",
+                      "BackURL": "https://i.imgur.com/6gw6nAo.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "a9e994",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 17.5000114,
+                    "posY": 1.60670853,
+                    "posZ": -5.99990273,
+                    "rotX": 0.005852443,
+                    "rotY": 90.00489,
+                    "rotZ": 359.988373,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Localiser Rice",
+                  "Description": "Acte 2a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"cycle\": \"Standalone\",\n  \"id\": \"02046\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 114504,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "1145": {
+                      "FaceURL": "https://i.imgur.com/gPqLiw9.jpg",
+                      "BackURL": "https://i.imgur.com/6gw6nAo.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                },
+                {
+                  "GUID": "75b7c8",
+                  "Name": "Card",
+                  "Transform": {
+                    "posX": 17.5000172,
+                    "posY": 1.61256731,
+                    "posZ": -5.99991226,
+                    "rotX": 0.006968325,
+                    "rotY": 90.00489,
+                    "rotZ": 359.991272,
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "scaleZ": 1.0
+                  },
+                  "Nickname": "Après des Heures",
+                  "Description": "Acte 1a",
+                  "GMNotes": "{\n  \"class\": \"Mythos\",\n  \"clueThresholdPerInvestigator\": 3,\n  \"cycle\": \"Standalone\",\n  \"id\": \"02045\",\n  \"type\": \"Act\"\n}",
+                  "AltLookAngle": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "ColorDiffuse": {
+                    "r": 0.713235259,
+                    "g": 0.713235259,
+                    "b": 0.713235259
+                  },
+                  "LayoutGroupSortIndex": 0,
+                  "Value": 0,
+                  "Locked": false,
+                  "Grid": true,
+                  "Snap": true,
+                  "IgnoreFoW": false,
+                  "MeasureMovement": false,
+                  "DragSelectable": true,
+                  "Autoraise": true,
+                  "Sticky": true,
+                  "Tooltip": true,
+                  "GridProjection": false,
+                  "HideWhenFaceDown": true,
+                  "Hands": true,
+                  "CardID": 114503,
+                  "SidewaysCard": true,
+                  "CustomDeck": {
+                    "1145": {
+                      "FaceURL": "https://i.imgur.com/gPqLiw9.jpg",
+                      "BackURL": "https://i.imgur.com/6gw6nAo.jpg",
+                      "NumWidth": 10,
+                      "NumHeight": 7,
+                      "BackIsHidden": true,
+                      "UniqueBack": true,
+                      "Type": 0
+                    }
+                  },
+                  "LuaScript": "",
+                  "LuaScriptState": "",
+                  "XmlUI": ""
+                }
+              ]
+            },
+            {
               "GUID": "a4055a",
               "Name": "Custom_Model_Bag",
               "Transform": {
-                "posX": -32.0000343,
+                "posX": -32.0000038,
                 "posY": 1.84000111,
-                "posZ": 4.49996567,
-                "rotX": -2.66861662E-06,
-                "rotY": 179.985016,
-                "rotZ": -8.442445E-07,
+                "posZ": 4.49999571,
+                "rotX": -5.020315E-06,
+                "rotY": 179.985046,
+                "rotZ": -2.213197E-07,
                 "scaleX": 0.7,
                 "scaleY": 0.7,
                 "scaleZ": 0.7
@@ -8068,11 +8306,11 @@
               "GUID": "a730db",
               "Name": "Deck",
               "Transform": {
-                "posX": 12.5000029,
+                "posX": 12.500001,
                 "posY": 1.536432,
-                "posZ": -5.99991941,
-                "rotX": 0.004948096,
-                "rotY": 90.0004959,
+                "posZ": -5.99990273,
+                "rotX": 0.00494786352,
+                "rotY": 90.00007,
                 "rotZ": 359.9891,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -8306,12 +8544,12 @@
               "GUID": "b4cb94",
               "Name": "Card",
               "Transform": {
-                "posX": 2.49999881,
+                "posX": 2.49999857,
                 "posY": 1.51837921,
                 "posZ": 9.000004,
-                "rotX": 0.0108915158,
-                "rotY": 180.000137,
-                "rotZ": 0.004948254,
+                "rotX": 0.0108914962,
+                "rotY": 180.000259,
+                "rotZ": 0.004948228,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -8364,12 +8602,12 @@
               "GUID": "c37089",
               "Name": "Card",
               "Transform": {
-                "posX": -26.0000134,
+                "posX": -26.0000038,
                 "posY": 1.78360593,
-                "posZ": 4.4999876,
-                "rotX": -4.937635E-06,
-                "rotY": 180.0169,
-                "rotZ": -1.74608658E-07,
+                "posZ": 4.499994,
+                "rotX": -4.953465E-06,
+                "rotY": 180.0167,
+                "rotZ": -3.646365E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -8425,9 +8663,9 @@
                 "posX": 13.4999981,
                 "posY": 1.51875985,
                 "posZ": 16.0000038,
-                "rotX": 0.0108915027,
-                "rotY": 180.000168,
-                "rotZ": 0.004948403,
+                "rotX": 0.010891486,
+                "rotY": 180.000259,
+                "rotZ": 0.00494831055,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -8483,9 +8721,9 @@
                 "posX": -8.500002,
                 "posY": 1.51932919,
                 "posZ": 9.000004,
-                "rotX": 0.0108914329,
-                "rotY": 180.000122,
-                "rotZ": 0.00494824,
+                "rotX": 0.0108915092,
+                "rotY": 180.000259,
+                "rotZ": 0.00494821649,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -8541,8 +8779,8 @@
                 "posX": 30.5,
                 "posY": 1.67504823,
                 "posZ": -3.00000024,
-                "rotX": -0.0005908798,
-                "rotY": 180.000854,
+                "rotX": -0.000591029355,
+                "rotY": 180.0009,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
@@ -10541,12 +10779,12 @@
               "GUID": "fedcda",
               "Name": "Card",
               "Transform": {
-                "posX": 13.5000019,
+                "posX": 13.4999981,
                 "posY": 1.51742923,
                 "posZ": 9.000004,
-                "rotX": 0.0108915251,
-                "rotY": 179.999832,
-                "rotZ": 0.0049481364,
+                "rotX": 0.0108914534,
+                "rotY": 180.000015,
+                "rotZ": 0.00494822627,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -10621,12 +10859,12 @@
           "GUID": "5338a5",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 8.000005,
-            "posY": 0.9799975,
-            "posZ": 45.0000038,
-            "rotX": -5.21307038E-06,
+            "posX": 8.000003,
+            "posY": 0.9799974,
+            "posZ": 45.0,
+            "rotX": -5.115976E-06,
             "rotY": 180.023026,
-            "rotZ": 2.66673851E-07,
+            "rotZ": 4.86924364E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -15215,12 +15453,12 @@
           "GUID": "70c3a6",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": -0.9999956,
-            "posY": 0.979997635,
+            "posX": -0.9999994,
+            "posY": 0.9799976,
             "posZ": 45.0000076,
-            "rotX": -5.071615E-06,
-            "rotY": 180.025009,
-            "rotZ": 5.218383E-07,
+            "rotX": -5.02098237E-06,
+            "rotY": 180.025116,
+            "rotZ": 4.91108153E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -15415,7 +15653,7 @@
                   "Type": 0
                 },
                 "199": {
-                  "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                  "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                   "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                   "NumWidth": 10,
                   "NumHeight": 7,
@@ -16584,7 +16822,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -17456,7 +17694,7 @@
               "SidewaysCard": false,
               "CustomDeck": {
                 "199": {
-                  "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                  "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                   "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                   "NumWidth": 10,
                   "NumHeight": 7,
@@ -17584,7 +17822,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -17642,7 +17880,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -17700,7 +17938,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -17758,7 +17996,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -17816,7 +18054,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -17874,7 +18112,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -17932,7 +18170,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -17990,7 +18228,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -18048,7 +18286,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -18106,7 +18344,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -18166,7 +18404,7 @@
               "SidewaysCard": false,
               "CustomDeck": {
                 "199": {
-                  "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                  "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                   "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                   "NumWidth": 10,
                   "NumHeight": 7,
@@ -18280,7 +18518,7 @@
               "SidewaysCard": false,
               "CustomDeck": {
                 "199": {
-                  "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                  "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                   "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                   "NumWidth": 10,
                   "NumHeight": 7,
@@ -18576,7 +18814,7 @@
               "SidewaysCard": false,
               "CustomDeck": {
                 "199": {
-                  "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                  "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                   "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                   "NumWidth": 10,
                   "NumHeight": 7,
@@ -18747,7 +18985,7 @@
               "SidewaysCard": false,
               "CustomDeck": {
                 "199": {
-                  "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                  "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                   "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                   "NumWidth": 10,
                   "NumHeight": 7,
@@ -19172,7 +19410,7 @@
                   "SidewaysCard": false,
                   "CustomDeck": {
                     "199": {
-                      "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                       "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                       "NumWidth": 10,
                       "NumHeight": 7,
@@ -19232,7 +19470,7 @@
               "SidewaysCard": false,
               "CustomDeck": {
                 "199": {
-                  "FaceURL": "https://i.imgur.com/GI7QyCb.jpg",
+                  "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/41193070700421230/7EE8C636768ADCA74D986E308B12276CD8047ABF/",
                   "BackURL": "https://i.imgur.com/EUjYjZK.jpg",
                   "NumWidth": 10,
                   "NumHeight": 7,
@@ -19271,12 +19509,12 @@
           "GUID": "70e81a",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 17.0000114,
-            "posY": 0.979997337,
+            "posX": 17.00001,
+            "posY": 0.9799974,
             "posZ": 45.0000076,
-            "rotX": -4.6938344E-06,
+            "rotX": -5.324314E-06,
             "rotY": 180.023346,
-            "rotZ": -1.95220949E-07,
+            "rotZ": -1.667478E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -23789,12 +24027,12 @@
           "GUID": "7594f1",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 12.5000038,
-            "posY": 0.9799976,
-            "posZ": 45.0000038,
-            "rotX": -5.062215E-06,
-            "rotY": 180.023239,
-            "rotZ": 5.09203971E-07,
+            "posX": 12.5000019,
+            "posY": 0.9799974,
+            "posZ": 45.0,
+            "rotX": -5.1335046E-06,
+            "rotY": 180.023209,
+            "rotZ": 4.990495E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
@@ -27955,9 +28193,9 @@
             "posX": -18.5,
             "posY": 1.47986,
             "posZ": -4.9973,
-            "rotX": 6.818144E-08,
+            "rotX": 8.063102E-08,
             "rotY": 180.0081,
-            "rotZ": 8.166922E-08,
+            "rotZ": 5.00323161E-08,
             "scaleX": 2.05722,
             "scaleY": 1.0,
             "scaleZ": 2.05722
@@ -28003,12 +28241,12 @@
           "GUID": "7aacde",
           "Name": "Custom_Tile",
           "Transform": {
-            "posX": 2.97388959,
-            "posY": 1.60189283,
-            "posZ": -5.49417,
-            "rotX": 0.004402006,
-            "rotY": 179.875549,
-            "rotZ": 0.00341844861,
+            "posX": 2.99999952,
+            "posY": 1.50197494,
+            "posZ": -5.499999,
+            "rotX": 0.0108904131,
+            "rotY": 180.013,
+            "rotZ": 0.004950843,
             "scaleX": 1.6428808,
             "scaleY": 1.0,
             "scaleZ": 1.6428808
@@ -28060,12 +28298,12 @@
           "GUID": "dfa75b",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 21.5000076,
-            "posY": 0.9799974,
-            "posZ": 45.00001,
-            "rotX": -4.51153664E-06,
-            "rotY": 180.023087,
-            "rotZ": 7.4573876E-07,
+            "posX": 21.5,
+            "posY": 0.9799975,
+            "posZ": 45.0,
+            "rotX": -4.90337743E-06,
+            "rotY": 180.023163,
+            "rotZ": 4.15255158E-07,
             "scaleX": 1.20052135,
             "scaleY": 0.249882281,
             "scaleZ": 1.3145982
