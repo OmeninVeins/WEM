@@ -20,12 +20,12 @@
       "GUID": "0941ea",
       "Name": "Custom_Model_Bag",
       "Transform": {
-        "posX": -93.00012,
-        "posY": 0.9800005,
-        "posZ": 19.4998322,
-        "rotX": -5.08043559E-06,
-        "rotY": 180.000031,
-        "rotZ": 4.51227947E-07,
+        "posX": -93.0001144,
+        "posY": 0.9800006,
+        "posZ": 19.4998341,
+        "rotX": -4.50341668E-06,
+        "rotY": 180.000046,
+        "rotZ": -2.78436346E-07,
         "scaleX": 0.6144237,
         "scaleY": 0.08580595,
         "scaleZ": 0.6144237
@@ -90,12 +90,12 @@
           "GUID": "2d24ae",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 12.4999962,
-            "posY": 0.979997337,
-            "posZ": 44.9999962,
-            "rotX": -3.53368068E-06,
-            "rotY": 179.984,
-            "rotZ": 2.174943E-06,
+            "posX": 12.4999981,
+            "posY": 0.9799974,
+            "posZ": 45.0,
+            "rotX": -5.031456E-06,
+            "rotY": 179.984009,
+            "rotZ": 4.82713233E-07,
             "scaleX": 1.20819664,
             "scaleY": 0.823770463,
             "scaleZ": 1.31803274
@@ -4584,7 +4584,7 @@
             "posZ": 12.0,
             "rotX": 4.5578985E-09,
             "rotY": 180.018509,
-            "rotZ": -1.59792835E-09,
+            "rotZ": -1.59792768E-09,
             "scaleX": 6.13839769,
             "scaleY": 1.0,
             "scaleZ": 6.13839769
@@ -4638,10 +4638,10 @@
           "Transform": {
             "posX": -20.5,
             "posY": 1.47986,
-            "posZ": -4.999999,
-            "rotX": -2.070399E-07,
-            "rotY": 180.000137,
-            "rotZ": -3.55192668E-07,
+            "posZ": -4.99999952,
+            "rotX": -3.73661457E-08,
+            "rotY": 180.000061,
+            "rotZ": -1.43411924E-07,
             "scaleX": 2.11755562,
             "scaleY": 1.0,
             "scaleZ": 2.11755562
@@ -4690,9 +4690,9 @@
             "posX": 3.50000167,
             "posY": 0.979997635,
             "posZ": 44.9999962,
-            "rotX": -5.04002173E-06,
+            "rotX": -4.82795667E-06,
             "rotY": 180.004822,
-            "rotZ": 5.943911E-07,
+            "rotZ": 7.414117E-07,
             "scaleX": 1.20819664,
             "scaleY": 0.823770463,
             "scaleZ": 1.31803274
@@ -5281,12 +5281,12 @@
               "GUID": "b13534",
               "Name": "Custom_Model_Bag",
               "Transform": {
-                "posX": -23.0000038,
+                "posX": -23.0000057,
                 "posY": 1.870001,
-                "posZ": 5.49999666,
-                "rotX": -5.1146485E-06,
+                "posZ": 5.49999475,
+                "rotX": -5.24485358E-06,
                 "rotY": 179.98764,
-                "rotZ": 7.2745344E-08,
+                "rotZ": -8.86111948E-08,
                 "scaleX": 1.0,
                 "scaleY": 1.0,
                 "scaleZ": 1.0
@@ -5302,7 +5302,7 @@
               "ColorDiffuse": {
                 "r": 0.0,
                 "g": 0.7526132,
-                "b": 0.358117938
+                "b": 0.3581178
               },
               "LayoutGroupSortIndex": 0,
               "Value": 0,
@@ -5343,7 +5343,7 @@
               "Bag": {
                 "Order": 0
               },
-              "LuaScript": "local act_1 = { ['Circle'] = { GUID = 'ab38db', position = { 6.00, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } } }\r\nlocal act_2 = {\r\n    ['Triangle'] = { GUID = '2571a9', position = { 6.00, 1.52, 20.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Square'] = { GUID = '05d8ce', position = { 6.00, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Plus'] = { GUID = '415af7', position = { 6.00, 1.52, 2.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Diamond'] = { GUID = 'bce4db', position = { 15.00, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } }\r\n}\r\nlocal act_3 = {\r\n    ['Zealot'] = { GUID = '1064a9', position = { 17.50, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['GoulePriest'] = { GUID = '1118ce', position = { 3.50, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n}\r\n\r\nlocal discard_pile = {\r\n    position = { 34.99, 1.51, -2.99 }\r\n}\r\n\r\nfunction onLoad()\r\n    createButton()\r\nend\r\n\r\nfunction createButton()\r\n    self.createButton({\r\n        label = \"Acte 2\",\r\n        click_function = \"placeAct2\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 350,\r\n        width = 1200,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Mise en place Acte 2\"\r\n    })\r\nend\r\n\r\nfunction placeAct2()\r\n    removeAct1()\r\n    for k, card in pairs(act_2) do\r\n        local place = self.takeObject({\r\n            guid = card.GUID,\r\n            rotation = card.rotation\r\n        })\r\n        place.setPositionSmooth(card.position, false, false)\r\n    end\r\n    local params = {}\r\n    params.index = 0\r\n    params.click_function = \"placeAct3\"\r\n    params.label = \"Acte 3\"\r\n    params.tooltip = \"Mise en place Acte 3\"\r\n    self.editButton(params)\r\nend\r\n\r\nfunction placeAct3()\r\n    for k, card in pairs(act_3) do\r\n        local place = self.takeObject({\r\n            guid = card.GUID,\r\n            rotation = card.rotation\r\n        })\r\n        place.setPositionSmooth(card.position, false, false)\r\n    end\r\n    local params = {}\r\n    params.index = 0\r\n    params.click_function = \"placeAct1\"\r\n    params.label = \"Acte 1\"\r\n    params.tooltip = \"Réinitialiser Acte 1\"\r\n    self.editButton(params)\r\nend\r\n\r\nfunction placeAct1()\r\n    removeAct3()\r\n    for k, card in pairs(act_1) do\r\n        local place = self.takeObject({\r\n            guid = card.GUID,\r\n            rotation = card.rotation\r\n        })\r\n        place.setPositionSmooth(card.position, false, false)\r\n    end\r\n    local params = {}\r\n    params.index = 0\r\n    params.click_function = \"placeAct2\"\r\n    params.label = \"Acte 2\"\r\n    params.tooltip = \"Mise en place Acte 2\"\r\n    self.editButton(params)\r\nend\r\n\r\nfunction removeAct1()\r\n    for k, card in pairs(act_1) do\r\n        local remove = getObjectFromGUID(card.GUID)\r\n        self.putObject(remove)\r\n    end\r\n    local hitlist = Physics.cast({\r\n        origin       = { 6.00, 1.52, 11.50 },\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 15.25, 5.10, 15.91 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n    for _, obj in ipairs(hitlist) do\r\n        local object = obj.hit_object\r\n        if object.type == 'Card' then\r\n            local cardData = object.getData()\r\n            local metadata = Global.call('getMetadata', cardData)\r\n            if metadata and metadata.type == 'Enemy' then\r\n                local position = Vector(discard_pile.position) + Vector(0, 3, 0)\r\n                object.setPositionSmooth(position, false, false)\r\n            end\r\n        elseif (object.type == 'Tile' or object.type == 'Generic') and (object.getName() ~= 'Mise en place du Chaos Bag' and object.getLock() == false and object.getGMNotes() ~= 'board') then\r\n            object.destruct()\r\n        end\r\n    end\r\nend\r\n\r\nfunction removeAct3()\r\n    for k, card in pairs(act_2) do\r\n        local remove = getObjectFromGUID(card.GUID)\r\n        self.putObject(remove)\r\n    end\r\n    for k, card in pairs(act_3) do\r\n        local remove = getObjectFromGUID(card.GUID)\r\n        self.putObject(remove)\r\n    end\r\n\r\n    local hitlist = Physics.cast({\r\n        origin       = { 6.00, 1.52, 11.50 },\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 30.25, 5.10, 20.91 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n    for _, obj in ipairs(hitlist) do\r\n        local object = obj.hit_object\r\n        if (object.type == 'Tile' or object.type == 'Generic') and (object.getName() ~= 'Mise en place du Chaos Bag' and object.getLock() == false and object.getGMNotes() ~= 'board') then\r\n            object.destruct()\r\n        end\r\n    end\r\nend\r\n",
+              "LuaScript": "local act_1          = { ['Circle'] = { GUID = 'ab38db', position = { 6.00, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } } }\r\nlocal act_2          = {\r\n    ['Triangle'] = { GUID = '2571a9', position = { 6.00, 1.52, 20.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Square'] = { GUID = '05d8ce', position = { 6.00, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Plus'] = { GUID = '415af7', position = { 6.00, 1.52, 2.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['Diamond'] = { GUID = 'bce4db', position = { 15.00, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } }\r\n}\r\nlocal act_3          = {\r\n    ['Zealot'] = { GUID = '1064a9', position = { 17.50, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n    ['GoulePriest'] = { GUID = '1118ce', position = { 3.50, 1.52, 11.50 }, rotation = { 0.00, 180.00, 0.00 } },\r\n}\r\n\r\nlocal encounter_pile = { -- ajout\r\n    position = { 30.50, 3.61, -3.00 }\r\n}\r\n\r\nlocal discard_pile   = {\r\n    position = { 34.99, 1.51, -2.99 }\r\n}\r\n\r\nfunction onLoad()\r\n    createButton()\r\nend\r\n\r\nfunction createButton()\r\n    self.createButton({\r\n        label = \"Mise en place\",\r\n        click_function = \"setUp\",\r\n        function_owner = self,\r\n        position = { 0, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 350,\r\n        width = 1800,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n        tooltip = \"Mise en place\"\r\n    })\r\nend\r\n\r\nfunction setUp()\r\n    Wait.time(function()\r\n        local encounterDeck = getEncounterDeck()\r\n        encounterDeck.shuffle()\r\n        broadcastToAll('Mise en place terminée', { 0, 0.75, 0.75 })\r\n    end, 1)\r\n    self.clearButtons()\r\nend\r\n\r\nfunction placeAct2()\r\n    removeAct1()\r\n    for k, card in pairs(act_2) do\r\n        local place = self.takeObject({\r\n            guid = card.GUID,\r\n            rotation = card.rotation\r\n        })\r\n        place.setPositionSmooth(card.position, false, false)\r\n    end\r\n    local params = {}\r\n    self.clearButtons()\r\nend\r\n\r\nfunction placeAct3()\r\n    for k, card in pairs(act_3) do\r\n        local place = self.takeObject({\r\n            guid = card.GUID,\r\n            rotation = card.rotation\r\n        })\r\n        place.setPositionSmooth(card.position, false, false)\r\n    end\r\n    local params = {}\r\n    self.clearButtons()\r\nend\r\n\r\nfunction placeAct1()\r\n    removeAct3()\r\n    for k, card in pairs(act_1) do\r\n        local place = self.takeObject({\r\n            guid = card.GUID,\r\n            rotation = card.rotation\r\n        })\r\n        place.setPositionSmooth(card.position, false, false)\r\n    end\r\n    local params = {}\r\n    params.index = 0\r\n    params.click_function = \"placeAct2\"\r\n    params.label = \"Acte 2\"\r\n    params.tooltip = \"Mise en place Acte 2\"\r\n    self.editButton(params)\r\nend\r\n\r\nfunction removeAct1()\r\n    for k, card in pairs(act_1) do\r\n        local remove = getObjectFromGUID(card.GUID)\r\n        self.putObject(remove)\r\n    end\r\n    local hitlist = Physics.cast({\r\n        origin       = { 6.00, 1.52, 11.50 },\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 15.25, 5.10, 15.91 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n    for _, obj in ipairs(hitlist) do\r\n        local object = obj.hit_object\r\n        if object.type == 'Card' then\r\n            local cardData = object.getData()\r\n            local metadata = Global.call('getMetadata', cardData)\r\n            if metadata and metadata.type == 'Enemy' then\r\n                local position = Vector(discard_pile.position) + Vector(0, 3, 0)\r\n                object.setPositionSmooth(position, false, false)\r\n            end\r\n        elseif (object.type == 'Tile' or object.type == 'Generic') and (object.getName() ~= 'Mise en place du Chaos Bag' and object.getLock() == false and object.getGMNotes() ~= 'board') then\r\n            object.destruct()\r\n        end\r\n    end\r\nend\r\n\r\nfunction removeAct3()\r\n    for k, card in pairs(act_2) do\r\n        local remove = getObjectFromGUID(card.GUID)\r\n        self.putObject(remove)\r\n    end\r\n    for k, card in pairs(act_3) do\r\n        local remove = getObjectFromGUID(card.GUID)\r\n        self.putObject(remove)\r\n    end\r\n\r\n    local hitlist = Physics.cast({\r\n        origin       = { 6.00, 1.52, 11.50 },\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 30.25, 5.10, 20.91 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n    for _, obj in ipairs(hitlist) do\r\n        local object = obj.hit_object\r\n        if (object.type == 'Tile' or object.type == 'Generic') and (object.getName() ~= 'Mise en place du Chaos Bag' and object.getLock() == false and object.getGMNotes() ~= 'board') then\r\n            object.destruct()\r\n        end\r\n    end\r\nend\r\n\r\nfunction onObjectLeaveContainer(container, object)\r\n    local params = {\r\n        function_owner = self,\r\n        position = { 0, 0.3, 1.8 },\r\n        rotation = { 0, 0, 0 },\r\n        height = 350,\r\n        width = 1200,\r\n        font_size = 250,\r\n        color = { 0, 0, 0 },\r\n        font_color = { 1, 1, 1 },\r\n    }\r\n\r\n    local metadata = Global.call('getMetadata', object.getData())\r\n    if metadata then\r\n        if metadata.id ~= nil then\r\n            if metadata.id == '01108' then\r\n                broadcastToAll(\"Bouton de mise en place de l'acte 2 disponible sur le conteneur\", { 0, 1, 0.75 })\r\n                params.label = \"Acte 2\"\r\n                params.click_function = \"placeAct2\"\r\n                params.tooltip = \"Mise en place Acte 2\"\r\n                self.clearButtons()\r\n                self.createButton(params)\r\n            elseif metadata.id == '01109' then\r\n                broadcastToAll(\"Bouton de mise en place de l'acte 3 disponible sur le conteneur\", { 0, 1, 0.75 })\r\n                params.label = \"Acte 3\"\r\n                params.click_function = \"placeAct3\"\r\n                params.tooltip = \"Mise en place Acte 3\"\r\n                self.clearButtons()\r\n                self.createButton(params)\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction getEncounterDeck()\r\n    local position = {\r\n        x = encounter_pile.position[1],\r\n        y = encounter_pile.position[2] - 2,\r\n        z = encounter_pile.position[3]\r\n    }\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        direction    = { 0, 1, 0 },\r\n        type         = 3,\r\n        size         = { 3, 10, 3 },\r\n        max_distance = 0,\r\n        debug        = false,\r\n    })\r\n\r\n    for _, object in ipairs(hitList) do\r\n        local obj = object.hit_object\r\n        if obj.type == \"Deck\" then\r\n            return obj\r\n        end\r\n    end\r\nend\r\n",
               "LuaScriptState": "{\"ml\":{\"05d8ce\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5186,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"2571a9\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5203,\"z\":20.5},\"rot\":{\"x\":0.0109,\"y\":179.9987,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"415af7\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5168,\"z\":2.5},\"rot\":{\"x\":0.0109,\"y\":180.0008,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"7234af\":{\"lock\":false,\"pos\":{\"x\":10.5,\"y\":1.5046,\"z\":11.5},\"rot\":{\"x\":0.0049,\"y\":90.0109,\"z\":359.9891},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"8d1418\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5058,\"z\":16},\"rot\":{\"x\":0.0109,\"y\":180.0171,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"ab38db\":{\"lock\":false,\"pos\":{\"x\":-31,\"y\":1.7789,\"z\":29.5},\"rot\":{\"x\":0,\"y\":180,\"z\":0},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}},\"b33a26\":{\"lock\":false,\"pos\":{\"x\":6,\"y\":1.5041,\"z\":7},\"rot\":{\"x\":0.0109,\"y\":179.9976,\"z\":0.005},\"tint\":{\"a\":1,\"b\":0.604529500007629,\"g\":0.604529500007629,\"r\":0.604529500007629}},\"bce4db\":{\"lock\":false,\"pos\":{\"x\":15,\"y\":1.5178,\"z\":11.5},\"rot\":{\"x\":0.0109,\"y\":180.0003,\"z\":0.0049},\"tint\":{\"a\":1,\"b\":0.713235259056091,\"g\":0.713235259056091,\"r\":0.713235259056091}}}}",
               "XmlUI": "",
               "ContainedObjects": [
@@ -5704,7 +5704,7 @@
                 "posX": 30.4999,
                 "posY": 1.64616406,
                 "posZ": -3.00000024,
-                "rotX": -0.0005909224,
+                "rotX": -0.0005909356,
                 "rotY": 180.0,
                 "rotZ": 180.001068,
                 "scaleX": 1.0,
@@ -7380,7 +7380,7 @@
                 "posX": 23.5002,
                 "posY": 1.5138092,
                 "posZ": -5.499898,
-                "rotX": 0.0108917309,
+                "rotX": 0.0108917607,
                 "rotY": 179.99733,
                 "rotZ": 180.004959,
                 "scaleX": 1.0,
@@ -7437,12 +7437,12 @@
           "GUID": "dfd4ae",
           "Name": "Custom_Model_Bag",
           "Transform": {
-            "posX": 7.999997,
-            "posY": 0.979997635,
+            "posX": 7.99999666,
+            "posY": 0.9799974,
             "posZ": 44.9999962,
-            "rotX": -5.0560343E-06,
+            "rotX": -5.005196E-06,
             "rotY": 180.003021,
-            "rotZ": 3.78019735E-07,
+            "rotZ": 3.794249E-07,
             "scaleX": 1.20819664,
             "scaleY": 0.823770463,
             "scaleZ": 1.31803274
@@ -10319,12 +10319,12 @@
           "GUID": "f93de1",
           "Name": "Custom_Tile",
           "Transform": {
-            "posX": 3.49999976,
+            "posX": 3.49999785,
             "posY": 1.50193179,
-            "posZ": -5.50000763,
-            "rotX": 0.0108906114,
+            "posZ": -5.50000572,
+            "rotX": 0.0108904308,
             "rotY": 180.012863,
-            "rotZ": 0.00495086936,
+            "rotZ": 0.00495112,
             "scaleX": 1.6428808,
             "scaleY": 1.0,
             "scaleZ": 1.6428808
